@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+
+    <!-- Ionic icons -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="d-flex" id="content-wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="bg-primary">
+            <div class="logo">
+                <h2 class="text-light font-weight-bold mb-0">Bienvenido</h2>
+            </div>
+            <div class="menu">
+                <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+                    Pacientes</a>
+                <a href="encuentros.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
+                    Encuentro</a>
+
+                <a href="busquedas.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-search lead mr-2"></i>
+                   Busquedas</a>
+                   
+            </div>
+        </div>
+        <!-- Fin sidebar -->
+
+        <div class="w-100">
+
+         <!-- Navbar -->
+         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container">
+    
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+    
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="../assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
+                      alt="https://generated.photos/" />  
+                    Aldo Rojas
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Reportes</a>
+                      <a class="dropdown-item" href="#">Administracion</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Salir</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- Fin Navbar -->
+
+        <!-- Page Content -->
+        <div id="content" class="bg-grey w-100">
+            <div class="body">
+                <div class="containerEncuentros">
+                    <header> ENCUENTROS </header>
+
+                    <div class="progress-bar1">
+                        <div class="paso">
+                            <p>Crear Encuentro</p>
+                            <div class="num">
+                                <span>1</span>
+                            </div>
+                            <div class="check fa fa-check"></div>
+                        </div>
+                        <div class="paso">
+                            <p>Notas clinicas</p>
+                            <div class="num">
+                                <span>2</span>
+                            </div>
+                            <div class="check fa fa-check"></div>
+                        </div>
+                        <div class="paso">
+                            <p>Resultados</p>
+                            <div class="num">
+                                <span>3</span>
+                            </div>
+                            <div class="check fa fa-check"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-princ">
+                        <form action="#">
+                            <!--Pagina 1-->
+                            <div class="pagina movPag">
+                                <div class="titulo">Crear encuentro</div>
+                                <div class="campo">
+                                    <div class="label">Tipo encuentro</div>
+                                    <select class="form-control" id="tipoEncuentro" name="form_select" onchange="showDiv(this)">
+                                        <option value="0">Control</option>
+                                        <option value="1">Comite </option>
+                                        <option value="2">Control-Pre cirugia</option>
+                                        <option value="3">Cirugia</option>
+                                        <option value="4">Control-Post cirugia</option>
+                                    </select>
+                                </div>
+                                <div id="docs">
+                                    <div class="campo adjun">
+                                        <div class="label">Adjuntar audio</div>
+                                        <input type="file" class="form-control-file" id="audioEncuentro">
+                                    </div>
+                                    <div class="campo adjun">
+                                        <div class="label">Adjuntar electrocardiograma</div>
+                                        <input type="file" class="form-control-file" id="electrocardiogramaEncuentro">
+                                    </div>
+                                    <div class="campo adjun">
+                                        <div class="label">Adjuntar Exam Laboratorio</div>
+                                        <input type="file" class="form-control-file" id="examenEncuentro">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="campo btns" id="btns2">
+                                    <button type="submit" class="btn btn-danger mb-2">Crear protocolo operatorio</button>
+                                </div>
+                                <div class="campo btns" id="btns3">
+                                    <button type="submit" class="btn btn-danger mb-2">Crear epicrisis</button>  
+                                </div>
+
+                                
+
+                                <div class="campo sigPag">
+                                    <button class="btn btn-primary">Siguiente</button>
+                                </div>
+
+                            </div>
+
+                            <!--Pagina 2-->
+                            <div class="pagina">
+                                <div class="titulo">Nota clinica</div>
+                                <div class="campo">
+                                    <div class="label">Diagnostico primario</div>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Valvulopatia</option>
+                                        <option>Arritmia</option>
+                                        <option>Bypass</option>
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <div class="label">Diagnostico secundario 1</div>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Valvulopatia</option>
+                                        <option>Arritmia</option>
+                                        <option>Bypass</option>
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <div class="label">Diagnostico secundario 2</div>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Valvulopatia</option>
+                                        <option>Arritmia</option>
+                                        <option>Bypass</option>
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <div class="label">Nota clinica</div>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div class="campo btns">
+                                    <button type="submit" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
+                                    <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>  
+                                </div>
+
+                            </div>
+
+
+                            <!--Pagina 3-->
+                            <div class="pagina">
+                                <div class="titulo">Encuentros</div>
+                                <table class="content-table">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre(s)</th>
+                                        <th>Apellidos</th>
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Domenic</td>
+                                        <td>Smith</td>
+                                    </tr>
+                                    <tr class="active-row">
+                                        <td>2</td>
+                                        <td>Sally</td>
+                                        <td>Jhonson</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Nick</td>
+                                        <td>Black</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="campo btns">
+                                    <button type="submit" class="volver-pag2 volver btn btn-primary mb-2">Anterior</button>
+                                    <button type="submit" class="Fin adelante btn btn-primary mb-2">Siguiente</button>  
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+
+
+              
+
+        
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript" src="../assets/js/interfaz.js">
+    </script>
+</body>
+
+</html>

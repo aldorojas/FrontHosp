@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+
+    <!-- Ionic icons -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- wavesurfer.js-->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="d-flex" id="content-wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="bg-primary">
+            <div class="logo">
+                <h2 class="text-light font-weight-bold mb-0">Bienvenido</h2>
+            </div>
+            <div class="menu">
+                <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+                    Pacientes</a>
+                
+                <a href="encuentros.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
+                Encuentro</a>
+            
+                <a href="busquedas.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-search lead mr-2"></i>
+                  Busquedas</a>
+                   
+            </div>
+        </div>
+        <!-- Fin sidebar -->
+
+        <div class="w-100">
+
+         <!-- Navbar -->
+         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container">
+    
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+    
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="../assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
+                      alt="https://generated.photos/" />  
+                    Aldo Rojas
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Reportes</a>
+                      <a class="dropdown-item" href="#">Administracion</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Salir</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- Fin Navbar -->
+
+        <!-- Page Content -->
+        <div id="content" class="bg-grey w-100">
+
+              <section class="bg-light py-3">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-9 col-md-8">
+                            <h1 class="font-weight-bold mb-0"> Audios</h1>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+
+              <section class="bg-mix py-3">
+                <div class="container">
+                  
+                    <div class="card rounded-0">
+                      <div class="card rounded-0">
+                        <div class="card-header bg-light">
+                          <h6 class="font-weight-bold mb-0">Buscar audio</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 d-flex stat my-3">
+                                  <div class="label">Fecha: </div>
+                                  <input type="date" id="fechaBusqueda" >
+
+                                </div>
+                                <div class="col-lg-4 col-md-6 d-flex stat my-3">
+                                  <div class="label">Tipo encuentro</div>
+                                    <select class="form-control" id="test" name="form_select" onchange="showDiv(this)">
+                                        <option value="0">Control</option>
+                                        <option value="1">Comite </option>
+                                        <option value="2">Control-Pre cirugia</option>
+                                        <option value="3">Cirugia</option>
+                                        <option value="4">Control-Post cirugia</option>
+                                    </select>
+                                    
+
+                                </div>
+                                <div class="col-lg-4 col-md-6 d-flex ">
+                                   
+                                  <button class="btn btn-primary">Siguiente</button>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </section>
+
+              <section>
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12 my-3">
+                              <div class="card rounded-0">
+                                  <div class="card-header bg-light">
+                                    <h6 class="font-weight-bold mb-0">Resultados</h6>
+                                  </div>
+                                  <div class="card-body">
+                                    <div class="divTable">
+                                      <table class="table table1">
+                                        <thead class="thead-light">
+                                          <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">DateTime encuentro</th>
+                                            <th scope="col">Tipo encuentro</th>
+                                            <th scope="col">Diag primario</th>
+                                            <th scope="col">Diag sec 1</th>
+                                            <th scope="col">Diag sec 2</th>
+                                            <th scope="col">Audio</th>
+                                            <th scope="col">Examen Cardio</th>
+                                            <th scope="col">Examen Lab</th>
+                                            <th scope="col">Nota clinica</th>
+                                            <th scope="col">Form epicrisis</th>
+                                            <th scope="col">Analizar IA</th>
+                                            <th scope="col">Result IA</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td>2014-10-25 20:00</td>
+                                            <td>Control</td>
+                                            <td>Valvulopatia</td>
+                                            <td>Arritmia</td>
+                                            <td>Null</td>
+                                            <td>  <p>
+                                              <button id="boton">&#9655;</button>
+                                                </p>
+                                                <canvas ></canvas>  
+                                            </td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>Nota Clinica</td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>Analizar IA</td>
+                                            <td>Normal=99%, Null</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th scope="row">2</th>
+                                            <td>2014-10-25 20:00</td>
+                                            <td>Control</td>
+                                            <td>Valvulopatia</td>
+                                            <td>Arritmia</td>
+                                            <td>Null</td>
+                                            <td>  
+                                              <!-- Create a div where the audio waves will be shown --> 
+                                              <div id="audio-spectrum"></div>
+
+                                              <!-- Create action buttons -->
+                                              <input type="button" id="btn-play" value="Play" disabled="disabled"/>
+                                              <input type="button" id="btn-pause" value="Pause" disabled="disabled"/>
+                                              <input type="button" id="btn-stop" value="Stop" disabled="disabled" />
+
+                                            </td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>Nota Clinica</td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>Analizar IA</td>
+                                            <td>Normal=99%, Null</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">3</th>
+                                            <td>2014-10-25 20:00</td>
+                                            <td>Control</td>
+                                            <td>Valvulopatia</td>
+                                            <td>Arritmia</td>
+                                            <td>Null</td>
+                                            <td>  
+                                               
+                                            </td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>Nota Clinica</td>
+                                            <td>
+                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
+                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
+                                                </a>
+                                            </td>
+                                            <td>Analizar IA</td>
+                                            <td>Normal=99%, Null</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          
+                      </div>
+                  </div>
+              </section>
+
+        </div>
+
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+     
+        <script type="text/javascript" src="../assets/js/audio.js" ></script>
+</body>
+
+</html>

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+
+    <!-- Ionic icons -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="d-flex" id="content-wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="bg-primary">
+            <div class="logo">
+                <h2 class="text-light font-weight-bold mb-0">Bienvenido</h2>
+            </div>
+            <div class="menu">
+                <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+                    Pacientes</a>
+
+                <a href="busquedas.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
+                   Busquedas</a>
+                   
+            </div>
+        </div>
+        <!-- Fin sidebar -->
+
+        <div class="w-100">
+
+         <!-- Navbar -->
+         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container">
+    
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+    
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="../assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
+                      alt="https://generated.photos/" />  
+                    Aldo Rojas
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Reportes</a>
+                      <a class="dropdown-item" href="#">Administracion</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Salir</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- Fin Navbar -->
+
+        <!-- Page Content -->
+        <div id="content" class="bg-grey w-100">
+
+              <section class="bg-light py-3">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-9 col-md-8">
+                            <h5 class="font-weight-bold mb-0"> Pacientes</h5>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+
+              <section class="bg-mix py-3">
+                <div class="container">
+                    <div class="card rounded-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                                    <form class="form-inline position-relative d-inline-block my-2">
+                                        <input class="form-control" type="search" placeholder="Buscar Id" aria-label="Buscar">
+                                        <button class="btn position-absolute btn-search" type="submit"><i class="icon ion-md-search"></i></button>
+                                    </form>
+                                </div>
+                                <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                                    <form >
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Rut</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Pasaporte</label>
+                                          </div>
+                                          <div class="form-group  mb-2">
+                                            <input type="text" class="form-control" id="input2" placeholder="Nombre Paciente">
+                                          </div>
+                                          <button type="submit" class="btn btn-primary mb-2">Buscar</button> 
+                                    </form>
+                                </div>
+                                <div class="col-lg-6 col-md-6 d-flex stat">
+                                  <table class="content-table">
+                                    <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Nombre(s)</th>
+                                        <th>Apellidos</th>
+                                        
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>Domenic</td>
+                                        <td>Smith</td>
+                                      </tr>
+                                      <tr class="active-row">
+                                        <td>2</td>
+                                        <td>Sally</td>
+                                        <td>Jhonson</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>Nick</td>
+                                        <td>Black</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </section>
+
+
+              <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 my-3">
+                            <div class="card rounded-0">
+                                <div class="card-header bg-light">
+                                  <h5 class="font-weight-bold mb-0">Encuentros</h5>
+                                </div>
+                                <div class="card-body">
+                                  <div class="col-lg-12 col-md-6 d-flex stat my-3">
+                                    <form>
+                                      <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Tipo encuentro</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                          <option>Control</option>
+                                          <option>Comite </option>
+                                          <option>Control-Pre cirugia</option>
+                                          <option>Cirugia</option>
+                                          <option>Control-Post cirugia</option>
+                                        </select>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="exampleFormControlFile1">Adjuntar audio</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="exampleFormControlFile1">Adjuntar electrocardiograma</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="exampleFormControlFile1">Adjuntar Exam Laboratorio</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                      </div>
+
+                                      <button type="submit" class="btn btn-primary mb-2">Crear encuentro</button> 
+
+                                    </form>
+                                  </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 my-3">
+                          <div class="card rounded-0">
+                              <div class="card-header bg-light">
+                                  <h5 class="font-weight-bold mb-0">Diagnosticos</h5>
+                              </div>
+                              <div class="card-body pt-2">
+                                <form>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Diagnostico primario</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Valvulopatia</option>
+                                      <option>Arritmia</option>
+                                      <option>Bypass</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Diagnostico secundario 1</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Valvulopatia</option>
+                                      <option>Arritmia</option>
+                                      <option>Bypass</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Diagnostico secundario 2</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Valvulopatia</option>
+                                      <option>Arritmia</option>
+                                      <option>Bypass</option>
+                                    </select>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Nota clinica</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+        
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="bg-mix py-3">
+            
+                <div class="card rounded-0">
+                    <div class="encuentros card-body">
+                        <div class="row">
+                            <div class="containerEncuentros">
+                                <header>Registro de usuarios</header>
+                                <div class="form-princ">
+                                    <form action="#">
+                                        <!--PAGINA 1-->
+                                        <div class="pagina">
+                                        <div class="titulo">Encuentros </div>
+                                        <div class="campo form-group">
+                                            <div class="label">Tipo encuentro</div>
+                                            <select class="form-control" >
+                                            <option>Control</option>
+                                            <option>Comite </option>
+                                            <option>Control-Pre cirugia</option>
+                                            <option>Cirugia</option>
+                                            <option>Control-Post cirugia</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="campo form-group">
+                                            <label for="exampleFormControlFile1">Adjuntar audio</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                        <div class="campo form-group">
+                                            <label for="exampleFormControlFile1">Adjuntar electrocardiograma</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                        <div class="campo form-group">
+                                            <label for="exampleFormControlFile1">Adjuntar Exam Laboratorio</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                        <div class="campo">
+                                            <button class="btn btn-primary">Siguiente</button>
+                                        </div>
+                                        </div>
+
+
+                                        <!--PAGINA 2-->
+                                        <div class="pagina">
+                                        <div class="titulo">Diagnosticos </div>
+                                        <div class="campo form-group">
+                                            <label for="exampleFormControlSelect1">Diagnostico primario</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Valvulopatia</option>
+                                            <option>Arritmia</option>
+                                            <option>Bypass</option>
+                                            </select>
+                                        </div>
+                                        <div class="campo form-group">
+                                            <label for="exampleFormControlSelect1">Diagnostico secundario 1</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Valvulopatia</option>
+                                            <option>Arritmia</option>
+                                            <option>Bypass</option>
+                                            </select>
+                                        </div>
+                                        <div class="campo form-group">
+                                            <label for="exampleFormControlSelect1">Diagnostico secundario 2</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Valvulopatia</option>
+                                            <option>Arritmia</option>
+                                            <option>Bypass</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="campo form-group">
+                                            <label for="exampleFormControlTextarea1">Nota clinica</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="campo btns">
+                                            <button type="submit" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
+                                            <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>  
+                                        </div>
+                                        
+                                        </div>
+
+                                        <!--PAGINA 3-->
+                                        <div class="pagina">
+                                            <div class="titulo">Diagnosticos </div>
+                                            <table class="content-table">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre(s)</th>
+                                                    <th>Apellidos</th>
+                                                    
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Domenic</td>
+                                                    <td>Smith</td>
+                                                </tr>
+                                                <tr class="active-row">
+                                                    <td>2</td>
+                                                    <td>Sally</td>
+                                                    <td>Jhonson</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Nick</td>
+                                                    <td>Black</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                    </form>
+
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
