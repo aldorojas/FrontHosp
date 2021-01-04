@@ -90,7 +90,8 @@ formTodosHospitales.addEventListener('submit', function(e){
 				</div>
 				<div class="blog-post_info">
 					<h1 class="blog-post_title">  Hospital: ${data[i].hospital} </h1>
-					<div class="blog-post_date">
+                    <div class="blog-post_date">
+                    <span> Id: ${data[i].id}</span>
 					<span> Direccion: ${data[i].direccion}</span>
 					<span> Telefono: ${data[i].telefono}</span> 
 					<span> Activo:  ${data[i].activo}</span>
@@ -109,5 +110,48 @@ formTodosHospitales.addEventListener('submit', function(e){
 	//.catch(
 		
 	//)
+})
+
+
+
+////////////////////// eliminar hospital
+
+
+
+var formDeleteHospital = document.getElementById('formDeleteHospital');
+
+formDeleteHospital.addEventListener('submit', function(e){
+
+	var idHospital = document.getElementById('IdHospital')
+
+	const URLDeleteHospital = 'http://134.122.120.195/api/v1/hospital/' + idHospital.value ;
+
+	e.preventDefault()
+
+	var headers = {
+		"Content-Type": "application/json"
+	 }
+	
+	fetch(URLDeleteHospital, {
+		method: "DELETE",
+		headers: headers
+	})
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){ 
+		console.log(data)
+		Swal.fire({
+			icon: 'success',
+			title: 'Hospital eliminado',
+			showConfirmButton: false,
+			timer: 2500
+			})
+		var divPrueba = document.getElementById('card')
+		divPrueba.innerHTML = ''
+
+		
+
+	});
 })
 

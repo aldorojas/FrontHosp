@@ -73,6 +73,7 @@ formBusqueda2.addEventListener('submit', function(e){
 	.catch(err => console.log(err))
 })
 
+///////////////////////////////////// Add Paciente
 
 
 var formNewPaciente = document.getElementById('formNewPaciente');
@@ -135,9 +136,6 @@ formNewPaciente.addEventListener('submit', function(e){
 ////////////////////////////////////
 
 
-
-
-
 var formTodosPacientes = document.getElementById('showPacientes');
 
 formTodosPacientes.addEventListener('submit', function(e){
@@ -165,6 +163,7 @@ formTodosPacientes.addEventListener('submit', function(e){
 				<div class="blog-post_info">
 					<h1 class="blog-post_title">  Paciente: ${data[i].nombre} ${data[i].apellidos} </h1>
 					<div class="blog-post_date">
+					<span> Id: ${data[i].id}</span>
 					<span> Pasaporte: ${data[i].pasaporte}</span>
 					<span> Rut: ${data[i].rut}</span>
 					<span> Direccion: ${data[i].direccion}</span> 
@@ -188,3 +187,40 @@ formTodosPacientes.addEventListener('submit', function(e){
 //////////////eliminar paciente
 
 
+
+var formDeletePaciente = document.getElementById('formDeletePaciente');
+
+formDeletePaciente.addEventListener('submit', function(e){
+
+	var idPaciente = document.getElementById('idPaciente')
+
+	const URLDeletePaciente = 'http://134.122.120.195/api/v1/paciente/' + idPaciente.value ;
+
+	e.preventDefault()
+
+	var headers = {
+		"Content-Type": "application/json"
+	 }
+	
+	fetch(URLDeletePaciente, {
+		method: "DELETE",
+		headers: headers
+	})
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){ 
+		console.log(data)
+		Swal.fire({
+			icon: 'success',
+			title: 'Paciente eliminado',
+			showConfirmButton: false,
+			timer: 2500
+			})
+		var divPrueba = document.getElementById('card')
+		divPrueba.innerHTML = ''
+
+		
+
+	});
+})
