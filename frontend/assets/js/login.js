@@ -62,8 +62,8 @@ formLogin.addEventListener('submit', function(e){
 			localStorage.setItem("Admin",data.Medico.admin);
 
 
-			//window.location.replace("http://134.122.120.195:8080/modulos/encuentros.html");
-			window.location.replace("http://127.0.0.1:5500/modulos/encuentros.html");
+			window.location.replace("http://134.122.120.195:8080/modulos/encuentros.html");
+			//window.location.replace("http://127.0.0.1:5500/modulos/encuentros.html");
 
 
 		}
