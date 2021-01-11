@@ -47,6 +47,43 @@ a:hover {
     width: 15rem;
 }
 
+.cont-enlace .enlace{
+  height: 0;
+  overflow: hidden;
+}
+
+
+
+.cont-enlace .animation{
+  height: 100%;
+}
+
+.cont-enlace .enlace a{
+  background-color: chocolate;
+  color: #fff;
+}
+
+.cont-enlace .enlace a:hover{
+  background-color: #fff;
+  color: #ff8000;
+}
+
+.cont-enlace .animation{
+  height: 100%;
+}
+
+
+
+#sidebar-container .menu ul li a:hover{
+  background-color: cornsilk;
+}
+
+#sidebar-container .menu .activado > a {
+  background-color: darkred;
+  color: #fff;
+}
+
+
 #content {
     overflow-y: auto;
     height: 100vh;
@@ -123,15 +160,18 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 175vh;
+  
 }
 
 .containerEncuentros{
-  width: 800px;
+  width: 1000px;
   background: #fff;
   border-radius: 7px;
   text-align: center;
   padding: 30px 35px 0 35px;
+  
+  
   
 }
 
@@ -139,7 +179,12 @@ a:hover {
   font-size: 28px;
   font-weight: 600;
   margin: 0 0 30px 0;
+  
+}
 
+
+.cardPaciente{
+  width: 900px;
 }
 
 .containerEncuentros .form-princ{
@@ -149,12 +194,15 @@ a:hover {
 
 .form-princ form{
   display: flex;
-  width: 400%;
+  width: 500%;
+  
+  
 }
 
 .form-princ form .pagina{
   width: 25%;
   transition: margin-left 0.3s ease-in-out;
+  
 }
 
 .form-princ form .pagina .titulo{
@@ -166,7 +214,7 @@ a:hover {
 
 .form-princ form .pagina .campo{
   height: 35px;
-  width: 700px;
+  width: 900px;
   margin: 40px 0;
   display: flex;
   position: relative;
@@ -187,11 +235,20 @@ a:hover {
 .form-princ form .pagina .campo input{
   width: 100%;
   height: 100%;
-  border: 1px solid #fff;
+  border: 1px solid lightgray;
   border-radius: 5px;
   font-size: 16px;
   padding-left: 15px;
 
+}
+
+.form-princ form .pagina .campo textarea{
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-size: 16px;
+  padding-left: 15px;
 }
 
 .form-princ form .pagina .campo select{
@@ -312,10 +369,10 @@ form .pagina .btns button.adelante{
 .progress-bar1 .paso .num:after{
   position: absolute;
   content: '';
-  width: 180px;
+  width: 250px;
   height: 3px;
   bottom: 11px;
-  right: -195px;
+  right: -270px;
   background:#000;
 
 }
@@ -365,6 +422,10 @@ form .pagina .btns button.adelante{
   display: none;
 }
 
+#formBusqueda3{
+  display: none;
+}
+
 
 .table1 {
   /*word-wrap: break-word; 
@@ -378,8 +439,27 @@ form .pagina .btns button.adelante{
   width:1000px;
 }
 
+#notaClinica{
+  width: 900px;
+}
+
+#labelNotaClinica{
+  top: -30px;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: italic;
+  float: left;
+  text-align: left;
+  width: 100%;
+}
+
 #boton{
   margin:1em auto; display:block;
+}
+
+
+#moduloAdmin{
+  display: none;
 }
 
 canvas{
@@ -404,7 +484,6 @@ canvas{
 .blog-post{
   width: 100%;
   max-width: 98rem;
-  padding: 5rem;
   background-color: #fff;
   box-shadow: 0 1.4rem 8rem rgba(0, 0, 0, .2);
   display: flex;
@@ -413,15 +492,15 @@ canvas{
 }
 
 .blog-post_img{
-  min-width: 15rem;
+  min-width: 10rem;
   max-width: 15rem;
-  transform: translateX(-2rem);
+  transform: translateX(-1rem);
   position: relative;
 }
 
 .blog-post_img img{
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 60%;
   object-fit: cover;
   display: block;
   border-radius: .8rem;
@@ -435,22 +514,22 @@ canvas{
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, rgba(255,255,255,.8),
+  background: linear-gradient(to left, rgba(255,255,255,.8),
                               rgba(255,128,0,.8));
   box-shadow: .5rem .5rem 3rem 1px rgba(0,0,0, .05);
   border-radius: .8rem;
 }
 
 .blog-post_date span{
-  display: block;
+  display: inline-block;
   color: rgba(0,0,0, .5);
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin: .5rem 0;
+  margin: 1rem;
 }
 
 .blog-post_title{
-  font-size: 1.5 rem;
+  font-size: 1rem;
   margin: 1.5rem 0 2rem;
   text-transform: uppercase;
   color: #ff8000;
@@ -461,4 +540,37 @@ canvas{
   font-size: 1.4rem;
   color:rgba(0, 0, 0, .7)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

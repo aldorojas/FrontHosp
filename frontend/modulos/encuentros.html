@@ -23,6 +23,12 @@
     <!-- Ionic icons -->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- PDF js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
+
     <title>Dashboard</title>
 </head>
 
@@ -35,10 +41,28 @@
                 <h2 class="text-light font-weight-bold mb-0">Bienvenido</h2>
             </div>
             <div class="menu">
-                <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
-                    Pacientes</a>
+                <!-- <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+                    Pacientes</a> -->
+
                 <a href="encuentros.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
-                    Encuentro</a>
+                  Encuentros</a>
+
+                <!-- <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
+                  Administracion</a> -->
+
+                <div class="cont-enlace" id="moduloAdmin">
+                  <div class="opcion">
+                    <a href="#" class="d-block text-light p-3 border-0" ><i class="icon ion-md-folder-open lead mr-2"></i>
+                      Administracion</a>
+                  </div>
+  
+                  <div class="enlace">
+                    <a href="AdminMedicos.html" class="d-block text-light p-3 border-0"> Administracion Medicos </a>
+                    <a href="AdminPacientes.html" class="d-block text-light p-3 border-0"> Administracion Pacientes </a>
+                    <a href="AdminHospitales.html" class="d-block text-light p-3 border-0"> Administracion Hospitales </a>
+                  </div>
+
+                </div>
 
                 <a href="busquedas.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-search lead mr-2"></i>
                    Busquedas</a>
@@ -69,9 +93,7 @@
                     Perfil
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="AdminInicio.html">Inicio</a>
-                      <a class="dropdown-item" href="#">Reportes</a>
-                      <a class="dropdown-item" href="AdminInicio.html">Administracion</a>
+                      <a class="dropdown-item" href="encuentros.html">Inicio</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="../index.html">Salir</a>
                     </div>
@@ -90,33 +112,118 @@
 
                     <div class="progress-bar1">
                         <div class="paso">
-                            <p>Crear Encuentro</p>
+                            <p>Paciente</p>
                             <div class="num">
                                 <span>1</span>
                             </div>
                             <div class="check fa fa-check"></div>
                         </div>
                         <div class="paso">
-                            <p>Notas clinicas</p>
+                            <p>Encuentro</p>
                             <div class="num">
                                 <span>2</span>
                             </div>
                             <div class="check fa fa-check"></div>
                         </div>
                         <div class="paso">
-                            <p>Resultados</p>
+                            <p>Notas clinicas</p>
                             <div class="num">
                                 <span>3</span>
                             </div>
                             <div class="check fa fa-check"></div>
                         </div>
                     </div>
+                          <!-- <form   class="applicantForm">
+                              <div class="input-group" id="files">
+                                      <label for="Resume">Resume <span></span></label>
+                                      <input class="form-control" type="file" name="resume" id="file">
+                              </div>
+                  
+                  
+                              <button class="submit" type="submit">Apply Now</button>
+                          </form> -->
+
 
                     <div class="form-princ">
-                        <form action="#">
+                        <form id="formEncuentro">
                             <!--Pagina 1-->
                             <div class="pagina movPag">
-                                <div class="titulo">Crear encuentro</div>
+                                <div class="titulo">Paciente</div>
+
+                                <div class="campo">
+                                  <div class="label">Buscar por:</div>
+                                  <select class="form-control" id="SelectBusqueda" name="form_select" onchange="showDivBusqueda(this)">
+                                      <option value="0">Rut</option>
+                                      <option value="1"> Pasaporte</option>
+                                      <option value="2">Nombre </option>
+                                  </select>
+                                </div>                          
+                                
+                                <div id="formBusqueda1">
+                                  <div class="campo">
+                                    <input type="text" class="form-control" id="rutPacienteFind" placeholder="Rut paciente">
+                                  </div>
+                                  <div class="campo">
+                                    <button class="btn btn-dark" id="btnFindRut"> Buscar </button>
+                                  </div>
+                                  
+                                </div>
+                                
+                                <div id="formBusqueda2">
+                                  <div class="campo">
+                                    <input type="text" class="form-control" id="pasaportePacienteFind" placeholder="Pasaporte Paciente">
+                                  </div>
+                                  <div class="campo">
+                                    <button class="btn btn-dark" id="btnFindPasaporte"> Buscar </button>
+                                  </div>
+                                  
+                                </div>
+
+                                <div id="formBusqueda3">
+                                  <div class="campo">
+                                    <input type="text" class="form-control" id="nombrePacienteFind" placeholder="Nombre Paciente">
+                                  </div>
+                                  <div class="campo">
+                                    <button class="btn btn-dark" id="btnFindNombre"> Buscar </button>
+                                  </div>
+                                  
+                                </div>
+
+                                <div class="cardPaciente" id="card">
+                                  
+                                  <!-- <div class="blog-post">
+                                      <div class="blog-post_img">
+                                        <img src="../assets/img/avatarCard.png">
+                                      </div>
+                                      <div class="blog-post_info">
+                                        <input type='radio' id='pacientepaciente${data[i].id}' name='paciente' value='${data[i].id}' required /> 
+                                        <label class="form-check-label" for="paciente${data[i].id}">
+                                        <h1 class="blog-post_title">  Paciente  ${data[i].id} : ${data[i].nombre} ${data[i].apellido} </h1> 
+                                        </label>
+                                        <div class="blog-post_date">
+                                        <span> Id: ${data[i].id}</span>
+                                        <span> Pasaporte: ${data[i].pasaporte}</span>
+                                        <span> Rut: ${data[i].rut}</span>
+                                        <span> Direccion: ${data[i].direccion}</span> 
+                                        <span> Fecha de nacimiento:  ${data[i].birth_date}</span>
+                                        <span> Telefono:  ${data[i].telefono}</span>
+                                        <span> Sexo:  ${data[i].sexo}</span>
+                                        </div>
+                                        
+                                      </div>
+                                    </div> -->
+                                </div>
+                                
+                               
+                                <div class="campo sigPag">
+                                    <button class="btn btn-primary">Siguiente</button>
+                                </div>
+
+                            </div>
+
+                            <!--Pagina 2-->
+                            <div class="pagina">
+                                <div class="titulo">Encuentro</div>
                                 <div class="campo">
                                     <div class="label">Tipo encuentro</div>
                                     <select class="form-control" id="tipoEncuentro" name="form_select" onchange="showDiv(this)">
@@ -134,61 +241,21 @@
                                     </div>
                                     <div class="campo adjun">
                                         <div class="label">Adjuntar electrocardiograma</div>
-                                        <input type="file" class="form-control-file" id="electrocardiogramaEncuentro">
+                                        <input type="file" class="form-control-file" id="inputFileElectro">
                                     </div>
                                     <div class="campo adjun">
                                         <div class="label">Adjuntar Exam Laboratorio</div>
-                                        <input type="file" class="form-control-file" id="examenEncuentro">
+                                        <input type="file" class="form-control-file"  id="inputFileExamLab" >
                                     </div>
                                 </div>
-                                
 
                                 <div class="campo btns" id="btns2">
-                                    <button type="submit" class="btn btn-danger mb-2">Crear protocolo operatorio</button>
+                                    <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#protOperatorio">Crear protocolo operatorio</button>
                                 </div>
                                 <div class="campo btns" id="btns3">
-                                    <button type="submit" class="btn btn-danger mb-2">Crear epicrisis</button>  
+                                    <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#epicrisis">Crear epicrisis</button>  
                                 </div>
 
-                                
-
-                                <div class="campo sigPag">
-                                    <button class="btn btn-primary">Siguiente</button>
-                                </div>
-
-                            </div>
-
-                            <!--Pagina 2-->
-                            <div class="pagina">
-                                <div class="titulo">Nota clinica</div>
-                                <div class="campo">
-                                    <div class="label">Diagnostico primario</div>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Valvulopatia</option>
-                                        <option>Arritmia</option>
-                                        <option>Bypass</option>
-                                    </select>
-                                </div>
-                                <div class="campo">
-                                    <div class="label">Diagnostico secundario 1</div>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Valvulopatia</option>
-                                        <option>Arritmia</option>
-                                        <option>Bypass</option>
-                                    </select>
-                                </div>
-                                <div class="campo">
-                                    <div class="label">Diagnostico secundario 2</div>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Valvulopatia</option>
-                                        <option>Arritmia</option>
-                                        <option>Bypass</option>
-                                    </select>
-                                </div>
-                                <div class="campo">
-                                    <div class="label">Nota clinica</div>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
                                 <div class="campo btns">
                                     <button type="submit" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
                                     <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>  
@@ -199,38 +266,41 @@
 
                             <!--Pagina 3-->
                             <div class="pagina">
-                                <div class="titulo">Encuentros</div>
-                                <table class="content-table">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre(s)</th>
-                                        <th>Apellidos</th>
-                                        
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Domenic</td>
-                                        <td>Smith</td>
-                                    </tr>
-                                    <tr class="active-row">
-                                        <td>2</td>
-                                        <td>Sally</td>
-                                        <td>Jhonson</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Nick</td>
-                                        <td>Black</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <div class="titulo">Notas clinicas</div>
+                                <div class="campo">
+                                    <div class="label">Diagnostico primario</div>
+                                    <select class="form-control" id="diagPrimario">
+                                        <option>Valvulopatia</option>
+                                        <option>Arritmia</option>
+                                        <option>Bypass</option>
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <div class="label">Diagnostico secundario 1</div>
+                                    <select class="form-control" id="diagSecundario1">
+                                        <option>Valvulopatia</option>
+                                        <option>Arritmia</option>
+                                        <option>Bypass</option>
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <div class="label">Diagnostico secundario 2</div>
+                                    <select class="form-control" id="diagSecundario2">
+                                        <option>Valvulopatia</option>
+                                        <option>Arritmia</option>
+                                        <option>Bypass</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                  <div id="labelNotaClinica">Nota clinica</div>
+                                  <textarea class="form-control" id="notaClinica" rows="3"></textarea>
+                                </div>
+                                
 
                                 <div class="campo btns">
                                     <button type="submit" class="volver-pag2 volver btn btn-primary mb-2">Anterior</button>
-                                    <button type="submit" class="Fin adelante btn btn-primary mb-2">Siguiente</button>  
+                                    <button type="submit" class="Fin adelante btn btn-primary mb-2">Crear encuentro</button>  
                                 </div>
 
                             </div>
@@ -241,11 +311,182 @@
 
                 </div>
             </div>
-            
+
+            <!-- Modal Paciente-->
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Registrar paciente</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="formNewPaciente">
+                        <div class="campo">
+                          <div class="label">Nombres: </div>
+                          <input type="text" class="form-control" id="nombres" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Apellidos: </div>
+                          <input type="text" class="form-control" id="apellidos" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Rut: </div>
+                          <input type="text" class="form-control" id="rut" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Pasaporte: </div>
+                          <input type="text" class="form-control" id="pasaporte" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Direccion: </div>
+                          <input type="text" class="form-control" id="direccion" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Telefono: </div>
+                          <input type="text" class="form-control" id="telefono" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Sexo: </div>
+                          <select class="form-control" id="sexo">
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                          </select>
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Fecha de nacimiento</div>
+                          <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento">
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="submit"  class="btn btn-primary">Registrar</button>
+                        </div>
+
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
+
+            <!-- Modal protocolo operatorio-->
+            <!-- Modal -->
+            <div class="modal fade" id="protOperatorio" tabindex="-1" aria-labelledby="protOperatorio" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="protOperatorio">Protocolo operatorio</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="formProtOperatorio">
+                        <div class="campo">
+                          <div class="label">Fecha registro operatorio: </div>
+                          <input type="date" class="form-control" id="fechaRegistro" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Hora registro operatorio: </div>
+                          <input type="time" class="form-control" id="horaRegistro" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Implantes: </div>
+                          <input type="text" class="form-control" id="implantesRegistro" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Descripcion del procedimiento: </div>
+                        </div>
+                        <textarea class="form-control" id="descProcedimiento" rows="8"></textarea>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="submit"  class="btn btn-primary">Crear</button>
+                        </div>
+
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
+              <!--modal epicrisis-->
+            <!-- Modal -->
+            <div class="modal fade" id="epicrisis" tabindex="-1" aria-labelledby="epicrisis" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="epicrisis">Epicrisis</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="formNewPaciente">
+                        <div class="campo">
+                          <div class="label">Fecha Epicrisis: </div>
+                          <input type="date" class="form-control" id="nombres" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Fecha hospitalizacion: </div>
+                          <input type="text" class="form-control" id="apellidos" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Fecha egreso hospital: </div>
+                          <input type="text" class="form-control" id="rut" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Dias de hospitalizacion: </div>
+                          <input type="text" class="form-control" id="pasaporte" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Diagnostico alta: </div>
+                          <input type="text" class="form-control" id="direccion" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Anamnesis: </div>
+                          <input type="text" class="form-control" id="telefono" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Estudios acciones: </div>
+                          <input type="text" class="form-control" id="telefono" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Resumen evolucion</div>
+                          <input type="text" id="fechaNacimiento" placeholder="Fecha de nacimiento">
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="submit"  class="btn btn-primary">Registrar</button>
+                        </div>
+
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
         </div>
-
-
-              
 
         
     </div>
@@ -263,8 +504,8 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     
-    <script type="text/javascript" src="../assets/js/interfaz.js">
-    </script>
+    <script type="text/javascript" src="../assets/js/encuentros.js"></script>
+    <script type="text/javascript" src="../assets/js/interfaz.js"></script>
 </body>
 
 </html>

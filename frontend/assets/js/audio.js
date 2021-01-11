@@ -1,3 +1,20 @@
+window.onload = (function(){
+  console.log(localStorage.getItem("Admin")); 
+  if(localStorage.getItem("Admin")== "true"){
+    console.log("si es admin")
+    document.getElementById("moduloAdmin").style.display = 'block'
+  }
+  else{
+    console.log("no es admin")
+    
+    //element.style.display = 'none'; 
+  }
+
+})
+
+
+
+
 ///////////////////////////// Audio  //////
 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
