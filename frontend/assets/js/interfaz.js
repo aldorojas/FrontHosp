@@ -21,7 +21,8 @@ window.onload = (function(){
   console.log(localStorage.getItem("Admin")); 
   if(localStorage.getItem("Admin")== "true"){
     console.log("si es admin")
-    document.getElementById("moduloAdmin").style.display = 'block'
+    document.getElementById("moduloAdminMed").style.display = 'block'
+		document.getElementById("moduloAdminHosp").style.display = 'block'
   }
   else{
     console.log("no es admin")

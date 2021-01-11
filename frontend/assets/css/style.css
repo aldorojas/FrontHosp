@@ -458,9 +458,14 @@ form .pagina .btns button.adelante{
 }
 
 
-#moduloAdmin{
+#moduloAdminMed{
   display: none;
 }
+
+#moduloAdminHosp{
+  display: none;
+}
+
 
 canvas{
   border:1px solid #bbb;
