@@ -37,8 +37,8 @@
               <!-- <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
                   Pacientes</a> -->
 
-              <a href="encuentros.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
-                Encuentros</a>
+              <a href="inicio.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
+                Inicio</a>
 
               <!-- <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
                 Administracion</a> -->
@@ -109,7 +109,7 @@
                   <div class="container">
                       <div class="row">
                           <div class="col-lg-9 col-md-8">
-                            <h1 class="font-weight-bold mb-0"> Audios</h1>
+                            <h1 class="font-weight-bold mb-0"> Encuentros</h1>
                           </div>
                       </div>
                   </div>
@@ -121,13 +121,13 @@
                     <div class="card rounded-0">
                       <div class="card rounded-0">
                         <div class="card-header bg-light">
-                          <h6 class="font-weight-bold mb-0">Buscar audio</h6>
+                          <h6 class="font-weight-bold mb-0">Buscar</h6>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 d-flex stat my-3">
                                   <div class="label">Fecha: </div>
-                                  <input type="date" id="fechaBusqueda" >
+                                  <input type="date" id="fechaBusqueda" class="form-control">
 
                                 </div>
                                 <div class="col-lg-4 col-md-6 d-flex stat my-3">
@@ -160,30 +160,35 @@
                           <div class="col-lg-12 my-3">
                               <div class="card rounded-0">
                                   <div class="card-header bg-light">
-                                    <h6 class="font-weight-bold mb-0">Resultados</h6>
+                                    <h6 class="font-weight-bold mb-0">Encuentros</h6>
                                   </div>
                                   <div class="card-body">
                                     <div class="divTable">
                                       <table class="table table1">
                                         <thead class="thead-light">
                                           <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">DateTime encuentro</th>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Id Paciente</th>
+                                            <th scope="col">Fecha encuentro</th>
+                                            <th scope="col">Hora encuentro</th>
                                             <th scope="col">Tipo encuentro</th>
                                             <th scope="col">Diag primario</th>
                                             <th scope="col">Diag sec 1</th>
                                             <th scope="col">Diag sec 2</th>
                                             <th scope="col">Audio</th>
-                                            <th scope="col">Examen Cardio</th>
-                                            <th scope="col">Examen Lab</th>
+                                            <th scope="col">Exam Electro-Cardio</th>
+                                            <th scope="col">Exam Lab</th>
                                             <th scope="col">Nota clinica</th>
-                                            <th scope="col">Form epicrisis</th>
-                                            <th scope="col">Analizar IA</th>
-                                            <th scope="col">Result IA</th>
+                                            <th scope="col">Resultado med I.A.</th>
+                                            <th scope="col">Resultado I.A.</th>
+                                            <th scope="col">Feedback I.A.</th>
+                                            <th scope="col">Id medico</th>
+                                            <th scope="col">Id hospital</th>
+                                            <th scope="col">Eliminado</th>
                                           </tr>
                                         </thead>
-                                        <tbody>
-                                          <tr>
+                                        <tbody id="tableEncuentros">
+                                          <!-- <tr>
                                             <th scope="row">1</th>
                                             <td>2014-10-25 20:00</td>
                                             <td>Control</td>
@@ -213,73 +218,9 @@
                                             </td>
                                             <td>Analizar IA</td>
                                             <td>Normal=99%, Null</td>
-                                          </tr>
+                                          </tr> -->
                                           
-                                          <tr>
-                                            <th scope="row">2</th>
-                                            <td>2014-10-25 20:00</td>
-                                            <td>Control</td>
-                                            <td>Valvulopatia</td>
-                                            <td>Arritmia</td>
-                                            <td>Null</td>
-                                            <td>  
-                                              <!-- Create a div where the audio waves will be shown --> 
-                                              <div id="audio-spectrum"></div>
-
-                                              <!-- Create action buttons -->
-                                              <input type="button" id="btn-play" value="Play" disabled="disabled"/>
-                                              <input type="button" id="btn-pause" value="Pause" disabled="disabled"/>
-                                              <input type="button" id="btn-stop" value="Stop" disabled="disabled" />
-
-                                            </td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>Nota Clinica</td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>Analizar IA</td>
-                                            <td>Normal=99%, Null</td>
-                                          </tr>
-                                          <tr>
-                                            <th scope="row">3</th>
-                                            <td>2014-10-25 20:00</td>
-                                            <td>Control</td>
-                                            <td>Valvulopatia</td>
-                                            <td>Arritmia</td>
-                                            <td>Null</td>
-                                            <td>  
-                                               
-                                            </td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>Nota Clinica</td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>Analizar IA</td>
-                                            <td>Normal=99%, Null</td>
-                                          </tr>
+                                         
                                         </tbody>
                                       </table>
                                     </div>
@@ -310,7 +251,7 @@
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
      
-        <script type="text/javascript" src="../assets/js/audio.js" ></script>
+        <script type="text/javascript" src="../assets/js/busquedasEncuentros.js" ></script>
 </body>
 
 </html>

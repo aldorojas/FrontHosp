@@ -11,7 +11,7 @@ window.onload = (function(){
 	  //element.style.display = 'none'; 
 	}
   
-  })
+})
 
 
 const opcion = document.querySelectorAll('.opcion');

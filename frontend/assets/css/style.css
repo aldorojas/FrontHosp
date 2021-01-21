@@ -160,7 +160,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 175vh;
+  min-height: 125vh;
   
 }
 
@@ -171,15 +171,12 @@ a:hover {
   text-align: center;
   padding: 30px 35px 0 35px;
   
-  
-  
 }
 
 .containerEncuentros header{
   font-size: 28px;
   font-weight: 600;
   margin: 0 0 30px 0;
-  
 }
 
 
@@ -195,8 +192,6 @@ a:hover {
 .form-princ form{
   display: flex;
   width: 500%;
-  
-  
 }
 
 .form-princ form .pagina{
@@ -285,8 +280,6 @@ a:hover {
 }
 
 
-
-
 form .pagina .btns button.volver{
   margin-right: 3px;
   font-size: 17px;
@@ -353,11 +346,10 @@ form .pagina .btns button.adelante{
 .progress-bar1 .paso .check{
   display: none;
   position: absolute;
-  left: 47%;
+  left: 48%;
   top: 60%;
   font-size: 15px;
   transform: translate(-50% -50%)
-
 }
 
 .progress-bar1 .paso .check.active{
@@ -369,10 +361,10 @@ form .pagina .btns button.adelante{
 .progress-bar1 .paso .num:after{
   position: absolute;
   content: '';
-  width: 250px;
+  width: 370px;
   height: 3px;
   bottom: 11px;
-  right: -270px;
+  right: -400px;
   background:#000;
 
 }
@@ -426,6 +418,15 @@ form .pagina .btns button.adelante{
   display: none;
 }
 
+#btnBuscarPacientes{
+  text-decoration: none;
+    outline: none;
+}
+
+.modal-body table thead {
+  max-width: 100%;
+}
+
 
 .table1 {
   /*word-wrap: break-word; 
@@ -436,7 +437,12 @@ form .pagina .btns button.adelante{
 .divTable {
   overflow:scroll;
   height:800px;
-  width:1000px;
+  width:1100px;
+}
+.divTableModal {
+  overflow:scroll;
+  height:500px;
+  width:780px;
 }
 
 #notaClinica{
@@ -499,7 +505,6 @@ canvas{
 .blog-post_img{
   min-width: 10rem;
   max-width: 15rem;
-  transform: translateX(-1rem);
   position: relative;
 }
 

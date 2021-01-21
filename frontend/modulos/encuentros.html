@@ -28,6 +28,9 @@
     <!-- PDF js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 
+    <!--html2PDF-->
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
 
     <title>Dashboard</title>
 </head>
@@ -44,8 +47,8 @@
                 <!-- <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
                     Pacientes</a> -->
 
-                <a href="encuentros.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
-                  Encuentros</a>
+                <a href="inicio.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
+                  Inicio</a>
 
                 <!-- <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
                   Administracion</a> -->
@@ -114,29 +117,24 @@
             <div class="body">
                 <div class="containerEncuentros">
                     <header> ENCUENTROS </header>
+                    <div id="nombrePaciente">  </div>
 
                     <div class="progress-bar1">
                         <div class="paso">
-                            <p>Paciente</p>
+                            <p>Encuentros</p>
                             <div class="num">
                                 <span>1</span>
                             </div>
                             <div class="check fa fa-check"></div>
                         </div>
                         <div class="paso">
-                            <p>Encuentro</p>
+                            <p>Notas clinicas</p>
                             <div class="num">
                                 <span>2</span>
                             </div>
                             <div class="check fa fa-check"></div>
                         </div>
-                        <div class="paso">
-                            <p>Notas clinicas</p>
-                            <div class="num">
-                                <span>3</span>
-                            </div>
-                            <div class="check fa fa-check"></div>
-                        </div>
+                        
                     </div>
                           <!-- <form   class="applicantForm">
                               <div class="input-group" id="files">
@@ -153,91 +151,104 @@
                         <form id="formEncuentro">
                             <!--Pagina 1-->
                             <div class="pagina movPag">
-                                <div class="titulo">Paciente</div>
-
-                                <div class="campo">
-                                  <div class="label">Buscar por:</div>
-                                  <select class="form-control" id="SelectBusqueda" name="form_select" onchange="showDivBusqueda(this)">
-                                      <option value="0">Rut</option>
-                                      <option value="1"> Pasaporte</option>
-                                      <option value="2">Nombre </option>
+                              <div class="titulo">Encuentro</div>
+                              <div class="campo">
+                                  <div class="label">Tipo encuentro</div>
+                                  <select class="form-control" id="tipoEncuentro" name="form_select" onchange="showDiv(this)">
+                                      <option value="Control">Control</option>
+                                      <option value="Comite">Comite </option>
+                                      <option value="Control-Pre cirugia">Control-Pre cirugia</option>
+                                      <option value="Cirugia">Cirugia</option>
+                                      <option value="Control-Post cirugia">Control-Post cirugia</option>
                                   </select>
-                                </div>                          
-                                
-                                <div id="formBusqueda1">
-                                  <div class="campo">
-                                    <input type="text" class="form-control" id="rutPacienteFind" placeholder="Rut paciente">
-                                  </div>
-                                  <div class="campo">
-                                    <button class="btn btn-dark" id="btnFindRut"> Buscar </button>
-                                  </div>
-                                  
-                                </div>
-                                
-                                <div id="formBusqueda2">
-                                  <div class="campo">
-                                    <input type="text" class="form-control" id="pasaportePacienteFind" placeholder="Pasaporte Paciente">
-                                  </div>
-                                  <div class="campo">
-                                    <button class="btn btn-dark" id="btnFindPasaporte"> Buscar </button>
-                                  </div>
-                                  
-                                </div>
-
-                                <div id="formBusqueda3">
-                                  <div class="campo">
-                                    <input type="text" class="form-control" id="nombrePacienteFind" placeholder="Nombre Paciente">
-                                  </div>
-                                  <div class="campo">
-                                    <button class="btn btn-dark" id="btnFindNombre"> Buscar </button>
-                                  </div>
-                                  
-                                </div>
-
-                                <div class="cardPaciente" id="card">
-                                  
-                                  <!-- <div class="blog-post">
-                                      <div class="blog-post_img">
-                                        <img src="../assets/img/avatarCard.png">
+                              </div>
+                                <!-- Modal protocolo operatorio-->
+                                <!-- Modal -->
+                                <div class="modal fade" id="protOperatorio" tabindex="-1" aria-labelledby="protOperatorio" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="protOperatorio">Protocolo operatorio</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
                                       </div>
-                                      <div class="blog-post_info">
-                                        <input type='radio' id='pacientepaciente${data[i].id}' name='paciente' value='${data[i].id}' required /> 
-                                        <label class="form-check-label" for="paciente${data[i].id}">
-                                        <h1 class="blog-post_title">  Paciente  ${data[i].id} : ${data[i].nombre} ${data[i].apellido} </h1> 
-                                        </label>
-                                        <div class="blog-post_date">
-                                        <span> Id: ${data[i].id}</span>
-                                        <span> Pasaporte: ${data[i].pasaporte}</span>
-                                        <span> Rut: ${data[i].rut}</span>
-                                        <span> Direccion: ${data[i].direccion}</span> 
-                                        <span> Fecha de nacimiento:  ${data[i].birth_date}</span>
-                                        <span> Telefono:  ${data[i].telefono}</span>
-                                        <span> Sexo:  ${data[i].sexo}</span>
+                                      <div class="modal-body">
+                                        
+                                        <div class="label">Fecha registro operatorio: </div>
+                                        <input type="date" class="form-control" id="fechaRegistro" >
+                                      
+                                      
+                                        <div class="label">Hora registro operatorio: </div>
+                                        <input type="time" class="form-control" id="horaRegistro" >
+                                      
+                                        <div class="label">Implantes: </div>
+                                        <input type="text" class="form-control" id="implantesRegistro" >
+                                      
+                                        <div class="label">Descripcion del procedimiento: </div>
+                                      
+                                        <textarea class="form-control" id="descProcedimiento" rows="8"></textarea>
+                                      
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                          <button type="button"  class="btn btn-primary" id="guardarProtOpera">Generar PDF</button>
                                         </div>
                                         
                                       </div>
-                                    </div> -->
+                                      
+                                    </div>
+                                  </div>
                                 </div>
-                                
-                               
-                                <div class="campo sigPag">
-                                    <button class="btn btn-primary">Siguiente</button>
-                                </div>
+                                 <!-- Modal -->
+                                <div class="modal fade" id="epicrisis" tabindex="-1" aria-labelledby="epicrisis" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="epicrisis">Epicrisis</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">                                     
+                                        <div class="label">Fecha Epicrisis: </div>
+                                        <input type="date" class="form-control" id="fechaEpicrisis" >
 
-                            </div>
+                                        <div class="label">Hora Epicrisis: </div>
+                                        <input type="time" class="form-control" id="horaEpicrisis" >
+                                                                       
+                                        <div class="label">Fecha hospitalizacion: </div>
+                                        <input type="date" class="form-control" id="fechaHospitalizacion" >
+                                                                 
+                                        <div class="label">Fecha egreso hospital: </div>
+                                        <input type="date" class="form-control" id="fechaEgresoHospital" >
+                                                                 
+                                        <div class="label">Dias de hospitalizacion: </div>
+                                        <input type="text" class="form-control" id="diasHospitalizacion" >
+                                      
+                                        <div class="label">Diagnostico alta: </div>
+                                        <input type="text" class="form-control" id="diagAlta" >
+                                                               
+                                        <div class="label">Anamnesis: </div>
+                                        <input type="text" class="form-control" id="anamnesis" >
+                                                   
+                                        <div class="label">Estudios acciones: </div>
+                                        <input type="text" class="form-control" id="estudiosAcciones" >
 
-                            <!--Pagina 2-->
-                            <div class="pagina">
-                                <div class="titulo">Encuentro</div>
-                                <div class="campo">
-                                    <div class="label">Tipo encuentro</div>
-                                    <select class="form-control" id="tipoEncuentro" name="form_select" onchange="showDiv(this)">
-                                        <option value="0">Control</option>
-                                        <option value="1">Comite </option>
-                                        <option value="2">Control-Pre cirugia</option>
-                                        <option value="3">Cirugia</option>
-                                        <option value="4">Control-Post cirugia</option>
-                                    </select>
+                                        <div class="label">Indicaciones alta: </div>
+                                        <input type="text" class="form-control" id="indicacionesAlta" >                    
+                                      
+                                        <div class="label">Resumen evolucion</div>
+                                        <textarea class="form-control" id="resumenEvolucion" rows="4"> </textarea>
+                                      
+
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                          <button type="button" id="guardarEpicrisis" class="btn btn-primary">Crear PDF</button>
+                                        </div>
+
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                                 <div id="docs">
                                     <div class="campo adjun">
@@ -260,21 +271,20 @@
                                 <div class="campo btns" id="btns3">
                                     <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#epicrisis">Crear epicrisis</button>  
                                 </div>
-
-                                <div class="campo btns">
-                                    <button type="submit" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
-                                    <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>  
+                                
+                               
+                                <div class="campo sigPag">
+                                    <button class="btn btn-primary">Siguiente</button>
                                 </div>
-
                             </div>
 
-
-                            <!--Pagina 3-->
+                            <!--Pagina 2-->
                             <div class="pagina">
-                                <div class="titulo">Notas clinicas</div>
+                              <div class="titulo">Notas clinicas</div>
                                 <div class="campo">
                                     <div class="label">Diagnostico primario</div>
                                     <select class="form-control" id="diagPrimario">
+                                        <option>Ninguno</option>
                                         <option>Valvulopatia</option>
                                         <option>Arritmia</option>
                                         <option>Bypass</option>
@@ -283,6 +293,7 @@
                                 <div class="campo">
                                     <div class="label">Diagnostico secundario 1</div>
                                     <select class="form-control" id="diagSecundario1">
+                                        <option>Ninguno</option>
                                         <option>Valvulopatia</option>
                                         <option>Arritmia</option>
                                         <option>Bypass</option>
@@ -291,6 +302,7 @@
                                 <div class="campo">
                                     <div class="label">Diagnostico secundario 2</div>
                                     <select class="form-control" id="diagSecundario2">
+                                        <option>Ninguno</option>
                                         <option>Valvulopatia</option>
                                         <option>Arritmia</option>
                                         <option>Bypass</option>
@@ -301,14 +313,22 @@
                                   <div id="labelNotaClinica">Nota clinica</div>
                                   <textarea class="form-control" id="notaClinica" rows="3"></textarea>
                                 </div>
-                                
 
                                 <div class="campo btns">
-                                    <button type="submit" class="volver-pag2 volver btn btn-primary mb-2">Anterior</button>
-                                    <button type="submit" class="Fin adelante btn btn-primary mb-2">Crear encuentro</button>  
+                                    <button type="button" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
+                                    <!-- <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>  -->
+                                    <button type="submit" class="Fin adelante btn btn-primary mb-2">Crear encuentro</button>   
                                 </div>
 
                             </div>
+                            <!--Pagina 3-->
+                              <!-- <div class="pagina">
+                                  
+                                  <div class="campo btns">
+                                      <button type="submit" class="volver-pag2 volver btn btn-primary mb-2">Anterior</button>
+                                      
+                                  </div>
+                              </div> -->
 
                         </form>
 
@@ -370,113 +390,6 @@
                         <div class="campo">
                           <div class="label">Fecha de nacimiento</div>
                           <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento">
-                        </div>
-
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                          <button type="submit"  class="btn btn-primary">Registrar</button>
-                        </div>
-
-                      </form>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-
-
-            <!-- Modal protocolo operatorio-->
-            <!-- Modal -->
-            <div class="modal fade" id="protOperatorio" tabindex="-1" aria-labelledby="protOperatorio" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="protOperatorio">Protocolo operatorio</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form id="formProtOperatorio">
-                        <div class="campo">
-                          <div class="label">Fecha registro operatorio: </div>
-                          <input type="date" class="form-control" id="fechaRegistro" >
-                        </div>
-                        <div class="campo">
-                          <div class="label">Hora registro operatorio: </div>
-                          <input type="time" class="form-control" id="horaRegistro" >
-                        </div>
-                        <div class="campo">
-                          <div class="label">Implantes: </div>
-                          <input type="text" class="form-control" id="implantesRegistro" >
-                        </div>
-                        <div class="campo">
-                          <div class="label">Descripcion del procedimiento: </div>
-                        </div>
-                        <textarea class="form-control" id="descProcedimiento" rows="8"></textarea>
-                        
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                          <button type="submit"  class="btn btn-primary">Crear</button>
-                        </div>
-
-                      </form>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-
-              <!--modal epicrisis-->
-            <!-- Modal -->
-            <div class="modal fade" id="epicrisis" tabindex="-1" aria-labelledby="epicrisis" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="epicrisis">Epicrisis</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form id="formNewPaciente">
-                        <div class="campo">
-                          <div class="label">Fecha Epicrisis: </div>
-                          <input type="date" class="form-control" id="nombres" >
-                        </div>
-                        <div class="campo">
-                          <div class="label">Fecha hospitalizacion: </div>
-                          <input type="text" class="form-control" id="apellidos" >
-                        </div>
-
-                        <div class="campo">
-                          <div class="label">Fecha egreso hospital: </div>
-                          <input type="text" class="form-control" id="rut" >
-                        </div>
-
-                        <div class="campo">
-                          <div class="label">Dias de hospitalizacion: </div>
-                          <input type="text" class="form-control" id="pasaporte" >
-                        </div>
-
-                        <div class="campo">
-                          <div class="label">Diagnostico alta: </div>
-                          <input type="text" class="form-control" id="direccion" >
-                        </div>
-
-                        <div class="campo">
-                          <div class="label">Anamnesis: </div>
-                          <input type="text" class="form-control" id="telefono" >
-                        </div>
-
-                        <div class="campo">
-                          <div class="label">Estudios acciones: </div>
-                          <input type="text" class="form-control" id="telefono" >
-                        </div>
-
-                        <div class="campo">
-                          <div class="label">Resumen evolucion</div>
-                          <input type="text" id="fechaNacimiento" placeholder="Fecha de nacimiento">
                         </div>
 
                         <div class="modal-footer">
