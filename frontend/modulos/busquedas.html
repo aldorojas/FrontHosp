@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
@@ -164,8 +168,8 @@
                                   </div>
                                   <div class="card-body">
                                     <div class="divTable">
-                                      <table class="table table1">
-                                        <thead class="thead-light">
+                                      <table class="table table1" id="tableEncuentros">
+                                        <thead class="thead-dark">
                                           <tr>
                                             <th scope="col">Id</th>
                                             <th scope="col">Id Paciente</th>
@@ -179,46 +183,18 @@
                                             <th scope="col">Exam Electro-Cardio</th>
                                             <th scope="col">Exam Lab</th>
                                             <th scope="col">Nota clinica</th>
+
                                             <th scope="col">Resultado med I.A.</th>
                                             <th scope="col">Resultado I.A.</th>
                                             <th scope="col">Feedback I.A.</th>
                                             <th scope="col">Id medico</th>
                                             <th scope="col">Id hospital</th>
                                             <th scope="col">Eliminado</th>
+                                            <th scope="col">Acciones</th>
                                           </tr>
                                         </thead>
                                         <tbody id="tableEncuentros">
-                                          <!-- <tr>
-                                            <th scope="row">1</th>
-                                            <td>2014-10-25 20:00</td>
-                                            <td>Control</td>
-                                            <td>Valvulopatia</td>
-                                            <td>Arritmia</td>
-                                            <td>Null</td>
-                                            <td>  <p>
-                                              <button id="boton">&#9655;</button>
-                                                </p>
-                                                <canvas ></canvas>  
-                                            </td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>Nota Clinica</td>
-                                            <td>
-                                              <a href="../assets/pdfs/ejemplo epicrisis.pdf" >
-                                                <img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-                                                </a>
-                                            </td>
-                                            <td>Analizar IA</td>
-                                            <td>Normal=99%, Null</td>
-                                          </tr> -->
+                                         
                                           
                                          
                                         </tbody>
@@ -232,6 +208,170 @@
                       </div>
                   </div>
               </section>
+
+
+
+
+
+              <!-- Modal editar Encuentro -->
+              <div class="modal fade" id="modalEditEncuentro" tabindex="-1" aria-labelledby="modalEditEncuentro" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalEditEncuentro">Editar Encuentro</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="formEditEncuentro">
+                        <div class="campo">
+                            <div class="label"> Id encuentro: </div>
+                            <input type="text" class="form-control" id="idEncuentroEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Id paciente: </div>
+                          <input type="text" class="form-control" id="idPacienteEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Fecha: </div>
+                          <input type="date" class="form-control" id="fechaEncuentroEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Hora: </div>
+                          <input type="time" class="form-control" id="horaEncuentroEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Tipo encuentro</div>
+                          <select class="form-control" id="tipoEncuentroEdit">
+                            <option value="Control">Control</option>
+                              <option value="Comite">Comite </option>
+                              <option value="Control-Pre cirugia">Control-Pre cirugia</option>
+                              <option value="Cirugia">Cirugia</option>
+                              <option value="Control-Post cirugia">Control-Post cirugia</option>
+                          </select>
+                        </div>
+                        <div class="campo">
+                          <div class="label">Diagnostico primario</div>
+                          <select class="form-control" id="diagPrimarioEdit">
+                              <option>Ninguno</option>
+                              <option>Valvulopatia</option>
+                              <option>Arritmia</option>
+                              <option>Bypass</option>
+                          </select>
+                        </div>
+                        <div class="campo">
+                          <div class="label">Diagnostico secundario 1</div>
+                          <select class="form-control" id="diagSecundario1Edit">
+                              <option>Ninguno</option>
+                              <option>Valvulopatia</option>
+                              <option>Arritmia</option>
+                              <option>Bypass</option>
+                          </select>
+                        </div>
+                        <div class="campo">
+                          <div class="label">Diagnostico secundario 2</div>
+                          <select class="form-control" id="diagSecundario2Edit">
+                              <option>Ninguno</option>
+                              <option>Valvulopatia</option>
+                              <option>Arritmia</option>
+                              <option>Bypass</option>
+                          </select>
+                        </div>
+
+                        <div id="docsModal">
+                          <div class="campo adjun">
+                            <div class="label">Adjuntar audio:</div>
+                            <input type="file" class="form-control-file" id="audioEncuentroEdit">
+                          </div>
+                          <div class="campo adjun">
+                              <div class="label">Adjuntar electrocardiograma:</div>
+                              <input type="file" class="form-control-file" id="inputFileElectroEdit">
+                          </div>
+                          <div class="campo adjun">
+                              <div class="label">Adjuntar Exam Laboratorio:</div>
+                              <input type="file" class="form-control-file"  id="inputFileExamLabEdit" >
+                          </div>
+                        </div>
+
+                        <div>
+                          <div id="labelNotaClinica">Nota clinica:</div>
+                          <textarea class="form-control" id="notaClinicaEdit" rows="3"></textarea>
+                        </div>
+
+                        <!-- ------------------------- -->
+                        <div class="label">Fecha Epicrisis: </div>
+                        <input type="date" class="form-control" id="fechaEpicrisisEdit" >
+
+                        <div class="label">Hora Epicrisis: </div>
+                        <input type="time" class="form-control" id="horaEpicrisisEdit" >
+                                                       
+                        <div class="label">Fecha hospitalizacion: </div>
+                        <input type="date" class="form-control" id="fechaHospitalizacionEdit">
+                                                 
+                        <div class="label">Fecha egreso hospital: </div>
+                        <input type="date" class="form-control" id="fechaEgresoHospitalEdit">
+                                                 
+                        <div class="label">Dias de hospitalizacion: </div>
+                        <input type="text" class="form-control" id="diasHospitalizacionEdit" >
+                                    
+                        <div class="label">Diagnostico alta: </div>
+                        <input type="text" class="form-control" id="diagAltaEdit" >
+                                               
+                        <div class="label">Anamnesis: </div>
+                        <input type="text" class="form-control" id="anamnesisEdit" >
+                                   
+                        <div class="label">Estudios acciones: </div>
+                        <input type="text" class="form-control" id="estudiosAccionesEdit" >
+
+                        <div class="label">Indicaciones alta: </div>
+                        <input type="text" class="form-control" id="indicacionesAltaEdit" >                    
+                      
+                        <div class="label">Resumen evolucion</div>
+                        <textarea class="form-control" id="resumenEvolucionEdit" rows="4"> </textarea>
+
+                        <!-- --------------------------------------- -->
+
+                        <div class="campo">
+                          <div class="label">Resultado Med IA: </div>
+                          <input type="text" class="form-control" id="resultadoMedIAEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Resultado IA: </div>
+                          <input type="text" class="form-control" id="resultadoIAEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Feedback IA: </div>
+                          <input type="text" class="form-control" id="feedbackIAEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Id medico: </div>
+                          <input type="text" class="form-control" id="idMedicoEdit">
+                        </div>
+                        <div class="campo">
+                          <div class="label">Id hospital: </div>
+                          <input type="text" class="form-control" id="idHospitalEdit">
+                        </div>
+                        <div class="campo">
+                          <div class="label">Eliminado:</div>
+                          <select class="form-control" id="eliminadoEdit">
+                              <option value="True">Si</option>
+                              <option value="False">No</option>
+                          </select>
+                        </div>
+                        
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="submit"  class="btn btn-primary">Actualizar</button>
+                        </div>
+
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
 
         </div>
 
@@ -252,6 +392,14 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
      
         <script type="text/javascript" src="../assets/js/busquedasEncuentros.js" ></script>
+      
+
+        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+        <script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+        <!-- <script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+        
+       
+
 </body>
 
 </html>

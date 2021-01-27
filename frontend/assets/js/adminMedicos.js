@@ -1,13 +1,8 @@
 window.onload = (function(){
 	console.log(localStorage.getItem("Admin")); 
 	if(localStorage.getItem("Admin")== "true"){
-	  console.log("si es admin")
 	  document.getElementById("moduloAdminMed").style.display = 'block'
 	  document.getElementById("moduloAdminHosp").style.display = 'block'
-	}
-	else{
-	  console.log("no es admin")
-	  //element.style.display = 'none'; 
 	}
   
   })
@@ -183,6 +178,7 @@ fetch(URLTodosMedicos)
 				<td>${data[i].telefono}</td>
 				<td>${data[i].staff}</td>
 				<td>${data[i].especialidad}</td>
+				<td>${data[i].rut_medico}</td>
 				<td> 
 					${switch1}
 				</td>
@@ -194,7 +190,7 @@ fetch(URLTodosMedicos)
 						<i class="icon ion-md-trash "></i>
 					</button>
 					<button onclick="editMedico(${data[i].id}, ${data[i].id_hospital},'${data[i].nombre}','${data[i].apellidos}',
-										'${data[i].telefono}', '${data[i].staff}', '${data[i].especialidad}', '${data[i].becario}',
+										'${data[i].telefono}', '${data[i].staff}', '${data[i].especialidad}', '${data[i].rut_medico}', '${data[i].becario}',
 										 '${data[i].interno}', '${data[i].activo}', '${data[i].admin}' )" 
 						class="btn btn-info btn-sm" title="Editar Paciente">
 						<i class="icon ion-md-create "></i>
@@ -202,8 +198,18 @@ fetch(URLTodosMedicos)
 				</td>
 			</tr>
 				`
-			divPrueba.innerHTML += nombre
-		}})
+			//divPrueba.innerHTML += nombre
+			$( "#tableMedicos tbody" ).append(nombre);
+
+		}
+
+		$(document).ready(function(){
+            $('#tableMedicos').dataTable({
+                select: true
+            });
+        });
+
+	})
 // 	})
  	.catch(err => console.log(err))
 
@@ -249,7 +255,7 @@ fetch(URLTodosMedicos)
 
 
 	function editMedico(IdMedico,IdHospital,nombreMedico,apellidosMedico,
-		telefonoMedico,  staffMedico, especialidadMedico,  becarioMedico,
+		telefonoMedico,  staffMedico, especialidadMedico, rutMedico,  becarioMedico,
 		internoMedico, activoMedico, adminMedico
 		){
 		// console.log(IdHospital,nombreMedicoEdit,apellidosMedicoEdit,telefonoMedicoEdit, 
@@ -261,6 +267,7 @@ fetch(URLTodosMedicos)
 		var apellidosMedicoEdit = document.getElementById('apellidosMedicoEdit')
 		var telefonoMedicoEdit = document.getElementById('telefonoMedicoEdit')
 		var especialidadMedicoEdit = document.getElementById('especialidadMedicoEdit')
+		var rutMedicoEdit = document.getElementById('rutMedicoEdit')
 		var staffMedicoEdit = document.getElementById('staffMedicoEdit')
 		var becarioMedicoEdit = document.getElementById('becarioMedicoEdit')
 		var internoMedicoEdit = document.getElementById('internoMedicoEdit')
@@ -273,6 +280,7 @@ fetch(URLTodosMedicos)
 		apellidosMedicoEdit.value = apellidosMedico;
 		telefonoMedicoEdit.value = telefonoMedico;
 		especialidadMedicoEdit.value = especialidadMedico;
+		rutMedicoEdit.value = rutMedico
 		staffMedicoEdit.value = staffMedico;
 		becarioMedicoEdit.value = becarioMedico;
 		internoMedicoEdit.value = internoMedico;

@@ -125,20 +125,8 @@ function showDiv(element)
 { 
   //var docs = document.getElementById("docs");
   document.getElementById("docs").style.display = element.value != "Cirugia" ? 'block' : 'none';
-
   document.getElementById("btns2").style.display = element.value == "Cirugia" ? 'block' : 'none';
   document.getElementById("btns3").style.display = element.value == "Cirugia" ? 'block' : 'none';
-
-  //var div = document.getElementById("btns2");
-  //var div2 = document.getElementById("btns3");
-
-  //if(element.value == 3 ){
-    //div.style.display = 'block';
-    //div2.style.display = 'block';
-  //}
-  //else{
-    //docs.style.display = 'block';
-  //}
 
 }
 

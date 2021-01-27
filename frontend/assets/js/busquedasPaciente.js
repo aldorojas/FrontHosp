@@ -153,8 +153,8 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 	  const URLFindEncuentros = 'http://134.122.120.195/api/v1/encuentros_per_patient/' + idPaciente;
 	 // console.log(URLFindEncuentros)
 
-	  	var divPrueba = document.getElementById('encuentrosPaciente')
-		divPrueba.innerHTML = ''
+	  	// var divPrueba = document.getElementById('encuentrosPaciente')
+		// divPrueba.innerHTML = ''
 
 		fetch(URLFindEncuentros)
 		.then(response => response.json())
@@ -163,7 +163,30 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 			for(var i = 0; i < data.length; i++){
 				//console.log(data.pacientes[i].nombres)
 				//console.log(data.pacientes[i].apellidos)
+				if ( data[i].ruta_exam_electro != '' ){
+					var PDFElectro = 
+					`<a href="http://134.122.120.195/files/${data[i].ruta_exam_electro}">` + 
+						'<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
+					'</a>'
+					  console.log(PDFElectro);
+				}
+				else{
+					PDFElectro = ''
+				}
 				
+				///////////////////////////////77
+				if ( data[i].ruta_exam_lab != '' ){
+					var PDFExamLab = 
+					`<a href="http://134.122.120.195/files/${data[i].ruta_exam_lab}">` + 
+						'<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
+					'</a>'
+					  console.log(PDFExamLab);
+				}
+				else{
+					PDFExamLab = ''
+				}
+
+
 				var encuentro = `
 				<tr>
 					<th scope="row"> ${data[i].id_encuentro} </th>
@@ -175,14 +198,10 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 					<td>${data[i].diag_secun2}</td>
 					<td>${data[i].ruta_audio}</td>
 					<td>
-						<a href="http://134.122.120.195/files/${data[i].ruta_exam_electro}" >
-							<img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-						</a>
+						${PDFElectro}
 					</td>
 					<td>
-						<a href="http://134.122.120.195/files/${data[i].ruta_exam_lab}" >
-							<img src="../assets/img/pdfLogo.png" height="40px" width="70px">
-						</a>
+						${PDFExamLab}
 					</td>
 					<td>${data[i].notas_clinicas}</td>
 					<td>${data[i].resultado_med_ia}</td>
@@ -207,17 +226,19 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 					<td>${data[i].time_protocol}</td>
 					<td>${data[i].descripcion}</td>
 					<td>${data[i].implantes}</td>
-
-
-
-
-
 					
 				</tr>
 				
 					`
-				divPrueba.innerHTML += encuentro
+				//divPrueba.innerHTML += encuentro
+
+				$( "#tableEncuentrosPaciente tbody" ).append(encuentro);
 			}
+			$(document).ready(function(){
+				$('#tableEncuentrosPaciente').dataTable({
+					select: true
+				});
+			});
 			
 			})
 		.catch(err => console.log(err))

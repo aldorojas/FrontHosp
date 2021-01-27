@@ -24,19 +24,19 @@ window.onload = (function(){
 	}
 
 	
-    // const urlAPI = 'http://134.122.120.195/api/v1/pacientes/list';
+    const urlAPI = 'http://134.122.120.195/api/v1/doctores/list';
 
-	// fetch(urlAPI)
-	// .then(response => response.json())
-	// .then(data => {
-    //     //console.log(data)
-    //     for(var i = 0; i < data.length; i++){
-    //         console.log(data[i].id)
-    //         $("#listPacientes").append($("<option>"+data[i].id+"</option>"));
-    //     }
+	fetch(urlAPI)
+	.then(response => response.json())
+	.then(data => {
+        //console.log(data)
+        for(var i = 0; i < data.length; i++){
+            console.log(data[i].id)
+            $("#doctorAlta").append($("<option>"+data[i].nombre+ ' ' +data[i].apellidos+"</option>"));
+        }
 	
-	// })
-	// .catch(err => console.log(err))	
+	})
+	.catch(err => console.log(err))	
 
 })
 
@@ -48,7 +48,7 @@ function showDivBusqueda(element)
   document.getElementById("formBusqueda3").style.display = element.value == 2 ? 'block' : 'none';
 }
 
-//////////////////////////77
+//////////////////////////
 
 ////////////////////////////////// new PAciente ///////////////////
 
@@ -108,29 +108,6 @@ formNewPaciente.addEventListener('submit', function(e){
 	.catch(err => console.log(err));
 })
 
-
-    // $('.applicantForm').on('submit', async function(e) {
-    //     e.preventDefault();
-
-    //     let files = document.getElementById('file').files;
-
-    //     let promise = getBase64(files);
-    //     let encoded_file4 = await promise;
-	// 	//alert(encoded_file4)
-		
-
-	// 	const dataToSend = JSON.stringify(
-	// 		{
-	// 			"method" : encoded_file4,
-	// 			"search_for": "pasaporte"
-	// 		});
-		
-	// 	console.log(dataToSend)
-
-        //console.log(encoded_file4);
-
-
-	//});
 	
 
 	function getBase64(files, onLoadCallback) {
@@ -142,14 +119,48 @@ formNewPaciente.addEventListener('submit', function(e){
             reader.onerror = reject;
             reader.readAsDataURL(files[0]);
         });
-    }
+	}
+	
+	
+
+
+	/////////////////// Audio ////////////////
+
+	var context = new AudioContext();
+	var source = null;
+	var audioBuffer = null;
+
+	var bufferToBase64 = function (buffer) {
+		var bytes = new Uint8Array(buffer);
+		var len = buffer.byteLength;
+		var binary = "";
+		for (var i = 0; i < len; i++) {
+			binary += String.fromCharCode(bytes[i]);
+		}
+		return window.btoa(binary);
+	};
+
+	///////////////////////////////////////////////////////////////////////////////////
+	function initSound(arrayBuffer) {
+		var base64String = bufferToBase64(arrayBuffer);
+		//console.log(base64String)
+		return base64String
+	}
+
+
+	function getAudioBase64(files, onLoadCallback){
+		return new Promise(function() {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				initSound(files);
+			};
+			reader.readAsArrayBuffer(files[0]);
+		});
+	}
 
 
 
 	/////////////////////////////   Crear encuentro  ///////////////////////
-
-
-	
 var formEncuentro = document.getElementById('formEncuentro');
 
 formEncuentro.addEventListener('submit', async function(e){
@@ -159,6 +170,20 @@ formEncuentro.addEventListener('submit', async function(e){
 	e.preventDefault()
 	// var inputRadios = document.querySelectorAll('input[type="radio"]:checked');
 	// var idPaciente = inputRadios.length>0? inputRadios[0].value: null;
+
+
+	//Audio  ///////////////
+
+	let Base64Audio = "";
+
+	if (document.getElementById('audioEncuentro').files.length == 0) {
+		Base64Audio = "";
+	}
+	else{
+		let audioBase64 = document.getElementById('audioEncuentro').files;
+		let promise = getBase64(audioBase64);
+		Base64Audio = await promise;
+	}
 
 	// PDFs //
 	let base64Electro = "";
@@ -209,10 +234,11 @@ formEncuentro.addEventListener('submit', async function(e){
 	var implantesRegistro = document.getElementById('implantesRegistro')
 	var descProcedimiento = document.getElementById('descProcedimiento')
 
+	var eliminadoEncuentro = document.getElementById('eliminadoEncuentro')
+
 
 	var headers = {
-		"Content-Type": "application/json",
-		"Access-Control-Allow-Origin": "*"
+		"Content-Type": "application/json"
 	 }
 
 	const dataToSend = JSON.stringify(
@@ -221,7 +247,6 @@ formEncuentro.addEventListener('submit', async function(e){
 			"diag_primario" : diagPrimario.value,
 			"diag_secun" : diagSecundario1.value,
 			"diag_secun2" : diagSecundario2.value,
-			"ruta_audio" : "",
 			"notas_clinicas": notaClinica.value,
 			"resultados_ia" : "99",
 			"feedback_ia" : "No esta bien",
@@ -229,8 +254,8 @@ formEncuentro.addEventListener('submit', async function(e){
 			"id_medico" : localStorage.getItem("idMedico"),
 			"id_hospital" : localStorage.getItem("idHospital"),
 			"id_paciente" : localStorage.getItem("idPaciente"),
-			"eliminado" : "",
-			"fecha_ep":fecha_epicrisis.value,
+			"eliminado" : eliminadoEncuentro.value,
+			"fecha_ep": fecha_epicrisis.value,
 			"fecha_hospitalizacion":fecha_in_hospi.value,
 			"fecha_egreso":fecha_egreso.value,
 			"hora_ep": hora_epicris.value,
@@ -244,11 +269,16 @@ formEncuentro.addEventListener('submit', async function(e){
 			"time_protocol":horaRegistro.value,
 			"descripcion" : descProcedimiento.value,
 			"implantes":implantesRegistro.value,
+			"cie10":"182773js",
+			"snomed":"877dyjs",
+			"ruta_audio" : Base64Audio,
 			"ruta_exam_lab" : base64ExamLab,
 			"ruta_exam_electro" : base64Electro
-
+			
 		});
-	console.log(dataToSend)
+		//console.log(Base64Audio)
+		console.log(dataToSend)
+	
 	
 	fetch(URLNewEncuentro, {	
 		mode: 'no-cors',
@@ -256,7 +286,6 @@ formEncuentro.addEventListener('submit', async function(e){
 		headers: headers,
 		body: dataToSend
 	})
-	
 	.then(function(response){ 
 		//return response.json(); 
 		Swal.fire({
@@ -264,15 +293,11 @@ formEncuentro.addEventListener('submit', async function(e){
 			title: 'Encuentro registrado',
 			showConfirmButton: false,
 			timer: 2500
-		})	
+		});	
 	})
 	.catch(err => console.log(err))
 
-	// .then(function(data){ 
-	// 	console.log(data)
-		
 
-	// });
 })
 
 
@@ -395,6 +420,9 @@ formEncuentro.addEventListener('submit', async function(e){
 	  var estudiosAcciones = document.getElementById('estudiosAcciones')
 	  var resumenEvolucion = document.getElementById('resumenEvolucion')
 	  var indicacionesAlta = document.getElementById('indicacionesAlta')
+	  var doctorAlta = document.getElementById('doctorAlta')
+
+	  
   
 	  var doc = new jsPDF()
 	  doc.setFontType("bold");
@@ -489,36 +517,36 @@ formEncuentro.addEventListener('submit', async function(e){
 	  doc.text(diasHospitalizado.value, 78, 120)
 
 	//   ////////////////////////RENGLON 4
-	  doc.rect(20, 125, 45, 10 )
+	  doc.rect(20, 125, 40, 10 )
 	  doc.setFontType("bold");
 	  doc.text('MEDICO TRATANTE:', 21, 130)
 
-	  doc.rect(65, 125, 45, 10 )
+	  doc.rect(60, 125, 55, 10 )
 	  doc.setFontType("normal");
-	  doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 66, 130)
+	  doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 130)
 	
-	  doc.rect(110, 125, 40, 10 )
+	  doc.rect(115, 125, 40, 10 )
 	  doc.setFontType("bold");
-	  doc.text('ESPECIALIDAD:', 111, 130)
+	  doc.text('ESPECIALIDAD:', 116, 130)
 
-	  doc.rect(150, 125, 40, 10 )
+	  doc.rect(155, 125, 35, 10 )
 	  doc.setFontType("normal");
 	  doc.text('', 151, 130)
 
 	//   ////////////////////////renglon 5
-	  doc.rect(20, 135, 45, 10 )
+	  doc.rect(20, 135, 40, 10 )
 	  doc.setFontType("bold");
 	  doc.text('MEDICO RESP. ALTA:', 21, 140)
 
-	  doc.rect(65, 135, 45, 10 )
+	  doc.rect(60, 135, 55, 10 )
 	  doc.setFontType("normal");
-	  doc.text('', 66, 140)
+	  doc.text(doctorAlta.value, 61, 140)
 
-	  doc.rect(110, 135, 40, 10 )
+	  doc.rect(115, 125, 40, 10 )
 	  doc.setFontType("bold");
-	  doc.text('ESPECIALIDAD:', 111, 140)
+	  doc.text('ESPECIALIDAD:', 116, 140)
 
-	  doc.rect(150, 135, 40, 10 )
+	  doc.rect(155, 135, 35, 10 )
 	  doc.setFontType("normal");
 	  doc.text('', 151, 140)
 

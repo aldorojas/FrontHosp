@@ -203,8 +203,13 @@ fetch(urlAPI)
 		</tr>
 		
 			`
-		divPrueba.innerHTML += nombre
+		//divPrueba.innerHTML += nombre
+		$( "#tablePacientes tbody" ).append(nombre);
 	}
+	$(document).ready(function(){
+		$('#tablePacientes').dataTable();
+	});
+
 	
 	})
 .catch(err => console.log(err))

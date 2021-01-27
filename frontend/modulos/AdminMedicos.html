@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
@@ -144,7 +145,7 @@
                               </div>
                               <div id="card">
                                 <div class="divTable">
-                                  <table class="table">
+                                  <table class="table" id="tableMedicos">
                                     <thead class="thead-dark">
                                       <tr>
                                       <th scope="col">Id</th>
@@ -154,6 +155,7 @@
                                       <th scope="col">Telefono</th>
                                       <th scope="col">Staff</th>
                                       <th scope="col">Especialidad</th>
+                                      <th scope="col">Rut Medico</th>
                                       <th scope="col">Becario</th>
                                       <th scope="col">Interno</th>
                                       <th scope="col">Activo</th>
@@ -216,6 +218,11 @@
                         <div class="campo">
                           <div class="label">Especialidad: </div>
                           <input type="text" class="form-control" id="especialidadMedico" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Rut Medico: </div>
+                          <input type="text" class="form-control" id="rutMedico" >
                         </div>
 
                         <div class="campo">
@@ -335,6 +342,10 @@
                           <div class="label">Especialidad: </div>
                           <input type="text" class="form-control" id="especialidadMedicoEdit" >
                         </div>
+                        <div class="campo">
+                          <div class="label">Rut Medico: </div>
+                          <input type="text" class="form-control" id="rutMedicoEdit" >
+                        </div>
 
                         <div class="campo">
                           <div class="label">Staff </div>
@@ -407,6 +418,14 @@
     
     
     <script type="text/javascript" src="../assets/js/adminMedicos.js"> </script>
+
+
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+        <script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+        <!-- <script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+        
+       
+
 </body>
 
 </html>

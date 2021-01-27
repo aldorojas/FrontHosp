@@ -141,8 +141,18 @@ fetch(URLTodosHospitales)
 				</td>
 			</tr>
 				`
-			divPrueba.innerHTML += nombre
-		}})	
+			//divPrueba.innerHTML += nombre
+			$( "#tableHospitales tbody" ).append(nombre);
+		}
+		$(document).ready(function(){
+            $('#tableHospitales').dataTable({
+                select: true
+            });
+        });
+	
+	})	
+
+		
 // 	})
  	.catch(err => console.log(err))
 
