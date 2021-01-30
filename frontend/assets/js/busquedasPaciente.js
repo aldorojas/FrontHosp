@@ -3,12 +3,11 @@
 window.onload = (function(){
     console.log(localStorage.getItem("Admin")); 
 	if(localStorage.getItem("Admin")== "true"){
-		console.log("si es admin")
+		//console.log("si es admin")
 		document.getElementById("moduloAdminMed").style.display = 'block'
 	  	document.getElementById("moduloAdminHosp").style.display = 'block'
 	  }
 	 
-
 })
 
 //////////// Modulos admin
@@ -149,26 +148,40 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 	window.location.href = 'encuentros.html'
   }
 
+
+
   function verEncuentros(idPaciente){
-	  const URLFindEncuentros = 'http://134.122.120.195/api/v1/encuentros_per_patient/' + idPaciente;
+	
+
+	const URLFindEncuentros = 'http://134.122.120.195/api/v1/encuentros_per_patient?patient=' + idPaciente + '&entry_n=1';
 	 // console.log(URLFindEncuentros)
 
-	  	// var divPrueba = document.getElementById('encuentrosPaciente')
-		// divPrueba.innerHTML = ''
+	  	 var divPrueba = document.getElementById('encuentrosPaciente')
+		 divPrueba.innerHTML = ''
 
 		fetch(URLFindEncuentros)
 		.then(response => response.json())
 		.then(data => {
 			console.log(data)
 			for(var i = 0; i < data.length; i++){
-				//console.log(data.pacientes[i].nombres)
-				//console.log(data.pacientes[i].apellidos)
+
+				if ( data[i].ruta_audio != '' ){
+					var audio = 
+					`<a href="http://134.122.120.195/files/${data[i].ruta_audio}">` + 
+						'<img src="../assets/img/mp3Logo.png" height="50px" width="45px">' + 
+					'</a>'
+				}
+				else{
+					audio = ''
+				}
+
+				///////////////////////////////////////////////////////7
+
 				if ( data[i].ruta_exam_electro != '' ){
 					var PDFElectro = 
 					`<a href="http://134.122.120.195/files/${data[i].ruta_exam_electro}">` + 
 						'<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
 					'</a>'
-					  console.log(PDFElectro);
 				}
 				else{
 					PDFElectro = ''
@@ -180,7 +193,6 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 					`<a href="http://134.122.120.195/files/${data[i].ruta_exam_lab}">` + 
 						'<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
 					'</a>'
-					  console.log(PDFExamLab);
 				}
 				else{
 					PDFExamLab = ''
@@ -196,7 +208,9 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 					<td>${data[i].diag_primario}</td>
 					<td>${data[i].diag_secun}</td>
 					<td>${data[i].diag_secun2}</td>
-					<td>${data[i].ruta_audio}</td>
+					<td>
+						${audio}
+					</td>
 					<td>
 						${PDFElectro}
 					</td>
@@ -204,6 +218,7 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 						${PDFExamLab}
 					</td>
 					<td>${data[i].notas_clinicas}</td>
+					
 					<td>${data[i].resultado_med_ia}</td>
 					<td>${data[i].resultados_ia}</td>
 					<td>${data[i].feedback_ia}</td>
@@ -230,15 +245,16 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 				</tr>
 				
 					`
-				//divPrueba.innerHTML += encuentro
+				divPrueba.innerHTML += encuentro
 
-				$( "#tableEncuentrosPaciente tbody" ).append(encuentro);
+				//$( "#tableEncuentrosPaciente tbody" ).append(encuentro);
 			}
-			$(document).ready(function(){
-				$('#tableEncuentrosPaciente').dataTable({
-					select: true
-				});
-			});
+			numberPages(idPaciente);
+			// $(document).ready(function(){
+			// 	$('#tableEncuentrosPaciente').dataTable({
+			// 		select: true
+			// 	});
+			// });
 			
 			})
 		.catch(err => console.log(err))
@@ -248,6 +264,39 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 
 
   }
+
+
+  
+var pagesHtml = ''
+var divpieTable = document.getElementById('paginasBotones')
+
+function numberPages(idPaciente){
+    urlAPIPages = 'http://134.122.120.195/api/v1/encuentros/list_registers?type_e=patient&patient=' + idPaciente;
+    pagesHtml =  ''
+    fetch(urlAPIPages)
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){
+        console.log(data)
+        var botones =  data.numbers_entries/10
+        botones = Math.ceil(botones)
+        //console.log(botones)
+
+        for(var i = 1; i < botones + 1; i++){
+            pagesHtml += `
+            <td>
+                <button onclick="perPage(${i*10 - 9 })" class="btn btn-danger btn-sm">
+                    ${i}
+                </button>
+            </td>
+            `
+              
+        }
+        divpieTable.innerHTML = pagesHtml  
+        //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
+	});
+}
 
 
 

@@ -173,31 +173,58 @@
                                           <tr>
                                             <th scope="col">Id</th>
                                             <th scope="col">Id Paciente</th>
-                                            <th scope="col">Fecha encuentro</th>
-                                            <th scope="col">Hora encuentro</th>
-                                            <th scope="col">Tipo encuentro</th>
+                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Hora</th>
+                                            <th scope="col">Tipo</th>
                                             <th scope="col">Diag primario</th>
                                             <th scope="col">Diag sec 1</th>
                                             <th scope="col">Diag sec 2</th>
                                             <th scope="col">Audio</th>
-                                            <th scope="col">Exam Electro-Cardio</th>
-                                            <th scope="col">Exam Lab</th>
-                                            <th scope="col">Nota clinica</th>
-                                            <th scope="col">Resultado med I.A.</th>
-                                            <th scope="col">Resultado I.A.</th>
-                                            <th scope="col">Feedback I.A.</th>
-                                            <th scope="col">Id medico</th>
-                                            <th scope="col">Id hospital</th>
+                                            <th scope="col">Exam electroCardio</th>
+                                            <th scope="col">Exam lab</th>
+                                            <th scope="col">Notas clinicas</th>
+                                            <th scope="col">Resultado Med I.A</th>
+                                            <th scope="col">Resultado de I.A</th>
+                                            <th scope="col">FeedBack Med I.A</th>
+                                            
+                                            <th scope="col">Id Medico</th>
+                                            <th scope="col">Id Hospital</th>
                                             <th scope="col">Eliminado</th>
+
+                                            <th scope="col">Id epicrisis </th>
+                                            <th scope="col">Fecha epicrisis</th>
+                                            <th scope="col">Hora epicrisis</th>
+                                            <th scope="col">Fecha hospitalizacion</th>
+                                            <th scope="col">Fecha egreso</th>
+                                            <th scope="col">Dias Hosp</th>
+                                            <th scope="col">Diag alta</th>
+                                            <th scope="col">Anamnesis</th>
+                                            <th scope="col">Estudios acciones</th>
+                                            <th scope="col">Evolucion</th>
+                                            <th scope="col">Indicaciones alta</th>
+
+                                            <th scope="col">Id Cirugia</th>
+                                            <th scope="col">Fecha prot opera</th>
+                                            <th scope="col">Hora prot opera</th>
+                                            <th scope="col">Implantes</th>
+                                            <th scope="col">Descripcion</th>
+
                                             <th scope="col">Acciones</th>
                                           </tr>
                                         </thead>
-                                        <tbody id="tableEncuentros">
+                                        <tbody id="resultadosEncuentros">
                                          
                                           
                                          
                                         </tbody>
+                                        
                                       </table>
+                                      <div id="paginasBotones">
+                                        <td>
+                                          Paginas: 
+                                        </td>
+     
+                                      </div>
                                     </div>
                                   </div>
                               </div>
@@ -225,12 +252,12 @@
                     <div class="modal-body">
                       <form id="formEditEncuentro">
                         <div class="campo">
-                            <div class="label"> Id encuentro: </div>
-                            <input type="text" class="form-control" id="idEncuentroEdit" >
+                            <div class="label">Id: </div>
+                            <input type="text" class="form-control" id="idEncuentroEdit" disabled>
                         </div>
                         <div class="campo">
                           <div class="label">Id paciente: </div>
-                          <input type="text" class="form-control" id="idPacienteEdit" >
+                          <input type="text" class="form-control" id="idPacienteEdit" disabled>
                         </div>
                         <div class="campo">
                           <div class="label">Fecha: </div>
@@ -242,7 +269,7 @@
                         </div>
                         <div class="campo">
                           <div class="label">Tipo encuentro</div>
-                          <select class="form-control" id="tipoEncuentroEdit">
+                          <select class="form-control" id="tipoEncuentroEdit" disabled>
                             <option value="Control">Control</option>
                               <option value="Comite">Comite </option>
                               <option value="Control-Pre cirugia">Control-Pre cirugia</option>
@@ -260,7 +287,7 @@
                           </select>
                         </div>
                         <div class="campo">
-                          <div class="label">Diagnostico secundario 1</div>
+                          <div class="label">Diagnostico sec 1</div>
                           <select class="form-control" id="diagSecundario1Edit">
                               <option>Ninguno</option>
                               <option>Valvulopatia</option>
@@ -269,7 +296,7 @@
                           </select>
                         </div>
                         <div class="campo">
-                          <div class="label">Diagnostico secundario 2</div>
+                          <div class="label">Diagnostico sec 2</div>
                           <select class="form-control" id="diagSecundario2Edit">
                               <option>Ninguno</option>
                               <option>Valvulopatia</option>
@@ -299,6 +326,38 @@
                         </div>
 
                         <!-- ------------------------- -->
+                        <div class="campo">
+                          <div class="label">Resultado Med IA: </div>
+                          <input type="text" class="form-control" id="resultadoMedIAEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Resultado IA: </div>
+                          <input type="text" class="form-control" id="resultadoIAEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Feedback IA: </div>
+                          <input type="text" class="form-control" id="feedbackIAEdit" >
+                        </div>
+                        <div class="campo">
+                          <div class="label">Id medico: </div>
+                          <input type="text" class="form-control" id="idMedicoEdit">
+                        </div>
+                        <div class="campo">
+                          <div class="label">Id hospital: </div>
+                          <input type="text" class="form-control" id="idHospitalEdit">
+                        </div>
+                        <div class="campo">
+                          <div class="label">Eliminado:</div>
+                          <select class="form-control" id="eliminadoEdit">
+                              <option value="True">Si</option>
+                              <option value="False">No</option>
+                          </select>
+                        </div>
+
+                        <!-- -------------------------------------------- -->
+                        <div class="label">Id Epicrisis: </div>
+                        <input type="text" class="form-control" id="idEpicrisis">
+
                         <div class="label">Fecha Epicrisis: </div>
                         <input type="date" class="form-control" id="fechaEpicrisisEdit" >
 
@@ -330,35 +389,20 @@
                         <textarea class="form-control" id="resumenEvolucionEdit" rows="4"> </textarea>
 
                         <!-- --------------------------------------- -->
+                        <div class="label">Id cirugia: </div>
+                        <input type="text" class="form-control" id="idCirugia">
 
-                        <div class="campo">
-                          <div class="label">Resultado Med IA: </div>
-                          <input type="text" class="form-control" id="resultadoMedIAEdit" >
-                        </div>
-                        <div class="campo">
-                          <div class="label">Resultado IA: </div>
-                          <input type="text" class="form-control" id="resultadoIAEdit" >
-                        </div>
-                        <div class="campo">
-                          <div class="label">Feedback IA: </div>
-                          <input type="text" class="form-control" id="feedbackIAEdit" >
-                        </div>
-                        <div class="campo">
-                          <div class="label">Id medico: </div>
-                          <input type="text" class="form-control" id="idMedicoEdit">
-                        </div>
-                        <div class="campo">
-                          <div class="label">Id hospital: </div>
-                          <input type="text" class="form-control" id="idHospitalEdit">
-                        </div>
-                        <div class="campo">
-                          <div class="label">Eliminado:</div>
-                          <select class="form-control" id="eliminadoEdit">
-                              <option value="True">Si</option>
-                              <option value="False">No</option>
-                          </select>
-                        </div>
+                        <div class="label">Fecha prot Operatorio: </div>
+                        <input type="date" class="form-control" id="fechaProtOperaEdit">
+
+                        <div class="label">Hora prot Operatorio: </div>
+                        <input type="time" class="form-control" id="horaProtOperaEdit" >
                         
+                        <div class="label">Implantes:</div>
+                        <textarea class="form-control" id="implantesProtEdit" rows="4"> </textarea>
+                        
+                        <div class="label">Descripcion:</div>
+                        <textarea class="form-control" id="descProtOperaEdit" rows="4"> </textarea>
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
