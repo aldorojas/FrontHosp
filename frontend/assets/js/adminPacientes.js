@@ -1,15 +1,15 @@
 window.onload = (function(){
 	console.log(localStorage.getItem("Admin")); 
 	if(localStorage.getItem("Admin")== "true"){
-	  console.log("si es admin")
-	  document.getElementById("moduloAdminMed").style.display = 'block'
-	document.getElementById("moduloAdminHosp").style.display = 'block'
+	  	//console.log("si es admin")
+	  	document.getElementById("moduloAdminMed").style.display = 'block'
+		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
-	else{
-	  console.log("no es admin")
-	  
-	  //element.style.display = 'none'; 
-	}
+
+	numberPages();
+
+	const urlAPI = 'http://134.122.120.195/api/v1/pacientes/list/1';
+	allPacientes(urlAPI)
   
 })
 
@@ -35,75 +35,6 @@ function showDivBusqueda(element)
   document.getElementById("formBusqueda2").style.display = element.value == 1 ? 'block' : 'none';
 }
 
-
-
-
-// var formBusqueda2 = document.getElementById('formBusqueda2');
-
-// formBusqueda2.addEventListener('submit', function(e){
-
-// 	e.preventDefault()
-// 	var nombrePaciente = document.getElementById('input2')
-// 	const urlAPI = 'http://localhost:5000/api/getPaciente/' + nombrePaciente.value ;
-
-// 	var divPrueba = document.getElementById('card')
-// 	divPrueba.innerHTML = ''
-//     console.log(urlAPI)
-// 	fetch(urlAPI)
-// 	.then(response => response.json())
-// 	.then(data => {
-// 		if(data.message == "Success"){
-// 			for(var i = 0; i < data.pacientes.length; i++){
-// 				//console.log(data.pacientes[i].nombres)
-// 				//console.log(data.pacientes[i].apellidos)
-				
-// 				var nombre = `
-					
-// 					<div class="blog-post">
-// 					<div class="blog-post_img">
-// 						<img src="../assets/img/avatarCard.png">
-// 					</div>
-// 					<div class="blog-post_info">
-// 						<h1 class="blog-post_title"> ${data.pacientes[i].nombres} ${data.pacientes[i].apellidos} </h1>
-// 						<div class="blog-post_date">
-// 						<span> Pasaporte: ${data.pacientes[i].pasaporte}</span>
-// 						<span> Rut: ${data.pacientes[i].rut}</span>
-// 						<span> Direccion: ${data.pacientes[i].direccion}</span> 
-// 						<span> Fecha de nacimiento:  ${data.pacientes[i].fechaNacimiento}</span>
-// 						<span> Telefono:  ${data.pacientes[i].telefono}</span>
-// 						<span> Sexo:  ${data.pacientes[i].sexo}</span>
-// 						</div>
-						
-// 					</div>
-// 					</div>
-// 					`
-// 				divPrueba.innerHTML += nombre
-// 			}
-// 		}
-// 		else{
-// 			console.log(data.message)
-// 			const Toast = Swal.mixin({
-// 				toast: true,
-// 				position: 'top-end',
-// 				showConfirmButton: false,
-// 				timer: 3000,
-// 				timerProgressBar: true,
-// 				didOpen: (toast) => {
-// 				  toast.addEventListener('mouseenter', Swal.stopTimer)
-// 				  toast.addEventListener('mouseleave', Swal.resumeTimer)
-// 				}
-// 			  })
-			  
-// 			  Toast.fire({
-// 				icon: 'error',
-// 				title: 'El paciente no existe'
-// 			  })
-
-// 			$('#exampleModal').modal('show');	
-// 		}
-// 	})
-// 	.catch(err => console.log(err))
-// })
 
 ///////////////////////////////////// Add Paciente
 
@@ -166,53 +97,112 @@ formNewPaciente.addEventListener('submit', function(e){
 	});
 })
 //////////////////////////////////// todos los pacientes
-const urlAPI = 'http://134.122.120.195/api/v1/pacientes/list';
+
 var divPrueba = document.getElementById('contentTable')
 divPrueba.innerHTML = ''
-
-fetch(urlAPI)
-.then(response => response.json())
-.then(data => {
-	console.log(data)
-	for(var i = 0; i < data.length; i++){
-		//console.log(data.pacientes[i].nombres)
-		//console.log(data.pacientes[i].apellidos)
-		
-		var nombre = `
-		<tr>
-			<th scope="row"> ${data[i].id} </th>
-			<td> ${data[i].nombre}</td>
-			<td>${data[i].apellido}</td>
-			<td>${data[i].edad}</td>
-			<td>${data[i].pasaporte}</td>
-			<td>${data[i].rut}</td>
-			<td>${data[i].direccion}</td>
-			<td>${data[i].telefono}</td>
-			<td>${data[i].birth_date}</td>
-			<td>${data[i].sexo}</td>
-			<td><button onclick="deletePaciente(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-					<i class="icon ion-md-trash "></i>
-				</button>
-				<button onclick="editPaciente(${data[i].id}, '${data[i].nombre}', '${data[i].apellido}',
-												'${data[i].rut}', '${data[i].pasaporte}', '${data[i].direccion}',
-												'${data[i].telefono}', '${data[i].sexo}', '${data[i].birth_date}')" 
-				class="btn btn-info btn-sm" title="Editar Paciente">
-					<i class="icon ion-md-create "></i>
-				</button>
-			</td>
-		</tr>
-		
-			`
-		//divPrueba.innerHTML += nombre
-		$( "#tablePacientes tbody" ).append(nombre);
-	}
-	$(document).ready(function(){
-		$('#tablePacientes').dataTable();
-	});
+function allPacientes(urlAPI){
+	fetch(urlAPI)
+	.then(response => response.json())
+	.then(data => {
+		console.log(data)
+		for(var i = 0; i < data.length; i++){
+			//console.log(data.pacientes[i].nombres)
+			//console.log(data.pacientes[i].apellidos)
+			
+			var nombre = `
+			<tr>
+				<th scope="row"> ${data[i].id} </th>
+				<td> ${data[i].nombre}</td>
+				<td>${data[i].apellido}</td>
+				<td>${data[i].edad}</td>
+				<td>${data[i].pasaporte}</td>
+				<td>${data[i].rut}</td>
+				<td>${data[i].direccion}</td>
+				<td>${data[i].telefono}</td>
+				<td>${data[i].birth_date}</td>
+				<td>${data[i].sexo}</td>
+				<td><button onclick="deletePaciente(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+						<i class="icon ion-md-trash "></i>
+					</button>
+					<button onclick="editPaciente(${data[i].id}, '${data[i].nombre}', '${data[i].apellido}',
+													'${data[i].rut}', '${data[i].pasaporte}', '${data[i].direccion}',
+													'${data[i].telefono}', '${data[i].sexo}', '${data[i].birth_date}')" 
+					class="btn btn-info btn-sm" title="Editar Paciente">
+						<i class="icon ion-md-create "></i>
+					</button>
+				</td>
+			</tr>
+			
+				`
+			//divPrueba.innerHTML += nombre
+			$( "#tablePacientes tbody" ).append(nombre);
+		}
+	// $(document).ready(function(){
+	// 	$('#tablePacientes').dataTable();
+	// });
 
 	
 	})
 .catch(err => console.log(err))
+}
+
+
+
+
+var pagesHtml = ''
+var divpieTable = document.getElementById('paginasBotones')
+
+function numberPages(){
+    urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/pacientes';
+    pagesHtml =  ''
+    fetch(urlAPIPages)
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){
+        console.log(data)
+        var botones =  data.numbers_entries/10
+        botones = Math.ceil(botones)
+        //console.log(botones)
+
+        for(var i = 1; i < botones + 1; i++){
+            pagesHtml += `
+            <td>
+                <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
+                    ${i}
+                </button>
+            </td>
+            `
+              
+        }
+        divpieTable.innerHTML = pagesHtml  
+        //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
+	});
+}
+
+
+function perPage(numPage){
+    console.log(numPage)
+    urlPacientesPagina = 'http://134.122.120.195/api/v1/pacientes/list/' + numPage;
+    //console.log(urlEncuentrosPagina)
+    var divPrueba = document.getElementById('contentTable')
+    divPrueba.innerHTML = ''
+    
+    fetch(urlPacientesPagina)
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){ 
+        console.log(data)
+        allPacientes(urlPacientesPagina)
+        numberPages()
+	});
+}
+
+
+
+
+
 
 
 function deletePaciente(idPaciente){

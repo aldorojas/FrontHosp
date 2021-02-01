@@ -1,17 +1,16 @@
 window.onload = (function(){
 	console.log(localStorage.getItem("Admin")); 
 	if(localStorage.getItem("Admin")== "true"){
-	  console.log("si es admin")
 	  document.getElementById("moduloAdminMed").style.display = 'block'
 		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
-	else{
-	  console.log("no es admin")
-	  
-	  //element.style.display = 'none'; 
-	}
-  
-  })
+	
+	
+	numberPages();
+	const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list/1';
+	allHospitales(URLTodosHospitales);
+
+})
 
 
 
@@ -30,7 +29,6 @@ opcion.forEach(e => {
 ////////////////////////////// nuevo hospital
 
 var formNewHospital = document.getElementById('formNewHospital');
-
 formNewHospital.addEventListener('submit', function(e){
 
 	const URLNewHospital = 'http://134.122.120.195/api/v1/hospital';
@@ -89,36 +87,29 @@ formNewHospital.addEventListener('submit', function(e){
 
 ///////////////////////////////////////// Todos los hospitales
 
-
-
-
-////////////////////////////////////////
-
-const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list';
 var divPrueba = document.getElementById('contentTable')
 divPrueba.innerHTML = ''
 
-fetch(URLTodosHospitales)
+function allHospitales(URLAPI) {
+	
+	fetch(URLAPI)
 	.then(response => response.json())
 	.then(data => {
-		
-		console.log(data)
+		//console.log(data)
 		for(var i = 0; i < data.length; i++){
-			//console.log(data.pacientes[i].nombres)
-			//console.log(data.pacientes[i].apellidos)
 			
 			if ( data[i].activo == true ){
 				var switch1 = ' <div class="custom-control custom-switch">' +
 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
 					'<label class="custom-control-label" for="customSwitch1"></label>' +
-			  	'</div>'
-				  console.log(switch1);
+				'</div>'
+				//console.log(switch1);
 			}
 			else{
 				switch1 = ' <div class="custom-control custom-switch">' +
 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
 				'<label class="custom-control-label" for="customSwitch1"></label>' +
-			  '</div>'
+			'</div>'
 			}
 
 
@@ -144,19 +135,70 @@ fetch(URLTodosHospitales)
 			//divPrueba.innerHTML += nombre
 			$( "#tableHospitales tbody" ).append(nombre);
 		}
-		$(document).ready(function(){
-            $('#tableHospitales').dataTable({
-                select: true
-            });
-        });
-	
+		// $(document).ready(function(){
+		//     $('#tableHospitales').dataTable({
+		//         select: true
+		//     });
+		// });
+
 	})	
+	// 	})
+	.catch(err => console.log(err))
+}
 
-		
-// 	})
- 	.catch(err => console.log(err))
 
 
+
+var pagesHtml = ''
+var divpieTable = document.getElementById('paginasBotones')
+
+function numberPages(){
+    urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/hospitales';
+    pagesHtml =  ''
+    fetch(urlAPIPages)
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){
+        console.log(data)
+        var botones =  data.numbers_entries/10
+        botones = Math.ceil(botones)
+        //console.log(botones)
+
+        for(var i = 1; i < botones + 1; i++){
+            pagesHtml += `
+            <td>
+                <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
+                    ${i}
+                </button>
+            </td>
+            `
+              
+        }
+        divpieTable.innerHTML = pagesHtml  
+        //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
+	});
+}
+
+
+
+function perPage(numPage){
+    console.log(numPage)
+    urlHospitalesPagina = 'http://134.122.120.195/api/v1/hospitales/list/' + numPage;
+    //console.log(urlEncuentrosPagina)
+    var divPrueba = document.getElementById('contentTable')
+    divPrueba.innerHTML = ''
+    
+    fetch(urlHospitalesPagina)
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){ 
+        console.log(data)
+        allHospitales(urlHospitalesPagina)
+        numberPages()
+	});
+}
 
 
 
@@ -280,93 +322,4 @@ formEditHospital.addEventListener('submit', function(e){
 
 
 
-/////////////////////// boton todos los hospitales
-
-// var formTodosHospitales = document.getElementById('formTodosHospitales');
-
-// formTodosHospitales.addEventListener('submit', function(e){
-
-// 	const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list';
-
-// 	e.preventDefault()
-
-// 	var divPrueba = document.getElementById('card')
-//     divPrueba.innerHTML = ''
-
-// 	fetch(URLTodosHospitales)
-// 	.then(response => response.json())
-// 	.then(data => {
-		
-// 		console.log(data)
-// 		for(var i = 0; i < data.length; i++){
-// 			//console.log(data.pacientes[i].nombres)
-// 			//console.log(data.pacientes[i].apellidos)
-			
-// 			var nombre = `
-				
-// 				<div class="blog-post">
-// 				<div class="blog-post_img">
-// 					<img src="../assets/img/avatarCard.png">
-// 				</div>
-// 				<div class="blog-post_info">
-// 					<h1 class="blog-post_title">  Hospital: ${data[i].hospital} </h1>
-//                     <div class="blog-post_date">
-//                     <span> Id: ${data[i].id}</span>
-// 					<span> Direccion: ${data[i].direccion}</span>
-// 					<span> Telefono: ${data[i].telefono}</span> 
-// 					<span> Activo:  ${data[i].activo}</span>
-// 					</div>
-					
-// 				</div>
-// 				</div>
-// 				`
-// 			divPrueba.innerHTML += nombre
-// 		}
-
-		
-		
-// 	})
-// 	.catch(err => console.log(err))
-// })
-
-
-
-////////////////////// eliminar hospital boton
-
-// var formDeleteHospital = document.getElementById('formDeleteHospital');
-
-// formDeleteHospital.addEventListener('submit', function(e){
-
-// 	var idHospital = document.getElementById('IdHospital')
-
-// 	const URLDeleteHospital = 'http://134.122.120.195/api/v1/hospital/' + idHospital.value ;
-
-// 	e.preventDefault()
-
-// 	var headers = {
-// 		"Content-Type": "application/json"
-// 	 }
-	
-// 	fetch(URLDeleteHospital, {
-// 		method: "DELETE",
-// 		headers: headers
-// 	})
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){ 
-// 		console.log(data)
-// 		Swal.fire({
-// 			icon: 'success',
-// 			title: 'Hospital eliminado',
-// 			showConfirmButton: false,
-// 			timer: 2500
-// 			})
-// 		var divPrueba = document.getElementById('card')
-// 		divPrueba.innerHTML = ''
-
-		
-
-// 	});
-// })
 

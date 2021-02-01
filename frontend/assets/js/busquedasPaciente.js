@@ -86,7 +86,7 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
                         <span> Sexo:  ${data[i].sexo}</span>
 						</div>
 						<div class="row">
-							<div class="col-lg-6 col-md-6 stat  text-center">
+							<div class="col-lg-6 col-md-6 stat  text-center" id="btnVerEncuentro">
 								<button type="button" class="btn btn-primary -primary"
 									onclick="verEncuentros(${data[i].id})">
 									Ver encuentros

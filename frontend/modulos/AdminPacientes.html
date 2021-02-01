@@ -17,6 +17,9 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
 
+    <!-- Font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Ionic icons -->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
@@ -26,84 +29,58 @@
 </head>
 
 <body>
-    <div class="d-flex" id="content-wrapper">
+   
 
-        <!-- Sidebar -->
-        <div id="sidebar-container" class="bg-primary">
-          <div class="logo">
-              <h2 class="text-light font-weight-bold mb-0">Bienvenido</h2>
-          </div>
-          <div class="menu">
-              <!-- <a href="pacientes.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
-                  Pacientes</a> -->
+  <div id="wrapper">
+    <div class="overlay"></div>
+     
+         <!-- Sidebar -->
+     <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+          <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <h3>Bienvenido</h3></div></div>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li class="dropdown">
+          <a href="#works" class="dropdown-toggle"  data-toggle="dropdown">Administracion <span class="caret"></span></a>
+        <ul class="dropdown-menu animated fadeInLeft" role="menu">
+        <div class="dropdown-header">Administracion de:</div>
+          <li><a href="AdminPacientes.html">Pacientes</a></li>
+          <li id="moduloAdminMed"><a href="AdminMedicos.html">Medicos</a></li>
+          <li id="moduloAdminHosp"><a href="AdminHospitales.html">Hospitales</a></li>
+        </ul>
+        </li>
+        <li><a href="busquedas.html">Encuentros</a></li>
+       </ul>
+      </nav>
+         <!-- /#sidebar-wrapper -->
+ 
+         <!-- Page Content -->
+         <div id="page-content-wrapper">
+             <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+             </button>
 
-              <a href="inicio.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
-                Inicio</a>
+             <li class="dropdown" id="listPrueba">
+              <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
+                  alt="https://generated.photos/" />  
+                Perfil
+                </a>
 
-              <!-- <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-folder-open lead mr-2"></i>
-                Administracion</a> -->
+              <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="../index.html">Salir</a></li>
+              </ul>
+              </li>   
 
-              <div class="cont-enlace">
-                <div class="opcion">
-                  <a href="#" class="d-block text-light p-3 border-0" ><i class="icon ion-md-folder-open lead mr-2"></i>
-                    Administracion</a>
-                </div>
 
-                <div class="enlace">
-                  <a href="AdminPacientes.html" class="d-block text-light p-3 border-0"  > Administracion Pacientes </a>
-                  <div id="moduloAdminMed">
-                    <a href="AdminMedicos.html" class="d-block text-light p-3 border-0"> Administracion Medicos </a>  
-                  </div>
-                  <div id="moduloAdminHosp">
-                    <a href="AdminHospitales.html" class="d-block text-light p-3 border-0" > Administracion Hospitales </a>  
-                  </div>
-                  
-                </div>
-
-              </div>
-
-              <a href="busquedas.html" class="d-block text-light p-3 border-0"><i class="icon ion-md-search lead mr-2"></i>
-                 Busquedas</a>
-                 
-          </div>
-      </div>
-        <!-- Fin sidebar -->
-
-        <div class="w-100">
-
-         <!-- Navbar -->
-         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <div class="container">
-    
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-    
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="../assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
-                      alt="https://generated.photos/" />  
-                    Perfil
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="pacientes.html">Inicio</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="../index.html">Salir</a>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <!-- Fin Navbar -->
-
-        <!-- Page Content -->
-        <div id="content" class="bg-grey w-100">
+             <!-- Page Content -->
+            <!-- Page Content -->
+            <div id="content" class="bg-grey w-100">
 
               <section class="bg-light py-3">
                   <div class="container">
@@ -179,6 +156,12 @@
                                       
                                     </tbody>
                                     </table>
+                                    <div id="paginasBotones">
+                                      <td>
+                                        Paginas: 
+                                      </td>
+          
+                                    </div>
                                 </div>
                               </div>
 
@@ -354,12 +337,17 @@
                 </div>
               </div>
 
-             
+            
         </div>
 
-        </div>
-    </div>
+      </div>
+         <!-- /#page-content-wrapper -->
+ 
+  </div>
+     <!-- /#wrapper -->
 
+
+        
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -375,6 +363,7 @@
     
     
     <script type="text/javascript" src="../assets/js/adminPacientes.js"> </script>
+    <script type="text/javascript" src="../assets/js/navbarAside.js"> </script>
 
 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->

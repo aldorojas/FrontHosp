@@ -89,3 +89,17 @@ formNewPaciente.addEventListener('submit', function(e){
 
 	});
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+

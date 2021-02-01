@@ -354,51 +354,6 @@ formEncuentro.addEventListener('submit', async function(e){
 	  //doc.text(fechaRegistro.value, 50, 20)
 	  doc.save('ProtocoloOperatorio.pdf')
 
-
-	
-
-	//e.preventDefault();  //stop the browser from following
-    //window.location.href = 'uploads/file.pdf';
-
-
-	//   var headers = {
-	// 	  "Content-Type": "application/json"
-	//    }
-  
-	//   const dataToSend = JSON.stringify(
-	// 	  {
-	// 		  "fechaEncuentro" : dateTime,
-	// 		  "idPaciente" : idPaciente,
-	// 		  "tipoEncuentro" : tipoEncuentro.value,
-	// 		  "diagPrimario" : diagPrimario.value,
-	// 		  "diagSecundario1" : diagSecundario1.value,
-	// 		  "diagSecundario2" : diagSecundario2.value,
-	// 		  "audio" : "",
-	// 		  "pdfExamLab" : base64ExamLab,
-	// 		  "pdfElectro" : base64Electro,
-	// 		  "notasClinicas": notaClinica.value
-  
-	// 	  });
-	//   console.log(dataToSend)
-	  
-	  // fetch(URLNewPaciente, {
-	  // 	method: "POST",
-	  // 	headers: headers,
-	  // 	body: dataToSend
-	  // })
-	  // .then(function(response){ 
-	  // 	return response.json(); 
-	  // })
-	  // .then(function(data){ 
-	  // 	console.log(data)
-	  // 	Swal.fire({
-	  // 		icon: 'success',
-	  // 		title: 'Paciente registrado',
-	  // 		showConfirmButton: false,
-	  // 		timer: 2500
-	  // 		})	
-  
-	  // });
   })
 
 
