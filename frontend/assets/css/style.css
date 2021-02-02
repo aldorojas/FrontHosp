@@ -966,13 +966,12 @@ display: block;
     height:800px;
     width:68vh !important;
   }
-
+*/
   .divTableEncuentros {
     overflow:scroll;
-    height:800px;
-    width:64vh !important;
+    width:42vh !important;
   }
-
+/* 
   .divTableModal {
     overflow:scroll;
     height:500px;
@@ -982,7 +981,7 @@ display: block;
   #tableEncuentros{
     height:500px;
     width:67vh !important;
-  } */
+  }  */
 
   #btnAddPaciente{
     padding: 7px;
