@@ -175,21 +175,21 @@ function allMedicos(URLAPI){
 
 			var nombre = `
 			<tr>
-				<th scope="row"> ${data[i].id} </th>
-				<td> ${data[i].id_hospital}<td>
-				<td>${data[i].nombre}</td>
-				<td>${data[i].apellidos}</td>
-				<td>${data[i].telefono}</td>
-				<td>${data[i].staff}</td>
-				<td>${data[i].especialidad}</td>
-				<td>${data[i].rut_medico}</td>
-				<td> 
+				<td scope="row" data-label="Id"> ${data[i].id} </td>
+				<td data-label="IdHospital"> ${data[i].id_hospital}</td>
+				<td data-label="Nombre">${data[i].nombre}</td>
+				<td data-label="Apellidos">${data[i].apellidos}</td>
+				<td data-label="Telefono">${data[i].telefono}</td>
+				<td data-label="Staff">${data[i].staff}</td>
+				<td data-label="Especialidad">${data[i].especialidad}</td>
+				<td data-label="Rut Medico">${data[i].rut_medico}</td>
+				<td data-label="Becario"> 
 					${switch1}
 				</td>
-				<td>${switch2}</td>
-				<td>${switch3}</td>
-				<td>${switch4}</td>
-				<td>
+				<td data-label="Interno">${switch2}</td>
+				<td data-label="Activo">${switch3}</td>
+				<td data-label="Admin">${switch4}</td>
+				<td data-label="Acciones">
 					<button onclick="deleteMedico(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
 						<i class="icon ion-md-trash "></i>
 					</button>

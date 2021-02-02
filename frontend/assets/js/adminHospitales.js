@@ -115,12 +115,12 @@ function allHospitales(URLAPI) {
 
 			var nombre = `
 			<tr>
-				<th scope="row"> ${data[i].id} </th>
-				<td> ${data[i].hospital}</td>
-				<td>${data[i].direccion}</td>
-				<td>${data[i].telefono}</td>
-				<td>${switch1}</td>
-				<td>
+				<td scope="row" data-label="Id"> ${data[i].id} </td>
+				<td data-label="Hospital"> ${data[i].hospital}</td>
+				<td data-label="Direccion">${data[i].direccion}</td>
+				<td data-label="Telefono">${data[i].telefono}</td>
+				<td data-label="Activo">${switch1}</td>
+				<td data-label="Acciones">
 					<button onclick="deleteHospital(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
 						<i class="icon ion-md-trash "></i>
 					</button>

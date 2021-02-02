@@ -101,7 +101,7 @@ a:hover {
 }
 
 
-.content-table {
+/* .content-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -139,7 +139,7 @@ a:hover {
   .content-table tbody tr.active-row {
     font-weight: bold;
     color: #9a8171;
-  }
+  } */
 
   
 @media (max-width: 768px) {
@@ -427,9 +427,9 @@ form .pagina .btns button.adelante{
     outline: none;
 }
 
-.modal-body table thead {
+/* .modal-body table thead {
   max-width: 100%;
-}
+} */
 
 
 /*.table1 {
@@ -437,7 +437,7 @@ form .pagina .btns button.adelante{
   table-layout:fixed;
   width: 100%; 
 }*/
-
+/* 
 .divTable {
   overflow:scroll;
   height:800px;
@@ -446,13 +446,13 @@ form .pagina .btns button.adelante{
 .divTableEncuentros {
   overflow:scroll;
   height:800px;
-  width:1100px;
-}
-.divTableModal {
+  width:1300px;
+} */
+/* .divTableModal {
   overflow:scroll;
   height:500px;
   width:780px;
-}
+} */
 
 #notaClinica{
   width: 1100px;
@@ -777,6 +777,18 @@ margin-right: 10px;
 }
 
 
+
+
+#listPrueba2 a::before {
+  font-family: fontawesome;
+  content: "\f061";
+  vertical-align: baseline;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+
+
 /*Fontawesome icons*/
 .nav.sidebar-nav li a::before {
   font-family: fontawesome;
@@ -945,10 +957,10 @@ display: block;
     display: block;
     width: 32px;
     height: 32px;
-    margin-left: 50vh;
+    margin-left: 30vh;
   }
 
-    
+/*     
   .divTable {
     overflow:scroll;
     height:800px;
@@ -970,7 +982,7 @@ display: block;
   #tableEncuentros{
     height:500px;
     width:67vh !important;
-  }
+  } */
 
   #btnAddPaciente{
     padding: 7px;
@@ -1232,7 +1244,61 @@ form .pagina .btns button.adelante{
 
 
 
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
 
+table tr {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th, table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+
+@media screen and (max-width: 639px) {
+
+  table { border: 0; }
+  
+  table thead { display: none; }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child { border-bottom: 0; }
+  
+  }
 
 
 

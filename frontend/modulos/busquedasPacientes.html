@@ -78,7 +78,7 @@
                   Perfil
                   </a>
 
-                <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                <ul class="dropdown-menu animated fadeInLeft" role="menu" id="listPrueba2">
                   <li><a href="inicio.html">Inicio</a></li>
                   <li><a href="../index.html">Salir</a></li>
                 </ul>
@@ -152,7 +152,7 @@
                 </section>
 
                 <section>
-                    <div class="container">
+                    <div class="container-fluid">
                       <div class="row">
                           <div class="col-lg-12 my-3">
                               <div class="card rounded-0">
@@ -205,7 +205,8 @@
                                 <th scope="col">Id Hospital</th>
                                 <th scope="col">Eliminado</th>
 
-                                <th scope="col">Fecha epicrisis</th>
+                                <th scope="col">Epicrisis </th>
+                                <!-- <th scope="col">Fecha epicrisis</th>
                                 <th scope="col">Hora epicrisis</th>
                                 <th scope="col">Fecha hospitalizacion</th>
                                 <th scope="col">Fecha egreso</th>
@@ -214,12 +215,13 @@
                                 <th scope="col">Anamnesis</th>
                                 <th scope="col">Estudios acciones</th>
                                 <th scope="col">Evolucion</th>
-                                <th scope="col">Indicaciones alta</th>
+                                <th scope="col">Indicaciones alta</th> -->
 
-                                <th scope="col">Fecha prot opera</th>
+                                <th scope="col">Cirugia</th>
+                                <!-- <th scope="col">Fecha prot opera</th>
                                 <th scope="col">Hora prot opera</th>
                                 <th scope="col">Implantes</th>
-                                <th scope="col">Descripcion</th>
+                                <th scope="col">Descripcion</th> -->
                                 
                                 
 
@@ -259,7 +261,114 @@
 
 
 
+
+       <!-- Modal editar Epicrisis -->
+       <div class="modal fade" id="modalEditEpi" tabindex="-1" aria-labelledby="modalEditEpi" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalEditEpi">Editar Encuentro</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <!-- -------------------------------------------- -->
+                <div class="label">Id Epicrisis: </div>
+                <input type="text" class="form-control" id="idEpicrisis">
+
+                <div class="label">Fecha Epicrisis: </div>
+                <input type="date" class="form-control" id="fechaEpicrisis" >
+
+                <div class="label">Hora Epicrisis: </div>
+                <input type="time" class="form-control" id="horaEpicrisis" >
+                                               
+                <div class="label">Fecha hospitalizacion: </div>
+                <input type="date" class="form-control" id="fechaHospitalizacion">
+                                         
+                <div class="label">Fecha egreso hospital: </div>
+                <input type="date" class="form-control" id="fechaEgresoHospital">
+                                         
+                <div class="label">Dias de hospitalizacion: </div>
+                <input type="text" class="form-control" id="diasHospitalizacion" >
+                            
+                <div class="label">Diagnostico alta: </div>
+                <input type="text" class="form-control" id="diagAlta" >
+                                       
+                <div class="label">Doctor alta: </div>
+                <select class="form-control" id="doctorAlta">
+                </select>
+
+                <div class="label">Anamnesis: </div>
+                <input type="text" class="form-control" id="anamnesis" >
+                           
+                <div class="label">Estudios acciones: </div>
+                <input type="text" class="form-control" id="estudiosAcciones" >
+
+                <div class="label">Indicaciones alta: </div>
+                <input type="text" class="form-control" id="indicacionesAlta" >                    
+              
+                <div class="label">Resumen evolucion</div>
+                <textarea class="form-control" id="resumenEvolucion" rows="4"> </textarea>
+
+                <!-- --------------------------------------- -->
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <!-- <button type="submit" id="guardarEpicrisis" class="btn btn-primary">Actualizar Epi</button> -->
+                </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      
+          <!-- Modal editar Cirugia -->
+          <div class="modal fade" id="modalEditCirugia" tabindex="-1" aria-labelledby="modalEditCirugia" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalEditCirugia">Editar Cirugia</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="formEditCirugia">
+                    <!-- --------------------------------------- -->
+                    <div class="label">Id cirugia: </div>
+                    <input type="text" class="form-control" id="idCirugiaModal">
+
+                    <div class="label">Fecha prot Operatorio: </div>
+                    <input type="date" class="form-control" id="fechaProtOpera">
+
+                    <div class="label">Hora prot Operatorio: </div>
+                    <input type="time" class="form-control" id="horaProtOpera" >
+                    
+                    <div class="label">Implantes:</div>
+                    <textarea class="form-control" id="implantesProt" rows="4"> </textarea>
+                    
+                    <div class="label">Descripcion:</div>
+                    <textarea class="form-control" id="descProtOpera" rows="4"> </textarea>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <!-- <button type="submit" id="guardarProtOpera" class="btn btn-primary">Actualizar Cirugia</button> -->
+                    </div>
+
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </div>
         
+
+
+
+
 
         
     </div>

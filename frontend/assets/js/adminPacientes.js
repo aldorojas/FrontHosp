@@ -111,17 +111,18 @@ function allPacientes(urlAPI){
 			
 			var nombre = `
 			<tr>
-				<th scope="row"> ${data[i].id} </th>
-				<td> ${data[i].nombre}</td>
-				<td>${data[i].apellido}</td>
-				<td>${data[i].edad}</td>
-				<td>${data[i].pasaporte}</td>
-				<td>${data[i].rut}</td>
-				<td>${data[i].direccion}</td>
-				<td>${data[i].telefono}</td>
-				<td>${data[i].birth_date}</td>
-				<td>${data[i].sexo}</td>
-				<td><button onclick="deletePaciente(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+				<td scope="row" data-label="Id"> ${data[i].id} </td>
+				<td data-label="Nombre"> ${data[i].nombre}</td>
+				<td data-label="Apellidos">${data[i].apellido}</td>
+				<td data-label="Edad">${data[i].edad}</td>
+				<td data-label="Pasaporte">${data[i].pasaporte}</td>
+				<td data-label="Rut">${data[i].rut}</td>
+				<td data-label="Direccion">${data[i].direccion}</td>
+				<td data-label="Telefono">${data[i].telefono}</td>
+				<td data-label="Fecha de nacimiento">${data[i].birth_date}</td>
+				<td data-label="Sexo">${data[i].sexo}</td>
+				<td data-label="Acciones">
+					<button onclick="deletePaciente(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
 						<i class="icon ion-md-trash "></i>
 					</button>
 					<button onclick="editPaciente(${data[i].id}, '${data[i].nombre}', '${data[i].apellido}',
@@ -349,53 +350,6 @@ formEditPaciente.addEventListener('submit', function(e){
 
 
 /////////////////////////////////////////////////
-
-// var formTodosPacientes = document.getElementById('showPacientes');
-
-// formTodosPacientes.addEventListener('submit', function(e){
-
-// 	e.preventDefault()
-// 	const urlAPI = 'http://134.122.120.195/api/v1/pacientes/list';
-
-// 	var divPrueba = document.getElementById('card')
-// 	divPrueba.innerHTML = ''
-//     console.log(urlAPI)
-// 	fetch(urlAPI)
-// 	.then(response => response.json())
-// 	.then(data => {
-// 		console.log(data)
-// 		for(var i = 0; i < data.length; i++){
-// 			//console.log(data.pacientes[i].nombres)
-// 			//console.log(data.pacientes[i].apellidos)
-			
-// 			var nombre = `
-				
-// 				<div class="blog-post">
-// 				<div class="blog-post_img">
-// 					<img src="../assets/img/avatarCard.png">
-// 				</div>
-// 				<div class="blog-post_info">
-// 					<h1 class="blog-post_title">  Paciente: ${data[i].nombre} ${data[i].apellidos} </h1>
-// 					<div class="blog-post_date">
-// 					<span> Id: ${data[i].id}</span>
-// 					<span> Pasaporte: ${data[i].pasaporte}</span>
-// 					<span> Rut: ${data[i].rut}</span>
-// 					<span> Direccion: ${data[i].direccion}</span> 
-// 					<span> Fecha de nacimiento:  ${data[i].birth_date}</span>
-// 					<span> Telefono:  ${data[i].telefono}</span>
-// 					<span> Sexo:  ${data[i].sexo}</span>
-// 					</div>
-					
-// 				</div>
-// 				</div>
-// 				`
-// 			divPrueba.innerHTML += nombre
-// 		}
-		
-// 	 	})
-// 	.catch(err => console.log(err))
-// })
-
 
 
 

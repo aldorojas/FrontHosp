@@ -198,50 +198,69 @@ document.getElementById("btnFindNombre").addEventListener("click", function(even
 					PDFExamLab = ''
 				}
 
+				/////////////////////////////////
+				if ( data[i].eliminado == "True" ){
+					var switch1 = ' <div class="custom-control custom-switch">' +
+						'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
+						'<label class="custom-control-label" for="customSwitch1"></label>' +
+					  '</div>'
+				}
+				else{
+					switch1 = ' <div class="custom-control custom-switch">' +
+					'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
+					'<label class="custom-control-label" for="customSwitch1"></label>' +
+				  '</div>'
+				}
+
 
 				var encuentro = `
 				<tr>
-					<th scope="row"> ${data[i].id_encuentro} </th>
-					<td> ${data[i].fecha_e}</td>
-					<td>${data[i].hora_e}</td>
-					<td>${data[i].tipo_2}</td>
-					<td>${data[i].diag_primario}</td>
-					<td>${data[i].diag_secun}</td>
-					<td>${data[i].diag_secun2}</td>
-					<td>
+					<td scope="row" data-label="Id"> ${data[i].id_encuentro} </td>
+					<td data-label="Fecha"> ${data[i].fecha_e}</td>
+					<td data-label="Hora">${data[i].hora_e}</td>
+					<td data-label="Tipo encuentro">${data[i].tipo_2}</td>
+					<td data-label="Diag prim">${data[i].diag_primario}</td>
+					<td data-label="Diag sec">${data[i].diag_secun}</td>
+					<td data-label="Diag sec 2">${data[i].diag_secun2}</td>
+					<td data-label="Audio">
 						${audio}
 					</td>
-					<td>
+					<td data-label="PDF Electro">
 						${PDFElectro}
 					</td>
-					<td>
+					<td data-label="PDF Exam Lab">
 						${PDFExamLab}
 					</td>
-					<td>${data[i].notas_clinicas}</td>
-					
-					<td>${data[i].resultado_med_ia}</td>
-					<td>${data[i].resultados_ia}</td>
-					<td>${data[i].feedback_ia}</td>
-					<td>${data[i].id_medico}</td>
-					<td>${data[i].id_hospital}</td>
-					<td>${data[i].eliminado}</td>
 
-					<td>${data[i].fecha_ep}</td>
-					<td>${data[i].hora_ep}</td>
-					<td>${data[i].fecha_hospitalizacion}</td>
-					<td>${data[i].fecha_egreso}</td>
-					<td>${data[i].dias_hospitalizado}</td>
-					<td>${data[i].diag_alta}</td>
-					<td>${data[i].anamnesis}</td>
-					<td>${data[i].estudios_acciones}</td>
-					<td>${data[i].resumen_evolucion}</td>
-					<td>${data[i].indiciaciones_alta}</td>
+					<td data-label="Notas clinicas">${data[i].notas_clinicas}</td>
+					<td data-label="Res med IA">${data[i].resultado_med_ia}</td>
+					<td data-label="Resultados IA">${data[i].resultados_ia}</td>
+					<td data-label="Feedbaack IA">${data[i].feedback_ia}</td>
+					<td data-label="Id medico">${data[i].id_medico}</td>
+					<td data-label="Hospital">${data[i].id_hospital}</td>
+					<td data-label="Eliminado">${switch1}</td>
 
-					<td>${data[i].date_registered}</td>
-					<td>${data[i].time_protocol}</td>
-					<td>${data[i].descripcion}</td>
-					<td>${data[i].implantes}</td>
+					<td data-label="Acciones">
+						<button type="button" class="btn btn-primary"
+							onclick="loadModalEpi('${data[i].id_epicrisis}','${data[i].fecha_ep}', '${data[i].hora_ep}',
+							'${data[i].fecha_hospitalizacion}', '${data[i].fecha_egreso}','${data[i].dias_hospitalizado}',
+							'${data[i].diag_alta}', '${data[i].anamnesis}', '${data[i].estudios_acciones}', '${data[i].indiciaciones_alta}',
+							'${data[i].resumen_evolucion}' )">
+							Epicrisis
+						</button>
+					</td>
+				
+
+					<td>
+						<button type="button" class="btn btn-primary"
+							onclick="loadModalCirugia('${data[i].id_cirugia}', '${data[i].date_registered}', '${data[i].time_protocol}', 
+							'${data[i].implantes}', '${data[i].descripcion}' )">
+							Cirugia
+						</button>
+					</td>
+
 					
+		
 				</tr>
 				
 					`
@@ -299,6 +318,60 @@ function numberPages(idPaciente){
 }
 
 
+
+
+
+function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizacion,fechaEgreso,
+    diasHospitalizado,diagnosticoAlta,anamnesis,estudiosAcciones, indicacionesAlta,
+    resumenEvolucion){
+
+    var idEpicrisisEdit = document.getElementById('idEpicrisis')
+    var fechaEpicrisisEdit = document.getElementById('fechaEpicrisis')
+    var horaEpicrisisEdit = document.getElementById('horaEpicrisis')
+    var fechaHospitalizacionEdit = document.getElementById('fechaHospitalizacion')
+    var fechaEgresoEdit = document.getElementById('fechaEgresoHospital')
+    var diasHospEdit = document.getElementById('diasHospitalizacion')
+    var diagAltaEdit = document.getElementById('diagAlta')
+    var anamnesisEdit = document.getElementById('anamnesis')
+    var estudiosAccionesEdit = document.getElementById('estudiosAcciones')
+    var indicacionesAltaEdit = document.getElementById('indicacionesAlta')
+    var resumenEvoEdit = document.getElementById('resumenEvolucion')
+
+    idEpicrisisEdit.value = idEpicrisis;
+    fechaEpicrisisEdit.value = fechaEpicrisis;
+    horaEpicrisisEdit.value = horaEpicrisis;
+    fechaHospitalizacionEdit.value = fechaHospitalizacion;
+    fechaEgresoEdit.value = fechaEgreso;
+    diasHospEdit.value = diasHospitalizado;
+    diagAltaEdit.value = diagnosticoAlta;
+    anamnesisEdit.value = anamnesis;
+    estudiosAccionesEdit.value = estudiosAcciones;
+    indicacionesAltaEdit.value = indicacionesAlta
+    resumenEvoEdit.value = resumenEvolucion;
+
+    $('#modalEditEpi').modal('show');
+
+}
+
+
+
+function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, implantes, descripcion,){
+
+    var idCirugiaEdit = document.getElementById('idCirugiaModal')
+    var fechaProtOperaEdit = document.getElementById('fechaProtOpera')
+    var horaProtOperaEdit = document.getElementById('horaProtOpera')
+    var implantesEdit = document.getElementById('implantesProt')
+    var descProtEdit = document.getElementById('descProtOpera')
+
+    idCirugiaEdit.value = idCirugia;
+    fechaProtOperaEdit.value = dateResgistered;
+    horaProtOperaEdit.value = timeProtocol;
+    implantesEdit.value = implantes;
+    descProtEdit.value = descripcion;
+
+    $('#modalEditCirugia').modal('show');
+
+}
 
 
   //////////////////////////////Busqueda por Rut  ////////////////////////////7
