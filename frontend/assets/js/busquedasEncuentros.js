@@ -597,7 +597,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
 
 	  doc.rect(115, 85, 35, 10 )
 	  doc.setFontType("normal");
-	  doc.text(localStorage.getItem("rutPaciente"), 117,90)
+	  doc.text('', 117,90)
 
 	  doc.rect(150, 85, 15, 10 )
 	  doc.setFontType("bold");
