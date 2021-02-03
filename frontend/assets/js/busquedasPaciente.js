@@ -554,3 +554,9 @@ document.getElementById("btnFindPasaporte").addEventListener("click", function(e
 		}
 	});
   });
+
+
+  function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}

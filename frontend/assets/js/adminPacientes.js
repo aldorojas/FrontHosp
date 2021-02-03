@@ -406,3 +406,9 @@ formDeletePaciente.addEventListener('submit', function(e){
 
 	});
 })
+
+
+function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}

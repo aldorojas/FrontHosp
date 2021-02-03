@@ -1177,3 +1177,7 @@ function showDivBusqueda(element)
 
 
 
+function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}

@@ -573,3 +573,9 @@ formEncuentro.addEventListener('submit', async function(e){
 	  doc.save('Epicrisis.pdf')
 
   })
+
+
+  function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}
