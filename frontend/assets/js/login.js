@@ -67,7 +67,7 @@ formLogin.addEventListener('submit', function(e){
 
 
 			window.location.replace("http://134.122.120.195:8080/modulos/inicio.html");
-			//window.location.replace("http://127.0.0.1:5500/modulos/inicio.html");
+			window.location.replace("http://127.0.0.1:5500/modulos/inicio.html");
 
 
 		}
