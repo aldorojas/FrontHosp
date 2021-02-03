@@ -1,17 +1,19 @@
-//window.onload = console.log(localStorage.getItem("DatosLogueado")) 
 window.onload = (function(){
 
-	console.log("id paciente: " + localStorage.getItem("idPaciente")); 
-	console.log("id hospital: " + localStorage.getItem("idHospital")); 
-	console.log("nombre paciente: " + localStorage.getItem("nombrePaciente") + localStorage.getItem("apellidosPaciente") ); 
-	console.log("Fecha nacimiento: " + localStorage.getItem("fechaNacimientoPaciente"))
-	console.log("Sexo paciente: " + localStorage.getItem("sexoPaciente"))
-	console.log("edadPaciente: " + localStorage.getItem("edadPaciente"))
-	console.log("telefonoPaciente: " + localStorage.getItem("telefonoPaciente"))
-	console.log("rutPaciente: " + localStorage.getItem("rutPaciente"))
-	console.log("Nombre del medico: " + localStorage.getItem("nombreMedico") + " " + localStorage.getItem("apellidosMedico") )
+	// console.log("id paciente: " + localStorage.getItem("idPaciente")); 
+	// console.log("id hospital: " + localStorage.getItem("idHospital")); 
+	// console.log("nombre paciente: " + localStorage.getItem("nombrePaciente") + localStorage.getItem("apellidosPaciente") ); 
+	// console.log("Fecha nacimiento: " + localStorage.getItem("fechaNacimientoPaciente"))
+	// console.log("Sexo paciente: " + localStorage.getItem("sexoPaciente"))
+	// console.log("edadPaciente: " + localStorage.getItem("edadPaciente"))
+	// console.log("telefonoPaciente: " + localStorage.getItem("telefonoPaciente"))
+	// console.log("rutPaciente: " + localStorage.getItem("rutPaciente"))
+	// console.log("Nombre del medico: " + localStorage.getItem("nombreMedico") + " " + localStorage.getItem("apellidosMedico") )
 	
 
+	if (localStorage.getItem("nombreMedico") === null) {
+		window.location.href = '../index.html'
+	}
 
 	var titulo = document.getElementById("nombrePaciente")
 	div = '<h1>' +  localStorage.getItem("nombrePaciente") + '</h1> '
@@ -22,10 +24,12 @@ window.onload = (function(){
 		document.getElementById("moduloAdminMed").style.display = 'block'
 		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
-
+	else{
+		loadMedico();
+	}
+	///////////////////////////////////////////
 	
     const urlAPI = 'http://134.122.120.195/api/v1/doctores/list';
-
 	fetch(urlAPI)
 	.then(response => response.json())
 	.then(data => {
@@ -39,7 +43,14 @@ window.onload = (function(){
 	.catch(err => console.log(err))	
 
 })
+//////////////////////////////////////////////////////////////
 
+function loadMedico(){
+	var medico = localStorage.getItem("nombreMedico")
+	document.getElementById("navbarDropdown").innerHTML += medico
+}
+
+////////////////////////////////////////////////////
 function showDivBusqueda(element)
 { 
   //var docs = document.getElementById("docs");

@@ -6,9 +6,26 @@ window.onload = (function(){
 		//console.log("si es admin")
 		document.getElementById("moduloAdminMed").style.display = 'block'
 	  	document.getElementById("moduloAdminHosp").style.display = 'block'
-	  }
+	}
+
+	
+	if (localStorage.getItem("nombreMedico") === null) {
+		window.location.href = '../index.html'
+	}
+	else{
+		loadMedico()
+	}
 	 
 })
+
+
+//////////////////////////
+
+function loadMedico(){
+	var medico = localStorage.getItem("nombreMedico")
+	document.getElementById("navbarDropdown").innerHTML += medico	
+}
+
 
 //////////// Modulos admin
 const opcion = document.querySelectorAll('.opcion');

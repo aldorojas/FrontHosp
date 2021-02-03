@@ -5,11 +5,25 @@ window.onload = (function(){
 	  document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
 
+	if (localStorage.getItem("nombreMedico") === null) {
+		window.location.href = '../index.html'
+	}
+	else{
+		loadMedico();
+	}
+
 	numberPages();
 	const URLTodosMedicos = 'http://134.122.120.195/api/v1/doctores/list/1';
 	allMedicos(URLTodosMedicos)
 
 })
+
+/////////////////////////////////////////////
+
+function loadMedico(){
+	var medico = localStorage.getItem("nombreMedico")
+	document.getElementById("navbarDropdown").innerHTML += medico
+}
 
 
 

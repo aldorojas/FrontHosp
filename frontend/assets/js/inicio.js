@@ -6,6 +6,13 @@ window.onload = (function(){
 		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
 
+	if (localStorage.getItem("nombreMedico") === null) {
+		window.location.href = '../index.html'
+	}
+	else{
+		loadMedico()
+	}
+	
 })
 
 
@@ -21,6 +28,13 @@ opcion.forEach(e => {
 })
 
 
+function loadMedico(){
+	var medico = localStorage.getItem("nombreMedico")
+	document.getElementById("navbarDropdown").innerHTML += medico
+	
+}
+
+
 
 function showDivBusqueda(element)
 { 
@@ -31,10 +45,7 @@ function showDivBusqueda(element)
 }
 
 
-
 ///////////////////
-
-
 
 var formNewPaciente = document.getElementById('formNewPaciente');
 
@@ -93,7 +104,10 @@ formNewPaciente.addEventListener('submit', function(e){
 
 
 
-
+function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}
 
 
 

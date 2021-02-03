@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
     <!-- Required meta tags -->
@@ -66,16 +66,16 @@
              </button>
 
              <li class="dropdown" id="listPrueba">
-              <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="../assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
-                  alt="https://generated.photos/" />  
-                Perfil
+                  <img src="../assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
+                    alt="https://generated.photos/" />  
+                
                 </a>
 
               <ul class="dropdown-menu animated fadeInLeft" role="menu" id="listPrueba2">
                 <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="../index.html">Salir</a></li>
+                <li><button onclick="exit()">Salir</button></li>
               </ul>
               </li>   
 
@@ -158,6 +158,9 @@
                                   </td>
       
                                 </div>
+                                <div class="espacioResponsive">
+                                    
+                                </div>
                             </div>
                           </div>
 
@@ -212,35 +215,6 @@
               </div>
             </div>
           </div>
-
-        <!-- Modal eliminar hospital-->
-        <!-- <div class="modal fade" id="modalBorrarMedico" tabindex="-1" aria-labelledby="modalBorrarMedico" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalBorrarMedico">Eliminar Medico</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form id="formDeleteHospital">
-                    <div class="campo">
-                        <div class="label">Id Hospital: </div>
-                        <input type="text" class="form-control" id="IdHospital" >
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit"  class="btn btn-primary">Eliminar</button>
-                    </div>
-
-                      
-                  </form>
-                </div>
-                
-              </div>
-            </div>
-          </div> -->
 
           <!-- Modal Editar Medico -->
           <div class="modal fade" id="editarHospital" tabindex="-1" aria-labelledby="editarHospital" aria-hidden="true">

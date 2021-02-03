@@ -446,7 +446,7 @@ form .pagina .btns button.adelante{
 .divTableEncuentros {
   overflow:scroll;
   height:800px;
-  width:1318px;
+  width:96.5vw;
 }
 /* .divTableModal {
   overflow:scroll;
@@ -776,15 +776,34 @@ margin-right: 10px;
   background-color: transparent;
 }
 
-
-
-
 #listPrueba2 a::before {
   font-family: fontawesome;
   content: "\f061";
   vertical-align: baseline;
   display: inline-block;
   padding-right: 5px;
+}
+
+#listPrueba2 button::before {
+  font-family: fontawesome;
+  content: "\f061";
+  vertical-align: baseline;
+  display: inline-block;
+  padding-right: 5px;
+  background-color: #fff;
+}
+
+#listPrueba2 button{
+  background-color: #fff;
+  border: none;
+}
+
+.espacioResponsive{
+  padding:5rem
+}
+
+#divMedico{
+  display: inline;
 }
 
 
@@ -1244,7 +1263,7 @@ form .pagina .btns button.adelante{
 
 
 table {
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -1252,8 +1271,8 @@ table {
 }
 
 table tr {
-  background: #f8f8f8;
-  border: 1px solid #ddd;
+  background: #fff;
+  border: 1px solid #fff;
   padding: .35em;
 }
 
@@ -1276,13 +1295,13 @@ table th {
   table thead { display: none; }
   
   table tr {
-    border-bottom: 3px solid #ddd;
+    border-bottom: 3px solid #fff;
     display: block;
     margin-bottom: .625em;
   }
   
   table td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
     display: block;
     font-size: .8em;
     text-align: right;

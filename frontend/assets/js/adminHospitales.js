@@ -5,12 +5,27 @@ window.onload = (function(){
 		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
 	
-	
+	if (localStorage.getItem("nombreMedico") === null) {
+		window.location.href = '../index.html'
+	}
+	else{
+		loadMedico();
+	}
+
+
 	numberPages();
 	const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list/1';
 	allHospitales(URLTodosHospitales);
 
 })
+
+////////////////////////////////////////////////
+
+function loadMedico(){
+	var medico = localStorage.getItem("nombreMedico")
+	document.getElementById("navbarDropdown").innerHTML += medico
+}
+
 
 
 

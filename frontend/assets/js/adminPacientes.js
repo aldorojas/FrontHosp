@@ -1,10 +1,17 @@
 window.onload = (function(){
 	console.log(localStorage.getItem("Admin")); 
 	if(localStorage.getItem("Admin")== "true"){
-	  	//console.log("si es admin")
 	  	document.getElementById("moduloAdminMed").style.display = 'block'
 		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
+
+	if (localStorage.getItem("nombreMedico") === null) {
+		window.location.href = '../index.html'
+	}
+	else{
+		loadMedico()
+	}
+
 
 	numberPages();
 
@@ -12,6 +19,13 @@ window.onload = (function(){
 	allPacientes(urlAPI)
   
 })
+///////////////////////////////////////////////////
+
+function loadMedico(){
+	var medico = localStorage.getItem("nombreMedico")
+	document.getElementById("navbarDropdown").innerHTML += medico
+	
+}
 
 
 const opcion = document.querySelectorAll('.opcion');

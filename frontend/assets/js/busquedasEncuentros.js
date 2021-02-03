@@ -6,13 +6,27 @@ window.onload = (function(){
 	    document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
 
-    numberPages();
 
+    if (localStorage.getItem("nombreMedico") === null) {
+		window.location.href = '../index.html'
+    }
+    else{
+        loadMedico();
+    }
+    
+    numberPages();
     const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
     AllEncuentros(urlAPI)
     
-
 })
+
+
+//////////////////////
+
+function loadMedico(){
+	var medico = localStorage.getItem("nombreMedico")
+	document.getElementById("navbarDropdown").innerHTML += medico
+}
 
 
 
@@ -212,14 +226,6 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, implantes, d
     $('#modalEditCirugia').modal('show');
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -938,7 +944,7 @@ function encuentrosPorBusqueda(URLFindEncuentroDate){
     .then(function(data){ 
         var botones =  data[0]/10
         botones = Math.ceil(botones)
-        console.log(botones)
+        console.log('botonoes' + botones)
         divpieTable.innerHTML = ''
 
         console.log('numero de registros: ' + data[0])
@@ -1071,6 +1077,23 @@ function encuentrosPorBusqueda(URLFindEncuentroDate){
                divPrueba.innerHTML += row
             }
     
+        }
+        if(data[0] == 0){
+            const Toast = Swal.mixin({
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				didOpen: (toast) => {
+					toast.addEventListener('mouseenter', Swal.stopTimer)
+					toast.addEventListener('mouseleave', Swal.resumeTimer)
+				}
+				})
+				Toast.fire({
+				icon: 'error',
+				title: 'No hay coincidencias'
+				})
         }
 
     });
