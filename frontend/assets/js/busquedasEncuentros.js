@@ -605,7 +605,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
 
 	  doc.rect(165, 85, 25, 10 )
 	  doc.setFontType("normal");
-	  doc.text(localStorage.getItem("edadPaciente"), 166, 90)
+	  doc.text('', 166, 90)
 
 	  ///////////////////////////// renglon 2
 	  doc.rect(20, 95, 45, 10 )
