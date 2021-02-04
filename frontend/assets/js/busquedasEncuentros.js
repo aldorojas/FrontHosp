@@ -16,7 +16,7 @@ window.onload = (function(){
     
     
     const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
-    AllEncuentros(urlAPI)
+    AllEncuentros(urlAPI);
 
     numberPages();
     
@@ -843,7 +843,6 @@ function numberPages(){
                 </button>
             </td>
             `
-              
         }
         divpieTable.innerHTML = pagesHtml  
         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
