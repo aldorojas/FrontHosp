@@ -33,7 +33,6 @@ window.onload = (function(){
 	fetch(urlAPI)
 	.then(response => response.json())
 	.then(data => {
-        //console.log(data)
         for(var i = 0; i < data.length; i++){
             console.log(data[i].id)
             $("#doctorAlta").append($("<option>"+data[i].nombre+ ' ' +data[i].apellidos+"</option>"));
