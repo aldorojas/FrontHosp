@@ -14,9 +14,11 @@ window.onload = (function(){
         loadMedico();
     }
     
-    numberPages();
+    
     const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
     AllEncuentros(urlAPI)
+
+    numberPages();
     
 })
 
