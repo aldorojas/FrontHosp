@@ -853,12 +853,6 @@ function numberPages(){
 
 
 
-
-
-var pagesHtml = ''
-var divpieTable = document.getElementById('paginasBotones')
-
-
 function perPage(numPage){
     console.log(numPage)
     urlEncuentrosPagina = 'http://134.122.120.195/api/v1/encuentros/list/' + numPage;
