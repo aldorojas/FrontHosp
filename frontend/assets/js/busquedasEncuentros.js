@@ -775,8 +775,6 @@ formEditEncuentro.addEventListener('submit',async function(e){
 
 
 
-
-
 function deleteEncuentro(idEncuentro){
     const URLDeleteEncuentro = 'http://134.122.120.195/api/v1/encuentro/' + idEncuentro ;
 
@@ -814,7 +812,6 @@ function deleteEncuentro(idEncuentro){
         }
     })
 }
-
 
 
 
