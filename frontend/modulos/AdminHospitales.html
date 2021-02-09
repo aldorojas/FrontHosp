@@ -97,13 +97,30 @@
                 <div class="card rounded-0">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                                <form class="form-inline position-relative d-inline-block my-2">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Agregar hospital
-                                      </button>
-                                    
-                                </form>
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                              <form class="form-inline position-relative d-inline-block my-2">
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                      Agregar hospital
+                                    </button>
+                              </form>
+                          </div>
+                          <div class="col-lg-4 col-md-6 d-flex stat my-3">
+                            <div class="campo">
+                              <div class="label">Buscar por:</div>
+                              <select class="form-control" id="SelectBusqueda" name="form_select" onchange="showDivBusquedaHospitales(this)">
+                                  <option > </option>
+                                  <option value="1">Nombre </option>
+                              </select>
+                            </div>    
+                          </div> 
+                          <div class="col-lg-4 col-md-6 d-flex stat my-3"> 
+                            <div id="formBusqueda1Hosp">
+                              <div class="campo">
+                                <input type="text" class="form-control" id="nombreHospital" placeholder="Nombre hospital">
+                              </div>
+                              <div class="campo">
+                                <button class="btn btn-dark" id="btnFindNombreHospital"> Buscar </button>
+                              </div>
                             </div>
                             
                            
@@ -139,22 +156,19 @@
                                 </thead>
                                 <tbody id="contentTable">
                                     
-                                  
-                                  <!-- 
-                                  <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>@mdo</td>
-                                  <td>@mdo</td>
-                                  </tr> -->
+                                
                                   
                                 </tbody>
                                 </table>
+                                <div class="loader hidden">
+                                  <div class="circle"></div>
+                                  <div class="circle"></div>
+                                  <div class="circle"></div>
+                                </div>
+
                                 <div id="paginasBotones">
                                   <td>
-                                    Paginas: 
+                                  
                                   </td>
       
                                 </div>
@@ -184,15 +198,15 @@
                   <form id="formNewHospital">
                     <div class="campo">
                         <div class="label"> Nombre hospital: </div>
-                        <input type="text" class="form-control" id="nombreHospital" >
+                        <input type="text" class="form-control" id="nombreHospital" onkeypress="return check(event)" required>
                       </div>
                     <div class="campo">
                       <div class="label">Direccion: </div>
-                      <input type="text" class="form-control" id="direccionHospital" >
+                      <input type="text" class="form-control" id="direccionHospital" onkeypress="return check(event)" required >
                     </div>
                     <div class="campo">
                       <div class="label">Telefono: </div>
-                      <input type="text" class="form-control" id="telefonoHospital" >
+                      <input type="text" class="form-control" id="telefonoHospital" required>
                     </div>
                     
 

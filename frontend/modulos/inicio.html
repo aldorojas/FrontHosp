@@ -165,16 +165,16 @@
               <form id="formNewPaciente">
                 <div class="campo">
                   <div class="label">Nombres: </div>
-                  <input type="text" class="form-control" id="nombres" >
+                  <input type="text" class="form-control" id="nombres" onkeypress="return check(event)" required>
                 </div>
                 <div class="campo">
                   <div class="label">Apellidos: </div>
-                  <input type="text" class="form-control" id="apellidos" >
+                  <input type="text" class="form-control" id="apellidos" onkeypress="return check(event)" required>
                 </div>
 
                 <div class="campo">
                   <div class="label">Rut: </div>
-                  <input type="text" class="form-control" id="rut" >
+                  <input type="text" class="form-control" id="rut" required>
                 </div>
 
                 <div class="campo">
@@ -184,17 +184,17 @@
 
                 <div class="campo">
                   <div class="label">Direccion: </div>
-                  <input type="text" class="form-control" id="direccion" >
+                  <input type="text" class="form-control" id="direccion">
                 </div>
 
                 <div class="campo">
                   <div class="label">Telefono: </div>
-                  <input type="text" class="form-control" id="telefono" >
+                  <input type="text" class="form-control" id="telefono" required>
                 </div>
 
                 <div class="campo">
                   <div class="label">Sexo: </div>
-                  <select class="form-control" id="sexo">
+                  <select class="form-control" id="sexo" required>
                     <option>Masculino</option>
                     <option>Femenino</option>
                   </select>
@@ -202,8 +202,23 @@
 
                 <div class="campo">
                   <div class="label">Fecha de nacimiento</div>
-                  <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento">
+                  <input type="date" class="form-control" id="fechaNacimiento" placeholder="Fecha de nacimiento" required>
                 </div>
+
+                <div class="campo">
+                  <div class="label">Alergias: </div>
+                  <input type="text" class="form-control" id="alergiasPaciente" 
+                    placeholder="Alergia1,Alergia2,Alergia3" required>
+                </div>
+
+                <div class="campo">
+                  <div class="label">Tipo de sangre: </div>
+                  <input type="text" class="form-control" id="tipoSangrePaciente" 
+                   required>
+                </div>
+
+
+                
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -98,20 +98,73 @@
                     <div class="card rounded-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                                <div class="col-lg-4 col-md-6 d-flex stat my-3">
                                     <form class="form-inline position-relative d-inline-block my-2">
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                             Agregar Paciente
                                           </button>
                                         
                                     </form>
-                                </div>                        
+                                </div>   
+                                
+                                <div class="col-lg-4 col-md-6 d-flex stat my-3">
+                                  <div class="campo">
+                                      <div class="label">Buscar por:</div>
+                                      <select class="form-control" id="SelectBusqueda" name="form_select" onchange="showDivBusqueda(this)">
+                                          <option > </option>
+                                          <option value="0">Rut</option>
+                                          <option value="1"> Pasaporte</option>
+                                          <option value="2">Nombre </option>
+                                          <option value="3">Fecha nacimiento </option>
+                                      </select>
+                                  </div>    
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 d-flex stat my-3"> 
+                                  <div id="formBusqueda1">
+                                      <div class="campo">
+                                      <input type="text" class="form-control" id="rutPacienteFind" placeholder="Rut paciente">
+                                      </div>
+                                      <div class="campo">
+                                      <button class="btn btn-dark" id="btnFindRut"> Buscar </button>
+                                      </div>
+                                  </div>
+                                  
+                                    <div id="formBusqueda2">
+                                        <div class="campo">
+                                        <input type="text" class="form-control" id="pasaportePacienteFind" placeholder="Pasaporte Paciente">
+                                        </div>
+                                        <div class="campo">
+                                        <button class="btn btn-dark" id="btnFindPasaporte"> Buscar </button>
+                                        </div>
+                                    </div>
+  
+                                    <div id="formBusqueda3">
+                                        <div class="campo">
+                                        <input type="text" class="form-control" id="nombrePacienteFind" placeholder="Nombre Paciente">
+                                        </div>
+                                        <div class="campo">
+                                        <button class="btn btn-dark" id="btnFindNombre"> Buscar </button>
+                                        </div>
+                                    </div>
+                                    <div id="formBusqueda4">
+                                      <div class="campo">
+                                      <input type="date" class="form-control" id="birthDayPacienteFind" >
+                                      </div>
+                                      <div class="campo">
+                                      <button class="btn btn-dark" id="btnFindNombre"> Buscar </button>
+                                    </div>
+                                  </div>
+                               </div> 
                                 
                             </div>
                         </div>
                     </div>
                 </div>
               </section>
+
+
+              
 
 
               <section>
@@ -137,26 +190,22 @@
                                       <th scope="col">Telefono</th>
                                       <th scope="col">Fecha nacimiento</th>
                                       <th scope="col">Sexo</th>
+                                      <th scope="col">Alergias</th>
+                                      <th scope="col">Tipo de sangre</th>
                                       <th scope="col">Acciones</th>
                                       </tr>
                                     </thead>
                                     <tbody id="contentTable">
-                                      <!-- <button class="btn btn-danger btn-sm" title="Eliminar categoria">
-                                        <i class="icon ion-md-trash lead mr-2"></i>
-                                      </button> -->
-                                      
-                                      <!-- 
-                                      <tr>
-                                      <th scope="row">1</th>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>@mdo</td>
-                                      <td>@mdo</td>
-                                      <td>@mdo</td>
-                                      </tr> -->
+                                     
                                       
                                     </tbody>
                                     </table>
+                                    <div class="loader hidden">
+                                      <div class="circle"></div>
+                                      <div class="circle"></div>
+                                      <div class="circle"></div>
+                                    </div>
+                                    
                                     <div id="paginasBotones">
                                       <td>
                                         
@@ -187,18 +236,19 @@
                     </div>
                     <div class="modal-body">
                       <form id="formNewPaciente">
+
                         <div class="campo">
                           <div class="label">Nombres: </div>
-                          <input type="text" class="form-control" id="nombres" >
+                          <input type="text" class="form-control" id="nombres" onkeypress="return check(event)" required>
                         </div>
                         <div class="campo">
-                          <div class="label">Apellios: </div>
-                          <input type="text" class="form-control" id="apellidos" >
+                          <div class="label">Apellidos: </div>
+                          <input type="text" class="form-control" id="apellidos" onkeypress="return check(event)" required>
                         </div>
 
                         <div class="campo">
                           <div class="label">Rut: </div>
-                          <input type="text" class="form-control" id="rut" >
+                          <input type="text" class="form-control" id="rut" required>
                         </div>
 
                         <div class="campo">
@@ -213,12 +263,12 @@
 
                         <div class="campo">
                           <div class="label">Telefono: </div>
-                          <input type="text" class="form-control" id="telefono" >
+                          <input type="phone" class="form-control" id="telefono" required>
                         </div>
 
                         <div class="campo">
                           <div class="label">Sexo: </div>
-                          <select class="form-control" id="sexo">
+                          <select class="form-control" id="sexo" required>
                             <option>Masculino</option>
                             <option>Femenino</option>
                           </select>
@@ -226,7 +276,20 @@
 
                         <div class="campo">
                           <div class="label">Fecha de nacimiento</div>
-                          <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento">
+                          <input type="date" class="form-control" id="fechaNacimiento" placeholder="Fecha de nacimiento" required>
+                        </div>
+
+                        
+                        <div class="campo">
+                          <div class="label">Alergias: </div>
+                          <input type="text" class="form-control" id="alergiasPaciente" 
+                            placeholder="Alergia1,Alergia2,Alergia3" required>
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Tipo de sangre: </div>
+                          <input type="text" class="form-control" id="tipoSangrePaciente" 
+                           required>
                         </div>
 
                         <div class="modal-footer">

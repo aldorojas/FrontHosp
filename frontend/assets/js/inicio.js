@@ -62,6 +62,8 @@ formNewPaciente.addEventListener('submit', function(e){
 	var telefonoNewPaciente = document.getElementById('telefono')
 	var sexoNewPaciente = document.getElementById('sexo')
 	var fechaNacimientoNewPaciente = document.getElementById('fechaNacimiento')
+	var alergiasNewPaciente = document.getElementById('alergiasPaciente')
+	var tipoSangreNewPaciente = document.getElementById('tipoSangrePaciente')
 
 	var headers = {
 		"Content-Type": "application/json"
@@ -78,6 +80,8 @@ formNewPaciente.addEventListener('submit', function(e){
 			"birth_date":fechaNacimientoNewPaciente.value,
 			"nombre": nombreNewPaciente.value, 
 			"apellido": apellidosNewPaciente.value,
+			"alergias": alergiasNewPaciente.value,
+    		"tipo_sangre": tipoSangreNewPaciente.value
 		});
 	console.log(dataToSend)
 	
@@ -109,6 +113,20 @@ function exit(){
 	window.location.href = '../index.html'
 }
 
+
+function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
 
 
 

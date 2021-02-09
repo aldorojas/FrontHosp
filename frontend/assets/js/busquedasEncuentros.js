@@ -16,9 +16,9 @@ window.onload = (function(){
     
     
     const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
-    AllEncuentros(urlAPI);
+    // AllEncuentros(urlAPI);
 
-    numberPages();
+    // numberPages();
     
 })
 
@@ -32,148 +32,144 @@ function loadMedico(){
 
 
 
-function AllEncuentros(urlAPI){
-    //////////////////////////////////// todos los pacientes
-    //const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
-    fetch(urlAPI)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        for(var i = 0; i < data.length; i++){
-            ////////////// Audio ////////////////////
-            if ( data[i].ruta_audio != '' ){
-				var audio = 
-                `<a href="http://134.122.120.195/files/${data[i].ruta_audio}">` + 
-                    '<img src="../assets/img/mp3Logo.png" height="50px" width="45px">' + 
-                '</a>'
-				  //console.log(audio);
-			}
-			else{
-				audio = ''
-            }
+// function AllEncuentros(urlAPI){
+//     //////////////////////////////////// todos los pacientes
+//     //const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
+//     fetch(urlAPI)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data)
+//         for(var i = 0; i < data.length; i++){
+//             ////////////// Audio ////////////////////
+//             if ( data[i].ruta_audio != '' ){
+// 				var audio = 
+//                 `<a href="http://134.122.120.195/files/${data[i].ruta_audio}">` + 
+//                     '<img src="../assets/img/mp3Logo.png" height="50px" width="45px">' + 
+//                 '</a>'
+// 				  //console.log(audio);
+// 			}
+// 			else{
+// 				audio = ''
+//             }
 
-            /////////////////////////////
-            if ( data[i].ruta_exam_electro != '' ){
-				var PDFElectro = 
-                `<a href="http://134.122.120.195/files/${data[i].ruta_exam_electro}">` + 
-                    '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
-                '</a>'
-			}
-			else{
-				PDFElectro = ''
-            }
+//             /////////////////////////////
+//             if ( data[i].ruta_exam_electro != '' ){
+// 				var PDFElectro = 
+//                 `<a href="http://134.122.120.195/files/${data[i].ruta_exam_electro}">` + 
+//                     '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
+//                 '</a>'
+// 			}
+// 			else{
+// 				PDFElectro = ''
+//             }
             
-            ///////////////////////////////77
-            if ( data[i].ruta_exam_lab != '' ){
-				var PDFExamLab = 
-                `<a href="http://134.122.120.195/files/${data[i].ruta_exam_lab}">` + 
-                    '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
-                '</a>'
-			}
-			else{
-				PDFExamLab = ''
-            }
+//             ///////////////////////////////77
+//             if ( data[i].ruta_exam_lab != '' ){
+// 				var PDFExamLab = 
+//                 `<a href="http://134.122.120.195/files/${data[i].ruta_exam_lab}">` + 
+//                     '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
+//                 '</a>'
+// 			}
+// 			else{
+// 				PDFExamLab = ''
+//             }
 
 
-            ///////////////////////////////////////////
-            if ( data[i].eliminado == "True" ){
-				var switch1 = ' <div class="custom-control custom-switch">' +
-					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-					'<label class="custom-control-label" for="customSwitch1"></label>' +
-			  	'</div>'
-			}
-			else{
-				switch1 = ' <div class="custom-control custom-switch">' +
-				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-				'<label class="custom-control-label" for="customSwitch1"></label>' +
-			  '</div>'
-            }
+//             ///////////////////////////////////////////
+//             if ( data[i].eliminado == "True" ){
+// 				var switch1 = ' <div class="custom-control custom-switch">' +
+// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
+// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
+// 			  	'</div>'
+// 			}
+// 			else{
+// 				switch1 = ' <div class="custom-control custom-switch">' +
+// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
+// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
+// 			  '</div>'
+//             }
             
 
-            var row = `
-            <tr>
-                <td scope="row" data-label="Id"> ${data[i].id_encuentro} </td>
-                <td data-label="IdPaciente"> ${data[i].id_paciente}</td>
-                <td data-label="Fecha"> ${data[i].fecha_e}</td>
-                <td data-label="Hora">${data[i].hora_e}</td>
-                <td data-label="Tipo encuentro">${data[i].tipo_2}</td>
-                <td data-label="Diag primario">${data[i].diag_primario}</td>
-                <td data-label="Diag sec">${data[i].diag_secun}</td>
-                <td data-label="Diag sec 2">${data[i].diag_secun2}</td>
-                <td data-label="Audio">
-                    ${audio}
-                </td>
-                <td data-label="PDF Electro">
-                    ${PDFElectro}
-                </td>
-                <td data-label="PDF Exam Lab">
-                    ${PDFExamLab}
-                </td>
-                <td data-label="Notas clinicas">${data[i].notas_clinicas}</td>
-                <td data-label="Res med IA">${data[i].resultado_med_ia}</td>
-                <td data-label="Resul IA">${data[i].resultados_ia}</td>
-                <td data-label="Feedback IA">${data[i].feedback_ia}</td>
-                <td data-label="Id medico">${data[i].id_medico}</td>
-                <td data-label="Id hospital">${data[i].id_hospital}</td>
-                <td data-label="Eliminado">${switch1}</td>
+//             var row = `
+//             <tr>
+//                 <td scope="row" data-label="Id"> ${data[i].id_encuentro} </td>
+//                 <td data-label="IdPaciente"> ${data[i].id_paciente}</td>
+//                 <td data-label="Fecha"> ${data[i].fecha_e}</td>
+//                 <td data-label="Hora">${data[i].hora_e}</td>
+//                 <td data-label="Tipo encuentro">${data[i].tipo_2}</td>
+//                 <td data-label="Diag primario">${data[i].diag_primario}</td>
+//                 <td data-label="Diag sec">${data[i].diag_secun}</td>
+//                 <td data-label="Diag sec 2">${data[i].diag_secun2}</td>
+//                 <td data-label="Audio">
+//                     ${audio}
+//                 </td>
+//                 <td data-label="PDF Electro">
+//                     ${PDFElectro}
+//                 </td>
+//                 <td data-label="PDF Exam Lab">
+//                     ${PDFExamLab}
+//                 </td>
+//                 <td data-label="Notas clinicas">${data[i].notas_clinicas}</td>
+//                 <td data-label="Id medico">${data[i].id_medico}</td>
+//                 <td data-label="Eliminado">${switch1}</td>
 
-                <td data-label="Epicrisis">
-                    <button type="button" class="btn btn-primary"
-                        onclick="loadModalEpi('${data[i].id_epicrisis}','${data[i].fecha_ep}', '${data[i].hora_ep}',
-                        '${data[i].fecha_hospitalizacion}', '${data[i].fecha_egreso}','${data[i].dias_hospitalizado}',
-                        '${data[i].diag_alta}', '${data[i].anamnesis}', '${data[i].estudios_acciones}', '${data[i].indiciaciones_alta}',
-                        '${data[i].resumen_evolucion}' )">
-                        Epicrisis
-                    </button>
-                </td>
+//                 <td data-label="Epicrisis">
+//                     <button type="button" class="btn btn-primary"
+//                         onclick="loadModalEpi('${data[i].id_epicrisis}','${data[i].fecha_ep}', '${data[i].hora_ep}',
+//                         '${data[i].fecha_hospitalizacion}', '${data[i].fecha_egreso}','${data[i].dias_hospitalizado}',
+//                         '${data[i].diag_alta}', '${data[i].anamnesis}', '${data[i].estudios_acciones}', '${data[i].indiciaciones_alta}',
+//                         '${data[i].resumen_evolucion}' )">
+//                         Epicrisis
+//                     </button>
+//                 </td>
                
 
-                <td data-label="Cirugia">
-                    <button type="button" class="btn btn-primary"
-                        onclick="loadModalCirugia('${data[i].id_cirugia}', '${data[i].date_registered}', '${data[i].time_protocol}', 
-                        '${data[i].implantes}', '${data[i].descripcion}' )">
-                        Cirugia
-                    </button>
-                </td>
+//                 <td data-label="Cirugia">
+//                     <button type="button" class="btn btn-primary"
+//                         onclick="loadModalCirugia('${data[i].id_cirugia}', '${data[i].date_registered}', '${data[i].time_protocol}', 
+//                         '${data[i].implantes}', '${data[i].descripcion}' )">
+//                         Cirugia
+//                     </button>
+//                 </td>
     
                 
-                <td data-label="Acciones">
-                    <button onclick="deleteEncuentro(${data[i].id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-                        <i class="icon ion-md-trash "></i>
-                    </button>
-                    <button onclick="editEncuentro(${data[i].id_encuentro},${data[i].id_paciente},'${data[i].fecha_e}',
-                                '${data[i].hora_e}', '${data[i].tipo_2}', '${data[i].diag_primario}',
-                                '${data[i].diag_secun}', '${data[i].diag_secun2}', '${data[i].notas_clinicas}',
-                                '${data[i].resultado_med_ia}', '${data[i].resultados_ia}', '${data[i].feedback_ia}',
-                                ${data[i].id_medico}, ${data[i].id_hospital}, '${data[i].eliminado}', '${data[i].fecha_ep}',
-                                '${data[i].hora_ep}', '${data[i].fecha_hospitalizacion}', '${data[i].fecha_egreso}',
-                                '${data[i].dias_hospitalizado}', '${data[i].diag_alta}', '${data[i].anamnesis}',
-                                '${data[i].estudios_acciones}', '${data[i].indiciaciones_alta}', '${data[i].resumen_evolucion}',
-                                '${data[i].date_registered}', '${data[i].time_protocol}', 
-                                '${data[i].implantes}', '${data[i].descripcion}', '${data[i].id_epicrisis}', '${data[i].id_cirugia}')" 
-                        class="btn btn-info btn-sm" title="Editar Paciente">
-                        <i class="icon ion-md-create "></i>
-                    </button>
-            </td>
-            </tr>
+//                 <td data-label="Acciones">
+//                     <button onclick="deleteEncuentro(${data[i].id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+//                         <i class="icon ion-md-trash "></i>
+//                     </button>
+//                     <button onclick="editEncuentro(${data[i].id_encuentro},${data[i].id_paciente},'${data[i].fecha_e}',
+//                                 '${data[i].hora_e}', '${data[i].tipo_2}', '${data[i].diag_primario}',
+//                                 '${data[i].diag_secun}', '${data[i].diag_secun2}', '${data[i].notas_clinicas}',
+//                                 '${data[i].resultado_med_ia}', '${data[i].resultados_ia}', '${data[i].feedback_ia}',
+//                                 ${data[i].id_medico}, ${data[i].id_hospital}, '${data[i].eliminado}', '${data[i].fecha_ep}',
+//                                 '${data[i].hora_ep}', '${data[i].fecha_hospitalizacion}', '${data[i].fecha_egreso}',
+//                                 '${data[i].dias_hospitalizado}', '${data[i].diag_alta}', '${data[i].anamnesis}',
+//                                 '${data[i].estudios_acciones}', '${data[i].indiciaciones_alta}', '${data[i].resumen_evolucion}',
+//                                 '${data[i].date_registered}', '${data[i].time_protocol}', 
+//                                 '${data[i].implantes}', '${data[i].descripcion}', '${data[i].id_epicrisis}', '${data[i].id_cirugia}')" 
+//                         class="btn btn-info btn-sm" title="Editar Paciente">
+//                         <i class="icon ion-md-create "></i>
+//                     </button>
+//             </td>
+//             </tr>
             
-                `
+//                 `
 
 
-            $( "#tableEncuentros tbody" ).append(row);
+//             $( "#tableEncuentros tbody" ).append(row);
      
-        }
+//         }
         
-        // $(document).ready(function(){
-        //     $('#tableEncuentros').dataTable({
-        //         select: true
-        //     });
-        // });
+//         // $(document).ready(function(){
+//         //     $('#tableEncuentros').dataTable({
+//         //         select: true
+//         //     });
+//         // });
 
-        })
-    .catch(err => console.log(err));
+//         })
+//     .catch(err => console.log(err));
 
-}
+// }
 
 
 
@@ -815,7 +811,6 @@ function deleteEncuentro(idEncuentro){
 
 
 
-
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
@@ -845,8 +840,6 @@ function numberPages(){
         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
 	});
 }
-
-
 
 
 function perPage(numPage){
@@ -916,18 +909,12 @@ function perPageBusqueda(numPage, numRegs , URLAPI){
 
 
 
-
-
-
-
-
-
 function encuentrosPorBusqueda(URLFindEncuentroDate){
     var headers = {
         "Content-Type": "application/json"
      }
 
-     var divPrueba = document.getElementById('resultadosEncuentros')
+    var divPrueba = document.getElementById('resultadosEncuentros')
     divPrueba.innerHTML = ''
 
     fetch(URLFindEncuentroDate, {
@@ -1019,11 +1006,7 @@ function encuentrosPorBusqueda(URLFindEncuentroDate){
                         ${PDFExamLab}
                     </td>
                     <td data-label="Notas clinicas">${datos[i].notas_clinicas}</td>
-                    <td data-label="Res Med IA">${datos[i].resultado_med_ia}</td>
-                    <td data-label="Resul IA">${datos[i].resultados_ia}</td>
-                    <td data-label="Feedbaack IA">${datos[i].feedback_ia}</td>
                     <td data-label="Id Medico">${datos[i].id_medico}</td>
-                    <td data-label="Id Hospital">${datos[i].id_hospital}</td>
                     <td data-label="Eliminado">${switch1}</td>
     
                     <td data-label="Epicrisis">
@@ -1093,10 +1076,6 @@ function encuentrosPorBusqueda(URLFindEncuentroDate){
 
     });
 }
-
-
-
-
 
 
 //////////////////////     Function cambiar formato fecha  //////////////////////////////////
@@ -1176,3 +1155,196 @@ function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
+
+
+
+
+
+
+
+
+
+
+let page = 1;
+const loader = document.querySelector('.loader');
+
+const divPrueba = document.getElementsByClassName('divTableEncuentros')
+
+document.addEventListener("DOMContentLoaded", () => {
+    getData(1);
+    //window.addEventListener("scroll", trottleHandler);
+  });
+
+  
+divPrueba[0].addEventListener('scroll', () => {
+    if (
+        divPrueba[0].scrollTop +
+        divPrueba[0].clientHeight >=
+		divPrueba[0].scrollHeight) {
+        
+            //elem.scrollTop = elem.scrollHeight;
+        page = page + 10;
+        console.log(page)
+
+        loader.classList.remove('hidden');
+		setTimeout(() => {
+			loader.classList.add('hidden');
+			getData(page);
+		}, 2000);
+    }
+
+});
+
+const httpRequestWrapper = (method, URL) => {
+    return new Promise((resolve, reject) => {
+      const xhr_obj = new XMLHttpRequest();
+      xhr_obj.responseType = "json";
+      xhr_obj.open(method, URL);
+      xhr_obj.onload = () => {
+        const data = xhr_obj.response;
+        resolve(data);
+        console.log(data)
+      };
+      xhr_obj.onerror = () => {
+        reject("failed");
+      };
+      xhr_obj.send();
+    });
+  };
+
+//////////////////////////////////////
+
+const getData = async (page_no = 1) => {
+    const data = await httpRequestWrapper(
+      "GET",
+      `http://134.122.120.195/api/v1/encuentros/list/${page_no}`
+    );
+  
+    //const {results} = data;
+    populateUI(data);
+  };
+
+  
+  const populateUI = data => {
+    const container = document.getElementById('resultadosEncuentros');
+    data && 
+    data.length && 
+    data
+    .map((each,index)=>{
+      const {id_encuentro,id_paciente,fecha_e,hora_e,tipo_2,diag_primario,
+        diag_secun,diag_secun2,ruta_audio,ruta_exam_electro, ruta_exam_lab,
+        notas_clinicas, id_medico, eliminado,id_epicrisis,fecha_ep, hora_ep,
+        fecha_hospitalizacion, fecha_egreso, dias_hospitalizado, diag_alta, anamnesis,
+        estudios_acciones, indiciaciones_alta,resumen_evolucion, id_cirugia, date_registered,
+        time_protocol, implantes, descripcion, resultado_med_ia, resultados_ia, feedback_ia, 
+        id_hospital, nombre_completo  } = each;
+        ///////////////////////////////
+        if( ruta_audio != '' ){
+            var audio = 
+            `<a href="http://134.122.120.195/files/${ruta_audio}">` + 
+                '<img src="../assets/img/mp3Logo.png" height="50px" width="45px">' + 
+            '</a>'
+        }
+        else{audio = ''}
+        ///////////////////////////////
+        if ( ruta_exam_electro != '' ){
+            var PDFElectro = 
+            `<a href="http://134.122.120.195/files/${ruta_exam_electro}">` + 
+                '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
+            '</a>'
+        }
+        else{PDFElectro = ''}
+        
+        ///////////////////////////////77
+        if ( ruta_exam_lab != '' ){
+            var PDFExamLab = 
+            `<a href="http://134.122.120.195/files/${ruta_exam_lab}">` + 
+                '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
+            '</a>'
+        }
+        else{PDFExamLab = ''}
+        ///////////////////////////////////////
+        if (eliminado == "True" ){
+            var switch1 = ' <div class="custom-control custom-switch">' +
+                '<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
+                '<label class="custom-control-label" for="customSwitch1"></label>' +
+            '</div>'
+        }
+        else{
+            switch1 = ' <div class="custom-control custom-switch">' +
+            '<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
+            '<label class="custom-control-label" for="customSwitch1"></label>' +
+            '</div>'
+        }
+
+      container.innerHTML += 
+      `
+        <tr>
+            <td scope="row" data-label="Id"> ${id_encuentro} </td>
+            <td data-label="IdPaciente"> ${id_paciente}</td>
+            <td data-label="Fecha"> ${fecha_e}</td>
+            <td data-label="Hora">${hora_e}</td>
+            <td data-label="Tipo encuentro">${tipo_2}</td>
+            <td data-label="Diag primario">${diag_primario}</td>
+            <td data-label="Diag sec">${diag_secun}</td>
+            <td data-label="Diag sec 2">${diag_secun2}</td>
+            <td data-label="Audio">
+                ${audio}
+            </td>
+            <td data-label="PDF Electro">
+                ${PDFElectro}
+            </td>
+            <td data-label="PDF Exam Lab">
+                ${PDFExamLab}
+            </td>
+            <td data-label="Notas clinicas">${notas_clinicas}</td>
+            <td data-label="Nombre Medico">${nombre_completo}</td>
+            <td data-label="Eliminado">${switch1}</td>
+
+            <td data-label="Epicrisis">
+                <button type="button" class="btn btn-primary"
+                    onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}', '${hora_ep}',
+                    '${fecha_hospitalizacion}', '${fecha_egreso}','${dias_hospitalizado}',
+                    '${diag_alta}', '${anamnesis}', '${estudios_acciones}', '${indiciaciones_alta}',
+                    '${resumen_evolucion}' )">
+                    Epicrisis
+                </button>
+            </td>
+            
+
+            <td data-label="Cirugia">
+                <button type="button" class="btn btn-primary"
+                    onclick="loadModalCirugia('${id_cirugia}', '${date_registered}', '${time_protocol}', 
+                    '${implantes}', '${descripcion}' )">
+                    Cirugia
+                </button>
+            </td>
+
+            
+            <td data-label="Acciones">
+                <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+                    <i class="icon ion-md-trash "></i>
+                </button>
+                <button onclick="editEncuentro(${id_encuentro},${id_paciente},'${fecha_e}',
+                            '${hora_e}', '${tipo_2}', '${diag_primario}',
+                            '${diag_secun}', '${diag_secun2}', '${notas_clinicas}',
+                            '${resultado_med_ia}', '${resultados_ia}', '${feedback_ia}',
+                            ${id_medico}, ${id_hospital}, '${eliminado}', '${fecha_ep}',
+                            '${hora_ep}', '${fecha_hospitalizacion}', '${fecha_egreso}',
+                            '${dias_hospitalizado}', '${diag_alta}', '${anamnesis}',
+                            '${estudios_acciones}', '${indiciaciones_alta}', '${resumen_evolucion}',
+                            '${date_registered}', '${time_protocol}', 
+                            '${implantes}', '${descripcion}', '${id_epicrisis}', '${id_cirugia}')" 
+                    class="btn btn-info btn-sm" title="Editar Paciente">
+                    <i class="icon ion-md-create "></i>
+                </button>
+        </td>
+
+
+
+        </tr>
+      
+      `
+    })
+  
+  }

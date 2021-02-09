@@ -13,9 +13,9 @@ window.onload = (function(){
 	}
 
 
-	numberPages();
-	const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list/1';
-	allHospitales(URLTodosHospitales);
+	// numberPages();
+	// const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list/1';
+	// allHospitales(URLTodosHospitales);
 
 })
 
@@ -27,7 +27,10 @@ function loadMedico(){
 }
 
 
-
+function showDivBusquedaMedicos(element)
+{ 
+  document.getElementById("formBusqueda3Med").style.display = element.value == 1 ? 'block' : 'none';
+}
 
 const opcion = document.querySelectorAll('.opcion');
 
@@ -102,8 +105,8 @@ formNewHospital.addEventListener('submit', function(e){
 
 ///////////////////////////////////////// Todos los hospitales
 
-var divPrueba = document.getElementById('contentTable')
-divPrueba.innerHTML = ''
+// var divPrueba = document.getElementById('contentTable')
+// divPrueba.innerHTML = ''
 
 function allHospitales(URLAPI) {
 	
@@ -342,3 +345,149 @@ function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
+
+function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let page = 1;
+const loader = document.querySelector('.loader');
+
+const divPrueba = document.getElementsByClassName('divTable')
+
+document.addEventListener("DOMContentLoaded", () => {
+    getData(1);
+  });
+
+  
+divPrueba[0].addEventListener('scroll', () => {
+    if (
+        divPrueba[0].scrollTop +
+        divPrueba[0].clientHeight >=
+		divPrueba[0].scrollHeight) {
+        
+            //elem.scrollTop = elem.scrollHeight;
+        page = page + 10;
+        console.log(page)
+
+        loader.classList.remove('hidden');
+		setTimeout(() => {
+			loader.classList.add('hidden');
+			getData(page);
+		}, 2000);
+    }
+
+});
+
+const httpRequestWrapper = (method, URL) => {
+    return new Promise((resolve, reject) => {
+      const xhr_obj = new XMLHttpRequest();
+      xhr_obj.responseType = "json";
+      xhr_obj.open(method, URL);
+      xhr_obj.onload = () => {
+        const data = xhr_obj.response;
+        resolve(data);
+        console.log(data)
+      };
+      xhr_obj.onerror = () => {
+        reject("failed");
+      };
+      xhr_obj.send();
+    });
+  };
+
+//////////////////////////////////////
+
+const getData = async (page_no = 1) => {
+    const data = await httpRequestWrapper(
+      "GET",
+      `http://134.122.120.195/api/v1/hospitales/list/${page_no}`
+    );
+  
+    //const {results} = data;
+    populateUI(data);
+  };
+
+  
+  const populateUI = data => {
+    const container = document.getElementById('contentTable');
+    data && 
+    data.length && 
+    data
+    .map((each,index)=>{
+      const {id, hospital, direccion, telefono, activo } = each;
+	  ///////////////////////////////////////
+	  if (activo == true ){
+		var switch1 = ' <div class="custom-control custom-switch">' +
+			'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
+			'<label class="custom-control-label" for="customSwitch1"></label>' +
+		'</div>'
+		//console.log(switch1);
+		}
+		else{
+			switch1 = ' <div class="custom-control custom-switch">' +
+			'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
+			'<label class="custom-control-label" for="customSwitch1"></label>' +
+		'</div>'
+		}
+
+      container.innerHTML += 
+      `
+        <tr>
+			<td scope="row" data-label="Id"> ${id} </td>
+			<td data-label="Hospital"> ${hospital}</td>
+			<td data-label="Direccion">${direccion}</td>
+			<td data-label="Telefono">${telefono}</td>
+			<td data-label="Activo">${switch1}</td>
+			<td data-label="Acciones">
+				<button onclick="deleteHospital(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+					<i class="icon ion-md-trash "></i>
+				</button>
+				<button onclick="editHospital(${id}, '${hospital}', '${direccion}',
+												'${telefono}', '${activo}' )" 
+					class="btn btn-info btn-sm" title="Editar Paciente">
+					<i class="icon ion-md-create "></i>
+				</button>
+			</td>
+        </tr>
+      
+      `
+    })
+  
+  }
+
+
+
+
+

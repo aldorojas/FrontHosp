@@ -47,108 +47,6 @@ function showDivBusqueda(element)
   document.getElementById("formBusqueda3").style.display = element.value == 2 ? 'block' : 'none';
 }
 
-
-
-////////////////////////// Busqueda Nombre //////////////////////////////
-
-document.getElementById("btnFindNombre").addEventListener("click", function(event){
-	event.preventDefault()
-	var nombrePacienteFind = document.getElementById('nombrePacienteFind');
-	const URLFindNombreMEdico = 'http://134.122.120.195/api/v1/paciente/';
-
-	var divPrueba = document.getElementById('card')
-	divPrueba.innerHTML = ''
-
-	//e.preventDefault()
-	var headers = {
-		"Content-Type": "application/json"
-	 }
-	const dataToSend = JSON.stringify(
-		{
-			"method" : "find",
-			"search_for": "nombre",
-			"data_search": nombrePacienteFind.value
-		});
-	console.log(dataToSend)
-
-	fetch(URLFindNombreMEdico, {
-		method: "POST",
-		headers: headers,
-		body: dataToSend
-	})
-	.then(function(response){ 
-		return response.json(); 
-	})
-	.then(function(data){ 
-		if(data.length > 0){
-			for(var i = 0; i < data.length; i++){
-				console.log(data[i].nombre)
-				var nombre = `
-				<div class="blog-post">
-                    <div class="blog-post_img">
-                        <img src="../assets/img/avatarCard.png">
-                    </div>
-                    <div class="blog-post_info"> 
-                        <label class="form-check-label" for="paciente${data[i].id}">
-                        <h1 class="blog-post_title">  Paciente  ${data[i].id} : ${data[i].nombre} ${data[i].apellido} </h1> 
-                        </label>
-
-                        <div class="blog-post_date">
-                        <span> Pasaporte: ${data[i].pasaporte}</span>
-                        <span> Rut: ${data[i].rut}</span>
-                        <span> Direccion: ${data[i].direccion}</span> 
-						<span> Fecha de nacimiento:  ${data[i].birth_date}</span>
-						<span> Edad:  ${data[i].edad}</span>
-                        <span> Telefono:  ${data[i].telefono}</span>
-                        <span> Sexo:  ${data[i].sexo}</span>
-						</div>
-						<div class="row">
-							<div class="col-lg-6 col-md-6 stat  text-center" id="btnVerEncuentro">
-								<button type="button" class="btn btn-primary -primary"
-									onclick="verEncuentros(${data[i].id})">
-									Ver encuentros
-								</button>  
-							</div>
-							<div class="col-lg-6 col-md-6 stat text-center ">  	
-								<button type="button" class="btn btn-primary" 
-									onclick="toEncuentros(${data[i].id}, '${data[i].nombre}', 
-												'${data[i].apellido}', '${data[i].birth_date}',
-												'${data[i].sexo}', '${data[i].edad}','${data[i].telefono}',
-												'${data[i].rut}')"> 
-									
-									Crear encuentro
-								</button>	                                  
-							</div> 
-						</div>
-					</div>
-					
-				</div>
-				`
-				divPrueba.innerHTML += nombre
-			}
-		}
-		else{
-			const Toast = Swal.mixin({
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				timer: 3000,
-				timerProgressBar: true,
-				didOpen: (toast) => {
-					toast.addEventListener('mouseenter', Swal.stopTimer)
-					toast.addEventListener('mouseleave', Swal.resumeTimer)
-				}
-				})
-				Toast.fire({
-					icon: 'error',
-					title: 'No hay coincidencias'
-				})
-
-			$('#exampleModal').modal('show');	
-		}
-	});
-  });
-
   //////////////////////////////////////////////////////////////////
 
   function toEncuentros(idPaciente,nombrePaciente,apellidosPaciente,
@@ -391,6 +289,107 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, implantes, d
 }
 
 
+
+////////////////////////// Busqueda Nombre //////////////////////////////
+
+document.getElementById("btnFindNombre").addEventListener("click", function(event){
+	event.preventDefault()
+	var nombrePacienteFind = document.getElementById('nombrePacienteFind');
+	const URLFindNombreMEdico = 'http://134.122.120.195/api/v1/paciente/';
+
+	var divPrueba = document.getElementById('card')
+	divPrueba.innerHTML = ''
+
+	//e.preventDefault()
+	var headers = {
+		"Content-Type": "application/json"
+	 }
+	const dataToSend = JSON.stringify(
+		{
+			"method" : "find",
+			"search_for": "nombre",
+			"data_search": nombrePacienteFind.value
+		});
+	console.log(dataToSend)
+
+	fetch(URLFindNombreMEdico, {
+		method: "POST",
+		headers: headers,
+		body: dataToSend
+	})
+	.then(function(response){ 
+		return response.json(); 
+	})
+	.then(function(data){ 
+		if(data.length > 0){
+			for(var i = 0; i < data.length; i++){
+				console.log(data[i].nombre)
+				var nombre = `
+				<div class="blog-post">
+                    <div class="blog-post_img">
+                        <img src="../assets/img/avatarCard.png">
+                    </div>
+                    <div class="blog-post_info"> 
+                        <label class="form-check-label" for="paciente${data[i].id}">
+                        	<h1 class="blog-post_title">  Paciente  ${data[i].id} : ${data[i].nombre} ${data[i].apellido} </h1> 
+                        </label>
+
+                        <div class="blog-post_date">
+							<span> Rut: ${data[i].rut}</span>
+							<span> Sexo:  ${data[i].sexo}</span>
+							<span> Fecha de nacimiento:  ${data[i].birth_date}</span>
+							<span> Alergias: ${data[i].alergias} </span>
+							<span> Tipo sangre: ${data[i].tipo_sangre} </span>
+							<span> Direccion: ${data[i].direccion}</span> 
+							<span> Telefono:  ${data[i].telefono}</span>
+							<span> Pasaporte: ${data[i].pasaporte}</span>
+						</div>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 stat  text-center" id="btnVerEncuentro">
+								<button type="button" class="btn btn-primary -primary"
+									onclick="verEncuentros(${data[i].id})">
+									Ver encuentros
+								</button>  
+							</div>
+							<div class="col-lg-6 col-md-6 stat text-center ">  	
+								<button type="button" class="btn btn-primary" 
+									onclick="toEncuentros(${data[i].id}, '${data[i].nombre}', 
+												'${data[i].apellido}', '${data[i].birth_date}',
+												'${data[i].sexo}', '${data[i].edad}','${data[i].telefono}',
+												'${data[i].rut}')"> 
+									Crear encuentro
+								</button>	                                  
+							</div> 
+						</div>
+					</div>
+					
+				</div>
+				`
+				divPrueba.innerHTML += nombre
+			}
+		}
+		else{
+			const Toast = Swal.mixin({
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				didOpen: (toast) => {
+					toast.addEventListener('mouseenter', Swal.stopTimer)
+					toast.addEventListener('mouseleave', Swal.resumeTimer)
+				}
+				})
+				Toast.fire({
+					icon: 'error',
+					title: 'No hay coincidencias'
+				})
+
+			$('#exampleModal').modal('show');	
+		}
+	});
+  });
+
   //////////////////////////////Busqueda por Rut  ////////////////////////////7
 
   document.getElementById("btnFindRut").addEventListener("click", function(event){
@@ -426,26 +425,44 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, implantes, d
 			for(var i = 0; i < data.length; i++){
 				console.log(data[i].nombre)
 				var nombre = `
-					<div class="blog-post">
+				<div class="blog-post">
 					<div class="blog-post_img">
 						<img src="../assets/img/avatarCard.png">
 					</div>
-					<div class="blog-post_info">
-						<input type='radio' id='pacientepaciente${data[i].id}' name='paciente' value='${data[i].id}' required /> 
+					<div class="blog-post_info"> 
 						<label class="form-check-label" for="paciente${data[i].id}">
 							<h1 class="blog-post_title">  Paciente  ${data[i].id} : ${data[i].nombre} ${data[i].apellido} </h1> 
-						</label> 
-						<div class="blog-post_date">
-						<span> Pasaporte: ${data[i].pasaporte}</span>
-						<span> Rut: ${data[i].rut}</span>
-						<span> Direccion: ${data[i].direccion}</span> 
-						<span> Fecha de nacimiento:  ${data[i].birth_date}</span>
-						<span> Telefono:  ${data[i].telefono}</span>
-						<span> Sexo:  ${data[i].sexo}</span>
+						</label>
 
+						<div class="blog-post_date">
+							<span> Rut: ${data[i].rut}</span>
+							<span> Sexo:  ${data[i].sexo}</span>
+							<span> Fecha de nacimiento:  ${data[i].birth_date}</span>
+							<span> Alergias: ${data[i].alergias} </span>
+							<span> Tipo sangre: ${data[i].tipo_sangre} </span>
+							<span> Direccion: ${data[i].direccion}</span> 
+							<span> Telefono:  ${data[i].telefono}</span>
+							<span> Pasaporte: ${data[i].pasaporte}</span>
 						</div>
-					</div>
-					</div>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 stat  text-center" id="btnVerEncuentro">
+								<button type="button" class="btn btn-primary -primary"
+									onclick="verEncuentros(${data[i].id})">
+									Ver encuentros
+								</button>  
+							</div>
+							<div class="col-lg-6 col-md-6 stat text-center ">  	
+								<button type="button" class="btn btn-primary" 
+									onclick="toEncuentros(${data[i].id}, '${data[i].nombre}', 
+												'${data[i].apellido}', '${data[i].birth_date}',
+												'${data[i].sexo}', '${data[i].edad}','${data[i].telefono}',
+												'${data[i].rut}')"> 
+									Crear encuentro
+								</button>	                                  
+							</div> 
+						</div>
+					</div>		
+				</div>
 				`
 				
 				divPrueba.innerHTML += nombre
@@ -509,26 +526,44 @@ document.getElementById("btnFindPasaporte").addEventListener("click", function(e
 			for(var i = 0; i < data.length; i++){
 				console.log(data[i].nombre)
 				var nombre = `
-					<div class="blog-post">
+				<div class="blog-post">
 					<div class="blog-post_img">
 						<img src="../assets/img/avatarCard.png">
 					</div>
-					<div class="blog-post_info">
-						<input type='radio' id='pacientepaciente${data[i].id}' name='paciente' value='${data[i].id}' required /> 
+					<div class="blog-post_info"> 
 						<label class="form-check-label" for="paciente${data[i].id}">
 							<h1 class="blog-post_title">  Paciente  ${data[i].id} : ${data[i].nombre} ${data[i].apellido} </h1> 
-						</label> 
+						</label>
+
 						<div class="blog-post_date">
-						<span> Pasaporte: ${data[i].pasaporte}</span>
-						<span> Rut: ${data[i].rut}</span>
-						<span> Direccion: ${data[i].direccion}</span> 
-						<span> Fecha de nacimiento:  ${data[i].birth_date}</span>
-						<span> Telefono:  ${data[i].telefono}</span>
-						<span> Sexo:  ${data[i].sexo}</span>
-						
+							<span> Rut: ${data[i].rut}</span>
+							<span> Sexo:  ${data[i].sexo}</span>
+							<span> Fecha de nacimiento:  ${data[i].birth_date}</span>
+							<span> Alergias: ${data[i].alergias} </span>
+							<span> Tipo sangre: ${data[i].tipo_sangre} </span>
+							<span> Direccion: ${data[i].direccion}</span> 
+							<span> Telefono:  ${data[i].telefono}</span>
+							<span> Pasaporte: ${data[i].pasaporte}</span>
 						</div>
-					</div>
-					</div>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 stat  text-center" id="btnVerEncuentro">
+								<button type="button" class="btn btn-primary -primary"
+									onclick="verEncuentros(${data[i].id})">
+									Ver encuentros
+								</button>  
+							</div>
+							<div class="col-lg-6 col-md-6 stat text-center ">  	
+								<button type="button" class="btn btn-primary" 
+									onclick="toEncuentros(${data[i].id}, '${data[i].nombre}', 
+												'${data[i].apellido}', '${data[i].birth_date}',
+												'${data[i].sexo}', '${data[i].edad}','${data[i].telefono}',
+												'${data[i].rut}')"> 
+									Crear encuentro
+								</button>	                                  
+							</div> 
+						</div>
+					</div>		
+				</div>
 				`
 				divPrueba.innerHTML += nombre
 			}
@@ -559,4 +594,19 @@ document.getElementById("btnFindPasaporte").addEventListener("click", function(e
   function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
+}
+
+
+function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
 }

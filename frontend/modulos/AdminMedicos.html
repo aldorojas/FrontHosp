@@ -97,16 +97,55 @@
                   <div class="container">
                       <div class="card rounded-0">
                           <div class="card-body">
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="row">
+                                  <div class="col-lg-4 col-md-6 d-flex stat my-3">
                                       <form class="form-inline position-relative d-inline-block my-2">
                                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                               Agregar medico
                                             </button>
-                                          
                                       </form>
-                                  </div>                      
-                              </div>
+                                  </div> 
+                                  <div class="col-lg-4 col-md-6 d-flex stat my-3">
+                                    <div class="campo">
+                                        <div class="label">Buscar por:</div>
+                                        <select class="form-control" id="SelectBusqueda" name="form_select" onchange="showDivBusquedaMedicos(this)">
+                                            <option > </option>
+                                            <option value="0">Rut</option>
+                                            <option value="1"> Especialidad</option>
+                                            <option value="2">Nombre </option>
+                                        </select>
+                                    </div>    
+                                  </div> 
+                                  <div class="col-lg-4 col-md-6 d-flex stat my-3"> 
+                                    <div id="formBusqueda1Med">
+                                        <div class="campo">
+                                        <input type="text" class="form-control" id="rutMedicoFind" placeholder="Rut Medico">
+                                        </div>
+                                        <div class="campo">
+                                        <button class="btn btn-dark" id="btnFindRut"> Buscar </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="formBusqueda2Med">
+                                        <div class="campo">
+                                        <input type="text" class="form-control" id="pasaporteMedicoFind" placeholder="Especialidad Medico">
+                                        </div>
+                                        <div class="campo">
+                                        <button class="btn btn-dark" id="btnFindPasaporte"> Buscar </button>
+                                        </div>
+                                    </div>
+    
+                                    <div id="formBusqueda3Med">
+                                        <div class="campo">
+                                          <input type="text" class="form-control" id="nombreMedicoFind" placeholder="Nombre Medico">
+                                        </div>
+                                        <div class="campo">
+                                          <button class="btn btn-dark" id="btnFindNombre"> Buscar </button>
+                                        </div>
+                                    </div>
+                                    
+                                  </div>                     
+                            </div>
                           </div>
                       </div>
                   </div>
@@ -144,21 +183,17 @@
                                       <tbody id="contentTable">
                                           
                                         
-                                        <!-- 
-                                        <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        </tr> -->
-                                        
                                       </tbody>
                                       </table>
+                                      <div class="loader hidden">
+                                        <div class="circle"></div>
+                                        <div class="circle"></div>
+                                        <div class="circle"></div>
+                                      </div>
+                                      
                                       <div id="paginasBotones">
                                         <td>
-                                          Paginas: 
+                                          
                                         </td>
             
                                       </div>
@@ -187,38 +222,41 @@
                         <form id="formNewMedico">
                           <div class="campo">
                               <div class="label">Id Hospital: </div>
-                              <input type="text" class="form-control" id="IdHospital" >
+                              <input type="text" class="form-control" id="IdHospital" required>
                             </div>
                           <div class="campo">
                             <div class="label">Nombre(s): </div>
-                            <input type="text" class="form-control" id="nombreMedico" >
+                            <input type="text" class="form-control" id="nombreMedico" onkeypress="return check(event)" required>
                           </div>
                           <div class="campo">
-                            <div class="label">Apellios: </div>
-                            <input type="text" class="form-control" id="apellidosMedico" >
+                            <div class="label">Apellidos: </div>
+                            <input type="text" class="form-control" id="apellidosMedico" onkeypress="return check(event)" required>
                           </div>
                           <div class="campo">
                               <div class="label">Telefono: </div>
-                              <input type="text" class="form-control" id="telefonoMedico" >
+                              <input type="text" class="form-control" id="telefonoMedico" required>
                             </div>
                           <div class="campo">
                             <div class="label">Especialidad: </div>
-                            <input type="text" class="form-control" id="especialidadMedico" >
+                            <input type="text" class="form-control" id="especialidadMedico" onkeypress="return check(event)" required>
                           </div>
 
                           <div class="campo">
                             <div class="label">Rut Medico: </div>
-                            <input type="text" class="form-control" id="rutMedico" >
+                            <input type="text" class="form-control" id="rutMedico" required>
                           </div>
 
                           <div class="campo">
                             <div class="label">Staff </div>
-                            <input type="text" class="form-control" id="staffMedico" >
+                            <select class="form-control" id="staffMedico" required>
+                              <option value="True">Si</option>
+                              <option value="False">No</option>
+                            </select>
                           </div>
 
                           <div class="campo">
                             <div class="label">Becario: </div>
-                            <select class="form-control" id="becarioMedico">
+                            <select class="form-control" id="becarioMedico" required>
                               <option value="True">Si</option>
                               <option value="False">No</option>
                             </select>
@@ -226,7 +264,7 @@
 
                           <div class="campo">
                             <div class="label">Interno: </div>
-                            <select class="form-control" id="internoMedico">
+                            <select class="form-control" id="internoMedico" required>
                               <option value="True">Si</option>
                               <option value="False">No</option>
                             </select>
@@ -234,14 +272,14 @@
 
                           <div class="campo">
                               <div class="label">Activo: </div>
-                              <select class="form-control" id="activoMedico">
+                              <select class="form-control" id="activoMedico" required>
                                 <option value="True">Activo</option>
                                 <option value="False">Inactivo</option>
                               </select>
                           </div>
                           <div class="campo">
                               <div class="label">Admin: </div>
-                              <select class="form-control" id="adminMedico">
+                              <select class="form-control" id="adminMedico" required>
                                 <option value="True">Si</option>
                                 <option value="False">No</option>
                               </select>
