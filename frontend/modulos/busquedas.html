@@ -121,7 +121,7 @@
                             </div>    
                         </div>
                         <div class="col-lg-6 col-md-6 d-flex stat my-3"> 
-                            <div id="formBusqueda1">
+                            <form id="formBusqueda1">
                                 <div class="campo">
                                 <input type="date" class="form-control" id="dateEncuentroFind">
                                 </div>
@@ -129,25 +129,25 @@
                                 <button type="submit" class="btn btn-dark" id="btnFindDate"> Buscar </button>
                                 </div>
                                 
-                            </div>
+                            </form>
                             
-                            <div id="formBusqueda2">
-                                <div class="campo">
-                                  <!-- <input type="text" class="form-control" id="pasaportePacienteFind" placeholder="Pasaporte Paciente"> -->
-                                  <div class="label">Tipo encuentro</div>
-                                  <select class="form-control" id="tipoEncuentroFind">
-                                    <option value="Control">Control</option>
-                                      <option value="Comite">Comite </option>
-                                      <option value="Control-Pre cirugia">Control-Pre cirugia</option>
-                                      <option value="Cirugia">Cirugia</option>
-                                      <option value="Control-Post cirugia">Control-Post cirugia</option>
-                                  </select>
-                                </div>
-                                <div class="campo">
+                            <form id="formBusqueda2">
+                              <div class="campo">
+                                <!-- <input type="text" class="form-control" id="pasaportePacienteFind" placeholder="Pasaporte Paciente"> -->
+                                <div class="label">Tipo encuentro</div>
+                                <select class="form-control" id="tipoEncuentroFind">
+                                  <option value="Control">Control</option>
+                                    <option value="Comite">Comite </option>
+                                    <option value="Control-Pre cirugia">Control-Pre cirugia</option>
+                                    <option value="Cirugia">Cirugia</option>
+                                    <option value="Control-Post cirugia">Control-Post cirugia</option>
+                                </select>
+                              </div>
+                              <div class="campo">
                                 <button  type="submit" class="btn btn-dark" id="btnFindTipoEncuentro"> Buscar </button>
-                                </div>
+                              </div>
                                 
-                            </div>
+                            </form>
 
                         </div>       
                             
@@ -188,7 +188,7 @@
                                         
                                         <th scope="col">Nombre medico</th>
                                         <!-- <th scope="col">Id Hospital</th> -->
-                                        <th scope="col">Eliminado</th>
+                                        <!-- <th scope="col">Eliminado</th> -->
 
                                         <th scope="col">Epicrisis </th>
                                         <th scope="col">Cirugia</th>

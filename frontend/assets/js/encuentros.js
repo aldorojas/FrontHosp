@@ -61,10 +61,7 @@ function showDivBusqueda(element)
 //////////////////////////
 
 ////////////////////////////////// new PAciente ///////////////////
-
-
-var formNewPaciente = document.getElementById('formNewPaciente');
-
+var formNewPaciente = document.getElementById('formNewPaciente')
 formNewPaciente.addEventListener('submit', function(e){
 
 	const URLNewPaciente = 'http://134.122.120.195/api/v1/paciente/';
@@ -119,7 +116,7 @@ formNewPaciente.addEventListener('submit', function(e){
 })
 
 	
-
+//////////////////////////////////////
 	function getBase64(files, onLoadCallback) {
         return new Promise(function(resolve, reject) {
             var reader = new FileReader();
@@ -130,43 +127,41 @@ formNewPaciente.addEventListener('submit', function(e){
             reader.readAsDataURL(files[0]);
         });
 	}
-	
-	
 
 
-	/////////////////// Audio ////////////////
+/////////////////// Audio ////////////////
 
-	var context = new AudioContext();
-	var source = null;
-	var audioBuffer = null;
+var context = new AudioContext();
+var source = null;
+var audioBuffer = null;
 
-	var bufferToBase64 = function (buffer) {
-		var bytes = new Uint8Array(buffer);
-		var len = buffer.byteLength;
-		var binary = "";
-		for (var i = 0; i < len; i++) {
-			binary += String.fromCharCode(bytes[i]);
-		}
-		return window.btoa(binary);
-	};
-
-	///////////////////////////////////////////////////////////////////////////////////
-	function initSound(arrayBuffer) {
-		var base64String = bufferToBase64(arrayBuffer);
-		//console.log(base64String)
-		return base64String
+var bufferToBase64 = function (buffer) {
+	var bytes = new Uint8Array(buffer);
+	var len = buffer.byteLength;
+	var binary = "";
+	for (var i = 0; i < len; i++) {
+		binary += String.fromCharCode(bytes[i]);
 	}
+	return window.btoa(binary);
+};
+
+///////////////////////////////////////////////////////////////////////////////////
+function initSound(arrayBuffer) {
+	var base64String = bufferToBase64(arrayBuffer);
+	//console.log(base64String)
+	return base64String
+}
 
 
-	function getAudioBase64(files, onLoadCallback){
-		return new Promise(function() {
-			var reader = new FileReader();
-			reader.onload = function (e) {
-				initSound(files);
-			};
-			reader.readAsArrayBuffer(files[0]);
-		});
-	}
+function getAudioBase64(files, onLoadCallback){
+	return new Promise(function() {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			initSound(files);
+		};
+		reader.readAsArrayBuffer(files[0]);
+	});
+}
 
 
 
@@ -178,10 +173,6 @@ formEncuentro.addEventListener('submit', async function(e){
 	const URLNewEncuentro = 'http://134.122.120.195/api/v1/encuentro';
 
 	e.preventDefault()
-	// var inputRadios = document.querySelectorAll('input[type="radio"]:checked');
-	// var idPaciente = inputRadios.length>0? inputRadios[0].value: null;
-
-
 	//Audio  ///////////////
 
 	let Base64Audio = "";
@@ -234,7 +225,7 @@ formEncuentro.addEventListener('submit', async function(e){
 	var fecha_egreso = document.getElementById('fechaEgresoHospital')
 	var dias_de_hosp = document.getElementById('diasHospitalizacion')
 	var diag_alta = document.getElementById('diagAlta')
-	var anamnesis = document.getElementById('anamnesis')
+	// var anamnesis = document.getElementById('anamnesis')
 	var estudios_acciones = document.getElementById('estudiosAcciones')
 	var resumenEvolucion = document.getElementById('resumenEvolucion')
 	var indicacionesAlta = document.getElementById('indicacionesAlta')
@@ -264,14 +255,14 @@ formEncuentro.addEventListener('submit', async function(e){
 			"id_medico" : localStorage.getItem("idMedico"),
 			"id_hospital" : localStorage.getItem("idHospital"),
 			"id_paciente" : localStorage.getItem("idPaciente"),
-			"eliminado" : eliminadoEncuentro.value,
+			"eliminado" : "False",
 			"fecha_ep": fecha_epicrisis.value,
 			"fecha_hospitalizacion":fecha_in_hospi.value,
 			"fecha_egreso":fecha_egreso.value,
 			"hora_ep": hora_epicris.value,
 			"dias_hospitalizado":dias_de_hosp.value,
 			"diag_alta": diag_alta.value,
-			"anamnesis":anamnesis.value,
+			"anamnesis": '',
 			"estudios_acciones":estudios_acciones.value,
 			"resumen_evolucion" : resumenEvolucion.value,
 			"indiciaciones_alta" : indicacionesAlta.value,
@@ -317,21 +308,32 @@ formEncuentro.addEventListener('submit', async function(e){
   var BtnGuardarProtOpera = document.getElementById('guardarProtOpera');
 
   BtnGuardarProtOpera.addEventListener('click', function(e){
-	  e.preventDefault()
-  
-	  // PDFs //
+		e.preventDefault()
 	
-	  ////////////
-	  var fechaRegistro = document.getElementById('fechaRegistro')
-	  var horaRegistro = document.getElementById('horaRegistro')
-	  var implantesRegistro = document.getElementById('implantesRegistro')
-	  var descProcedimiento = document.getElementById('descProcedimiento')
-  
-	  var doc = new jsPDF()
-	  doc.setFontType("bold");
-	  doc.setFontSize(14);
-	  doc.text('Protocolo Operatorio',80,20)
-	  doc.setFontSize(12);
+		// PDFs //
+		
+		////////////
+		var fechaRegistro = document.getElementById('fechaRegistro')
+		var horaRegistro = document.getElementById('horaRegistro')
+		var implantesRegistro = document.getElementById('implantesRegistro')
+		var descProcedimiento = document.getElementById('descProcedimiento')
+	
+		var doc = new jsPDF()
+		doc.setFontType("bold");
+		doc.setFontSize(14);
+		doc.text('Protocolo Operatorio',80,20)
+		doc.setFontSize(12);
+
+		doc.setFontType("normal");
+		doc.setFontSize(8);
+		doc.text('Rut:	' + localStorage.getItem("rutPaciente") ,20,40)
+		doc.text('Nombre Paciente:	' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,45)
+		doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,20,50)
+		doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
+		doc.text('Direccion:	' + localStorage.getItem("direccionPaciente") ,20,60)
+
+
+
 
 	  doc.text('Diagnostico quirurgico postoperatorio',20,70)
 	  doc.setFontType("normal");
@@ -353,10 +355,10 @@ formEncuentro.addEventListener('submit', async function(e){
 
 	  doc.setFontType("bold");
 	  doc.setFontSize(12);
-	  doc.text('Implantes',20,250)
-	  doc.setFontType("normal");
-	  doc.setFontSize(8);
-	  doc.text(implantesRegistro.value,20,255)
+	//   doc.text('Implantes',20,250)
+	//   doc.setFontType("normal");
+	//   doc.setFontSize(8);
+	//   doc.text(implantesRegistro.value,20,255)
 
 	  doc.text('Especialidad:' + 'Columna',20,280)
 	  doc.text('Responsable' + '',80,280)
@@ -381,11 +383,12 @@ formEncuentro.addEventListener('submit', async function(e){
 	  var fechaHospitalizacion = document.getElementById('fechaHospitalizacion')
 	  var fechaEgresoHospital = document.getElementById('fechaEgresoHospital')
 	  var diasHospitalizado = document.getElementById('diasHospitalizacion')
-	  var anamnesis = document.getElementById('anamnesis')
+	//   var anamnesis = document.getElementById('anamnesis')
 	  var estudiosAcciones = document.getElementById('estudiosAcciones')
 	  var resumenEvolucion = document.getElementById('resumenEvolucion')
 	  var indicacionesAlta = document.getElementById('indicacionesAlta')
 	  var doctorAlta = document.getElementById('doctorAlta')
+	  var especialidadDocAlta = document.getElementById('espDocAlta')
 
 	  
   
@@ -396,14 +399,12 @@ formEncuentro.addEventListener('submit', async function(e){
 	  
 	  doc.setFontType("normal");
 	  doc.setFontSize(11);
-	  doc.text('Nombre paciente:	' + localStorage.getItem("nombrePaciente") + ' ' 
-					  + localStorage.getItem("apellidosPaciente") ,20,40)
-	  doc.text('Aseguradora:	VIDA TRES S.A.',20,45)
-	  doc.text('Fecha de nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,50)
-	  doc.text('Medico tratante:	' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),20,55)
-	  doc.text('RUT medico tratante:',20,60)
+	  doc.text('Rut:	' + localStorage.getItem("rutPaciente") ,20,40)
+	  doc.text('Nombre Paciente:	' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,45)
+	  doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,20,50)
+	  doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
+	  doc.text('Direccion:	' + localStorage.getItem("direccionPaciente") ,20,60)
 
-	  doc.text('Identificacion RU:',130,45)
 	  doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,130,50)
 	  doc.text('Sexo: ' + localStorage.getItem("sexoPaciente"),165,50)
 	  doc.text('Episodio:',130,55)
@@ -490,13 +491,13 @@ formEncuentro.addEventListener('submit', async function(e){
 	  doc.setFontType("normal");
 	  doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 130)
 	
-	  doc.rect(115, 125, 40, 10 )
+	  doc.rect(115, 125, 30, 10 )
 	  doc.setFontType("bold");
 	  doc.text('ESPECIALIDAD:', 116, 130)
 
-	  doc.rect(155, 125, 35, 10 )
+	  doc.rect(145, 125, 45, 10 )
 	  doc.setFontType("normal");
-	  doc.text('', 151, 130)
+	  doc.text(localStorage.getItem("especialidad"), 146, 130)
 
 	//   ////////////////////////renglon 5
 	  doc.rect(20, 135, 40, 10 )
@@ -507,22 +508,22 @@ formEncuentro.addEventListener('submit', async function(e){
 	  doc.setFontType("normal");
 	  doc.text(doctorAlta.value, 61, 140)
 
-	  doc.rect(115, 125, 40, 10 )
+	  doc.rect(115, 125, 30, 10 )
 	  doc.setFontType("bold");
 	  doc.text('ESPECIALIDAD:', 116, 140)
 
-	  doc.rect(155, 135, 35, 10 )
+	  doc.rect(145, 135, 45, 10 )
 	  doc.setFontType("normal");
-	  doc.text('', 151, 140)
+	  doc.text(especialidadDocAlta.value, 146, 140)
 
 	//   ///////////////////////// renglon 6
-	  doc.rect(20, 145, 45, 10 )
-	  doc.setFontType("bold");
-	  doc.text('MOTIVO DE ALTA:', 21, 150)
+	//   doc.rect(20, 145, 45, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('MOTIVO DE ALTA:', 21, 150)
 
-	  doc.rect(65, 145, 125, 10 )
-	  doc.setFontType("normal");
-	  doc.text('', 66, 150)
+	//   doc.rect(65, 145, 125, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('', 66, 150)
 
 	//   /////////////////////////// DIAGNOSTICO ALTA
 	  doc.rect(20, 165, 170, 10 )
@@ -540,9 +541,9 @@ formEncuentro.addEventListener('submit', async function(e){
 	  ////////////////////////////
 	  doc.rect(20, 195, 170, 90 )
 	  doc.setFontType("bold");
-	  doc.text('ANAMNESIS DE:', 21, 200)
+	  doc.text('ESTUDIOS Y ACCIONES:', 21, 200)
 	  doc.setFontType("normal");
-	  doc.text(anamnesis.value, 21, 210)
+	  doc.text(estudiosAcciones.value, 21, 210)
 
 	  //////////////////////////// Pagina 2
 	  ///////////////////////////////
@@ -550,21 +551,21 @@ formEncuentro.addEventListener('submit', async function(e){
 
 	  doc.rect(20, 15, 170, 40 )
 	  doc.setFontType("bold");
-	  doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
+	  doc.text('RESUMEN DE EVOLUCION:', 21, 20)
 	  doc.setFontType("normal");
-	  doc.text(estudiosAcciones.value, 21, 30)
+	  doc.text(resumenEvolucion.value, 21, 30)
 	
 	  doc.rect(20, 65, 170, 40 )
 	  doc.setFontType("bold");
-	  doc.text('RESUMEN DE EVOLUCION:', 21, 70)
+	  doc.text('INDICACIONES DE ALTA:', 21, 70)
 	  doc.setFontType("normal");
-	  doc.text(resumenEvolucion.value, 21, 80)
+	  doc.text(indicacionesAlta.value, 21, 80)
 
-	  doc.rect(20, 115, 170, 40 )
-	  doc.setFontType("bold");
-	  doc.text('INDICACIONES DE ALTA:', 21, 120)
-	  doc.setFontType("normal");
-	  doc.text(indicacionesAlta.value, 21, 130)
+	//   doc.rect(20, 115, 170, 40 )
+	//   doc.setFontType("bold");
+	//   doc.text('INDICACIONES DE ALTA:', 21, 120)
+	//   doc.setFontType("normal");
+	//   doc.text(indicacionesAlta.value, 21, 130)
 
 
 

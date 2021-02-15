@@ -33,6 +33,42 @@ function showDivBusquedaMedicos(element)
   document.getElementById("formBusqueda3Med").style.display = element.value == 2 ? 'block' : 'none';
 }
 
+function validateStaff(element){ 
+	if (element.value == 'True'){
+		document.getElementById('becarioMedico').value = 'False'
+		document.getElementById('becarioMedico').disabled = true
+		document.getElementById('internoMedico').value = 'False'
+		document.getElementById('internoMedico').disabled = true
+	}
+	else{
+		document.getElementById('becarioMedico').disabled = false
+		document.getElementById('internoMedico').disabled = false
+	}
+}
+function validateBecario(element){ 
+	if (element.value == 'True'){
+		document.getElementById('staffMedico').value = 'False'
+		document.getElementById('staffMedico').disabled = true
+		document.getElementById('internoMedico').value = 'False'
+		document.getElementById('internoMedico').disabled = true
+	}
+	else{
+		document.getElementById('staffMedico').disabled = false
+		document.getElementById('internoMedico').disabled = false
+	}
+}
+function validateInterno(element){ 
+	if (element.value == 'True'){
+		document.getElementById('staffMedico').value = 'False'
+		document.getElementById('staffMedico').disabled = true
+		document.getElementById('becarioMedico').value = 'False'
+		document.getElementById('becarioMedico').disabled = true
+	}
+	else{
+		document.getElementById('staffMedico').disabled = false
+		document.getElementById('becarioMedico').disabled = false
+	}
+}
 
 const opcion = document.querySelectorAll('.opcion');
 
@@ -239,54 +275,52 @@ formNewMedico.addEventListener('submit', function(e){
 
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
-function numberPages(){
-    urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/medicos';
-    pagesHtml =  ''
-    fetch(urlAPIPages)
-	.then(function(response){ 
-		return response.json(); 
-	})
-	.then(function(data){
-        console.log(data)
-        var botones =  data.numbers_entries/10
-        botones = Math.ceil(botones)
-        //console.log(botones)
+// function numberPages(){
+//     urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/medicos';
+//     pagesHtml =  ''
+//     fetch(urlAPIPages)
+// 	.then(function(response){ 
+// 		return response.json(); 
+// 	})
+// 	.then(function(data){
+//         console.log(data)
+//         var botones =  data.numbers_entries/10
+//         botones = Math.ceil(botones)
+//         //console.log(botones)
 
-        for(var i = 1; i < botones + 1; i++){
-            pagesHtml += `
-            <td>
-                <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
-                    ${i}
-                </button>
-            </td>
-            `
+//         for(var i = 1; i < botones + 1; i++){
+//             pagesHtml += `
+//             <td>
+//                 <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
+//                     ${i}
+//                 </button>
+//             </td>
+//             `
               
-        }
-        divpieTable.innerHTML = pagesHtml  
-        //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-	});
-}
+//         }
+//         divpieTable.innerHTML = pagesHtml  
+//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
+// 	});
+// }
 
 
-function perPage(numPage){
-    console.log(numPage)
-    urlMedicosPagina = 'http://134.122.120.195/api/v1/doctores/list/' + numPage;
-    //console.log(urlEncuentrosPagina)
-    var divPrueba = document.getElementById('contentTable')
-    divPrueba.innerHTML = ''
+// function perPage(numPage){
+//     console.log(numPage)
+//     urlMedicosPagina = 'http://134.122.120.195/api/v1/doctores/list/' + numPage;
+//     //console.log(urlEncuentrosPagina)
+//     var divPrueba = document.getElementById('contentTable')
+//     divPrueba.innerHTML = ''
     
-    fetch(urlMedicosPagina)
-	.then(function(response){ 
-		return response.json(); 
-	})
-	.then(function(data){ 
-        console.log(data)
-        allMedicos(urlMedicosPagina)
-        numberPages()
-	});
-}
-
-
+//     fetch(urlMedicosPagina)
+// 	.then(function(response){ 
+// 		return response.json(); 
+// 	})
+// 	.then(function(data){ 
+//         console.log(data)
+//         allMedicos(urlMedicosPagina)
+//         numberPages()
+// 	});
+// }
 ///////////////////////////////////////////////////////////////////////////////////
 	
 function deleteMedico(idMedico){
@@ -444,43 +478,56 @@ formEditMedico.addEventListener('submit', function(e){
 })
 
 
-function exit(){
-	window.localStorage.clear();
-	window.location.href = '../index.html'
-}
-
-
-function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
-
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
-
-    // Patron de entrada, en este caso solo acepta numeros y letras
-    patron = /[A-Za-z]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////
 
 let page = 1;
+var scrolling
 const loader = document.querySelector('.loader');
-
 const divPrueba = document.getElementsByClassName('divTable')
+const container = document.getElementById('contentTable');
+
+
+////////////////////////// Busqueda rut medico //////////////////////////////
+var formSearchRut= document.getElementById('formBusqueda1Med');
+formSearchRut.addEventListener("submit", function(event){
+	event.preventDefault()
+	var rutMedicoFind = document.getElementById('rutMedicoFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchRut'    
+    getDataRut(1, rutMedicoFind.value )
+
+  });
+
+////////////////////////// Busqueda especialidad //////////////////////////////
+var formSearchEspecialidad= document.getElementById('formBusqueda2Med');
+formSearchEspecialidad.addEventListener("submit", function(event){
+	event.preventDefault()
+	var especialidadMedicoFind = document.getElementById('especialidadMedicoFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchEspecialidad'    
+    getDataEspecialidad(1, especialidadMedicoFind.value )
+
+  });
+
+////////////////////////// Busqueda Nombre //////////////////////////////
+var formSearchNombre= document.getElementById('formBusqueda3Med');
+formSearchNombre.addEventListener("submit", function(event){
+	event.preventDefault()
+	var nombreMedicoFind = document.getElementById('nombreMedicoFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchNombre'    
+    getDataNombre(1, nombreMedicoFind.value )
+
+  });
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     getData(1);
@@ -493,15 +540,37 @@ divPrueba[0].addEventListener('scroll', () => {
         divPrueba[0].clientHeight >=
 		divPrueba[0].scrollHeight) {
         
-            //elem.scrollTop = elem.scrollHeight;
         page = page + 10;
         console.log(page)
+		if(scrolling == 'Normal'){
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getData(page);
+            }, 2000);
+        }
+		if(scrolling == 'SearchRut'){
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getDataRut(page);
+            }, 2000);
+        }
+		if(scrolling == 'SearchEspecialidad'){
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getDataEspecialidad(page);
+            }, 2000);
+        }
+		if(scrolling == 'SearchNombre'){
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getDataNombre(page);
+            }, 2000);
+        }
 
-        loader.classList.remove('hidden');
-		setTimeout(() => {
-			loader.classList.add('hidden');
-			getData(page);
-		}, 2000);
     }
 
 });
@@ -523,21 +592,117 @@ const httpRequestWrapper = (method, URL) => {
     });
   };
 
-//////////////////////////////////////
 
+
+
+//////////////////////////////////////
 const getData = async (page_no = 1) => {
     const data = await httpRequestWrapper(
       "GET",
       `http://134.122.120.195/api/v1/doctores/list/${page_no}`
     );
-  
-    //const {results} = data;
+	scrolling == 'Normal'
     populateUI(data);
   };
+  //////////////////////////////////////
+const getDataRut = async (page_no = 1, paramSearch) => {
+    const data = await httpRequestWrapper(
+    "GET",
+	'http://134.122.120.195/api/v1/doctor_per_type?type=rut_medico&data='+ paramSearch + '&entry_n=' + `${page_no}`
+    );
+    
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+};
+  //////////////////////////////////////
+  const getDataEspecialidad = async (page_no = 1, paramSearch) => {
+    const data = await httpRequestWrapper(
+    "GET",
+	'http://134.122.120.195/api/v1/doctor_per_type?type=especialidad&data='+ paramSearch +'&entry_n=' + `${page_no}`
+    );
+    
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+};
+ //////////////////////////////////////
+ const getDataNombre = async (page_no = 1, paramSearch) => {
+    const data = await httpRequestWrapper(
+    "GET",
+	'http://134.122.120.195/api/v1/doctor_per_type?type=nombre&data='+ paramSearch + '&entry_n='+ `${page_no}`
+    );
+    
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
   
   const populateUI = data => {
-    const container = document.getElementById('contentTable');
     data && 
     data.length && 
     data
@@ -646,6 +811,27 @@ const getData = async (page_no = 1) => {
 
 
 
+////////////////////////////////////
+
+
+function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}
+
+function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
 
 
 

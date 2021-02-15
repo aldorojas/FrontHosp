@@ -174,54 +174,52 @@ formNewPaciente.addEventListener('submit', function(e){
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
-function numberPages(){
-    urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/pacientes';
-    pagesHtml =  ''
-    fetch(urlAPIPages)
-	.then(function(response){ 
-		return response.json(); 
-	})
-	.then(function(data){
-        console.log(data)
-        var botones =  data.numbers_entries/10
-        botones = Math.ceil(botones)
-        //console.log(botones)
+// function numberPages(){
+//     urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/pacientes';
+//     pagesHtml =  ''
+//     fetch(urlAPIPages)
+// 	.then(function(response){ 
+// 		return response.json(); 
+// 	})
+// 	.then(function(data){
+//         console.log(data)
+//         var botones =  data.numbers_entries/10
+//         botones = Math.ceil(botones)
+//         //console.log(botones)
 
-        for(var i = 1; i < botones + 1; i++){
-            pagesHtml += `
-            <td>
-                <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
-                    ${i}
-                </button>
-            </td>
-            `
+//         for(var i = 1; i < botones + 1; i++){
+//             pagesHtml += `
+//             <td>
+//                 <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
+//                     ${i}
+//                 </button>
+//             </td>
+//             `
               
-        }
-        divpieTable.innerHTML = pagesHtml  
-        //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-	});
-}
+//         }
+//         divpieTable.innerHTML = pagesHtml  
+//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
+// 	});
+// }
 
 
-function perPage(numPage){
-    console.log(numPage)
-    urlPacientesPagina = 'http://134.122.120.195/api/v1/pacientes/list/' + numPage;
-    //console.log(urlEncuentrosPagina)
-    var divPrueba = document.getElementById('contentTable')
-    divPrueba.innerHTML = ''
+// function perPage(numPage){
+//     console.log(numPage)
+//     urlPacientesPagina = 'http://134.122.120.195/api/v1/pacientes/list/' + numPage;
+//     //console.log(urlEncuentrosPagina)
+//     var divPrueba = document.getElementById('contentTable')
+//     divPrueba.innerHTML = ''
     
-    fetch(urlPacientesPagina)
-	.then(function(response){ 
-		return response.json(); 
-	})
-	.then(function(data){ 
-        console.log(data)
-        allPacientes(urlPacientesPagina)
-        numberPages()
-	});
-}
-
-
+//     fetch(urlPacientesPagina)
+// 	.then(function(response){ 
+// 		return response.json(); 
+// 	})
+// 	.then(function(data){ 
+//         console.log(data)
+//         allPacientes(urlPacientesPagina)
+//         numberPages()
+// 	});
+// }
 
 function deletePaciente(idPaciente){
 	const URLDeletePaciente = 'http://134.122.120.195/api/v1/paciente/' + idPaciente ;
@@ -262,8 +260,6 @@ function deletePaciente(idPaciente){
 }
 
 ///////////////////////////////////////////////////////////////
-
-
 function editPaciente(IdPaciente,nombrePaciente,apellidoPaciente,
 	rutPaciente, pasaportePaciente, direccionPaciente, telefonoPaciente, sexoPaciente,
 	birthdatePaciente
@@ -298,9 +294,7 @@ function editPaciente(IdPaciente,nombrePaciente,apellidoPaciente,
 
 
 /////////////////// Modal editar pacientes //////////////////////
-
 var formEditPaciente = document.getElementById('formEditPaciente');
-
 formEditPaciente.addEventListener('submit', function(e){
 
 	const URLEditPaciente = 'http://134.122.120.195/api/v1/paciente/update';
@@ -363,48 +357,72 @@ formEditPaciente.addEventListener('submit', function(e){
 	.catch(err => console.log(err));
 })
 
-
-
-
-/////////////////////////////////////////////////
-
-
-
-function exit(){
-	window.localStorage.clear();
-	window.location.href = '../index.html'
-}
-
-
-function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
-
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
-
-    // Patron de entrada, en este caso solo acepta numeros y letras
-    patron = /[A-Za-z]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}
-
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////
 
 let page = 1;
+var scrolling
 const loader = document.querySelector('.loader');
-
 const divPrueba = document.getElementsByClassName('divTable')
+
+const container = document.getElementById('contentTable');
+
+////////////////////////// Busqueda Nombre //////////////////////////////
+var formSearchNombre= document.getElementById('formBusqueda3');
+formSearchNombre.addEventListener("submit", function(event){
+	event.preventDefault()
+	var nombrePacienteFind = document.getElementById('nombrePacienteFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchNombre'    
+    getDataNombre(1, nombrePacienteFind.value )
+
+  });
+
+//////////////////////////////Busqueda por Rut  ////////////////////////////7
+var formSearchRut= document.getElementById('formBusqueda1');
+formSearchRut.addEventListener("submit", function(event){
+	event.preventDefault()
+	var rutPacienteFind = document.getElementById('rutPacienteFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchRut'    
+	getDataRut(1, rutPacienteFind.value )
+
+});
+
+///////////////////////////////////////////// Buscar por pasaporte ///////////////////////
+var formSearchPasaporte= document.getElementById('formBusqueda2');
+formSearchPasaporte.addEventListener("submit", function(event){
+	event.preventDefault()
+	var pasaportePacienteFind = document.getElementById('pasaportePacienteFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchPasaporte'    
+    getDataPasaporte(1, pasaportePacienteFind.value )
+
+	
+  });
+
+////////////////////////////////	Busqueda por fecha de nacimiento ///////////////////////////////////////
+var formSearchBirthDay= document.getElementById('formBusqueda4');
+formSearchBirthDay.addEventListener("submit", function(event){
+	event.preventDefault()
+	var birthdayPacienteFind = document.getElementById('birthDayPacienteFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchBirthday'    
+    getDataBirthday(1, birthdayPacienteFind.value )
+
+	
+  });
+
+
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     getData(1);
@@ -420,12 +438,45 @@ divPrueba[0].addEventListener('scroll', () => {
             //elem.scrollTop = elem.scrollHeight;
         page = page + 10;
         console.log(page)
-
-        loader.classList.remove('hidden');
-		setTimeout(() => {
-			loader.classList.add('hidden');
-			getData(page);
-		}, 2000);
+		if(scrolling == 'Normal'){
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getData(page);
+            }, 2000);
+        }
+		if(scrolling == 'SearchNombre'){
+			console.log('Buscando por nombre')
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getDataNombre(page);
+            }, 2000);
+        }
+		if(scrolling == 'SearchRut'){
+			console.log('Buscando por rut')
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getDataRut(page);
+            }, 2000);
+        }
+		if(scrolling == 'SearchPasaporte'){
+			console.log('Buscando por pasaporte')
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getDataPasaporte(page);
+            }, 2000);
+        }
+		if(scrolling == 'SearchBirthday'){
+			console.log('Buscando por fecha de nacimiento')
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                getDataBirthday(page);
+            }, 2000);
+        }
     }
 
 });
@@ -448,20 +499,143 @@ const httpRequestWrapper = (method, URL) => {
   };
 
 //////////////////////////////////////
-
 const getData = async (page_no = 1) => {
     const data = await httpRequestWrapper(
       "GET",
       `http://134.122.120.195/api/v1/pacientes/list/${page_no}`
     );
-  
-    //const {results} = data;
+	scrolling == 'Normal'
     populateUI(data);
   };
-
   
+
+  //////////////////////////////////////
+//////////////////////////////////////
+const getDataNombre = async (page_no = 1, paramSearch) => {
+    const data = await httpRequestWrapper(
+    "GET",
+	'http://134.122.120.195/api/v1/pacientes_per_type?type=nombre&data='+ paramSearch + '&entry_n=' + `${page_no}`
+    );
+    
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+};
+///////////////////////////////////////////////
+const getDataRut = async (page_no = 1, paramSearch) => {
+    const data = await httpRequestWrapper(
+    "GET",
+	'http://134.122.120.195/api/v1/pacientes_per_type?type=rut&data=' + paramSearch +'&entry_n=' + `${page_no}`
+    );
+    
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+};
+///////////////////////////////////////////////////
+const getDataPasaporte = async (page_no = 1, paramSearch) => {
+    const data = await httpRequestWrapper(
+    "GET",
+	'http://134.122.120.195/api/v1/pacientes_per_type?type=pasaporte&data='+ paramSearch + '&entry_n=' + `${page_no}`
+    );
+    
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+};
+///////////////////////////////////////////////////77
+const getDataBirthday = async (page_no = 1, paramSearch) => {
+    const data = await httpRequestWrapper(
+    "GET",
+	'http://134.122.120.195/api/v1/pacientes_per_type?type=birth_date&data='+ paramSearch + '&entry_n=' + `${page_no}`
+    );
+    
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+  ////////////////////////////////////////////////
   const populateUI = data => {
-    const container = document.getElementById('contentTable');
     data && 
     data.length && 
     data
@@ -507,3 +681,27 @@ const getData = async (page_no = 1) => {
   }
 
 
+
+
+
+
+
+  /////////////////////////////////////////////////
+function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}
+
+function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}

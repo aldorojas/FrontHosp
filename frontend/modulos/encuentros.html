@@ -116,7 +116,7 @@
                       <form id="formEncuentro">
                           <!--Pagina 1-->
                           <div class="pagina movPag">
-                            <div class="titulo">Encuentro</div>
+                            <div class="titulo">Diagnosticos</div>
                             <div class="campo">
                                 <div class="label">Tipo encuentro</div>
                                 <select class="form-control" id="tipoEncuentro" name="form_select" onchange="showDiv(this)">
@@ -128,6 +128,93 @@
                                     <option value="Control-Post cirugia">Control-Post cirugia</option>
                                 </select>
                             </div>
+                            <div class="campo">
+                              <div class="label">Diagnostico primario</div>
+                              <select class="form-control" id="diagPrimario">
+                                  <option>Ninguno</option>
+                                  <option>Valvulopatia</option>
+                                  <option>Arritmia</option>
+                                  <option>Bypass</option>
+                              </select>
+                            </div>
+                            <div class="campo">
+                                <div class="label">Diagnostico secundario 1</div>
+                                <select class="form-control" id="diagSecundario1">
+                                    <option>Ninguno</option>
+                                    <option>Valvulopatia</option>
+                                    <option>Arritmia</option>
+                                    <option>Bypass</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <div class="label">Diagnostico secundario 2</div>
+                                <select class="form-control" id="diagSecundario2">
+                                    <option>Ninguno</option>
+                                    <option>Valvulopatia</option>
+                                    <option>Arritmia</option>
+                                    <option>Bypass</option>
+                                </select>
+                            </div>
+                          
+                              
+                              
+
+                              
+                              
+                             
+                              <div class="campo sigPag">
+                                  <button class="btn btn-primary">Siguiente</button>
+                              </div>
+                          </div>
+
+                          <!--Pagina 2-->
+                          <div class="pagina">
+                            <div class="titulo">Notas clinicas</div>
+                             
+                              <div>
+                                <div id="labelNotaClinica">Nota clinica</div>
+                                <textarea class="form-control" id="notaClinica" rows="6"></textarea>
+                              </div>
+
+                              <!-- <div class="campo">
+                                <div class="label">Eliminado</div>
+                                <select class="form-control" id="eliminadoEncuentro">
+                                    <option value="True">Si</option>
+                                    <option value="False">No</option>
+                                </select>
+                              </div> -->
+
+                              <div class="campo btns">
+                                  <button type="button" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
+                                  <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button> 
+                                    
+                              </div>
+
+                          </div>
+                          <!--Pagina 3-->
+                            <div class="pagina">
+                              <div id="docs">
+                                  <div class="campo adjun">
+                                      <div class="label">Adjuntar audio</div>
+                                      <input type="file" class="form-control-file" id="audioEncuentro">
+                                  </div>
+                                  <div class="campo adjun">
+                                      <div class="label">Adjuntar electrocardiograma</div>
+                                      <input type="file" class="form-control-file" id="inputFileElectro">
+                                  </div>
+                                  <div class="campo adjun">
+                                      <div class="label">Adjuntar Exam Laboratorio</div>
+                                      <input type="file" class="form-control-file"  id="inputFileExamLab" >
+                                  </div>
+                              </div>  
+                              <div class="campo btns" id="btns2">
+                                <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#protOperatorio">Crear protocolo operatorio</button>
+                              </div>
+                              <div class="campo btns" id="btns3">
+                                  <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#epicrisis">Crear epicrisis</button>  
+                              </div>
+
+                              <!-- ----------------------------------------------------------------- -->
                               <!-- Modal protocolo operatorio-->
                               <!-- Modal -->
                               <div class="modal fade" id="protOperatorio" tabindex="-1" aria-labelledby="protOperatorio" aria-hidden="true">
@@ -148,8 +235,8 @@
                                       <div class="label">Hora registro operatorio: </div>
                                       <input type="time" class="form-control" id="horaRegistro" >
                                     
-                                      <div class="label">Implantes: </div>
-                                      <input type="text" class="form-control" id="implantesRegistro" >
+                                      <!-- <div class="label">Implantes: </div>
+                                      <input type="text" class="form-control" id="implantesRegistro" > -->
                                     
                                       <div class="label">Descripcion del procedimiento: </div>
                                     
@@ -191,25 +278,31 @@
                                       <div class="label">Dias de hospitalizacion: </div>
                                       <input type="text" class="form-control" id="diasHospitalizacion" >
                                       
-                                      <div class="label">Doctor alta: </div>
+                                      <div class="label">Medico tratante: </div>
                                       <select class="form-control" id="doctorAlta">
+                                      </select>
+
+                                      <div class="label">Especialidad doctor alta: </div>
+                                      <select class="form-control" id="espDocAlta">
+                                        <option>Cardio-cirugia</option>
+                                        <option>homodinamia</option>
                                       </select>
                                                              
                                       <div class="label">Diagnostico alta: </div>
-                                      <input type="text" class="form-control" id="diagAlta" >
+                                      <textarea class="form-control" id="diagAlta" rows="4"> </textarea>
                                                              
-                                      <div class="label">Anamnesis: </div>
-                                      <input type="text" class="form-control" id="anamnesis" >
-                                                 
-                                      <div class="label">Estudios acciones: </div>
-                                      <input type="text" class="form-control" id="estudiosAcciones" >
-
-                                      <div class="label">Indicaciones alta: </div>
-                                      <input type="text" class="form-control" id="indicacionesAlta" >                    
-                                    
-                                      <div class="label">Resumen evolucion</div>
+                                      <!-- <div class="label">Anamnesis: </div>
+                                      <input type="text" class="form-control" id="anamnesis" > -->
+                                      <div class="label">Resumen evolucion:</div>
                                       <textarea class="form-control" id="resumenEvolucion" rows="4"> </textarea>
                                     
+                                      <div class="label">Estudios acciones: </div>
+                                      <textarea class="form-control" id="estudiosAcciones" rows="4"> </textarea>
+
+                                      <div class="label">Indicaciones alta: </div>
+                                      <textarea class="form-control" id="indicacionesAlta" rows="4"> </textarea>               
+                                    
+                                   
 
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -220,93 +313,14 @@
                                   </div>
                                 </div>
                               </div>
-                              <div id="docs">
-                                  <div class="campo adjun">
-                                      <div class="label">Adjuntar audio</div>
-                                      <input type="file" class="form-control-file" id="audioEncuentro">
-                                  </div>
-                                  <div class="campo adjun">
-                                      <div class="label">Adjuntar electrocardiograma</div>
-                                      <input type="file" class="form-control-file" id="inputFileElectro">
-                                  </div>
-                                  <div class="campo adjun">
-                                      <div class="label">Adjuntar Exam Laboratorio</div>
-                                      <input type="file" class="form-control-file"  id="inputFileExamLab" >
-                                  </div>
-                              </div>
 
-                              <div class="campo btns" id="btns2">
-                                  <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#protOperatorio">Crear protocolo operatorio</button>
-                              </div>
-                              <div class="campo btns" id="btns3">
-                                  <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#epicrisis">Crear epicrisis</button>  
-                              </div>
-                              
-                             
-                              <div class="campo sigPag">
-                                  <button class="btn btn-primary">Siguiente</button>
-                              </div>
-                          </div>
 
-                          <!--Pagina 2-->
-                          <div class="pagina">
-                            <div class="titulo">Notas clinicas</div>
-                              <div class="campo">
-                                  <div class="label">Diagnostico primario</div>
-                                  <select class="form-control" id="diagPrimario">
-                                      <option>Ninguno</option>
-                                      <option>Valvulopatia</option>
-                                      <option>Arritmia</option>
-                                      <option>Bypass</option>
-                                  </select>
-                              </div>
-                              <div class="campo">
-                                  <div class="label">Diagnostico secundario 1</div>
-                                  <select class="form-control" id="diagSecundario1">
-                                      <option>Ninguno</option>
-                                      <option>Valvulopatia</option>
-                                      <option>Arritmia</option>
-                                      <option>Bypass</option>
-                                  </select>
-                              </div>
-                              <div class="campo">
-                                  <div class="label">Diagnostico secundario 2</div>
-                                  <select class="form-control" id="diagSecundario2">
-                                      <option>Ninguno</option>
-                                      <option>Valvulopatia</option>
-                                      <option>Arritmia</option>
-                                      <option>Bypass</option>
-                                  </select>
-                              </div>
-                              
-                              <div>
-                                <div id="labelNotaClinica">Nota clinica</div>
-                                <textarea class="form-control" id="notaClinica" rows="3"></textarea>
-                              </div>
-
-                              <div class="campo">
-                                <div class="label">Eliminado</div>
-                                <select class="form-control" id="eliminadoEncuentro">
-                                    <option value="True">Si</option>
-                                    <option value="False">No</option>
-                                </select>
-                              </div>
-
-                              <div class="campo btns">
-                                  <button type="button" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
-                                  <!-- <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>  -->
-                                  <button type="submit" class="Fin adelante btn btn-primary mb-2">Crear encuentro</button>   
-                              </div>
-
-                          </div>
-                          <!--Pagina 3-->
-                            <!-- <div class="pagina">
-                                
                                 <div class="campo btns">
                                     <button type="submit" class="volver-pag2 volver btn btn-primary mb-2">Anterior</button>
+                                    <button type="submit" class="Fin adelante btn btn-primary mb-2">Crear encuentro</button> 
                                     
                                 </div>
-                            </div> -->
+                            </div>
 
                       </form>
 

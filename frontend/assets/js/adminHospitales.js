@@ -27,9 +27,9 @@ function loadMedico(){
 }
 
 
-function showDivBusquedaMedicos(element)
+function showDivBusquedaHospitales (element)
 { 
-  document.getElementById("formBusqueda3Med").style.display = element.value == 1 ? 'block' : 'none';
+  document.getElementById("formBusqueda1Hosp").style.display = element.value == 1 ? 'block' : 'none';
 }
 
 const opcion = document.querySelectorAll('.opcion');
@@ -104,65 +104,61 @@ formNewHospital.addEventListener('submit', function(e){
 
 
 ///////////////////////////////////////// Todos los hospitales
-
-// var divPrueba = document.getElementById('contentTable')
-// divPrueba.innerHTML = ''
-
-function allHospitales(URLAPI) {
+// function allHospitales(URLAPI) {
 	
-	fetch(URLAPI)
-	.then(response => response.json())
-	.then(data => {
-		//console.log(data)
-		for(var i = 0; i < data.length; i++){
+// 	fetch(URLAPI)
+// 	.then(response => response.json())
+// 	.then(data => {
+// 		//console.log(data)
+// 		for(var i = 0; i < data.length; i++){
 			
-			if ( data[i].activo == true ){
-				var switch1 = ' <div class="custom-control custom-switch">' +
-					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-					'<label class="custom-control-label" for="customSwitch1"></label>' +
-				'</div>'
-				//console.log(switch1);
-			}
-			else{
-				switch1 = ' <div class="custom-control custom-switch">' +
-				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-				'<label class="custom-control-label" for="customSwitch1"></label>' +
-			'</div>'
-			}
+// 			if ( data[i].activo == true ){
+// 				var switch1 = ' <div class="custom-control custom-switch">' +
+// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
+// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
+// 				'</div>'
+// 				//console.log(switch1);
+// 			}
+// 			else{
+// 				switch1 = ' <div class="custom-control custom-switch">' +
+// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
+// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
+// 			'</div>'
+// 			}
 
 
-			var nombre = `
-			<tr>
-				<td scope="row" data-label="Id"> ${data[i].id} </td>
-				<td data-label="Hospital"> ${data[i].hospital}</td>
-				<td data-label="Direccion">${data[i].direccion}</td>
-				<td data-label="Telefono">${data[i].telefono}</td>
-				<td data-label="Activo">${switch1}</td>
-				<td data-label="Acciones">
-					<button onclick="deleteHospital(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-						<i class="icon ion-md-trash "></i>
-					</button>
-					<button onclick="editHospital(${data[i].id}, '${data[i].hospital}', '${data[i].direccion}',
-													'${data[i].telefono}', '${data[i].activo}' )" 
-						class="btn btn-info btn-sm" title="Editar Paciente">
-						<i class="icon ion-md-create "></i>
-					</button>
-				</td>
-			</tr>
-				`
-			//divPrueba.innerHTML += nombre
-			$( "#tableHospitales tbody" ).append(nombre);
-		}
-		// $(document).ready(function(){
-		//     $('#tableHospitales').dataTable({
-		//         select: true
-		//     });
-		// });
+// 			var nombre = `
+// 			<tr>
+// 				<td scope="row" data-label="Id"> ${data[i].id} </td>
+// 				<td data-label="Hospital"> ${data[i].hospital}</td>
+// 				<td data-label="Direccion">${data[i].direccion}</td>
+// 				<td data-label="Telefono">${data[i].telefono}</td>
+// 				<td data-label="Activo">${switch1}</td>
+// 				<td data-label="Acciones">
+// 					<button onclick="deleteHospital(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+// 						<i class="icon ion-md-trash "></i>
+// 					</button>
+// 					<button onclick="editHospital(${data[i].id}, '${data[i].hospital}', '${data[i].direccion}',
+// 													'${data[i].telefono}', '${data[i].activo}' )" 
+// 						class="btn btn-info btn-sm" title="Editar Paciente">
+// 						<i class="icon ion-md-create "></i>
+// 					</button>
+// 				</td>
+// 			</tr>
+// 				`
+// 			//divPrueba.innerHTML += nombre
+// 			$( "#tableHospitales tbody" ).append(nombre);
+// 		}
+// 		// $(document).ready(function(){
+// 		//     $('#tableHospitales').dataTable({
+// 		//         select: true
+// 		//     });
+// 		// });
 
-	})	
-	// 	})
-	.catch(err => console.log(err))
-}
+// 	})	
+// 	// 	})
+// 	.catch(err => console.log(err))
+// }
 
 
 
@@ -170,53 +166,53 @@ function allHospitales(URLAPI) {
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
-function numberPages(){
-    urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/hospitales';
-    pagesHtml =  ''
-    fetch(urlAPIPages)
-	.then(function(response){ 
-		return response.json(); 
-	})
-	.then(function(data){
-        console.log(data)
-        var botones =  data.numbers_entries/10
-        botones = Math.ceil(botones)
-        //console.log(botones)
+// function numberPages(){
+//     urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/hospitales';
+//     pagesHtml =  ''
+//     fetch(urlAPIPages)
+// 	.then(function(response){ 
+// 		return response.json(); 
+// 	})
+// 	.then(function(data){
+//         console.log(data)
+//         var botones =  data.numbers_entries/10
+//         botones = Math.ceil(botones)
+//         //console.log(botones)
 
-        for(var i = 1; i < botones + 1; i++){
-            pagesHtml += `
-            <td>
-                <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
-                    ${i}
-                </button>
-            </td>
-            `
+//         for(var i = 1; i < botones + 1; i++){
+//             pagesHtml += `
+//             <td>
+//                 <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
+//                     ${i}
+//                 </button>
+//             </td>
+//             `
               
-        }
-        divpieTable.innerHTML = pagesHtml  
-        //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-	});
-}
+//         }
+//         divpieTable.innerHTML = pagesHtml  
+//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
+// 	});
+// }
 
 
 
-function perPage(numPage){
-    console.log(numPage)
-    urlHospitalesPagina = 'http://134.122.120.195/api/v1/hospitales/list/' + numPage;
-    //console.log(urlEncuentrosPagina)
-    var divPrueba = document.getElementById('contentTable')
-    divPrueba.innerHTML = ''
+// function perPage(numPage){
+//     console.log(numPage)
+//     urlHospitalesPagina = 'http://134.122.120.195/api/v1/hospitales/list/' + numPage;
+//     //console.log(urlEncuentrosPagina)
+//     var divPrueba = document.getElementById('contentTable')
+//     divPrueba.innerHTML = ''
     
-    fetch(urlHospitalesPagina)
-	.then(function(response){ 
-		return response.json(); 
-	})
-	.then(function(data){ 
-        console.log(data)
-        allHospitales(urlHospitalesPagina)
-        numberPages()
-	});
-}
+//     fetch(urlHospitalesPagina)
+// 	.then(function(response){ 
+// 		return response.json(); 
+// 	})
+// 	.then(function(data){ 
+//         console.log(data)
+//         allHospitales(urlHospitalesPagina)
+//         numberPages()
+// 	});
+// }
 
 
 
@@ -279,11 +275,8 @@ function editHospital(IdHospital,nombreHospital,direccionHospital,
 
 }
 
-
 /////////////   modal editar Hospitales //////////////////////////////
-
 var formEditHospital = document.getElementById('formEditHospital');
-
 formEditHospital.addEventListener('submit', function(e){
 
 	const URLEditHospital = 'http://134.122.120.195/api/v1/hospital/update';
@@ -341,50 +334,40 @@ formEditHospital.addEventListener('submit', function(e){
 
 
 
-function exit(){
-	window.localStorage.clear();
-	window.location.href = '../index.html'
-}
-
-function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
-
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
-
-    // Patron de entrada, en este caso solo acepta numeros y letras
-    patron = /[A-Za-z]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 let page = 1;
+var scrolling
 const loader = document.querySelector('.loader');
+const divPrueba = document.getElementsByClassName('divTable');
+const container = document.getElementById('contentTable');
 
-const divPrueba = document.getElementsByClassName('divTable')
+////////////////////////// Busqueda Nombre //////////////////////////////
+var formSearchNombre= document.getElementById('formBusqueda1Hosp');
+formSearchNombre.addEventListener("submit", function(event){
+	event.preventDefault()
+	var nombreHospitalFind = document.getElementById('nombreHospitalFind');
+	container.innerHTML = ''
+
+	scrolling = 'SearchNombre'    
+    getDataNombre(1, nombreHospitalFind.value )
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     getData(1);
@@ -397,15 +380,27 @@ divPrueba[0].addEventListener('scroll', () => {
         divPrueba[0].clientHeight >=
 		divPrueba[0].scrollHeight) {
         
-            //elem.scrollTop = elem.scrollHeight;
         page = page + 10;
         console.log(page)
 
-        loader.classList.remove('hidden');
-		setTimeout(() => {
-			loader.classList.add('hidden');
-			getData(page);
-		}, 2000);
+		if(scrolling == 'Normal'){
+            loader.classList.remove('hidden');
+			setTimeout(() => {
+				loader.classList.add('hidden');
+				getData(page);
+			}, 2000);
+        }
+		if(scrolling == 'SearchNombre'){
+            loader.classList.remove('hidden');
+			setTimeout(() => {
+				loader.classList.add('hidden');
+				getDataNombre(page);
+			}, 2000);
+        }
+
+
+
+        
     }
 
 });
@@ -428,20 +423,50 @@ const httpRequestWrapper = (method, URL) => {
   };
 
 //////////////////////////////////////
-
 const getData = async (page_no = 1) => {
     const data = await httpRequestWrapper(
       "GET",
       `http://134.122.120.195/api/v1/hospitales/list/${page_no}`
     );
-  
-    //const {results} = data;
+	scrolling == 'Normal'
     populateUI(data);
   };
 
   
+//////////////////////////////////////
+const getDataNombre = async (page_no = 1, searchParam ) => {
+    const data = await httpRequestWrapper(
+      "GET",
+	  'http://134.122.120.195/api/v1/hospitales_per_type?type=nombre&data=' + searchParam+ '&entry_n=' + `${page_no}`
+    );
+		
+	if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+  };
+
+
+
+
+
   const populateUI = data => {
-    const container = document.getElementById('contentTable');
     data && 
     data.length && 
     data
@@ -488,6 +513,28 @@ const getData = async (page_no = 1) => {
   }
 
 
+
+
+
+  //////////////////////////////////////
+function exit(){
+	window.localStorage.clear();
+	window.location.href = '../index.html'
+}
+
+function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
 
 
 

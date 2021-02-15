@@ -1343,10 +1343,10 @@ table th {
 
   
   
-  .container h3,
+  /* .container h3,
   p {
     color: #fff;
-  }
+  } */
   
   .container h3 {
     font-size: 24px;

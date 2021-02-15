@@ -117,32 +117,32 @@
                                     </div>    
                                   </div> 
                                   <div class="col-lg-4 col-md-6 d-flex stat my-3"> 
-                                    <div id="formBusqueda1Med">
+                                    <form id="formBusqueda1Med">
                                         <div class="campo">
                                         <input type="text" class="form-control" id="rutMedicoFind" placeholder="Rut Medico">
                                         </div>
                                         <div class="campo">
-                                        <button class="btn btn-dark" id="btnFindRut"> Buscar </button>
+                                        <button class="btn btn-dark" type="submit"> Buscar </button>
                                         </div>
-                                    </div>
+                                    </form>
                                     
-                                    <div id="formBusqueda2Med">
+                                    <form id="formBusqueda2Med">
                                         <div class="campo">
-                                        <input type="text" class="form-control" id="pasaporteMedicoFind" placeholder="Especialidad Medico">
+                                        <input type="text" class="form-control" id="especialidadMedicoFind" placeholder="Especialidad Medico">
                                         </div>
                                         <div class="campo">
-                                        <button class="btn btn-dark" id="btnFindPasaporte"> Buscar </button>
+                                        <button class="btn btn-dark" type="submit"> Buscar </button>
                                         </div>
-                                    </div>
+                                    </form>
     
-                                    <div id="formBusqueda3Med">
+                                    <form id="formBusqueda3Med">
                                         <div class="campo">
                                           <input type="text" class="form-control" id="nombreMedicoFind" placeholder="Nombre Medico">
                                         </div>
                                         <div class="campo">
-                                          <button class="btn btn-dark" id="btnFindNombre"> Buscar </button>
+                                          <button class="btn btn-dark" type="submit"> Buscar </button>
                                         </div>
-                                    </div>
+                                    </form>
                                     
                                   </div>                     
                             </div>
@@ -248,7 +248,8 @@
 
                           <div class="campo">
                             <div class="label">Staff </div>
-                            <select class="form-control" id="staffMedico" required>
+                            <select class="form-control" id="staffMedico" onchange="validateStaff(this)" required>
+                              <option ></option>
                               <option value="True">Si</option>
                               <option value="False">No</option>
                             </select>
@@ -256,7 +257,8 @@
 
                           <div class="campo">
                             <div class="label">Becario: </div>
-                            <select class="form-control" id="becarioMedico" required>
+                            <select class="form-control" id="becarioMedico" onchange="validateBecario(this)" required>
+                              <option ></option>
                               <option value="True">Si</option>
                               <option value="False">No</option>
                             </select>
@@ -264,7 +266,8 @@
 
                           <div class="campo">
                             <div class="label">Interno: </div>
-                            <select class="form-control" id="internoMedico" required>
+                            <select class="form-control" id="internoMedico" onchange="validateInterno(this)" required>
+                              <option ></option>
                               <option value="True">Si</option>
                               <option value="False">No</option>
                             </select>

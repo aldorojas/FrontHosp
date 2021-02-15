@@ -108,43 +108,59 @@
                                         <div class="campo">
                                             <div class="label">Buscar por:</div>
                                             <select class="form-control" id="SelectBusqueda" name="form_select" onchange="showDivBusqueda(this)">
+                                                <option value="-"> </option>
                                                 <option value="0">Rut</option>
                                                 <option value="1"> Pasaporte</option>
                                                 <option value="2">Nombre </option>
+                                                <option value="3">Fecha de nacimiento </option>
                                             </select>
                                     </div>    
                                     </div>
                                     <div class="col-lg-6 col-md-6 d-flex stat my-3"> 
-                                        <div id="formBusqueda1">
+                                        <form id="formBusqueda1">
                                             <div class="campo">
                                             <input type="text" class="form-control" id="rutPacienteFind" placeholder="Rut paciente">
                                             </div>
                                             <div class="campo">
-                                            <button class="btn btn-dark" id="btnFindRut"> Buscar </button>
+                                            <button type="submit" class="btn btn-dark" id="btnFindRut"> Buscar </button>
                                             </div>
-                                            
-                                        </div>
+                                          </form>
                                         
-                                        <div id="formBusqueda2">
-                                            <div class="campo">
+                                        <form id="formBusqueda2">
+                                          <div class="campo">
                                             <input type="text" class="form-control" id="pasaportePacienteFind" placeholder="Pasaporte Paciente">
-                                            </div>
-                                            <div class="campo">
-                                            <button class="btn btn-dark" id="btnFindPasaporte"> Buscar </button>
-                                            </div>
-                                            
-                                        </div>
+                                          </div>
+                                          <div class="campo">
+                                            <button type="submit" class="btn btn-dark" id="btnFindPasaporte"> Buscar </button>
+                                          </div>                                            
+                                        </form>
         
-                                        <div id="formBusqueda3">
-                                            <div class="campo">
+                                        <form id="formBusqueda3">
+                                          <div class="campo">
                                             <input type="text" class="form-control" id="nombrePacienteFind" placeholder="Nombre Paciente">
-                                            </div>
-                                            <div class="campo">
-                                            <button class="btn btn-dark" id="btnFindNombre"> Buscar </button>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>                       
+                                          </div>
+                                          <div class="campo">
+                                            <button type="submit" class="btn btn-dark" id="btnFindNombre"> Buscar </button>
+                                          </div>                                         
+                                        </form>
+                                        <form id="formBusqueda4">
+                                          <div class="campo">
+                                            <input type="date" class="form-control" id="birthdayPacienteFind" >
+                                          </div>
+                                          <div class="campo">
+                                            <button type="submit" class="btn btn-dark"> Buscar </button>
+                                          </div>                                         
+                                        </form>
+
+
+                                     </div>  
+                                     <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                                      <div class="campo">
+                                        <form id="allPacientes" >
+                                          <button type="submit" class="btn btn-primary"> Mostrar todos </button>
+                                        </form> 
+                                      </div>    
+                                      </div>                     
                                   
                               </div>
                           </div>
@@ -163,6 +179,11 @@
                                   <div class="divTable">
                                     <div id="card">
                                     
+                                    </div>
+                                    <div class="loader hidden">
+                                      <div class="circle"></div>
+                                      <div class="circle"></div>
+                                      <div class="circle"></div>
                                     </div>
                                   </div>
                                 
@@ -234,10 +255,6 @@
                             </tbody>
                           </table>
                           <div id="paginasBotones">
-                            <td>
-                              Paginas: 
-                            </td>
-
                           </div>
                           <div class="espacioResponsive">
                                     
