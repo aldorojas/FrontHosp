@@ -771,7 +771,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
 
 
 function deleteEncuentro(idEncuentro){
-    const URLDeleteEncuentro = 'http://134.122.120.195/api/v1/encuentro/' + idEncuentro ;
+    const URLDeleteEncuentro = 'http://134.122.120.195/api/v1/delete/' + idEncuentro ;
 
     var headers = {
         "Content-Type": "application/json"
@@ -779,7 +779,7 @@ function deleteEncuentro(idEncuentro){
 
     Swal.fire({
         title: 'Esta seguro?',
-        text: "¡No podrás revertir esto!",
+        text: "¡Solo un administrador puede revertir esto!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -788,7 +788,6 @@ function deleteEncuentro(idEncuentro){
         }).then((result) => {
         if (result.isConfirmed) {
             fetch(URLDeleteEncuentro, {
-                method: "DELETE",
                 headers: headers
             })
             .then(function(response){ 
