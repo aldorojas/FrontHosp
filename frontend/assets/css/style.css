@@ -484,6 +484,11 @@ form .pagina .btns button.adelante{
   display: none;
 }
 
+.btn-danger{
+  display: none;
+}
+
+
 
 canvas{
   border:1px solid #bbb;

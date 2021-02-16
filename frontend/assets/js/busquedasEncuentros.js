@@ -1,10 +1,6 @@
 window.onload = (function(){
-	//console.log(localStorage.getItem("Admin")); 
-	if(localStorage.getItem("Admin")== "true"){
-	  //console.log("si es admin")
-	    document.getElementById("moduloAdminMed").style.display = 'block'
-	    document.getElementById("moduloAdminHosp").style.display = 'block'
-	}
+
+	
 
 
     if (localStorage.getItem("nombreMedico") === null) {
@@ -14,7 +10,7 @@ window.onload = (function(){
         loadMedico();
     }
     
-    const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
+    //const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
     // AllEncuentros(urlAPI);
 
     // numberPages();
@@ -1124,6 +1120,12 @@ const divPrueba = document.getElementsByClassName('divTableEncuentros')
 
 document.addEventListener("DOMContentLoaded", () => {
     getData(1);
+
+    if(localStorage.getItem("Admin") == "true"){
+	    document.getElementById("moduloAdminMed").style.display = 'block'
+	    document.getElementById("moduloAdminHosp").style.display = 'block'
+        
+	}
   });
 
 
@@ -1193,8 +1195,15 @@ const getData = async (page_no = 1) => {
       'http://134.122.120.195/api/v1/encuentros_per_type?type=eliminado&data=&entry_n=' + `${page_no}`
     );
     scrolling = 'Normal'
-    //const {results} = data;
     populateUI(data[1]);
+    
+    if(localStorage.getItem("Admin") == "true"){
+        var btnsDelete = document.getElementsByClassName("btn-danger");
+        for (var i = 0; i < btnsDelete.length; i++) {
+            btnsDelete[i].style.display = 'inline-block'
+        }
+	}
+
   };
 
 const getDataFecha = async (page_no = 1, paramSearch) => {
@@ -1349,9 +1358,10 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
 
             
             <td data-label="Acciones">
-                <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-                    <i class="icon ion-md-trash "></i>
+                <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger btn-sm" >
+                    <i class="icon ion-md-trash"></i>
                 </button>
+                                
                 <button onclick="editEncuentro(${id_encuentro},${id_paciente},'${fecha_e}',
                             '${hora_e}', '${tipo_2}', '${diag_primario}',
                             '${diag_secun}', '${diag_secun2}', '${notas_clinicas}',
@@ -1365,15 +1375,18 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
                     class="btn btn-info btn-sm" title="Editar Paciente">
                     <i class="icon ion-md-create "></i>
                 </button>
-        </td>
+            </td>
 
 
 
         </tr>
       
       `
+      
     })
-  
+    
+    
+    
   }
 
 

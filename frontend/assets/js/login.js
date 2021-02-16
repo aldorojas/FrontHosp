@@ -42,23 +42,8 @@ formLogin.addEventListener('submit', function(e){
 					showConfirmButton: false,
 					timer: 2500
 					})
-			var datosLogueado = JSON.stringify ({	
-				"id" : data.Medico.id,
-				"id_hospital":data.Medico.id_hospital,
-				"nombre": data.Medico.nombre,
-				"apellidos": data.Medico.apellidos,
-				"telefono":data.Medico.telefono,
-				"especialidad":data.Medico.especialidad,
-				"staff":data.Medico.staff,
-				"becario": data.Medico.becario,
-				"interno": data.Medico.interno,
-				"activo": data.Medico.activo,
-				"admin": data.Medico.admin
-			});
 			console.log(data.Medico.admin)
 			//export { datosLogueado };
-
-			//var getInput = prompt("Hey type something here: ");
 			localStorage.setItem("Admin",data.Medico.admin);
 			localStorage.setItem("idMedico",data.Medico.id);
 			localStorage.setItem("nombreMedico",data.Medico.nombre);
@@ -66,11 +51,8 @@ formLogin.addEventListener('submit', function(e){
 			localStorage.setItem("idHospital",data.Medico.id_hospital);
 			localStorage.setItem("especialidad",data.Medico.especialidad);
 
-
 			window.location.replace("http://134.122.120.195:8080/modulos/inicio.html");
 			//window.location.replace("http://127.0.0.1:5500/modulos/inicio.html");
-
-
 		}
 		else{
 			console.log(data.message)
@@ -80,10 +62,10 @@ formLogin.addEventListener('submit', function(e){
 				showConfirmButton: false,
 				timer: 3000,
 				timerProgressBar: true,
-				didOpen: (toast) => {
-					toast.addEventListener('mouseenter', Swal.stopTimer)
-					toast.addEventListener('mouseleave', Swal.resumeTimer)
-				}
+					didOpen: (toast) => {
+						toast.addEventListener('mouseenter', Swal.stopTimer)
+						toast.addEventListener('mouseleave', Swal.resumeTimer)
+					}
 				})
 				
 				Toast.fire({
