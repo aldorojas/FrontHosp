@@ -29,13 +29,14 @@ window.onload = (function(){
 	}
 	///////////////////////////////////////////
 	
-    const urlAPI = 'http://134.122.120.195/api/v1/doctores/list';
+    const urlAPI = 'http://134.122.120.195/api/v1/doctors_list';
 	fetch(urlAPI)
 	.then(response => response.json())
 	.then(data => {
+		console.log(data)
         for(var i = 0; i < data.length; i++){
-            console.log(data[i].id)
-            $("#doctorAlta").append($("<option>"+data[i].nombre+ ' ' +data[i].apellidos+"</option>"));
+            console.log(data[i].nombre_completo)
+            $("#doctorAlta").append($("<option>"+data[i].nombre_completo +"</option>"));
         }
 	
 	})
@@ -269,7 +270,7 @@ formEncuentro.addEventListener('submit', async function(e){
 			"date_registered":fechaRegistro.value,
 			"time_protocol":horaRegistro.value,
 			"descripcion" : descProcedimiento.value,
-			"implantes":implantesRegistro.value,
+			"implantes":'',
 			"cie10":"182773js",
 			"snomed":"877dyjs",
 			"ruta_audio" : Base64Audio,
@@ -295,6 +296,7 @@ formEncuentro.addEventListener('submit', async function(e){
 			showConfirmButton: false,
 			timer: 2500
 		});	
+		window.location.href = 'busquedas.html'
 	})
 	.catch(err => console.log(err))
 

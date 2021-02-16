@@ -9,6 +9,19 @@ window.onload = (function(){
     else{
         loadMedico();
     }
+
+    const urlAPI = 'http://134.122.120.195/api/v1/doctors_list';
+	fetch(urlAPI)
+	.then(response => response.json())
+	.then(data => {
+		console.log(data)
+        for(var i = 0; i < data.length; i++){
+            console.log(data[i].nombre_completo)
+            $("#doctorAltaEdit").append($("<option>"+data[i].nombre_completo +"</option>"));
+        }
+	
+	})
+	.catch(err => console.log(err))	
     
     //const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
     // AllEncuentros(urlAPI);
@@ -181,7 +194,6 @@ function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizac
     var fechaEgresoEdit = document.getElementById('fechaEgresoHospital')
     var diasHospEdit = document.getElementById('diasHospitalizacion')
     var diagAltaEdit = document.getElementById('diagAlta')
-    var anamnesisEdit = document.getElementById('anamnesis')
     var estudiosAccionesEdit = document.getElementById('estudiosAcciones')
     var indicacionesAltaEdit = document.getElementById('indicacionesAlta')
     var resumenEvoEdit = document.getElementById('resumenEvolucion')
@@ -193,7 +205,7 @@ function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizac
     fechaEgresoEdit.value = fechaEgreso;
     diasHospEdit.value = diasHospitalizado;
     diagAltaEdit.value = diagnosticoAlta;
-    anamnesisEdit.value = anamnesis;
+    
     estudiosAccionesEdit.value = estudiosAcciones;
     indicacionesAltaEdit.value = indicacionesAlta
     resumenEvoEdit.value = resumenEvolucion;
