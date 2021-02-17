@@ -1,8 +1,5 @@
 window.onload = (function(){
 
-	
-
-
     if (localStorage.getItem("nombreMedico") === null) {
 		window.location.href = '../index.html'
     }
@@ -563,7 +560,6 @@ formEditEncuentro.addEventListener('submit',async function(e){
 	  var indicacionesAlta = document.getElementById('indicacionesAltaEdit')
 	  var doctorAlta = document.getElementById('doctorAlta')
 
-	  
   
 	  var doc = new jsPDF()
 	  doc.setFontType("bold");
@@ -1104,7 +1100,6 @@ formSearchDate.addEventListener("submit", function(event){
 
     container.innerHTML = '';
     scrolling = 'Search'    
-    
     getDataFecha(1, newDate )
 
   });
@@ -1244,6 +1239,12 @@ const getDataFecha = async (page_no = 1, paramSearch) => {
     else{
         populateUI(data[1]);
     }
+    if(localStorage.getItem("Admin") == "true"){
+        var btnsDelete = document.getElementsByClassName("btn-danger");
+        for (var i = 0; i < btnsDelete.length; i++) {
+            btnsDelete[i].style.display = 'inline-block'
+        }
+	}
 };
 
 const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
@@ -1271,6 +1272,13 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
     else{
         populateUI(data[1]);
     }
+
+    if(localStorage.getItem("Admin") == "true"){
+        var btnsDelete = document.getElementsByClassName("btn-danger");
+        for (var i = 0; i < btnsDelete.length; i++) {
+            btnsDelete[i].style.display = 'inline-block'
+        }
+	}
 };
 
   
@@ -1350,7 +1358,7 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
             <td data-label="Nombre Medico">${nombre_completo}</td>
 
             <td data-label="Epicrisis">
-                <button type="button" class="btn btn-primary"
+                <button type="button" class="btn btn-primary btnCirugia"
                     onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}', '${hora_ep}',
                     '${fecha_hospitalizacion}', '${fecha_egreso}','${dias_hospitalizado}',
                     '${diag_alta}', '${anamnesis}', '${estudios_acciones}', '${indiciaciones_alta}',
@@ -1361,7 +1369,7 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
             
 
             <td data-label="Cirugia">
-                <button type="button" class="btn btn-primary"
+                <button type="button" class="btn btn-primary btnCirugia"
                     onclick="loadModalCirugia('${id_cirugia}', '${date_registered}', '${time_protocol}', 
                     '${implantes}', '${descripcion}' )">
                     Protocolo
@@ -1370,7 +1378,7 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
 
             
             <td data-label="Acciones">
-                <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger btn-sm" >
+                <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger2 btn-sm" >
                     <i class="icon ion-md-trash"></i>
                 </button>
                                 

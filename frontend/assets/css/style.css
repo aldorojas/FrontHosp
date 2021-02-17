@@ -484,9 +484,14 @@ form .pagina .btns button.adelante{
   display: none;
 }
 
-.btn-danger{
+.btn-danger2{
   display: none;
+  background-color: red;
 }
+
+/* .btnCirugia{
+  display: none;
+} */
 
 
 
