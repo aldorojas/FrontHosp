@@ -1,5 +1,6 @@
 window.onload = (function(){
   	console.log(localStorage.getItem("Admin")); 
+	  localStorage.setItem("encuentrosPaciente", "False");
 	if(localStorage.getItem("Admin")== "true"){
 		//console.log("si es admin")
 		document.getElementById("moduloAdminMed").style.display = 'block'

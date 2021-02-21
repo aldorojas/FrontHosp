@@ -20,10 +20,6 @@ window.onload = (function(){
 	})
 	.catch(err => console.log(err))	
     
-    //const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
-    // AllEncuentros(urlAPI);
-
-    // numberPages();
     
 })
 
@@ -739,8 +735,6 @@ formEditEncuentro.addEventListener('submit',async function(e){
 	  doc.text(indicacionesAlta.value, 21, 130)
 	  doc.save('Epicrisis.pdf')
 
-
-
       
 	fetch(URLEditEncuentro, {
 		method: "POST",
@@ -1122,17 +1116,24 @@ formSearchType.addEventListener("submit", function(event){
 ////////////////////////////////////////////////////
 
 const loader = document.querySelector('.loader');
-
 const divPrueba = document.getElementsByClassName('divTableEncuentros')
 
 document.addEventListener("DOMContentLoaded", () => {
-    getData(1);
-
     if(localStorage.getItem("Admin") == "true"){
-	    document.getElementById("moduloAdminMed").style.display = 'block'
-	    document.getElementById("moduloAdminHosp").style.display = 'block'
+        document.getElementById("moduloAdminMed").style.display = 'block'
+        document.getElementById("moduloAdminHosp").style.display = 'block'      
+    }
+
+    if(localStorage.getItem("encuentrosPaciente") == "True"){
         
-	}
+        getDataPorPaciente(1, localStorage.getItem("idPacienteEncuentros"))
+        scrolling == "PorPaciente"
+    }
+    else{
+        getData(1);
+        
+    }
+    
   });
 
 
@@ -1167,6 +1168,13 @@ divPrueba[0].addEventListener('scroll', () => {
                 setTimeout(() => {
                     loader.classList.add('hidden');
                     getDataTipoEncuentro(page);
+                }, 2000);
+            }
+            if (scrolling == 'PorPaciente'){
+                loader.classList.remove('hidden');
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    getDataPorPaciente(page);
                 }, 2000);
             }
         }
@@ -1271,6 +1279,40 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
     }
     else{
         populateUI(data[1]);
+    }
+
+    if(localStorage.getItem("Admin") == "true"){
+        var btnsDelete = document.getElementsByClassName("btn-danger");
+        for (var i = 0; i < btnsDelete.length; i++) {
+            btnsDelete[i].style.display = 'inline-block'
+        }
+	}
+};
+
+const getDataPorPaciente = async (page_no = 1, idPaciente) => {
+    const data = await httpRequestWrapper(
+    "GET",
+    'http://134.122.120.195/api/v1/encuentros_per_patient?patient='+ idPaciente +'&entry_n=' + `${page_no}`
+    );
+    if (data == ''){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data);
     }
 
     if(localStorage.getItem("Admin") == "true"){

@@ -10,6 +10,7 @@ window.onload = (function(){
 	// console.log("rutPaciente: " + localStorage.getItem("rutPaciente"))
 	// console.log("Nombre del medico: " + localStorage.getItem("nombreMedico") + " " + localStorage.getItem("apellidosMedico") )
 	
+	localStorage.setItem("encuentrosPaciente", "False");
 
 	if (localStorage.getItem("nombreMedico") === null) {
 		window.location.href = '../index.html'
@@ -166,15 +167,32 @@ function getAudioBase64(files, onLoadCallback){
 
 
 
+
+// function loadData() {
+//   spinner.removeAttribute('hidden');
+//   fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=5000ms')
+//     .then(response => response.json())
+//     .then(data => {
+//       spinner.setAttribute('hidden', '');
+//       console.log(data)
+//     });
+// }
+
+
+
+
+
 	/////////////////////////////   Crear encuentro  ///////////////////////
 var formEncuentro = document.getElementById('formEncuentro');
 
 formEncuentro.addEventListener('submit', async function(e){
-
+	
 	const URLNewEncuentro = 'http://134.122.120.195/api/v1/encuentro';
 
 	e.preventDefault()
 	//Audio  ///////////////
+	const spinner = document.getElementById("spinner");
+	spinner.removeAttribute('hidden');
 
 	let Base64Audio = "";
 
@@ -290,6 +308,7 @@ formEncuentro.addEventListener('submit', async function(e){
 	})
 	.then(function(response){ 
 		//return response.json(); 
+		spinner.setAttribute('hidden', '');
 		Swal.fire({
 			icon: 'success',
 			title: 'Encuentro registrado',

@@ -2,8 +2,9 @@
 
 window.onload = (function(){
     console.log(localStorage.getItem("Admin")); 
+    localStorage.setItem("encuentrosPaciente", "False");
+
 	if(localStorage.getItem("Admin")== "true"){
-		//console.log("si es admin")
 		document.getElementById("moduloAdminMed").style.display = 'block'
 	  	document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
@@ -70,8 +71,8 @@ function showDivBusqueda(element)
 var container2 = document.getElementById('encuentrosPaciente');
 function verEncuentros(idPaciente){
     container2.innerHTML = ''
-    getDataEncuentros(1, idPaciente )
-    $('#modalEncuentros').modal('show');
+    getDataEncuentros(1, idPaciente)
+    //$('#modalEncuentros').modal('show');
     
 
 
@@ -473,12 +474,14 @@ const getDataTodos = async (page_no = 1,) => {
 };
 //////////////////////////////////////////////////////
 const getDataEncuentros = async (page_no = 1, idPaciente) => {
-    const data = await httpRequestWrapper(
-    "GET",
-    'http://134.122.120.195/api/v1/encuentros_per_patient?patient='+ idPaciente +'&entry_n=' + `${page_no}`
-    );
+    
+    localStorage.setItem("encuentrosPaciente", "True");
+    localStorage.setItem("idPacienteEncuentros", idPaciente);
+	window.location.href = 'busquedas.html'
 
-    populateEncuentros(data);
+    
+
+    //populateEncuentros(data);
     
 };
   
