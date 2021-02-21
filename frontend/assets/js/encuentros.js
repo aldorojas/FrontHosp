@@ -15,6 +15,9 @@ window.onload = (function(){
 	if (localStorage.getItem("nombreMedico") === null) {
 		window.location.href = '../index.html'
 	}
+	else{
+		loadMedico();
+	}
 
 	var titulo = document.getElementById("nombrePaciente")
 	div = '<h1>' +  localStorage.getItem("nombrePaciente") + '</h1> '
@@ -25,9 +28,7 @@ window.onload = (function(){
 		document.getElementById("moduloAdminMed").style.display = 'block'
 		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
-	else{
-		loadMedico();
-	}
+	
 	///////////////////////////////////////////
 	
     const urlAPI = 'http://134.122.120.195/api/v1/doctors_list';
