@@ -91,7 +91,8 @@ formNewMedico.addEventListener('submit', function(e){
 	const URLNewMedico = 'http://134.122.120.195/api/v1/doctor/';
 
     e.preventDefault()
-    var IdHospital = document.getElementById('IdHospital')
+    //var IdHospital = document.getElementById('IdHospital')
+	var nombreNewHospital = document.getElementById('nombreHospital')
 	var nombreNewMedico = document.getElementById('nombreMedico')
 	var apellidosNewMedico = document.getElementById('apellidosMedico')
 	var telefonoNewMedico = document.getElementById('telefonoMedico')
@@ -113,7 +114,8 @@ formNewMedico.addEventListener('submit', function(e){
 
 	const dataToSend = JSON.stringify(
 		{
-			"id_hospital":IdHospital.value, 
+			//"id_hospital":IdHospital.value, 
+			"hospital":nombreNewHospital.value, 
             "nombre": nombreNewMedico.value ,
             "apellidos": apellidosNewMedico.value,
             "telefono":telefonoNewMedico.value,
@@ -361,8 +363,8 @@ if (result.isConfirmed) {
 })
 }
 
-
-function editMedico(IdMedico,IdHospital,nombreMedico,apellidosMedico,
+///////////////
+function editMedico(IdMedico,/*IdHospital*/nombreHospital,nombreMedico,apellidosMedico,
 	telefonoMedico,  staffMedico, especialidadMedico, rutMedico,  becarioMedico,
 	internoMedico, activoMedico, adminMedico
 	){
@@ -370,7 +372,8 @@ function editMedico(IdMedico,IdHospital,nombreMedico,apellidosMedico,
 	// 	telefonoMedicoEdit, especialidadMedicoEdit, staffMedicoEdit)
 	
 	var IdMedicoEdit = document.getElementById('IdMedicoEdit')
-	var IdHospitalEdit = document.getElementById('IdHospitalEdit')
+	//var IdHospitalEdit = document.getElementById('IdHospitalEdit')
+	var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
 	var nombreMedicoEdit = document.getElementById('nombreMedicoEdit')
 	var apellidosMedicoEdit = document.getElementById('apellidosMedicoEdit')
 	var telefonoMedicoEdit = document.getElementById('telefonoMedicoEdit')
@@ -383,7 +386,8 @@ function editMedico(IdMedico,IdHospital,nombreMedico,apellidosMedico,
 	var adminMedicoEdit = document.getElementById('adminMedicoEdit')
 	
 	IdMedicoEdit.value = IdMedico;
-	IdHospitalEdit.value = IdHospital;
+	//IdHospitalEdit.value = IdHospital;
+	nombreHospitalEdit.value = nombreHospital;
 	nombreMedicoEdit.value = nombreMedico;
 	apellidosMedicoEdit.value = apellidosMedico;
 	telefonoMedicoEdit.value = telefonoMedico;
@@ -411,7 +415,8 @@ formEditMedico.addEventListener('submit', function(e){
 
 	e.preventDefault()
 	var idMedico = document.getElementById('IdMedicoEdit')
-	var IdHospital = document.getElementById('IdHospitalEdit')
+	//var IdHospital = document.getElementById('IdHospitalEdit')
+	var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
 	var nombreEditMedico = document.getElementById('nombreMedicoEdit')
 	var apellidosEditMedico = document.getElementById('apellidosMedicoEdit')
 	var telefonoEditMedico = document.getElementById('telefonoMedicoEdit')
@@ -431,7 +436,8 @@ formEditMedico.addEventListener('submit', function(e){
 	const dataToSend = JSON.stringify(
 		{
 			"id" : idMedico.value,
-			"id_hospital":IdHospital.value, 
+			//"id_hospital":IdHospital.value, 
+			"hospital":nombreHospitalEdit.value, 
 			"nombre":nombreEditMedico.value,
 			"apellidos":apellidosEditMedico.value,
 			"telefono":telefonoEditMedico.value,
@@ -707,7 +713,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
     data.length && 
     data
     .map((each,index)=>{
-      const {id, id_hospital, nombre, apellidos, telefono, staff, especialidad, rut_medico,
+      const {id, /*id_hospital*/ hospital, nombre, apellidos, telefono, staff, especialidad, rut_medico,
 		becario, interno, activo, admin } = each;
 	  ///////////////////////////////////////
 	  if ( becario == true ){
@@ -766,7 +772,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
       `
         <tr>
 			<td scope="row" data-label="Id"> ${id} </td>
-			<td data-label="IdHospital"> ${id_hospital}</td>
+			<td data-label="NombreHospital"> ${hospital}</td>
 			<td data-label="Nombre">${nombre}</td>
 			<td data-label="Apellidos">${apellidos}</td>
 			<td data-label="Telefono">${telefono}</td>
@@ -783,7 +789,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
 				<button onclick="deleteMedico(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
 					<i class="icon ion-md-trash "></i>
 				</button>
-				<button onclick="editMedico(${id}, ${id_hospital},'${nombre}','${apellidos}',
+				<button onclick="editMedico(${id},'${hospital}','${nombre}','${apellidos}',
 									'${telefono}', '${staff}', '${especialidad}', '${rut_medico}', '${becario}',
 										'${interno}', '${activo}', '${admin}' )" 
 					class="btn btn-info btn-sm" title="Editar Paciente">
@@ -797,6 +803,41 @@ const getDataRut = async (page_no = 1, paramSearch) => {
         </tr>
       
       `
+	 /* `
+        <tr>
+			<td scope="row" data-label="Id"> ${id} </td>
+			<td data-label="IdHospital"> ${id_hospital}</td>
+			<td data-label="NombreHospital"> ${hospital}</td>
+			<td data-label="Nombre">${nombre}</td>
+			<td data-label="Apellidos">${apellidos}</td>
+			<td data-label="Telefono">${telefono}</td>
+			<td data-label="Staff">${staff}</td>
+			<td data-label="Especialidad">${especialidad}</td>
+			<td data-label="Rut Medico">${rut_medico}</td>
+			<td data-label="Becario"> 
+				${switch1}
+			</td>
+			<td data-label="Interno">${switch2}</td>
+			<td data-label="Activo">${switch3}</td>
+			<td data-label="Admin">${switch4}</td>
+			<td data-label="Acciones">
+				<button onclick="deleteMedico(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+					<i class="icon ion-md-trash "></i>
+				</button>
+				<button onclick="editMedico(${id},'${id_hospital}','${hospital}','${nombre}','${apellidos}',
+									'${telefono}', '${staff}', '${especialidad}', '${rut_medico}', '${becario}',
+										'${interno}', '${activo}', '${admin}' )" 
+					class="btn btn-info btn-sm" title="Editar Paciente">
+					<i class="icon ion-md-create "></i>
+				</button>
+			</td>
+
+
+
+
+        </tr>
+      
+      `*/
     })
   
   }
@@ -832,7 +873,6 @@ function check(e) {
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
 }
-
 
 
 

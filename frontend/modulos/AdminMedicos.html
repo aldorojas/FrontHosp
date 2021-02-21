@@ -166,7 +166,8 @@
                                       <thead class="thead-dark">
                                         <tr>
                                           <th scope="col">Id</th>
-                                          <th scope="col">IdHospital</th>
+                                          <!--<th scope="col">Id Hospital</th>-->
+                                          <th scope="col">Nombre Hospital</th>
                                           <th scope="col">Nombre</th>
                                           <th scope="col">Apellidos</th>
                                           <th scope="col">Telefono</th>
@@ -224,9 +225,17 @@
                               <div class="label">Id Hospital: </div>
                               <input type="text" class="form-control" id="IdHospital" required>
                             </div>
+                          <!--<div class="campo">
+                              <div class="label">Nombre Hospital </div>
+                              <select class="form-control" id="nombreHospital" onchange="validateStaff(this)" required>
+                                <option ></option>
+                                <option value="True">Si</option>
+                                <option value="False">No</option>
+                              </select>
+                           </div>-->
                           <div class="campo">
                             <div class="label">Nombre(s): </div>
-                            <input type="text" class="form-control" id="nombreMedico" onkeypress="return check(event)" required>
+                            <input type="text" class="form-control" id="nombreHospital" onkeypress="return check(event)" required>
                           </div>
                           <div class="campo">
                             <div class="label">Apellidos: </div>
@@ -316,13 +325,17 @@
                               <p id="idMedicoEdit"></p>
                             </div>
                           <form id="formEditMedico">
-                            <div class="campo">
+                             <div class="campo">
                               <div class="label">Id Medico: </div>
                               <input type="text" class="form-control" id="IdMedicoEdit" >
                             </div>
-                            <div class="campo">
+                            <!--<div class="campo">
                                 <div class="label">Id Hospital: </div>
                                 <input type="text" class="form-control" id="IdHospitalEdit" >
+                              </div>-->
+                              <div class="campo">
+                                <div class="label">Nombre Hospital: </div>
+                                <input type="text" class="form-control" id="nombreHospitalEdit" >
                               </div>
                             <div class="campo">
                               <div class="label">Nombre(s): </div>

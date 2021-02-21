@@ -1381,6 +1381,9 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
                 <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger2 btn-sm" >
                     <i class="icon ion-md-trash"></i>
                 </button>
+                <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Encuentro">
+					<i class="icon ion-md-trash "></i>
+				</button>
                                 
                 <button onclick="editEncuentro(${id_encuentro},${id_paciente},'${fecha_e}',
                             '${hora_e}', '${tipo_2}', '${diag_primario}',
