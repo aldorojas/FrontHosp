@@ -1378,25 +1378,27 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
 
         ///////////////////////////////
         if (tipo_2 == 'Cirugia'){
-            var btnEpicrisis = ''
-            var btnCirugia = ''
-        }
-        else{
-            btnEpicrisis = 
+            var btnEpicrisis = 
             '<button type="button" class="btn btn-primary btnCirugia" ' + 
-             `onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}', ` + 
-             `'${hora_ep}','${fecha_hospitalizacion}', '${fecha_egreso}','${dias_hospitalizado}', ` +
-             `'${diag_alta}', '${anamnesis}', '${estudios_acciones}', '${indiciaciones_alta}', `+
-             `'${resumen_evolucion}' )"> `+
-             'Epicrisis' + 
-            '</button>'
+            `onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}', ` + 
+            `'${hora_ep}','${fecha_hospitalizacion}', '${fecha_egreso}','${dias_hospitalizado}', ` +
+            `'${diag_alta}', '${anamnesis}', '${estudios_acciones}', '${indiciaciones_alta}', `+
+            `'${resumen_evolucion}' )"> `+
+            'Epicrisis' + 
+           '</button>'
 
-            btnCirugia =
+
+            var btnCirugia = 
             ' <button type="button" class="btn btn-primary btnCirugia"' + 
             ` onclick="loadModalCirugia('${id_cirugia}', '${date_registered}', '${time_protocol}', ` + 
             ` '${implantes}', '${descripcion}' )"> ` + 
                 'Protocolo' +
             '</button>'
+        }
+        else{
+            btnEpicrisis = ''
+            btnCirugia = ''
+                     
 
         }
 

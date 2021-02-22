@@ -191,9 +191,14 @@ formEncuentro.addEventListener('submit', async function(e){
 	const URLNewEncuentro = 'http://134.122.120.195/api/v1/encuentro';
  
 	e.preventDefault()
+	
+	const spinner = document.getElementById("spinner");
+	spinner.removeAttribute('hidden');
+	
+	
 	// PDFs //
-		
-		////////////
+	
+	////////////
 		var fechaRegistro = document.getElementById('fechaRegistro')
 		var horaRegistro = document.getElementById('horaRegistro')
 		var implantesRegistro = document.getElementById('implantesRegistro')
@@ -443,8 +448,7 @@ formEncuentro.addEventListener('submit', async function(e){
 
 
 	//Audio  ///////////////
-	const spinner = document.getElementById("spinner");
-	spinner.removeAttribute('hidden');
+	
 
 	let Base64Audio = "";
 
@@ -513,8 +517,8 @@ formEncuentro.addEventListener('submit', async function(e){
 	var especialidadcirujano1 = document.getElementById('especialidadcirujano1')
 	var nombrecirujano2 = document.getElementById('nombrecirujano2')
 	var especialidadcirujano2 = document.getElementById('especialidadcirujano2')
-	var anestesista = document.getElementById('anestesista')
-	var especialidadanestesista1 = document.getElementById('especialidadanestesista1')
+	var anestesista = document.getElementById('nombreanestesista')
+	//var especialidadanestesista1 = document.getElementById('especialidanestesista')
 	var rutcirujano1 = document.getElementById('rutcirujano1')
 	var rutcirujano2 = document.getElementById('rutcirujano2')
 	var rutanestesista = document.getElementById('rutanestesista')
@@ -522,7 +526,7 @@ formEncuentro.addEventListener('submit', async function(e){
 	var aseguradora = document.getElementById('aseguradora')
 	var seringreso = document.getElementById('seringreso')
 	var seregreso = document.getElementById('seregreso')
-	var medicotra = document.getElementById('medicotra')
+	var medicotra = document.getElementById('doctorAlta')
 	var Rutatra = document.getElementById('Rutatra')
 	var medicoresp = document.getElementById('medicoresp')
 	var especialidadresp = document.getElementById('especialidadresp')
@@ -567,11 +571,11 @@ formEncuentro.addEventListener('submit', async function(e){
 			"anestesista": anestesista.value,
 			"especialiad_cirujano1": especialidadcirujano1.value,
 			"especialidad_cirujano2": especialidadcirujano2.value,
-			"especialidad_anestesista": especialidadanestesista1.value,
+			"especialidad_anestesista": '',
 			"rut_cirujano1": rutcirujano1.value,
 			"rut_cirujano2": rutcirujano2.value,
 			"rut_anestesista": rutanestesista.value,
-			"descripcion_procedimiento": descripcionpro.value,
+			"descripcion_procedimiento": descProcedimiento.value,
 			"aseguradora": aseguradora.value,
 			"servicio_ingreso": seringreso.value,
 			"servicio_egreso": seregreso.value,
