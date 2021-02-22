@@ -218,8 +218,8 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, implantes, d
     idCirugiaEdit.value = idCirugia;
     fechaProtOperaEdit.value = dateResgistered;
     horaProtOperaEdit.value = timeProtocol;
-    implantesEdit.value = implantes;
-    descProtEdit.value = descripcion;
+    //implantesEdit.value = implantes;
+    //descProtEdit.value = descripcion;
 
     $('#modalEditCirugia').modal('show');
 
@@ -1376,6 +1376,30 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
             '</div>'
         }
 
+        ///////////////////////////////
+        if (tipo_2 == 'Cirugia'){
+            var btnEpicrisis = ''
+            var btnCirugia = ''
+        }
+        else{
+            btnEpicrisis = 
+            '<button type="button" class="btn btn-primary btnCirugia" ' + 
+             `onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}', ` + 
+             `'${hora_ep}','${fecha_hospitalizacion}', '${fecha_egreso}','${dias_hospitalizado}', ` +
+             `'${diag_alta}', '${anamnesis}', '${estudios_acciones}', '${indiciaciones_alta}', `+
+             `'${resumen_evolucion}' )"> `+
+             'Epicrisis' + 
+            '</button>'
+
+            btnCirugia =
+            ' <button type="button" class="btn btn-primary btnCirugia"' + 
+            ` onclick="loadModalCirugia('${id_cirugia}', '${date_registered}', '${time_protocol}', ` + 
+            ` '${implantes}', '${descripcion}' )"> ` + 
+                'Protocolo' +
+            '</button>'
+
+        }
+
       container.innerHTML += 
       `
         <tr>
@@ -1400,22 +1424,11 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
             <td data-label="Nombre Medico">${nombre_completo}</td>
 
             <td data-label="Epicrisis">
-                <button type="button" class="btn btn-primary btnCirugia"
-                    onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}', '${hora_ep}',
-                    '${fecha_hospitalizacion}', '${fecha_egreso}','${dias_hospitalizado}',
-                    '${diag_alta}', '${anamnesis}', '${estudios_acciones}', '${indiciaciones_alta}',
-                    '${resumen_evolucion}' )">
-                    Epicrisis
-                </button>
+                ${btnEpicrisis}
             </td>
-            
 
             <td data-label="Cirugia">
-                <button type="button" class="btn btn-primary btnCirugia"
-                    onclick="loadModalCirugia('${id_cirugia}', '${date_registered}', '${time_protocol}', 
-                    '${implantes}', '${descripcion}' )">
-                    Protocolo
-                </button>
+                ${btnCirugia}
             </td>
 
             
