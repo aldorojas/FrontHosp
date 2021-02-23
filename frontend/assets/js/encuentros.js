@@ -313,6 +313,8 @@ doc.save('Epicrisis.pdf')
 
 
 ///////////////////////PDF Protocolo operatorio//////////////////////////
+setTimeout(5000);
+
 
 var doc2 = new jsPDF()
 doc2.setFontType("bold");
