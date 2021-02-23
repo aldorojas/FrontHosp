@@ -254,9 +254,9 @@ doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,55)
 doc.text('Aseguradora:'+ aseguradora.value,20,60)
 doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,65)
 
-doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,70,50)
-doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,70,55)
-doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),70,60)
+doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,85,50)
+doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,85,55)
+doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),85,60)
 //doc.text('Direccion:	' + localStorage.getItem("direccionPaciente") ,70,55)
 //doc.text('Sexo: ' + localStorage.getItem("sexoPaciente"),165,50)
 //doc.text('Episodio:',130,55)
@@ -285,7 +285,7 @@ doc.setFontSize(11);
 doc.text('Anamnesis:',20,145)
 doc.setFontType("normal");
 doc.setFontSize(11);
-doc.text(anamnesis.value, 22, 145)
+doc.text(anamnesis.value, 60, 145)
 
 
 doc.setFontType("bold");
@@ -293,21 +293,21 @@ doc.setFontSize(11);
 doc.text('Estudios y acciones:',20,150)
 doc.setFontType("normal");
 doc.setFontSize(11);
-doc.text(estudios_acciones.value, 22, 150)
+doc.text(estudios_acciones.value, 60, 150)
 
 doc.setFontType("bold");
 doc.setFontSize(11);
 doc.text('Resumen de evolución:',20,155)
 doc.setFontType("normal");
 doc.setFontSize(11);
-doc.text(resumenEvolucion.value, 22, 155)
+doc.text(resumenEvolucion.value, 60, 155)
 
 doc.setFontType("bold");
 doc.setFontSize(11);
 doc.text('Indicaciones al alta:',20,160)
 doc.setFontType("normal");
 doc.setFontSize(11);
-doc.text(indicacionesAlta.value, 22, 160)
+doc.text(indicacionesAlta.value, 60, 160)
 
 doc.save('Epicrisis.pdf')
 
