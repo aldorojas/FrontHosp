@@ -244,7 +244,7 @@ doc.setFontSize(12);
 doc.text('Epicrisis',90,30)
 
 doc.setFontType("bold");
-doc.setFontSize(12);
+doc.setFontSize(12); 
 doc.text('Antecedentes Paciente:',20,40)
 
 doc.setFontType("normal");
