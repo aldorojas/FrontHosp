@@ -254,9 +254,9 @@ doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,55)
 doc.text('Aseguradora:'+ aseguradora.value,20,60)
 doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,65)
 
-doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,85,50)
-doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,85,55)
-doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),85,60)
+doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,50)
+doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,110,55)
+doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),110,60)
 //doc.text('Direccion:	' + localStorage.getItem("direccionPaciente") ,70,55)
 //doc.text('Sexo: ' + localStorage.getItem("sexoPaciente"),165,50)
 //doc.text('Episodio:',130,55)
@@ -314,54 +314,52 @@ doc.save('Epicrisis.pdf')
 
 ///////////////////////PDF Protocolo operatorio//////////////////////////
 
-var doc = new jsPDF()
-doc.setFontType("bold");
-doc.setFontSize(12);
-doc.text('Protocolo Operatorio',80,30)
+var doc2 = new jsPDF()
+doc2.setFontType("bold");
+doc2.setFontSize(12);
+doc2.text('Protocolo Operatorio',80,30)
 
-doc.setFontType("normal");
-doc.setFontSize(11);
-doc.text('Rut:'  + localStorage.getItem("rutPaciente") ,20,40)
-doc.text('Nombre Paciente:'  + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,45)
-doc.text('Sexo:'  + localStorage.getItem("sexoPaciente") ,20,50)
-doc.text('Fecha nacimiento:'  + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
-doc.text('Direccion:'  + localStorage.getItem("direccionPaciente") ,20,60)
+doc2.setFontType("normal");
+doc2.setFontSize(11);
+doc2.text('Rut:'  + localStorage.getItem("rutPaciente") ,20,40)
+doc2.text('Nombre Paciente:'  + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,45)
+doc2.text('Sexo:'  + localStorage.getItem("sexoPaciente") ,20,50)
+doc2.text('Fecha nacimiento:'  + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
+doc2.text('Direccion:'  + localStorage.getItem("direccionPaciente") ,20,60)
 
-doc.setFontType("bold");
-doc.setFontSize(12);
-doc.text('Diagnostico quirurgico postoperatorio',70,70)
-doc.setFontType("normal");
-doc.setFontSize(11);
-doc.text('Fecha:' + fechaRegistro.value,20,85)
-doc.text('Hora:' + horaRegistro.value,20,90)
-doc.text('Codigo:',20,95)
-doc.text('Descripcion diagnostico:' + 'OSTEOCONDROSIS DE LA COLUMNA VERTEBRAL DEL ADULTO',20,100)
-doc.text('Nombre Cirujano1:' + nombrecirujano.value,20,105)
-doc.text('Especialidad:' + especialidadcirujano1.value,20,110)
-doc.text('RUT:'+ rutcirujano1.value,20,115)
-doc.text('Nombre Cirujano2:' + nombrecirujano2.value,20,120)
-doc.text('Especialidad:' + especialidadcirujano2.value,20,125)
-doc.text('RUT:' + rutcirujano2.value,20,130)
-doc.text('Nombre Anestesista:' + anestesista.value,20,135)
-doc.text('RUT:' + rutanestesista.value,20,140)
+doc2.setFontType("bold");
+doc2.setFontSize(12);
+doc2.text('Diagnostico quirurgico postoperatorio',70,70)
+doc2.setFontType("normal");
+doc2.setFontSize(11);
+doc2.text('Fecha:' + fechaRegistro.value,20,85)
+doc2.text('Hora:' + horaRegistro.value,20,90)
+doc2.text('Codigo:',20,95)
+doc2.text('Descripcion diagnostico:' + 'OSTEOCONDROSIS DE LA COLUMNA VERTEBRAL DEL ADULTO',20,100)
+doc2.text('Nombre Cirujano1:' + nombrecirujano.value,20,105)
+doc2.text('Especialidad:' + especialidadcirujano1.value,20,110)
+doc2.text('RUT:'+ rutcirujano1.value,20,115)
+doc2.text('Nombre Cirujano2:' + nombrecirujano2.value,20,120)
+doc2.text('Especialidad:' + especialidadcirujano2.value,20,125)
+doc2.text('RUT:' + rutcirujano2.value,20,130)
+doc2.text('Nombre Anestesista:' + anestesista.value,20,135)
+doc2.text('RUT:' + rutanestesista.value,20,140)
 
-doc.setFontType("bold");
-doc.setFontSize(12);
-doc.text('Descripcion de procedimiento',20,150)
-doc.setFontType("normal");
-doc.setFontSize(11);
-doc.text(descProcedimiento.value,20,160)
+doc2.setFontType("bold");
+doc2.setFontSize(12);
+doc2.text('Descripcion de procedimiento',20,150)
+doc2.setFontType("normal");
+doc2.setFontSize(11);
+doc2.text(descProcedimiento.value,20,160)
 
-doc.setFontType("bold");
-doc.setFontSize(12);
-doc.text('Implantes',20,170)
-doc.setFontType("normal");
-doc.setFontSize(11);
-doc.text(implantesRegistro.value,20,180)
+doc2.setFontType("bold");
+doc2.setFontSize(12);
+doc2.text('Implantes',20,170)
+doc2.setFontType("normal");
+doc2.setFontSize(11);
+doc2.text(implantesRegistro.value,20,180)
 
-doc.save('ProtocoloOperatorio.pdf')
-
-
+doc2.save('ProtocoloOperatorio.pdf')
 
 ////////////////////////////////////////////
 
