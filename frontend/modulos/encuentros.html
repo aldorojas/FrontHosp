@@ -246,7 +246,7 @@
                                           <div class="label">Rut cirujano: </div>
                                           <input type="text" class="form-control" id="rutcirujano1" >
                                         </div>                                                                              
-                                      </div>
+                                      </div> 
                                       <div class="form-row">                    
                                         <div class="form-group col-md-12">
                                           <div class="label">Especialidad cirujano: </div>
@@ -280,24 +280,22 @@
                                         </div>                                        
                                       </div>
                                       <div class="form-row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-6">
                                           <div class="label">Descripcion del procedimiento: </div>
                                           <textarea class="form-control" id="descProcedimiento" rows="8"></textarea>
                                         </div>
-                                      </div>
-                                    
+                                        <div class="form-group col-md-6">
+                                          <div class="label">Implantes: </div>
+                                          <textarea class="form-control" id="implantesRegistro" rows="8"></textarea>
+                                        </div>
+                                      </div>                                    
                                       <!-- <div class="label">Implantes: </div>
-                                      <input type="text" class="form-control" id="implantesRegistro" > -->
-                                    
-                                      
-                                    
+                                      <input type="text" class="form-control" id="implantesRegistro" > -->                                                                                                              
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
                                         <!--<button type="button"  class="btn btn-primary" id="guardarProtOpera">Generar PDF</button>-->
-                                      </div>
-                                      
-                                    </div>
-                                    
+                                      </div>                                    
+                                    </div>                                    
                                   </div>
                                 </div>
                               </div>
@@ -311,124 +309,110 @@
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                      <div class="modal-body">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-2">
-                                                  <div class="label">Fecha Epicrisis: </div>
-                                                  <input type="date" class="form-control" id="fechaEpicrisis" >
-                                                </div>
-                                                <div class="form-group col-md-2">
-                                                  <div class="label">Hora Epicrisis: </div>
-                                                  <input type="time" class="form-control" id="horaEpicrisis" >
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                  <div class="label">Fecha hospitalizacion: </div>
-                                                  <input type="date" class="form-control" id="fechaHospitalizacion">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                  <div class="label">Fecha egreso hospital: </div>
-                                                  <input type="date" class="form-control" id="fechaEgresoHospital">
-                                                </div>
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-2">
+                                              <div class="label">Fecha Epicrisis: </div>
+                                              <input type="date" class="form-control" id="fechaEpicrisis" >
                                             </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                  <div class="label">Dias de hospitalizacion: </div>
-                                                  <input type="text" class="form-control" id="diasHospitalizacion" >
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                  <div class="label">Medico tratante: </div>
-                                                  <select class="form-control" id="doctorAlta">
-                                                  </select>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                  <div class="label">Especialidad doctor alta: </div>
-                                                  <select class="form-control" id="espDocAlta">
-                                                    <option>Cardio-cirugia</option>
-                                                    <option>homodinamia</option>
-                                                  </select>
-                                                </div>                                                                                    
-                                            </div>                                            
-                                            <div class="form-row">
-                                              <div class="form-group col-md-4">
-                                                <div class="label">Aseguradora: </div>                            
-                                                <select class="form-control" id="aseguradora">
-                                                  <option>isapre </option>
-                                                  <option>fonasa</option>
-                                                </select>
-                                              </div>                                                                                                                              
-                                              <div class="form-group col-md-4">
-                                                <div class="label">Servicio Ingreso:</div>
-                                                <input type="text" class="form-control" id="seringreso"> 
-                                              </div>
-                                              <div class="form-group col-md-4">
-                                                <div class="label">Servicio egreso: </div>
-                                                <input type="text" class="form-control" id="seregreso">
-                                              </div>                                             
-                                            </div>        
-                                            <div class="form-row">                                              
-                                              <div class="form-group col-md-4">
-                                                <div class="label">Ruta tratante: </div>
-                                                <input type="text" class="form-control" id="Rutatra"> 
-                                              </div>                                          
-                                              <div class="form-group col-md-4">
-                                                <div class="label">Medico Responsable:</div>
-                                                <input type="text" class="form-control" id="medicoresp"> 
-                                              </div>
-                                              <div class="form-group col-md-4">
-                                                <div class="label">Especialidad responsable: </div>
-                                                <input type="text" class="form-control" id="especialidadresp">
-                                              </div> 
-                                            </div> 
-                                            <div class="form-row">
-                                              <div class="form-group col-md-3">
-                                                <div class="label">Diagnostico alta: </div>
-                                                <textarea class="form-control" id="diagAlta" rows="4"> </textarea>
-                                              </div>
-                                              <div class="form-group col-md-3">
-                                                <div class="label">Resumen evolucion:</div>
-                                                <textarea class="form-control" id="resumenEvolucion" rows="4"> </textarea>
-                                              </div>
-                                              <div class="form-group col-md-3">
-                                                <div class="label">Estudios acciones: </div>
-                                                <textarea class="form-control" id="estudiosAcciones" rows="4"> </textarea>
-                                              </div>
-                                              <div class="form-group col-md-3">
-                                                <div class="label">Indicaciones alta: </div>
-                                                <textarea class="form-control" id="indicacionesAlta" rows="4"> </textarea>      
-                                              </div>
-                                            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-                                                                
-                                          <!-- <div class="label">Anamnesis: </div>
-                                          <input type="text" class="form-control" id="anamnesis" > -->
-                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-                                            <!--<button type="button" id="guardarEpicrisis" class="btn btn-primary">Crear PDF</button>
-                                            <button type="submit" class="btn btn-primary">Guardar</button>-->
+                                            <div class="form-group col-md-2">
+                                              <div class="label">Hora Epicrisis: </div>
+                                              <input type="time" class="form-control" id="horaEpicrisis" >
                                             </div>
+                                            <div class="form-group col-md-4">
+                                              <div class="label">Fecha hospitalizacion: </div>
+                                              <input type="date" class="form-control" id="fechaHospitalizacion">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <div class="label">Fecha egreso hospital: </div>
+                                              <input type="date" class="form-control" id="fechaEgresoHospital">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-3">
+                                              <div class="label">Dias de hospitalizacion: </div>
+                                              <input type="text" class="form-control" id="diasHospitalizacion" >
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                              <div class="label">Medico tratante: </div>
+                                              <select class="form-control" id="doctorAlta">
+                                              </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                              <div class="label">Especialidad doctor alta: </div>
+                                              <select class="form-control" id="espDocAlta">
+                                                <option>Cardio-cirugia</option>
+                                                <option>homodinamia</option>
+                                              </select>
+                                            </div>                                               
+                                            <div class="form-group col-md-3">
+                                              <div class="label">Rut tratante: </div>
+                                              <input type="text" class="form-control" id="Rutatra"> 
+                                            </div>                                                                                   
+                                        </div>                                            
+                                        <div class="form-row">                                                                                                                                                                          
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Servicio Ingreso:</div>
+                                            <input type="text" class="form-control" id="seringreso"> 
+                                          </div>
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Servicio egreso: </div>
+                                            <input type="text" class="form-control" id="seregreso">
+                                          </div>                                               
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Aseguradora: </div>                            
+                                            <select class="form-control" id="aseguradora">
+                                              <option>isapre </option>
+                                              <option>fonasa</option>
+                                            </select>
+                                          </div>                                      
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Anamnesis:</div>
+                                            <input type="text" class="form-control" id="anamnesis"> 
+                                          </div>                                                                                          
+                                        </div>                                            
+                                        <div class="form-row">
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Diagnostico alta: </div>
+                                            <textarea class="form-control" id="diagAlta" rows="4"> </textarea>
+                                          </div>
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Resumen evolucion:</div>
+                                            <textarea class="form-control" id="resumenEvolucion" rows="4"> </textarea>
+                                          </div>
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Estudios acciones: </div>
+                                            <textarea class="form-control" id="estudiosAcciones" rows="4"> </textarea>
+                                          </div>
+                                          <div class="form-group col-md-3">
+                                            <div class="label">Indicaciones alta: </div>
+                                            <textarea class="form-control" id="indicacionesAlta" rows="4"> </textarea>      
+                                          </div>
+                                        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                              
+                                        <!-- <div class="label">Anamnesis: </div>
+                                        <input type="text" class="form-control" id="anamnesis" > -->
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                                          <!--<button type="button" id="guardarEpicrisis" class="btn btn-primary">Crear PDF</button>
+                                          <button type="submit" class="btn btn-primary">Guardar</button>-->
+                                        </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-
-
                                 <div class="campo btns">
                                     <button type="submit" class="volver-pag2 volver btn btn-primary mb-2">Anterior</button>
                                     <button type="submit" class="Fin adelante btn btn-primary mb-2">Crear encuentro</button> 
                                     <!-- <button type="button" id="btnFetch" class="btn btn-primary mb-2">Submit</button> -->
                                 </div>
-
-
                                 <!-- <button onclick="loadData()">Load data</button> -->
                                 <div hidden id="spinner"></div> 
                             </div>
-
                       </form>
-
                   </div>
-
               </div>
           </div>
-
           <!-- Modal Paciente-->
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
