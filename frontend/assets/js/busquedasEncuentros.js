@@ -174,11 +174,11 @@ function loadMedico(){
 
 
 
-
+//////////////////LoadModal////////////////////////////////////////
 
 function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizacion,fechaEgreso,
-    diasHospitalizado,diagnosticoAlta,anamnesis,estudiosAcciones, indicacionesAlta,
-    resumenEvolucion){
+    diasHospitalizado,Rutatra,seregreso,seringreso,aseguradora,anamnesis,diagAlta,
+    resumenEvolucion,estudiosAcciones,indicacionesAlta ){
 
     var idEpicrisisEdit = document.getElementById('idEpicrisis')
     var fechaEpicrisisEdit = document.getElementById('fechaEpicrisis')
@@ -186,38 +186,68 @@ function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizac
     var fechaHospitalizacionEdit = document.getElementById('fechaHospitalizacion')
     var fechaEgresoEdit = document.getElementById('fechaEgresoHospital')
     var diasHospEdit = document.getElementById('diasHospitalizacion')
+    var RutatraEdit = document.getElementById('Rutatra')
+    var seregresoEdit = document.getElementById('seregreso')
+    var seringresoEdit = document.getElementById('seringreso')    
+    var aseguradoraEdit = document.getElementById('aseguradora')
+    var anamnesisEdit = document.getElementById('anamnesis')
     var diagAltaEdit = document.getElementById('diagAlta')
+    var resumenEvoEdit = document.getElementById('resumenEvolucion')
     var estudiosAccionesEdit = document.getElementById('estudiosAcciones')
     var indicacionesAltaEdit = document.getElementById('indicacionesAlta')
-    var resumenEvoEdit = document.getElementById('resumenEvolucion')
-
+  
     idEpicrisisEdit.value = idEpicrisis;
     fechaEpicrisisEdit.value = fechaEpicrisis;
     horaEpicrisisEdit.value = horaEpicrisis;
     fechaHospitalizacionEdit.value = fechaHospitalizacion;
     fechaEgresoEdit.value = fechaEgreso;
     diasHospEdit.value = diasHospitalizado;
-    diagAltaEdit.value = diagnosticoAlta;
-    
+    RutatraEdit.value = Rutatra;
+    seregresoEdit.value = seregreso;
+    seringresoEdit.value = seringreso;    
+    aseguradoraEdit.value = aseguradora;
+    anamnesisEdit.value = anamnesis;
+    diagAltaEdit.value = diagAlta;
+    resumenEvoEdit.value = resumenEvolucion;
     estudiosAccionesEdit.value = estudiosAcciones;
     indicacionesAltaEdit.value = indicacionesAlta
-    resumenEvoEdit.value = resumenEvolucion;
 
     $('#modalEditEpi').modal('show');
 
 }
 
-function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, implantes, descripcion,){
+function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, nombrecirujano1, rutcirujano1, 
+        especialidadcirujano1, nombrecirujano2, rutcirujano2,especialidadcirujano2, nombreanestesista, 
+        rutanestesista, descProcedimiento, implantes, descripcion){
 
     var idCirugiaEdit = document.getElementById('idCirugiaModal')
     var fechaProtOperaEdit = document.getElementById('fechaProtOpera')
     var horaProtOperaEdit = document.getElementById('horaProtOpera')
-    var implantesEdit = document.getElementById('implantesProt')
-    var descProtEdit = document.getElementById('descProtOpera')
+    var nombrecirujano1Edit = document.getElementById('nombrecirujano1')
+    var rutcirujano1Edit = document.getElementById('rutcirujano1')
+    var especialidadcirujano1Edit = document.getElementById('especialidadcirujano1')
+    var nombrecirujano2Edit = document.getElementById('nombrecirujano2')
+    var rutcirujano2Edit = document.getElementById('rutcirujano2')
+    var especialidadcirujano2Edit = document.getElementById('especialidadcirujano2')
+    var nombreanestesistaEdit = document.getElementById('nombreanestesista')
+    var rutanestesistaEdit = document.getElementById('rutanestesista')
+    var descProcedimientoEdit = document.getElementById('descProcedimiento')
+    
+    //var implantesEdit = document.getElementById('implantesProt')
+    //var descProtEdit = document.getElementById('descProtOpera')
 
     idCirugiaEdit.value = idCirugia;
     fechaProtOperaEdit.value = dateResgistered;
     horaProtOperaEdit.value = timeProtocol;
+    nombrecirujano1Edit.value = nombrecirujano1;
+    rutcirujano1Edit.value = rutcirujano1;
+    especialidadcirujano1Edit.value = especialidadcirujano1;
+    nombrecirujano2Edit.value = nombrecirujano2;
+    rutcirujano2Edit.value = rutcirujano2;
+    especialidadcirujano2Edit.value = especialidadcirujano2;
+    nombreanestesistaEdit.value = nombreanestesista;
+    rutanestesistaEdit.value = rutanestesista;
+    descProcedimientoEdit.value = descProcedimiento;
     //implantesEdit.value = implantes;
     //descProtEdit.value = descripcion;
 
@@ -454,6 +484,66 @@ formEditEncuentro.addEventListener('submit',async function(e){
 	const dataToSend = JSON.stringify(
 		{	
             "anamnesis": anamnesisEdit.value,
+            "anestesista": nombreanestesistaEdit.value,
+            "aseguradora": aseguradoraEdit.value,
+            "cie10": "182773js",
+            "date_registered": fechaProtOperaEdit.value,
+            "descripcion": descProtEdit.value,
+            "descripcion_procedimiento": descProcedimientoEdit.value,
+            "diag_alta": diagAltaEdit.value,
+            "diag_primario": diagPrimarioEdit.value,
+            "diag_secun": diagSecun1Edit.value,
+            "diag_secun2": diagSecun2Edit.value,
+            "dias_hospitalizado": diasHospEdit.value,
+            "eliminado": eliminadoEdit.value,
+            "especialidad_anestesista": "",
+            "especialidad_cirujano1": especialidadcirujano1Edit.value,
+            "especialidad_cirujano2": especialidadcirujano2Edit.value,
+            "especialidad_responsable": "None",
+            "estudios_acciones": estudiosAccionesEdit.value,
+            "fecha_e": fechaEncuentroEdit.value, 
+            "fecha_egreso": fechaEgresoEdit.value,
+            "fecha_ep": fechaEpicrisisEdit.value,
+            "fecha_hospitalizacion": fechaHospitalizacionEdit.value,
+            "feedback_ia": feedbackIAEdit.value,
+            "hora_e": horaEncuentroEdit.value,
+            "hora_ep": horaEpicrisisEdit.value,
+            "id_cirugia": idCirugia.value,
+            "id_diagnostico": 2,
+            "id_encuentro": idEncuentroEdit.value,
+            "id_epicrisis": idEpicrisis.value,
+            "id_hospital": idHospitalEdit.value,
+            "id_medico": idMedicoEdit.value,
+            "id_paciente": idPacienteEdit.value,
+            "implantes": implantesEdit.value,
+            "indiciaciones_alta": indicacionesAltaEdit.value,
+            "medico_responsable": "None",
+            "medico_tratante": "None",
+            "nombre_cirujano1": nombrecirujano1Edit.value,
+            "nombre_cirujano2": nombrecirujano2Edit.value,
+            "nombre_completo": "Aldo Rojas Benitez",
+            "notas_clinicas": notaClinicaEdit.value,
+            "resultado_med_ia": resultadoMedIAEdit.value,
+            "resultados_ia": resultadoIAEdit.value,
+            "resumen_evolucion": resumenEvoEdit.value,
+            "rut_anestesista": rutanestesistaEdit.value,
+            "rut_cirujano1": rutcirujano1Edit,
+            "rut_cirujano2": rutcirujano2Edit,
+            "ruta_audio": "",
+            "ruta_exam_electro": "",
+            "ruta_exam_lab": "",
+            "ruta_tratante": RutatraEdit.value,
+            "servicio_egreso": seregresoEdit.value,
+            "servicio_ingreso ": seringresoEdit.value,
+            "snomed": "877dyjs",
+            "time_protocol": horaProtOperaEdit.value,
+            "tipo_2": tipoEncuentroEdit.value,
+            "ruta_audio" : Base64Audio,
+			"ruta_exam_lab" : base64ExamLab,
+			"ruta_exam_electro" : base64Electro
+            
+            /*"anamnesis": anamnesisEdit.value,
+            "anestesista":'',
             "cie10": "NHSHSMK",
             "date_registered": fechaProtOperaEdit.value,
             "descripcion": descProtEdit.value,
@@ -480,6 +570,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "id_paciente": idPacienteEdit.value,
             "implantes": implantesEdit.value,
             "indiciaciones_alta": indicacionesAltaEdit.value,
+            "nombre_cirujano1":'',
+            "nombre_cirujano2":'',
             "notas_clinicas": notaClinicaEdit.value,
             "resultado_med_ia": resultadoMedIAEdit.value,
             "resultados_ia": resultadoIAEdit.value,
@@ -489,251 +581,415 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "tipo_2": tipoEncuentroEdit.value,
 			"ruta_audio" : Base64Audio,
 			"ruta_exam_lab" : base64ExamLab,
-			"ruta_exam_electro" : base64Electro
+			"ruta_exam_electro" : base64Electro*/
         });
         
     console.log(dataToSend)
     
 
+    ////////////////////////////Epicrisis///////////////////////////////////////
+    var fecha_epicrisis = document.getElementById('fechaEpicrisis')
+    var hora_epicris = document.getElementById('horaEpicrisis')
+    var fecha_in_hospi = document.getElementById('fechaHospitalizacion')
+    var fecha_egreso = document.getElementById('fechaEgresoHospital')
+    var dias_de_hosp = document.getElementById('diasHospitalizacion')
+    var aseguradora = document.getElementById('aseguradora')
+    var seringreso = document.getElementById('seringreso')
+    var seregreso = document.getElementById('seregreso')
+    var Rutatra = document.getElementById('Rutatra')
+    //var medicoresp = document.getElementById('medicoresp')
+    //var especialidadresp = document.getElementById('especialidadresp')
+    var diag_alta = document.getElementById('diagAlta')
+    var anamnesis = document.getElementById('anamnesis')
+    var resumenEvolucion = document.getElementById('resumenEvolucion')
+    var estudios_acciones = document.getElementById('estudiosAcciones')
+    var indicacionesAlta = document.getElementById('indicacionesAlta')
+    //var medicotra = document.getElementById('doctorAlta')	
+    //var especialidadanestesista1 = document.getElementById('especialidanestesista')
+    //var descripcionpro = document.getElementById('descripcionpro')
+
+    ///////////////////////PDF Epicrisis//////////////////////////
+
+    var doc = new jsPDF()
+    doc.setFontType("bold");
+    doc.setFontSize(12);
+    doc.text('Epicrisis',90,30)
+
+    doc.setFontType("bold");
+    doc.setFontSize(12); 
+    doc.text('Antecedentes Paciente:',20,40)
+
+    doc.setFontType("normal");
+    doc.setFontSize(11);
+    doc.text('Nombre Paciente:' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,50)
+    doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,55)
+    doc.text('Aseguradora:'+ aseguradora.value,20,60)
+    doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,65)
+
+    doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,50)
+    doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,110,55)
+    doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),110,60)
+    //doc.text('Direccion:	' + localStorage.getItem("direccionPaciente") ,70,55)
+    //doc.text('Sexo: ' + localStorage.getItem("sexoPaciente"),165,50)
+    //doc.text('Episodio:',130,55)
+
+    doc.setFontType("bold");
+    doc.setFontSize(12);
+    doc.text('Epicrisis',20,75)
+
+    doc.setFontType("normal");
+    doc.setFontSize(11);
+    doc.text('Servicio de Ingreso:'+ seringreso.value,20,85)
+    doc.text('Servicio de Egreso:'+ seregreso.value,20,90)
+    doc.text('Fecha de Ingreso:'+ fecha_in_hospi.value,20,95)
+    doc.text('Fecha de Egreso:'+ fecha_egreso.value,20,100)
+    doc.text('Número de días de hospitalización:'+ dias_de_hosp.value,20,105)
+    doc.text('Médico tratante:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),20,110)
+    doc.text('Especialidad de médico tratante:' + localStorage.getItem("especialidad"),20,115)
+    doc.text('RUT de tratante:'+ Rutatra.value,20,120)
+    doc.text('Médico responsable del alta:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),20,125)
+    doc.text('Especialidad de médico responsable del alta:' + localStorage.getItem("especialidad"),20,130)
+    doc.text('Diagnóstico de Alta:'+ diag_alta.value,20,135)
+    doc.text('Motivo del alta: texto libre',20,140)
+
+    doc.setFontType("bold");
+    doc.setFontSize(11);
+    doc.text('Anamnesis:',20,145)
+    doc.setFontType("normal");
+    doc.setFontSize(11);
+    doc.text(anamnesis.value, 60, 145)
+
+
+    doc.setFontType("bold");
+    doc.setFontSize(11);
+    doc.text('Estudios y acciones:',20,150)
+    doc.setFontType("normal");
+    doc.setFontSize(11);
+    doc.text(estudios_acciones.value, 60, 150)
+
+    doc.setFontType("bold");
+    doc.setFontSize(11);
+    doc.text('Resumen de evolución:',20,155)
+    doc.setFontType("normal");
+    doc.setFontSize(11);
+    doc.text(resumenEvolucion.value, 60, 155)
+
+    doc.setFontType("bold");
+    doc.setFontSize(11);
+    doc.text('Indicaciones al alta:',20,160)
+    doc.setFontType("normal");
+    doc.setFontSize(11);
+    doc.text(indicacionesAlta.value, 60, 160)
+
+    doc.save('Epicrisis.pdf')
+
+    //////////////////////////////Protocolo operatorio/////////////////////////	
+    var fechaRegistro = document.getElementById('fechaRegistro')
+    var horaRegistro = document.getElementById('horaRegistro')
+    var nombrecirujano = document.getElementById('nombrecirujano1')
+    var nombrecirujano2 = document.getElementById('nombrecirujano2')
+    var rutcirujano1 = document.getElementById('rutcirujano1')
+    var rutcirujano2 = document.getElementById('rutcirujano2')
+    var especialidadcirujano1 = document.getElementById('especialidadcirujano1')
+    var especialidadcirujano2 = document.getElementById('especialidadcirujano2')
+    var anestesista = document.getElementById('nombreanestesista')
+    var rutanestesista = document.getElementById('rutanestesista')
+    var descProcedimiento = document.getElementById('descProcedimiento')
+    var implantesRegistro = document.getElementById('implantesRegistro')
+    var eliminadoEncuentro = document.getElementById('eliminadoEncuentro')
+
+
+    ///////////////////////PDF Protocolo operatorio//////////////////////////
+    setTimeout(5000);
+
+    var doc2 = new jsPDF()
+    doc2.setFontType("bold");
+    doc2.setFontSize(12);
+    doc2.text('Protocolo Operatorio',80,30)
+
+    doc2.setFontType("normal");
+    doc2.setFontSize(11);
+    doc2.text('Rut:'  + localStorage.getItem("rutPaciente") ,20,40)
+    doc2.text('Nombre Paciente:'  + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,45)
+    doc2.text('Sexo:'  + localStorage.getItem("sexoPaciente") ,20,50)
+    doc2.text('Fecha nacimiento:'  + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
+    doc2.text('Direccion:'  + localStorage.getItem("direccionPaciente") ,20,60)
+
+    doc2.setFontType("bold");
+    doc2.setFontSize(12);
+    doc2.text('Diagnostico quirurgico postoperatorio',70,70)
+    doc2.setFontType("normal");
+    doc2.setFontSize(11);
+    doc2.text('Fecha:' + fechaRegistro.value,20,85)
+    doc2.text('Hora:' + horaRegistro.value,20,90)
+    doc2.text('Codigo:',20,95)
+    doc2.text('Descripcion diagnostico:' + 'OSTEOCONDROSIS DE LA COLUMNA VERTEBRAL DEL ADULTO',20,100)
+    doc2.text('Nombre Cirujano1:' + nombrecirujano.value,20,105)
+    doc2.text('Especialidad:' + especialidadcirujano1.value,20,110)
+    doc2.text('RUT:'+ rutcirujano1.value,20,115)
+    doc2.text('Nombre Cirujano2:' + nombrecirujano2.value,20,120)
+    doc2.text('Especialidad:' + especialidadcirujano2.value,20,125)
+    doc2.text('RUT:' + rutcirujano2.value,20,130)
+    doc2.text('Nombre Anestesista:' + anestesista.value,20,135)
+    doc2.text('RUT:' + rutanestesista.value,20,140)
+
+    doc2.setFontType("bold");
+    doc2.setFontSize(12);
+    doc2.text('Descripcion de procedimiento',20,150)
+    doc2.setFontType("normal");
+    doc2.setFontSize(11);
+    doc2.text(descProcedimiento.value,20,160)
+
+    doc2.setFontType("bold");
+    doc2.setFontSize(12);
+    doc2.text('Implantes',20,170)
+    doc2.setFontType("normal");
+    doc2.setFontSize(11);
+    doc2.text(implantesRegistro.value,20,180)
+
+    doc2.save('ProtocoloOperatorio.pdf')
+    
     // PDFs //
 	
 	  ////////////
-	  var fechaRegistro = document.getElementById('fechaProtOperaEdit')
-	  var horaRegistro = document.getElementById('horaProtOperaEdit')
-	  var implantesRegistro = document.getElementById('implantesProtEdit')
-	  var descProcedimiento = document.getElementById('descProtOperaEdit')
+	//   var fechaRegistro = document.getElementById('fechaProtOperaEdit')
+	//   var horaRegistro = document.getElementById('horaProtOperaEdit')
+	//   var implantesRegistro = document.getElementById('implantesProtEdit')
+	//   var descProcedimiento = document.getElementById('descProtOperaEdit')
   
-	  var doc = new jsPDF()
-	  doc.setFontType("bold");
-	  doc.setFontSize(14);
-	  doc.text('Protocolo Operatorio',80,20)
-	  doc.setFontSize(12);
+	//   var doc = new jsPDF()
+	//   doc.setFontType("bold");
+	//   doc.setFontSize(14);
+	//   doc.text('Protocolo Operatorio',80,20)
+	//   doc.setFontSize(12);
 
-	  doc.text('Diagnostico quirurgico postoperatorio',20,70)
-	  doc.setFontType("normal");
-	  doc.setFontSize(8);
-	  doc.text('Fecha:					' + fechaRegistro.value,20,75)
-	  doc.text('Hora:				 	' + horaRegistro.value,20,80)
-	  doc.text('Codigo:  				 ',20,85)
-	  doc.text('Descripcion diagnostico:  	' + 'OSTEOCONDROSIS DE LA COLUMNA VERTEBRAL DEL ADULTO',20,90)
-	  doc.text('Responsable:  				 ',20,95)
-	  doc.text('Especialidad:  			 ' + 'COLUMNA',20,100)
-	  doc.text('Rut:  				 ' + '' ,20,105)
+	//   doc.text('Diagnostico quirurgico postoperatorio',20,70)
+	//   doc.setFontType("normal");
+	//   doc.setFontSize(8);
+	//   doc.text('Fecha:					' + fechaRegistro.value,20,75)
+	//   doc.text('Hora:				 	' + horaRegistro.value,20,80)
+	//   doc.text('Codigo:  				 ',20,85)
+	//   doc.text('Descripcion diagnostico:  	' + 'OSTEOCONDROSIS DE LA COLUMNA VERTEBRAL DEL ADULTO',20,90)
+	//   doc.text('Responsable:  				 ',20,95)
+	//   doc.text('Especialidad:  			 ' + 'COLUMNA',20,100)
+	//   doc.text('Rut:  				 ' + '' ,20,105)
 
-	  doc.setFontType("bold");
-	  doc.setFontSize(12);
-	  doc.text('Descripcion de procedimiento',20,120)
-	  doc.setFontType("normal");
-	  doc.setFontSize(8);
-	  doc.text(descProcedimiento.value,20,125)
+	//   doc.setFontType("bold");
+	//   doc.setFontSize(12);
+	//   doc.text('Descripcion de procedimiento',20,120)
+	//   doc.setFontType("normal");
+	//   doc.setFontSize(8);
+	//   doc.text(descProcedimiento.value,20,125)
 
-	  doc.setFontType("bold");
-	  doc.setFontSize(12);
-	  doc.text('Implantes',20,250)
-	  doc.setFontType("normal");
-	  doc.setFontSize(8);
-	  doc.text(implantesRegistro.value,20,255)
+	//   doc.setFontType("bold");
+	//   doc.setFontSize(12);
+	//   doc.text('Implantes',20,250)
+	//   doc.setFontType("normal");
+	//   doc.setFontSize(8);
+	//   doc.text(implantesRegistro.value,20,255)
 
-	  doc.text('Especialidad:' + 'Columna',20,280)
-	  doc.text('Responsable' + '',80,280)
+	//   doc.text('Especialidad:' + 'Columna',20,280)
+	//   doc.text('Responsable' + '',80,280)
 
-	  //doc.text(fechaRegistro.value, 50, 20)
-      doc.save('ProtocoloOperatorio.pdf')
+	//   //doc.text(fechaRegistro.value, 50, 20)
+    //   doc.save('ProtocoloOperatorio.pdf')
       
-      ////// -------------------- ///////////////////////
-
-         // PDFs //
-	  ////////////
-
-	  var fechaEpicrisis = document.getElementById('fechaEpicrisisEdit')
-	  var horaEpicrisis = document.getElementById('horaEpicrisisEdit')
-	  var fechaHospitalizacion = document.getElementById('fechaHospitalizacionEdit')
-	  var fechaEgresoHospital = document.getElementById('fechaEgresoHospitalEdit')
-	  var diasHospitalizado = document.getElementById('diasHospitalizacionEdit')
-	  var anamnesis = document.getElementById('anamnesisEdit')
-	  var estudiosAcciones = document.getElementById('estudiosAccionesEdit')
-	  var resumenEvolucion = document.getElementById('resumenEvolucionEdit')
-	  var indicacionesAlta = document.getElementById('indicacionesAltaEdit')
-	  var doctorAlta = document.getElementById('doctorAlta')
+    //   ////// -------------------- ///////////////////////
 
   
-	  var doc = new jsPDF()
-	  doc.setFontType("bold");
-	  doc.setFontSize(14);
-	  doc.text('RESUMEN DE ATENCION MEDICA',70,20)
-	  
-	  doc.setFontType("normal");
-	  doc.setFontSize(11);
-	  doc.text('Nombre paciente:	' + localStorage.getItem("nombrePaciente") + ' ' 
-					  + localStorage.getItem("apellidosPaciente") ,20,40)
-	  doc.text('Aseguradora:	VIDA TRES S.A.',20,45)
-	  doc.text('Fecha de nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,50)
-	  doc.text('Medico tratante:	' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),20,55)
-	  doc.text('RUT medico tratante:',20,60)
 
-	  doc.text('Identificacion RU:',130,45)
-	  doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,130,50)
-	  doc.text('Sexo: ' + localStorage.getItem("sexoPaciente"),165,50)
-	  doc.text('Episodio:',130,55)
-	  doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),130,60)
+    //      // PDFs //
+	//   ////////////
+
+	//   var fechaEpicrisis = document.getElementById('fechaEpicrisisEdit')
+	//   var horaEpicrisis = document.getElementById('horaEpicrisisEdit')
+	//   var fechaHospitalizacion = document.getElementById('fechaHospitalizacionEdit')
+	//   var fechaEgresoHospital = document.getElementById('fechaEgresoHospitalEdit')
+	//   var diasHospitalizado = document.getElementById('diasHospitalizacionEdit')
+	//   var anamnesis = document.getElementById('anamnesisEdit')
+	//   var estudiosAcciones = document.getElementById('estudiosAccionesEdit')
+	//   var resumenEvolucion = document.getElementById('resumenEvolucionEdit')
+	//   var indicacionesAlta = document.getElementById('indicacionesAltaEdit')
+	//   var doctorAlta = document.getElementById('doctorAlta')
+
+  
+	//   var doc = new jsPDF()
+	//   doc.setFontType("bold");
+	//   doc.setFontSize(14);
+	//   doc.text('RESUMEN DE ATENCION MEDICA',70,20)
+	  
+	//   doc.setFontType("normal");
+	//   doc.setFontSize(11);
+	//   doc.text('Nombre paciente:	' + localStorage.getItem("nombrePaciente") + ' ' 
+	// 				  + localStorage.getItem("apellidosPaciente") ,20,40)
+	//   doc.text('Aseguradora:	VIDA TRES S.A.',20,45)
+	//   doc.text('Fecha de nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,50)
+	//   doc.text('Medico tratante:	' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),20,55)
+	//   doc.text('RUT medico tratante:',20,60)
+
+	//   doc.text('Identificacion RU:',130,45)
+	//   doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,130,50)
+	//   doc.text('Sexo: ' + localStorage.getItem("sexoPaciente"),165,50)
+	//   doc.text('Episodio:',130,55)
+	//   doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),130,60)
 
 	
-	  doc.setFontType("bold");
-	  doc.setFontSize(14);
-	  doc.text('EPICRISIS',90,80)
-	  doc.setFontSize(10);
-	  doc.text('PACIENTE:',21,90)
-	  doc.rect(20, 85, 25, 10, )
-	  doc.setFontType("normal");
-	  doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,90)
-	  doc.rect(45, 85, 60, 10 )
+	//   doc.setFontType("bold");
+	//   doc.setFontSize(14);
+	//   doc.text('EPICRISIS',90,80)
+	//   doc.setFontSize(10);
+	//   doc.text('PACIENTE:',21,90)
+	//   doc.rect(20, 85, 25, 10, )
+	//   doc.setFontType("normal");
+	//   doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,90)
+	//   doc.rect(45, 85, 60, 10 )
 	  
-	  doc.setFontType("bold");
-	  doc.text('RUT:',106,90)
-	  doc.rect(105, 85, 10, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('RUT:',106,90)
+	//   doc.rect(105, 85, 10, 10 )
 
-	  doc.rect(115, 85, 35, 10 )
-	  doc.setFontType("normal");
-	  doc.text('', 117,90)
+	//   doc.rect(115, 85, 35, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('', 117,90)
 
-	  doc.rect(150, 85, 15, 10 )
-	  doc.setFontType("bold");
-	  doc.text('EDAD:', 152,90)
+	//   doc.rect(150, 85, 15, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('EDAD:', 152,90)
 
-	  doc.rect(165, 85, 25, 10 )
-	  doc.setFontType("normal");
-	  doc.text('', 166, 90)
+	//   doc.rect(165, 85, 25, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('', 166, 90)
 
-	  ///////////////////////////// renglon 2
-	  doc.rect(20, 95, 45, 10 )
-	  doc.setFontType("bold");
-	  doc.text('SERVICIO DE INGRESO:', 21, 100)
+	//   ///////////////////////////// renglon 2
+	//   doc.rect(20, 95, 45, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('SERVICIO DE INGRESO:', 21, 100)
 
-	  doc.rect(65, 95, 55, 10)
-	  doc.setFontType("normal");
-	  doc.text('UE UTI Adulto 4 LDS', 66, 100)
+	//   doc.rect(65, 95, 55, 10)
+	//   doc.setFontType("normal");
+	//   doc.text('UE UTI Adulto 4 LDS', 66, 100)
 
-	  doc.rect(120, 95, 40, 10 )
-	  doc.setFontType("bold");
-	  doc.text('FECHA DE INGRESO:', 121, 100)
+	//   doc.rect(120, 95, 40, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('FECHA DE INGRESO:', 121, 100)
 
-	  doc.rect(160, 95, 30, 10)
-	  doc.setFontType("normal");
-	  doc.text(fechaHospitalizacion.value, 161, 100)
-
-
-	  ///////////////////////////////renglon 3
-	  doc.rect(20, 105, 45, 10 )
-	  doc.setFontType("bold");
-	  doc.text('SERVICIO DE EGRESO:', 21, 110)
-
-	  doc.rect(65, 105, 55, 10 )
-	  doc.setFontType("normal");
-	  doc.text('UE Enfermeria HOSP04 LDS', 66, 110)
-
-	  doc.rect(120, 105, 40, 10 )
-	  doc.setFontType("bold");
-	  doc.text('FECHA DE EGRESO:', 121, 110)
-
-	  doc.rect(160, 105, 30, 10 )
-	  doc.setFontType("normal");
-	  doc.text(fechaEgresoHospital.value, 161, 110)
+	//   doc.rect(160, 95, 30, 10)
+	//   doc.setFontType("normal");
+	//   doc.text(fechaHospitalizacion.value, 161, 100)
 
 
-	  ////////////////////////////RENGLON 3 
-	  doc.rect(20, 115, 55, 10 )
-	  doc.setFontType("bold");
-	  doc.text('DIAS DE HOSPITALIZACION:', 21, 120)
+	//   ///////////////////////////////renglon 3
+	//   doc.rect(20, 105, 45, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('SERVICIO DE EGRESO:', 21, 110)
 
-	  doc.rect(75, 115, 115, 10 )
-	  doc.setFontType("normal");
-	  doc.text(diasHospitalizado.value, 78, 120)
+	//   doc.rect(65, 105, 55, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('UE Enfermeria HOSP04 LDS', 66, 110)
 
-	//   ////////////////////////RENGLON 4
-	  doc.rect(20, 125, 40, 10 )
-	  doc.setFontType("bold");
-	  doc.text('MEDICO TRATANTE:', 21, 130)
+	//   doc.rect(120, 105, 40, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('FECHA DE EGRESO:', 121, 110)
 
-	  doc.rect(60, 125, 55, 10 )
-	  doc.setFontType("normal");
-	  doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 130)
+	//   doc.rect(160, 105, 30, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text(fechaEgresoHospital.value, 161, 110)
+
+
+	//   ////////////////////////////RENGLON 3 
+	//   doc.rect(20, 115, 55, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('DIAS DE HOSPITALIZACION:', 21, 120)
+
+	//   doc.rect(75, 115, 115, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text(diasHospitalizado.value, 78, 120)
+
+	// //   ////////////////////////RENGLON 4
+	//   doc.rect(20, 125, 40, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('MEDICO TRATANTE:', 21, 130)
+
+	//   doc.rect(60, 125, 55, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 130)
 	
-	  doc.rect(115, 125, 40, 10 )
-	  doc.setFontType("bold");
-	  doc.text('ESPECIALIDAD:', 116, 130)
+	//   doc.rect(115, 125, 40, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('ESPECIALIDAD:', 116, 130)
 
-	  doc.rect(155, 125, 35, 10 )
-	  doc.setFontType("normal");
-	  doc.text('', 151, 130)
+	//   doc.rect(155, 125, 35, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('', 151, 130)
 
-	//   ////////////////////////renglon 5
-	  doc.rect(20, 135, 40, 10 )
-	  doc.setFontType("bold");
-	  doc.text('MEDICO RESP. ALTA:', 21, 140)
+	// //   ////////////////////////renglon 5
+	//   doc.rect(20, 135, 40, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('MEDICO RESP. ALTA:', 21, 140)
 
-	  doc.rect(60, 135, 55, 10 )
-	  doc.setFontType("normal");
-	  doc.text(doctorAlta.value, 61, 140)
+	//   doc.rect(60, 135, 55, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text(doctorAlta.value, 61, 140)
 
-	  doc.rect(115, 125, 40, 10 )
-	  doc.setFontType("bold");
-	  doc.text('ESPECIALIDAD:', 116, 140)
+	//   doc.rect(115, 125, 40, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('ESPECIALIDAD:', 116, 140)
 
-	  doc.rect(155, 135, 35, 10 )
-	  doc.setFontType("normal");
-	  doc.text('', 151, 140)
+	//   doc.rect(155, 135, 35, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('', 151, 140)
 
-	//   ///////////////////////// renglon 6
-	  doc.rect(20, 145, 45, 10 )
-	  doc.setFontType("bold");
-	  doc.text('MOTIVO DE ALTA:', 21, 150)
+	// //   ///////////////////////// renglon 6
+	//   doc.rect(20, 145, 45, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('MOTIVO DE ALTA:', 21, 150)
 
-	  doc.rect(65, 145, 125, 10 )
-	  doc.setFontType("normal");
-	  doc.text('', 66, 150)
+	//   doc.rect(65, 145, 125, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('', 66, 150)
 
-	//   /////////////////////////// DIAGNOSTICO ALTA
-	  doc.rect(20, 165, 170, 10 )
-	  doc.setFontType("bold");
-	  doc.text('DIAGNOSTICO DE ALTA', 90, 170)
+	// //   /////////////////////////// DIAGNOSTICO ALTA
+	//   doc.rect(20, 165, 170, 10 )
+	//   doc.setFontType("bold");
+	//   doc.text('DIAGNOSTICO DE ALTA', 90, 170)
 
-	  doc.rect(20, 175, 30, 10 )
-	  doc.setFontType("normal");
-	  doc.text('M421', 21, 180)
+	//   doc.rect(20, 175, 30, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('M421', 21, 180)
 	  
-	  doc.rect(50, 175, 140, 10 )
-	  doc.setFontType("normal");
-	  doc.text('', 51, 180)
+	//   doc.rect(50, 175, 140, 10 )
+	//   doc.setFontType("normal");
+	//   doc.text('', 51, 180)
 
-	  ////////////////////////////
-	  doc.rect(20, 195, 170, 90 )
-	  doc.setFontType("bold");
-	  doc.text('ANAMNESIS DE:', 21, 200)
-	  doc.setFontType("normal");
-	  doc.text(anamnesis.value, 21, 210)
+	//   ////////////////////////////
+	//   doc.rect(20, 195, 170, 90 )
+	//   doc.setFontType("bold");
+	//   doc.text('ANAMNESIS DE:', 21, 200)
+	//   doc.setFontType("normal");
+	//   doc.text(anamnesis.value, 21, 210)
 
-	  //////////////////////////// Pagina 2
-	  ///////////////////////////////
-	  doc.addPage();
+	//   //////////////////////////// Pagina 2
+	//   ///////////////////////////////
+	//   doc.addPage();
 
-	  doc.rect(20, 15, 170, 40 )
-	  doc.setFontType("bold");
-	  doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
-	  doc.setFontType("normal");
-	  doc.text(estudiosAcciones.value, 21, 30)
+	//   doc.rect(20, 15, 170, 40 )
+	//   doc.setFontType("bold");
+	//   doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
+	//   doc.setFontType("normal");
+	//   doc.text(estudiosAcciones.value, 21, 30)
 	
-	  doc.rect(20, 65, 170, 40 )
-	  doc.setFontType("bold");
-	  doc.text('RESUMEN DE EVOLUCION:', 21, 70)
-	  doc.setFontType("normal");
-	  doc.text(resumenEvolucion.value, 21, 80)
+	//   doc.rect(20, 65, 170, 40 )
+	//   doc.setFontType("bold");
+	//   doc.text('RESUMEN DE EVOLUCION:', 21, 70)
+	//   doc.setFontType("normal");
+	//   doc.text(resumenEvolucion.value, 21, 80)
 
-	  doc.rect(20, 115, 170, 40 )
-	  doc.setFontType("bold");
-	  doc.text('INDICACIONES DE ALTA:', 21, 120)
-	  doc.setFontType("normal");
-	  doc.text(indicacionesAlta.value, 21, 130)
-	  doc.save('Epicrisis.pdf')
+	//   doc.rect(20, 115, 170, 40 )
+	//   doc.setFontType("bold");
+	//   doc.text('INDICACIONES DE ALTA:', 21, 120)
+	//   doc.setFontType("normal");
+	//   doc.text(indicacionesAlta.value, 21, 130)
+	//   doc.save('Epicrisis.pdf')
 
       
 	fetch(URLEditEncuentro, {
@@ -1330,13 +1586,13 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
     data.length && 
     data
     .map((each,index)=>{
-      const {id_encuentro,id_paciente,fecha_e,hora_e,tipo_2,diag_primario,
-        diag_secun,diag_secun2,ruta_audio,ruta_exam_electro, ruta_exam_lab,
-        notas_clinicas, id_medico, eliminado,id_epicrisis,fecha_ep, hora_ep,
-        fecha_hospitalizacion, fecha_egreso, dias_hospitalizado, diag_alta, anamnesis,
-        estudios_acciones, indiciaciones_alta,resumen_evolucion, id_cirugia, date_registered,
-        time_protocol, implantes, descripcion, resultado_med_ia, resultados_ia, feedback_ia, 
-        id_hospital, nombre_completo  } = each;
+      const {id_encuentro,id_paciente,fecha_e,hora_e,tipo_2,diag_primario,diag_secun,diag_secun2,
+        ruta_audio,ruta_exam_electro, ruta_exam_lab,notas_clinicas, id_medico, eliminado,
+        id_epicrisis,fecha_ep, hora_ep,fecha_hospitalizacion, fecha_egreso, dias_hospitalizado,medico_tratante,
+        ruta_tratante,servicio_ingreso,servicio_egreso,aseguradora,anamnesis,diag_alta,resumen_evolucion,
+        estudios_acciones,indiciaciones_alta,id_cirugia, date_registered,time_protocol,nombre_cirujano1,rut_cirujano1,
+        especialidad_cirujano1,nombre_cirujano2,rut_cirujano2,especialidad_cirujano2,anestesista,rut_anestesista,implantes, 
+        descripcion, resultado_med_ia,resultados_ia,feedback_ia,id_hospital, nombre_completo  } = each;
         ///////////////////////////////
         if( ruta_audio != '' ){
             var audio = 
@@ -1380,10 +1636,10 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
         if (tipo_2 == 'Cirugia'){
             var btnEpicrisis = 
             '<button type="button" class="btn btn-primary btnCirugia" ' + 
-            `onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}', ` + 
-            `'${hora_ep}','${fecha_hospitalizacion}', '${fecha_egreso}','${dias_hospitalizado}', ` +
-            `'${diag_alta}', '${anamnesis}', '${estudios_acciones}', '${indiciaciones_alta}', `+
-            `'${resumen_evolucion}' )"> `+
+            `onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}','${hora_ep}','${fecha_hospitalizacion}', ` + 
+            `'${fecha_egreso}','${dias_hospitalizado}', '${ruta_tratante}', '${servicio_ingreso}',` +
+            `'${servicio_egreso}','${aseguradora}','${anamnesis}', '${diag_alta}','${resumen_evolucion}', ` +
+            `'${estudios_acciones}', '${indiciaciones_alta}')"> `+
             'Epicrisis' + 
            '</button>'
 
@@ -1391,7 +1647,8 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
             var btnCirugia = 
             ' <button type="button" class="btn btn-primary btnCirugia"' + 
             ` onclick="loadModalCirugia('${id_cirugia}', '${date_registered}', '${time_protocol}', ` + 
-            ` '${implantes}', '${descripcion}' )"> ` + 
+            ` '${nombre_cirujano1}', '${rut_cirujano1}','${especialidad_cirujano1}','${nombre_cirujano2}', ` + 
+            ` '${rut_cirujano2}','${especialidad_cirujano2}','${anestesista}','${rut_anestesista}','${descripcion}' )"> ` + 
                 'Protocolo' +
             '</button>'
         }

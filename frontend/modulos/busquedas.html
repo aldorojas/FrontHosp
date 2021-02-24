@@ -232,7 +232,7 @@
               </div>
           </section>
 
-          
+           
           <!-- Modal editar Epicrisis -->
           <div class="modal fade" id="modalEditEpi" tabindex="-1" aria-labelledby="modalEditEpi" aria-hidden="true">
             <div class="modal-dialog modal-xl">
@@ -244,80 +244,73 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <div class="form-row">
-                    <div class="form-group col-md-2">
-                      <div class="label">Id Epicrisis: </div>
-                      <input type="text" class="form-control" id="idEpicrisis" disabled>
-                    </div>
-                    <div class="form-group col-md-2">
-                      <div class="label">Fecha Epicrisis: </div>
-                      <input type="date" class="form-control" id="fechaEpicrisis" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <div class="label">Hora Epicrisis: </div>
-                      <input type="time" class="form-control" id="horaEpicrisis" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <div class="label">Fecha hospitalizacion: </div>
-                      <input type="date" class="form-control" id="fechaHospitalizacion" disabled>
-                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-2">
+                        <div class="label">Id Epicrisis: </div>
+                        <input type="text" class="form-control" id="idEpicrisis" disabled>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <div class="label">Fecha Epicrisis: </div>
+                        <input type="date" class="form-control" id="fechaEpicrisis" >
+                      </div>
+                      <div class="form-group col-md-2">
+                        <div class="label">Hora Epicrisis: </div>
+                        <input type="time" class="form-control" id="horaEpicrisis" >
+                      </div>
+                      <div class="form-group col-md-2">
+                        <div class="label">Fecha hospitalizacion: </div>
+                        <input type="date" class="form-control" id="fechaHospitalizacion">
+                      </div>  
+                      <div class="form-group col-md-2">
+                        <div class="label">Fecha egreso hospital: </div>
+                        <input type="date" class="form-control" id="fechaEgresoHospital">
+                      </div>  
+                      <div class="form-group col-md-2">
+                        <div class="label">Dias de hospitalizacion: </div>
+                        <input type="text" class="form-control" id="diasHospitalizacion" >
+                      </div>                  
                   </div>
                   <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <div class="label">Fecha egreso hospital: </div>
-                      <input type="date" class="form-control" id="fechaEgresoHospital" disabled> 
-                    </div>
-                    <div class="form-group col-md-4">
-                      <div class="label">Dias de hospitalizacion: </div>
-                      <input type="text" class="form-control" id="diasHospitalizacion" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <div class="label">Medico tratante: </div>
-                      <select class="form-control" id="doctorAlta" disabled>
-                      </select>
-                    </div>                                                                                  
-                  </div>  
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <div class="label">Especialidad doctor alta: </div>
-                      <select class="form-control" id="espDocAlta" disabled>
-                        <option>Cardio-cirugia</option>
-                        <option>homodinamia</option>
-                      </select>
-                    </div>  
-                    <div class="form-group col-md-4">
-                      <div class="label">Aseguradora: </div>                            
-                      <select class="form-control" id="aseguradora">
+                     <!-- <div class="form-group col-md-3">
+                        <div class="label">Medico tratante: </div>
+                        <input type="text" class="form-control" id="idMedico">                         
+                      </div>-->
+                      <!--<select class="form-control" id="idHospitalEdit">
+                        </select>-->
+                      <!--<div class="form-group col-md-4">
+                        <div class="label">Especialidad doctor alta: </div>
+                        <select class="form-control" id="espDocAlta">
+                          <option>Cardio-cirugia</option>
+                          <option>homodinamia</option>
+                        </select>
+                      </div> -->                                             
+                      <div class="form-group col-md-4">
+                        <div class="label">Rut tratante: </div>
+                        <input type="text" class="form-control" id="Rutatra"> 
+                      </div>    
+                      <div class="form-group col-md-4">
+                        <div class="label">Servicio Ingreso:</div>
+                        <input type="text" class="form-control" id="seringreso"> 
+                      </div>  
+                      <div class="form-group col-md-4">
+                        <div class="label">Servicio egreso: </div>
+                        <input type="text" class="form-control" id="seregreso">
+                      </div>                                                                              
+                  </div>                                            
+                  <div class="form-row">                                                                                                                                                                                                                                            
+                    <div class="form-group col-md-6">
+                      <div class="label">Aseguradora: </div>  
+                      <input type="text" class="form-control" id="aseguradora">                          
+                    <!--  <select class="form-control" id="aseguradora">
                         <option>isapre </option>
                         <option>fonasa</option>
-                      </select>
-                    </div>                                                                                                                              
-                    <div class="form-group col-md-4">
-                      <div class="label">Servicio Ingreso:</div>
-                      <input type="text" class="form-control" id="seringreso"> 
-                    </div>                                          
-                  </div>    
-                  <div class="form-row">   
-                    <div class="form-group col-md-3">
-                      <div class="label">Servicio egreso: </div>
-                      <input type="text" class="form-control" id="seregreso">
-                    </div>                                              
-                    <div class="form-group col-md-3">
-                      <div class="label">Ruta tratante: </div>
-                      <input type="text" class="form-control" id="Rutatra"> 
-                    </div>                                          
-                    <div class="form-group col-md-3">
-                      <div class="label">Medico Responsable:</div>
-                      <input type="text" class="form-control" id="medicoresp"> 
-                    </div>
-                    <div class="form-group col-md-3">
-                      <div class="label">Especialidad responsable: </div>
-                      <input type="text" class="form-control" id="especialidadresp">
-                    </div> 
-                    <div class="label">Anamnesis: </div>
-                    <input type="text" class="form-control" id="anamnesis" >
-                    <!-- --------------------------------------- -->                      
-                  </div>                      
+                      </select> -->
+                    </div>                                      
+                    <div class="form-group col-md-6">
+                      <div class="label">Anamnesis:</div>
+                      <input type="text" class="form-control" id="anamnesis"> 
+                    </div>                                                                                          
+                  </div>                                            
                   <div class="form-row">
                     <div class="form-group col-md-3">
                       <div class="label">Diagnostico alta: </div>
@@ -330,13 +323,13 @@
                     <div class="form-group col-md-3">
                       <div class="label">Estudios acciones: </div>
                       <textarea class="form-control" id="estudiosAcciones" rows="4"> </textarea>
-                    </div>   
+                    </div>
                     <div class="form-group col-md-3">
                       <div class="label">Indicaciones alta: </div>
                       <textarea class="form-control" id="indicacionesAlta" rows="4"> </textarea>      
-                    </div>                     
-                  </div> 
-                  <div class="modal-footer">
+                    </div>
+                  </div>                                                        
+                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <!-- <button type="submit" id="guardarEpicrisis" class="btn btn-primary">Actualizar Epi</button> -->
                   </div>         
@@ -454,7 +447,7 @@
                       </div>
                       <div class="form-group col-md-6">
                         <div class="label">Rut Anestesista: </div>
-                        <input type="text" class="form-control" id="especialidanestesista" >
+                        <input type="text" class="form-control" id="rutanestesista" >
                       </div>                                        
                     </div>
                     <div class="form-row">
