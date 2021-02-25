@@ -484,12 +484,6 @@
             </div>
           </div>
 
-
-
-
-
-
-
           <!-- Modal editar Encuentro -->
           <div class="modal fade" id="modalEditEncuentro" tabindex="-1" aria-labelledby="modalEditEncuentro" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -607,7 +601,7 @@
 
                     <!-- -------------------------------------------- -->
                     <div class="label">Id Epicrisis: </div>
-                    <input type="text" class="form-control" id="idEpicrisis">
+                    <input type="text" class="form-control" id="idEpicrisisEdit">
 
                     <div class="label">Fecha Epicrisis: </div>
                     <input type="date" class="form-control" id="fechaEpicrisisEdit" >
@@ -623,7 +617,24 @@
                                              
                     <div class="label">Dias de hospitalizacion: </div>
                     <input type="text" class="form-control" id="diasHospitalizacionEdit" >
-                                
+
+                    <div class="label">Rut tratante: </div>
+                    <input type="text" class="form-control" id="RutatraEdit"> 
+            
+                 
+                    <div class="label">Servicio Ingreso:</div>
+                    <input type="text" class="form-control" id="seringresoEdit"> 
+              
+                    <div class="label">Servicio egreso: </div>
+                    <input type="text" class="form-control" id="seregresoEdit">
+
+                    <div class="label">Aseguradora: </div>
+                  <input type="text" class="form-control" id="aseguradoraEdit">                          
+                <!--  <select class="form-control" id="aseguradora">
+                    <option>isapre </option>
+                    <option>fonasa</option>
+                  </select> --> 
+                              
                     <div class="label">Diagnostico alta: </div>
                     <input type="text" class="form-control" id="diagAltaEdit" >
 
@@ -643,6 +654,7 @@
                     <div class="label">Resumen evolucion</div>
                     <textarea class="form-control" id="resumenEvolucionEdit" rows="4"> </textarea>
 
+                    <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
                     <!-- --------------------------------------- -->
                     <div class="label">Id cirugia: </div>
                     <input type="text" class="form-control" id="idCirugia">
@@ -657,7 +669,35 @@
                     <textarea class="form-control" id="implantesProtEdit" rows="4"> </textarea>
                     
                     <div class="label">Descripcion:</div>
-                    <textarea class="form-control" id="descProtOperaEdit" rows="4"> </textarea>
+                    <textarea class="form-control" id="descProtOperaEdit" rows="4"> </textarea>                    
+              
+                    <div class="label">Nombre cirujano: </div>
+                    <input type="text" class="form-control" id="nombrecirujano1Edit">
+        
+                    <div class="label">Rut cirujano: </div>
+                    <input type="text" class="form-control" id="rutcirujano1Edit">
+              
+                    <div class="label"> Especialidad cirujano: </div>
+                    <input type="text" class="form-control" id="especialidadcirujano1Edit">
+                  
+              
+                    <div class="label">Nombre cirujano: </div>
+                    <input type="text" class="form-control" id="nombrecirujano2Edit">
+        
+                    <div class="label">Rut cirujano: </div>
+                    <input type="text" class="form-control" id="rutcirujano2Edit">
+                
+          
+                    <div class="label">Especialidad cirujano: </div>
+                    <input type="text" class="form-control" id="especialidadcirujano2Edit">
+                  
+              
+                    <div class="label">Nombre Anestesista: </div>
+                    <input type="text" class="form-control" id="nombreanestesistaEdit">
+            
+                    <div class="label">Rut Anestesista: </div>
+                    <input type="text" class="form-control" id="rutanestesistaEdit">
+                            
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -670,18 +710,9 @@
               </div>
             </div>
           </div>
-
-    </div>
-
-
-
-
-
+        </div>
       </div>
   </div>
-
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
