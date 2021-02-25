@@ -15,6 +15,7 @@ window.onload = (function(){
         for(var i = 0; i < data.length; i++){
             console.log(data[i].nombre_completo)
             $("#doctorAltaEdit").append($("<option>"+data[i].nombre_completo +"</option>"));
+            $("#doctorAlta").append($("<option>"+data[i].nombre_completo +"</option>"));
         }
 	
 	})
@@ -541,10 +542,10 @@ formEditEncuentro.addEventListener('submit',async function(e){
 
     doc.setFontType("bold");
     doc.setFontSize(11);
-    doc.text('Resumen de evolución:',20,155)
+    doc.text('Resumen de evolución:     ' + resumenEvoEdit ,20,155)
     doc.setFontType("normal");
     doc.setFontSize(11);
-    doc.text(resumenEvoEdit .value, 60, 155)
+    //doc.text(resumenEvoEdit .value, 60, 155)
 
     doc.setFontType("bold");
     doc.setFontSize(11);
@@ -656,7 +657,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "cie10": "182773js",
             "date_registered": fechaProtOperaEdit.value,
             "descripcion": descProtEdit.value,
-            "descripcion_procedimiento": descProcedimientoEdit.value,
+            "descripcion_procedimiento": '',
             "diag_alta": diagAltaEdit.value,
             "diag_primario": diagPrimarioEdit.value,
             "diag_secun": diagSecun1Edit.value,
@@ -666,7 +667,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "especialidad_anestesista": "",
             "especialidad_cirujano1": especialidadcirujano1Edit.value,
             "especialidad_cirujano2": especialidadcirujano2Edit.value,
-            "especialidad_responsable": "None",
+            "especialidad_responsable": "",
             "estudios_acciones": estudiosAccionesEdit.value,
             "fecha_e": fechaEncuentroEdit.value, 
             "fecha_egreso": fechaEgresoEdit.value,
@@ -684,8 +685,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "id_paciente": idPacienteEdit.value,
             "implantes": implantesEdit.value,
             "indiciaciones_alta": indicacionesAltaEdit.value,
-            "medico_responsable": "None",
-            "medico_tratante": "None",
+            "medico_responsable": "",
+            "medico_tratante": "",
             "nombre_cirujano1": nombrecirujano1Edit.value,
             "nombre_cirujano2": nombrecirujano2Edit.value,
             "nombre_completo": "Aldo Rojas Benitez",
@@ -696,9 +697,6 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "rut_anestesista": rutanestesistaEdit.value,
             "rut_cirujano1": rutcirujano1Edit,
             "rut_cirujano2": rutcirujano2Edit,
-            "ruta_audio": "",
-            "ruta_exam_electro": "",
-            "ruta_exam_lab": "",
             "ruta_tratante": RutatraEdit.value,
             "servicio_egreso": seregresoEdit.value,
             "servicio_ingreso ": seringresoEdit.value,
@@ -709,46 +707,6 @@ formEditEncuentro.addEventListener('submit',async function(e){
 			"ruta_exam_lab" : base64ExamLab,
 			"ruta_exam_electro" : base64Electro
             
-            /*"anamnesis": anamnesisEdit.value,
-            "anestesista":'',
-            "cie10": "NHSHSMK",
-            "date_registered": fechaProtOperaEdit.value,
-            "descripcion": descProtEdit.value,
-            "diag_alta": diagAltaEdit.value,
-            "diag_primario": diagPrimarioEdit.value,
-            "diag_secun": diagSecun1Edit.value,
-            "diag_secun2": diagSecun2Edit.value,
-            "dias_hospitalizado": diasHospEdit.value,
-            "eliminado": eliminadoEdit.value,
-            "estudios_acciones": estudiosAccionesEdit.value,
-            "fecha_e": fechaEncuentroEdit.value,  
-            "fecha_egreso": fechaEgresoEdit.value,
-            "fecha_ep": fechaEpicrisisEdit.value,
-            "fecha_hospitalizacion": fechaHospitalizacionEdit.value,
-            "feedback_ia": feedbackIAEdit.value,
-            "hora_e": horaEncuentroEdit.value,
-            "hora_ep": horaEpicrisisEdit.value,
-            "id_cirugia": idCirugia.value,
-            "id_diagnostico": 2,
-            "id_encuentro": idEncuentroEdit.value,
-            "id_epicrisis": idEpicrisis.value,
-            "id_hospital": idHospitalEdit.value,
-            "id_medico": idMedicoEdit.value,
-            "id_paciente": idPacienteEdit.value,
-            "implantes": implantesEdit.value,
-            "indiciaciones_alta": indicacionesAltaEdit.value,
-            "nombre_cirujano1":'',
-            "nombre_cirujano2":'',
-            "notas_clinicas": notaClinicaEdit.value,
-            "resultado_med_ia": resultadoMedIAEdit.value,
-            "resultados_ia": resultadoIAEdit.value,
-            "resumen_evolucion": resumenEvoEdit.value,
-            "snomed": "877dyjs",
-            "time_protocol": horaProtOperaEdit.value,
-            "tipo_2": tipoEncuentroEdit.value,
-			"ruta_audio" : Base64Audio,
-			"ruta_exam_lab" : base64ExamLab,
-			"ruta_exam_electro" : base64Electro*/
         });
         
     console.log(dataToSend)

@@ -1272,8 +1272,12 @@ form .pagina .btns button.adelante{
 }
 
 
-}
 
+
+}
+#divAseguradora{
+  display: none;
+}
 
 
 

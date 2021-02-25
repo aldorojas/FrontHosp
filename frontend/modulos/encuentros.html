@@ -361,11 +361,23 @@
                                           </div>                                               
                                           <div class="form-group col-md-3">
                                             <div class="label">Aseguradora: </div>                            
-                                            <select class="form-control" id="aseguradora">
-                                              <option>isapre </option>
-                                              <option>fonasa</option>
+                                            <select class="form-control" id="aseguradora" onchange="showSelectIsapre(this)">
+                                              <option> </option>
+                                              <option value="isapre">isapre </option>
+                                              <option value="fonosa">fonasa</option>
                                             </select>
-                                          </div>                                      
+                                          </div>
+                                          <div class="form-group col-md-3" id="divAseguradora">  
+                                            <div class="label">Aseguradora isapre: </div>                          
+                                            <select class="form-control" id="aseguradoraIsapre" >
+                                              <option>isapre A </option>
+                                              <option>isapre B</option>
+                                              <option>isapre C</option>
+                                              <option>isapre D</option>
+                                              <option>isapre E</option>
+                                            </select>
+                                          </div> 
+                                                                                
                                           <div class="form-group col-md-3">
                                             <div class="label">Anamnesis:</div>
                                             <input type="text" class="form-control" id="anamnesis"> 

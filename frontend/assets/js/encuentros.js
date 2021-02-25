@@ -61,6 +61,12 @@ function showDivBusqueda(element)
   document.getElementById("formBusqueda3").style.display = element.value == 2 ? 'block' : 'none';
 }
 
+function showSelectIsapre(element)
+{ 
+  //var docs = document.getElementById("docs");
+  document.getElementById("divAseguradora").style.display = element.value == 'isapre' ? 'block' : 'none';
+}
+
 //////////////////////////
 
 ////////////////////////////////// new PAciente ///////////////////
@@ -232,10 +238,19 @@ var anamnesis = document.getElementById('anamnesis')
 var resumenEvolucion = document.getElementById('resumenEvolucion')
 var estudios_acciones = document.getElementById('estudiosAcciones')
 var indicacionesAlta = document.getElementById('indicacionesAlta')
+
+var aseguradoraIsapre = document.getElementById('aseguradoraIsapre')
 //var medicotra = document.getElementById('doctorAlta')	
 //var especialidadanestesista1 = document.getElementById('especialidanestesista')
 //var descripcionpro = document.getElementById('descripcionpro')
 
+
+
+var aseguradoraFinal 
+
+if (aseguradora.value == 'isapre'){
+	aseguradoraFinal = aseguradoraIsapre.value
+}
 ///////////////////////PDF Epicrisis//////////////////////////
 
 var doc = new jsPDF()
@@ -251,7 +266,7 @@ doc.setFontType("normal");
 doc.setFontSize(11);
 doc.text('Nombre Paciente:' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,50)
 doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,55)
-doc.text('Aseguradora:'+ aseguradora.value,20,60)
+doc.text('Aseguradora:'+ aseguradoraFinal,20,60)
 doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,65)
 
 doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,50)
@@ -297,10 +312,10 @@ doc.text(estudios_acciones.value, 60, 150)
 
 doc.setFontType("bold");
 doc.setFontSize(11);
-doc.text('Resumen de evolución:',20,155)
+doc.text('Resumen de evolución:	' + resumenEvolucion.value ,20,155)
 doc.setFontType("normal");
 doc.setFontSize(11);
-doc.text(resumenEvolucion.value, 60, 155)
+
 
 doc.setFontType("bold");
 doc.setFontSize(11);
@@ -449,7 +464,7 @@ const dataToSend = JSON.stringify(
 		"rut_cirujano2": rutcirujano2.value,
 		"rut_anestesista": rutanestesista.value,
 		"descripcion_procedimiento": descProcedimiento.value,
-		"aseguradora": aseguradora.value,
+		"aseguradora": aseguradoraFinal,
 		"servicio_ingreso": seringreso.value,
 		"servicio_egreso": seregreso.value,
 		//"medico_tratante":medico.value,
