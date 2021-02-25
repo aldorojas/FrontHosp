@@ -376,6 +376,9 @@ if(tipoEncuentro.value == 'Cirugia'){
 	doc2.setFontType("normal");
 	doc2.setFontSize(11);
 	doc2.text(implantesRegistro.value,20,180)
+	
+	doc2.text('Especialidad:' + 'Columna',20,220)
+	doc2.text('Responsable:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),80,220)
 
 	doc2.save('ProtocoloOperatorio.pdf')
 
