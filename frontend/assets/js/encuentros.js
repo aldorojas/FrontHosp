@@ -251,6 +251,9 @@ var aseguradoraFinal
 if (aseguradora.value == 'isapre'){
 	aseguradoraFinal = aseguradoraIsapre.value
 }
+else{
+	aseguradoraFinal = 'fonosa'
+}
 
 const spinner = document.getElementById("spinner");
 spinner.removeAttribute('hidden');
@@ -357,7 +360,8 @@ const dataToSend = JSON.stringify(
 		estudios_acciones.value == "" || indicacionesAlta.value == "" || nombrecirujano.value == "" || nombrecirujano2.value == "" || rutcirujano1.value == "" || 
 		rutcirujano2.value == "" || especialidadcirujano1.value == "" || especialidadcirujano2.value == "" || anestesista.value == "" || rutanestesista.value == "" || 
 		descProcedimiento.value == "" || implantesRegistro.value == ""){
-	
+			
+			spinner.setAttribute('hidden', '');
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',

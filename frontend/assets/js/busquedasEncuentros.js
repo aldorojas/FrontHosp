@@ -490,7 +490,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
     /////////////////////////////////////////////////////////////////////////
     ///////////////////////PDF Epicrisis//////////////////////////
 
-    if(tipoEncuentro.value == 'Cirugia'){
+    if(tipoEncuentroEdit.value == 'Cirugia'){
         var doc = new jsPDF()
         doc.setFontType("bold");
         doc.setFontSize(14);
@@ -1071,6 +1071,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
 			showConfirmButton: false,
 			timer: 2500
             })
+            location.reload();
         }
         else{
             Swal.fire({
