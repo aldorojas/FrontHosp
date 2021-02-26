@@ -119,7 +119,7 @@
                             <div class="titulo">Diagnosticos</div>
                             <div class="campo">
                                 <div class="label">Tipo encuentro</div>
-                                <select class="form-control" id="tipoEncuentro" name="form_select" onchange="showDiv(this)">
+                                <select class="form-control" id="tipoEncuentro" name="form_select" onchange="showDiv(this)" required>
                                   <option value=""></option>
                                   <option value="Control">Control</option>
                                     <option value="Comite">Comite </option>
@@ -130,7 +130,7 @@
                             </div>
                             <div class="campo">
                               <div class="label">Diagnostico primario</div>
-                              <select class="form-control" id="diagPrimario">
+                              <select class="form-control" id="diagPrimario" required>
                                   <option>Ninguno</option>
                                   <option>Valvulopatia</option>
                                   <option>Arritmia</option>
@@ -164,24 +164,14 @@
                           <!--Pagina 2-->
                           <div class="pagina">
                             <div class="titulo">Notas clinicas</div>
-                             
                               <div>
                                 <div id="labelNotaClinica">Nota clinica</div>
                                 <textarea class="form-control" id="notaClinica" rows="6"></textarea>
                               </div>
 
-                              <!-- <div class="campo">
-                                <div class="label">Eliminado</div>
-                                <select class="form-control" id="eliminadoEncuentro">
-                                    <option value="True">Si</option>
-                                    <option value="False">No</option>
-                                </select>
-                              </div> -->
-
                               <div class="campo btns">
                                   <button type="button" class="volver-pag1 volver btn btn-primary mb-2">Anterior</button>
-                                  <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button> 
-                                    
+                                  <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>   
                               </div>
 
                           </div>

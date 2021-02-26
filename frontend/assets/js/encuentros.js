@@ -252,235 +252,6 @@ if (aseguradora.value == 'isapre'){
 	aseguradoraFinal = aseguradoraIsapre.value
 }
 
-if(tipoEncuentro.value == 'Cirugia'){
-
-	if(fecha_epicrisis.value == "" || hora_epicris.value == "" || fecha_in_hospi.value == "" || fecha_egreso.value == "" || dias_de_hosp.value == "" ||  
-	seringreso.value == "" || seregreso.value == "" || Rutatra.value == "" || diag_alta.value == "" || anamnesis.value == "" || resumenEvolucion.value == "" ||
-	estudios_acciones.value == "" || indicacionesAlta.value == "" || nombrecirujano.value == "" || nombrecirujano2.value == "" || rutcirujano1.value == "" || 
-	rutcirujano2.value == "" || especialidadcirujano1.value == "" || especialidadcirujano2.value == "" || anestesista.value == "" || rutanestesista.value == "" || 
-	descProcedimiento.value == "" || implantesRegistro.value == ""){
-
-		alert("Todos los campos son obligatorios");
-		return false;
-
-	}else{
-
-		var doc = new jsPDF()
-		doc.setFontType("bold");
-		doc.setFontSize(14);
-		doc.text('RESUMEN DE ATENCION MEDICA',70,20)
-
-		doc.setFontType("normal");
-		doc.setFontSize(11);
-		doc.text('Nombre Paciente:' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,40)
-		doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,45)
-		doc.text('Aseguradora:'+ aseguradoraFinal,20,50)
-		doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
-
-		doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,40)
-		doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,110,45)
-		doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),110,50)
-
-		doc.setFontType("bold");
-		doc.setFontSize(14);
-		doc.text('EPICRISIS',90,70)
-		doc.setFontSize(10);
-		doc.text('PACIENTE:',21,85)
-		doc.rect(20, 80, 25, 10, )
-		doc.setFontType("normal");
-		doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,85)
-		doc.rect(45, 80, 60, 10 )
-		doc.setFontType("bold");
-		doc.text('DIAS DE HOSPITALIZACION:',106,85)
-		doc.rect(105, 80, 51, 10 )
-		doc.setFontType("normal");
-		doc.text(dias_de_hosp.value, 157,85)
-		doc.rect(156, 80, 34, 10 )
-		
-		///////////////////////////// renglon 2
-		doc.rect(20, 90, 45, 10 )
-		doc.setFontType("bold");
-		doc.text('SERVICIO DE INGRESO:', 21, 95)
-
-		doc.rect(65, 90, 55, 10)
-		doc.setFontType("normal");
-		doc.text(seringreso.value, 66, 95)
-
-		doc.rect(120, 90, 40, 10 )
-		doc.setFontType("bold");
-		doc.text('FECHA DE INGRESO:', 121, 95)
-
-		doc.rect(160, 90, 30, 10)
-		doc.setFontType("normal");
-		doc.text(fecha_in_hospi.value, 161, 95)
-
-
-		///////////////////////////////renglon 3
-		doc.rect(20, 100, 45, 10 )
-		doc.setFontType("bold");
-		doc.text('SERVICIO DE EGRESO:', 21, 105)
-
-		doc.rect(65, 100, 55, 10 )
-		doc.setFontType("normal");
-		doc.text(seregreso.value, 66, 105)
-
-		doc.rect(120, 100, 40, 10 )
-		doc.setFontType("bold");
-		doc.text('FECHA DE EGRESO:', 121, 105)
-
-		doc.rect(160, 100, 30, 10 )
-		doc.setFontType("normal");
-		doc.text(fecha_egreso.value, 161, 105)
-
-		//   ////////////////////////RENGLON 3
-		doc.rect(20, 110, 40, 10 )
-		doc.setFontType("bold");
-		doc.text('MEDICO TRATANTE:', 21, 115)
-
-		doc.rect(60, 110, 55, 10 )
-		doc.setFontType("normal");
-		doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 115)
-
-		doc.rect(115, 110, 40, 10 )
-		doc.setFontType("bold");
-		doc.text('ESPECIALIDAD:', 116, 115)
-
-		doc.rect(155, 110, 35, 10 )
-		doc.setFontType("normal");
-		doc.text(localStorage.getItem("especialidad"), 156, 115)
-
-		////////////////////////////RENGLON 4
-		doc.rect(20, 120, 30, 10 )
-		doc.setFontType("bold");
-		doc.text('RUT TRATANTE:', 21, 125)
-
-		doc.rect(50, 120, 30, 10 )
-		doc.setFontType("normal");
-		doc.text(Rutatra.value, 51, 125)
-
-		//   ////////////////////////renglon 5
-		doc.rect(80, 120, 40, 10 )
-		doc.setFontType("bold");
-		doc.text('MEDICO RESP. ALTA:', 81, 125)
-
-		doc.rect(120, 120, 70, 10 )
-		doc.setFontType("normal");
-		doc.text(doctorAlta.value, 121, 125)
-
-		doc.rect(20, 130, 51, 10 )
-		doc.setFontType("bold");
-		doc.text('ESPECIALIDAD RESP. ALTA:', 21, 135)
-
-		doc.rect(71, 130, 40, 10 )
-		doc.setFontType("normal");
-		doc.text( localStorage.getItem("especialidad"), 72, 135)
-
-		//   ///////////////////////// renglon 6
-		doc.rect(111, 130, 35, 10 )
-		doc.setFontType("bold");
-		doc.text('MOTIVO DE ALTA:', 112, 135)
-
-		doc.rect(146, 130, 44, 10 )
-		doc.setFontType("normal");
-		doc.text('texto libre', 147, 135)
-
-		//   /////////////////////////// DIAGNOSTICO ALTA
-		doc.rect(20, 145, 170, 10 )
-		doc.setFontType("bold");
-		doc.text('DIAGNOSTICO DE ALTA', 90, 150)
-		doc.rect(20, 155, 170, 20 )
-		doc.setFontType("normal");
-		doc.text(diag_alta.value, 21, 160)
-
-		////////////////////////////
-		doc.rect(20, 180, 170, 90 )
-		doc.setFontType("bold");
-		doc.text('ANAMNESIS DE:', 21, 185)
-		doc.setFontType("normal");
-		doc.text(anamnesis.value, 21, 195)
-
-		//////////////////////////// Pagina 2
-		///////////////////////////////
-		doc.addPage();
-
-		doc.rect(20, 15, 170, 40 )
-		doc.setFontType("bold");
-		doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
-		doc.setFontType("normal");
-		doc.text(estudios_acciones.value, 21, 30)
-
-		doc.rect(20, 65, 170, 40 )
-		doc.setFontType("bold");
-		doc.text('RESUMEN DE EVOLUCION:', 21, 70)
-		doc.setFontType("normal");
-		doc.text(resumenEvolucion.value, 21, 80)
-
-		doc.rect(20, 115, 170, 40 )
-		doc.setFontType("bold");
-		doc.text('INDICACIONES DE ALTA:', 21, 120)
-		doc.setFontType("normal");
-		doc.text(indicacionesAlta.value, 21, 130)
-
-		doc.save('Epicrisis.pdf')
-		
-
-		///////////////////////PDF Protocolo operatorio//////////////////////////
-		setTimeout(5000);
-
-
-		var doc2 = new jsPDF()
-		doc2.setFontType("bold");
-		doc2.setFontSize(12);
-		doc2.text('Protocolo Operatorio',80,30)
-
-		doc2.setFontType("normal");
-		doc2.setFontSize(11);
-		doc2.text('Rut:'  + localStorage.getItem("rutPaciente") ,20,40)
-		doc2.text('Nombre Paciente:'  + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,45)
-		doc2.text('Sexo:'  + localStorage.getItem("sexoPaciente") ,20,50)
-		doc2.text('Fecha nacimiento:'  + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
-		doc2.text('Direccion:'  + localStorage.getItem("direccionPaciente") ,20,60)
-
-		doc2.setFontType("bold");
-		doc2.setFontSize(12);
-		doc2.text('Diagnostico quirurgico postoperatorio',70,70)
-		doc2.setFontType("normal");
-		doc2.setFontSize(11);
-		doc2.text('Fecha:' + fechaRegistro.value,20,85)
-		doc2.text('Hora:' + horaRegistro.value,20,90)
-		doc2.text('Codigo:',20,95)
-		doc2.text('Descripcion diagnostico:' + 'OSTEOCONDROSIS DE LA COLUMNA VERTEBRAL DEL ADULTO',20,100)
-		doc2.text('Nombre Cirujano1:' + nombrecirujano.value,20,105)
-		doc2.text('Especialidad:' + especialidadcirujano1.value,20,110)
-		doc2.text('RUT:'+ rutcirujano1.value,20,115)
-		doc2.text('Nombre Cirujano2:' + nombrecirujano2.value,20,120)
-		doc2.text('Especialidad:' + especialidadcirujano2.value,20,125)
-		doc2.text('RUT:' + rutcirujano2.value,20,130)
-		doc2.text('Nombre Anestesista:' + anestesista.value,20,135)
-		doc2.text('RUT:' + rutanestesista.value,20,140)
-
-		doc2.setFontType("bold");
-		doc2.setFontSize(12);
-		doc2.text('Descripcion de procedimiento',20,150)
-		doc2.setFontType("normal");
-		doc2.setFontSize(11);
-		doc2.text(descProcedimiento.value,20,160)
-
-		doc2.setFontType("bold");
-		doc2.setFontSize(12);
-		doc2.text('Implantes',20,170)
-		doc2.setFontType("normal");
-		doc2.setFontSize(11);
-		doc2.text(implantesRegistro.value,20,180)
-		
-		doc2.text('Especialidad:' + 'Columna',20,220)
-		doc2.text('Responsable:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),80,220)
-
-		doc2.save('ProtocoloOperatorio.pdf')
-
-	}
-}
-
 const spinner = document.getElementById("spinner");
 spinner.removeAttribute('hidden');
 
@@ -522,7 +293,7 @@ else{
 
 	
 var headers = {
-				"Content-Type": "application/json"
+		"Content-Type": "application/json"
 }
 
 const dataToSend = JSON.stringify(
@@ -576,67 +347,298 @@ const dataToSend = JSON.stringify(
 		"ruta_exam_lab" : base64ExamLab,
 		"ruta_exam_electro" : base64Electro
 
+	});
 
-		// "tipo_2" : tipoEncuentro.value,
-		// "diag_primario" : diagPrimario.value,
-		// "diag_secun" : diagSecundario1.value,
-		// "diag_secun2" : diagSecundario2.value,
-		// "notas_clinicas": notaClinica.value,
-		// "resultados_ia" : "99",
-		// "feedback_ia" : "No esta bien",
-		// "resultado_med_ia" : "55%",
-		// "id_medico" : localStorage.getItem("idMedico"),
-		// "id_hospital" : localStorage.getItem("idHospital"),
-		// "id_paciente" : localStorage.getItem("idPaciente"),
-		// "eliminado" : "False",
-		// "fecha_ep": fecha_epicrisis.value,
-		// "fecha_hospitalizacion":fecha_in_hospi.value,
-		// "fecha_egreso":fecha_egreso.value,
-		// "hora_ep": hora_epicris.value,
-		// "dias_hospitalizado":dias_de_hosp.value,
-		// "diag_alta": diag_alta.value,
-		// "anamnesis": '',
-		// "estudios_acciones":estudios_acciones.value,
-		// "resumen_evolucion" : resumenEvolucion.value,
-		// "indiciaciones_alta" : indicacionesAlta.value,
-		// "date_registered":fechaRegistro.value,
-		// "time_protocol":horaRegistro.value,
-		// "descripcion" : descProcedimiento.value,
-		// "implantes":'',
-		// "cie10":"182773js",
-		// "snomed":"877dyjs",
-		// "ruta_audio" : Base64Audio,
-		// "ruta_exam_lab" : base64ExamLab,
-		// "ruta_exam_electro" : base64Electro
+
+	if(tipoEncuentro.value == 'Cirugia'){
+
+		if(fecha_epicrisis.value == "" || hora_epicris.value == "" || fecha_in_hospi.value == "" || fecha_egreso.value == "" || dias_de_hosp.value == "" ||  
+		seringreso.value == "" || seregreso.value == "" || Rutatra.value == "" || diag_alta.value == "" || anamnesis.value == "" || resumenEvolucion.value == "" ||
+		estudios_acciones.value == "" || indicacionesAlta.value == "" || nombrecirujano.value == "" || nombrecirujano2.value == "" || rutcirujano1.value == "" || 
+		rutcirujano2.value == "" || especialidadcirujano1.value == "" || especialidadcirujano2.value == "" || anestesista.value == "" || rutanestesista.value == "" || 
+		descProcedimiento.value == "" || implantesRegistro.value == ""){
+	
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Hay campos vacios en Epicrisis o Protocolo!',
+			  })
+	
+		}
+		else{
+	
+			var doc = new jsPDF()
+			doc.setFontType("bold");
+			doc.setFontSize(14);
+			doc.text('RESUMEN DE ATENCION MEDICA',70,20)
+	
+			doc.setFontType("normal");
+			doc.setFontSize(11);
+			doc.text('Nombre Paciente:' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,40)
+			doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,45)
+			doc.text('Aseguradora:'+ aseguradoraFinal,20,50)
+			doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
+	
+			doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,40)
+			doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,110,45)
+			doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),110,50)
+	
+			doc.setFontType("bold");
+			doc.setFontSize(14);
+			doc.text('EPICRISIS',90,70)
+			doc.setFontSize(10);
+			doc.text('PACIENTE:',21,85)
+			doc.rect(20, 80, 25, 10, )
+			doc.setFontType("normal");
+			doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,85)
+			doc.rect(45, 80, 60, 10 )
+			doc.setFontType("bold");
+			doc.text('DIAS DE HOSPITALIZACION:',106,85)
+			doc.rect(105, 80, 51, 10 )
+			doc.setFontType("normal");
+			doc.text(dias_de_hosp.value, 157,85)
+			doc.rect(156, 80, 34, 10 )
+			
+			///////////////////////////// renglon 2
+			doc.rect(20, 90, 45, 10 )
+			doc.setFontType("bold");
+			doc.text('SERVICIO DE INGRESO:', 21, 95)
+	
+			doc.rect(65, 90, 55, 10)
+			doc.setFontType("normal");
+			doc.text(seringreso.value, 66, 95)
+	
+			doc.rect(120, 90, 40, 10 )
+			doc.setFontType("bold");
+			doc.text('FECHA DE INGRESO:', 121, 95)
+	
+			doc.rect(160, 90, 30, 10)
+			doc.setFontType("normal");
+			doc.text(fecha_in_hospi.value, 161, 95)
+	
+	
+			///////////////////////////////renglon 3
+			doc.rect(20, 100, 45, 10 )
+			doc.setFontType("bold");
+			doc.text('SERVICIO DE EGRESO:', 21, 105)
+	
+			doc.rect(65, 100, 55, 10 )
+			doc.setFontType("normal");
+			doc.text(seregreso.value, 66, 105)
+	
+			doc.rect(120, 100, 40, 10 )
+			doc.setFontType("bold");
+			doc.text('FECHA DE EGRESO:', 121, 105)
+	
+			doc.rect(160, 100, 30, 10 )
+			doc.setFontType("normal");
+			doc.text(fecha_egreso.value, 161, 105)
+	
+			//   ////////////////////////RENGLON 3
+			doc.rect(20, 110, 40, 10 )
+			doc.setFontType("bold");
+			doc.text('MEDICO TRATANTE:', 21, 115)
+	
+			doc.rect(60, 110, 55, 10 )
+			doc.setFontType("normal");
+			doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 115)
+	
+			doc.rect(115, 110, 40, 10 )
+			doc.setFontType("bold");
+			doc.text('ESPECIALIDAD:', 116, 115)
+	
+			doc.rect(155, 110, 35, 10 )
+			doc.setFontType("normal");
+			doc.text(localStorage.getItem("especialidad"), 156, 115)
+	
+			////////////////////////////RENGLON 4
+			doc.rect(20, 120, 30, 10 )
+			doc.setFontType("bold");
+			doc.text('RUT TRATANTE:', 21, 125)
+	
+			doc.rect(50, 120, 30, 10 )
+			doc.setFontType("normal");
+			doc.text(Rutatra.value, 51, 125)
+	
+			//   ////////////////////////renglon 5
+			doc.rect(80, 120, 40, 10 )
+			doc.setFontType("bold");
+			doc.text('MEDICO RESP. ALTA:', 81, 125)
+	
+			doc.rect(120, 120, 70, 10 )
+			doc.setFontType("normal");
+			doc.text(doctorAlta.value, 121, 125)
+	
+			doc.rect(20, 130, 51, 10 )
+			doc.setFontType("bold");
+			doc.text('ESPECIALIDAD RESP. ALTA:', 21, 135)
+	
+			doc.rect(71, 130, 40, 10 )
+			doc.setFontType("normal");
+			doc.text( localStorage.getItem("especialidad"), 72, 135)
+	
+			//   ///////////////////////// renglon 6
+			doc.rect(111, 130, 35, 10 )
+			doc.setFontType("bold");
+			doc.text('MOTIVO DE ALTA:', 112, 135)
+	
+			doc.rect(146, 130, 44, 10 )
+			doc.setFontType("normal");
+			doc.text('texto libre', 147, 135)
+	
+			//   /////////////////////////// DIAGNOSTICO ALTA
+			doc.rect(20, 145, 170, 10 )
+			doc.setFontType("bold");
+			doc.text('DIAGNOSTICO DE ALTA', 90, 150)
+			doc.rect(20, 155, 170, 20 )
+			doc.setFontType("normal");
+			doc.text(diag_alta.value, 21, 160)
+	
+			////////////////////////////
+			doc.rect(20, 180, 170, 90 )
+			doc.setFontType("bold");
+			doc.text('ANAMNESIS DE:', 21, 185)
+			doc.setFontType("normal");
+			doc.text(anamnesis.value, 21, 195)
+	
+			//////////////////////////// Pagina 2
+			///////////////////////////////
+			doc.addPage();
+	
+			doc.rect(20, 15, 170, 40 )
+			doc.setFontType("bold");
+			doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
+			doc.setFontType("normal");
+			doc.text(estudios_acciones.value, 21, 30)
+	
+			doc.rect(20, 65, 170, 40 )
+			doc.setFontType("bold");
+			doc.text('RESUMEN DE EVOLUCION:', 21, 70)
+			doc.setFontType("normal");
+			doc.text(resumenEvolucion.value, 21, 80)
+	
+			doc.rect(20, 115, 170, 40 )
+			doc.setFontType("bold");
+			doc.text('INDICACIONES DE ALTA:', 21, 120)
+			doc.setFontType("normal");
+			doc.text(indicacionesAlta.value, 21, 130)
+	
+			doc.save('Epicrisis.pdf')
+			
+	
+			///////////////////////PDF Protocolo operatorio//////////////////////////
+			setTimeout(5000);
+	
+	
+			var doc2 = new jsPDF()
+			doc2.setFontType("bold");
+			doc2.setFontSize(12);
+			doc2.text('Protocolo Operatorio',80,30)
+	
+			doc2.setFontType("normal");
+			doc2.setFontSize(11);
+			doc2.text('Rut:'  + localStorage.getItem("rutPaciente") ,20,40)
+			doc2.text('Nombre Paciente:'  + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,45)
+			doc2.text('Sexo:'  + localStorage.getItem("sexoPaciente") ,20,50)
+			doc2.text('Fecha nacimiento:'  + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
+			doc2.text('Direccion:'  + localStorage.getItem("direccionPaciente") ,20,60)
+	
+			doc2.setFontType("bold");
+			doc2.setFontSize(12);
+			doc2.text('Diagnostico quirurgico postoperatorio',70,70)
+			doc2.setFontType("normal");
+			doc2.setFontSize(11);
+			doc2.text('Fecha:' + fechaRegistro.value,20,85)
+			doc2.text('Hora:' + horaRegistro.value,20,90)
+			doc2.text('Codigo:',20,95)
+			doc2.text('Descripcion diagnostico:' + 'OSTEOCONDROSIS DE LA COLUMNA VERTEBRAL DEL ADULTO',20,100)
+			doc2.text('Nombre Cirujano1:' + nombrecirujano.value,20,105)
+			doc2.text('Especialidad:' + especialidadcirujano1.value,20,110)
+			doc2.text('RUT:'+ rutcirujano1.value,20,115)
+			doc2.text('Nombre Cirujano2:' + nombrecirujano2.value,20,120)
+			doc2.text('Especialidad:' + especialidadcirujano2.value,20,125)
+			doc2.text('RUT:' + rutcirujano2.value,20,130)
+			doc2.text('Nombre Anestesista:' + anestesista.value,20,135)
+			doc2.text('RUT:' + rutanestesista.value,20,140)
+	
+			doc2.setFontType("bold");
+			doc2.setFontSize(12);
+			doc2.text('Descripcion de procedimiento',20,150)
+			doc2.setFontType("normal");
+			doc2.setFontSize(11);
+			doc2.text(descProcedimiento.value,20,160)
+	
+			doc2.setFontType("bold");
+			doc2.setFontSize(12);
+			doc2.text('Implantes',20,170)
+			doc2.setFontType("normal");
+			doc2.setFontSize(11);
+			doc2.text(implantesRegistro.value,20,180)
+			
+			doc2.text('Especialidad:' + 'Columna',20,220)
+			doc2.text('Responsable:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),80,220)
+	
+			doc2.save('ProtocoloOperatorio.pdf')
+			
+
+			console.log(dataToSend)
+
+
+			fetch(URLNewEncuentro, {	
+				mode: 'no-cors',
+				method: "POST",
+				headers: headers,
+				body: dataToSend
+			})
+			.then(function(response){ 
+				//return response.json(); 
+				spinner.setAttribute('hidden', '');
+				Swal.fire({
+					icon: 'success',
+					title: 'Encuentro registrado',
+					showConfirmButton: false,
+					timer: 2500
+				});
+				
+				localStorage.setItem("encuentrosPaciente", "True");
+				localStorage.setItem("idPacienteEncuentros",localStorage.getItem("idPaciente") );
+				window.location.href = 'busquedas.html'
+				
+			})
+			.catch(err => console.log(err))
+
+
+
+		}
 		
-	});
-	//console.log(Base64Audio)
-	console.log(dataToSend)
+	}
+	else{
+		console.log(dataToSend)
+		fetch(URLNewEncuentro, {	
+			mode: 'no-cors',
+			method: "POST",
+			headers: headers,
+			body: dataToSend
+		})
+		.then(function(response){ 
+			//return response.json(); 
+			spinner.setAttribute('hidden', '');
+			Swal.fire({
+				icon: 'success',
+				title: 'Encuentro registrado',
+				showConfirmButton: false,
+				timer: 2500
+			});
+			
+			localStorage.setItem("encuentrosPaciente", "True");
+			localStorage.setItem("idPacienteEncuentros",localStorage.getItem("idPaciente") );
+			window.location.href = 'busquedas.html'
+			
+			//window.location.href = 'busquedas.html'
+		})
+		.catch(err => console.log(err))
 
-
-fetch(URLNewEncuentro, {	
-	mode: 'no-cors',
-	method: "POST",
-	headers: headers,
-	body: dataToSend
-})
-.then(function(response){ 
-	//return response.json(); 
-	spinner.setAttribute('hidden', '');
-	Swal.fire({
-		icon: 'success',
-		title: 'Encuentro registrado',
-		showConfirmButton: false,
-		timer: 2500
-	});
-	
-	localStorage.setItem("encuentrosPaciente", "True");
-    localStorage.setItem("idPacienteEncuentros",localStorage.getItem("idPaciente") );
-	window.location.href = 'busquedas.html'
-	
-	//window.location.href = 'busquedas.html'
-})
-.catch(err => console.log(err))
+	}
 
 
 })

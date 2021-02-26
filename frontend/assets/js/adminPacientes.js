@@ -355,7 +355,15 @@ formEditPaciente.addEventListener('submit', function(e){
               })
         }
 	})
-	.catch(err => console.log(err));
+	.catch(err => 
+		console.log(err),
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'Hay campos vacios en Epicrisis o Protocolo!',
+		  })
+		
+		);
 })
 
 /////////////////////////////////////////////////////////////
