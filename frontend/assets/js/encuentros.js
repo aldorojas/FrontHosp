@@ -240,6 +240,13 @@ var estudios_acciones = document.getElementById('estudiosAcciones')
 var indicacionesAlta = document.getElementById('indicacionesAlta')
 
 var aseguradoraIsapre = document.getElementById('aseguradoraIsapre')
+var lMargin=24; //left margin in mm
+var rMargin=24; //right margin in mm
+var pdfInMM=210;  // width of A4 in mm
+
+var lMargin1=24; //left margin in mm
+var rMargin1=24; //right margin in mm
+var pdfInMM1=180;  // width of A4 in mm
 //var medicotra = document.getElementById('doctorAlta')	
 //var especialidadanestesista1 = document.getElementById('especialidanestesista')
 //var descripcionpro = document.getElementById('descripcionpro')
@@ -496,14 +503,16 @@ const dataToSend = JSON.stringify(
 			doc.text('DIAGNOSTICO DE ALTA', 90, 150)
 			doc.rect(20, 155, 170, 20 )
 			doc.setFontType("normal");
-			doc.text(diag_alta.value, 21, 160)
-	
+			//doc.text(diag_alta.value, 21, 160)
+			doc.text(lMargin, 161, doc.splitTextToSize(diag_alta.value, (pdfInMM-lMargin-rMargin)));
+
 			////////////////////////////
-			doc.rect(20, 180, 170, 90 )
+			doc.rect(20, 185, 170, 90 )
 			doc.setFontType("bold");
-			doc.text('ANAMNESIS DE:', 21, 185)
+			doc.text('ANAMNESIS DE:', 21, 190)
 			doc.setFontType("normal");
-			doc.text(anamnesis.value, 21, 195)
+			//doc.text(anamnesis.value, 21, 195)
+			doc.text(lMargin, 195, doc.splitTextToSize(anamnesis.value, (pdfInMM-lMargin-rMargin)));
 	
 			//////////////////////////// Pagina 2
 			///////////////////////////////
@@ -513,20 +522,23 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("bold");
 			doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
 			doc.setFontType("normal");
-			doc.text(estudios_acciones.value, 21, 30)
+			//doc.text(estudios_acciones.value, 21, 30)
+			doc.text(lMargin, 25, doc.splitTextToSize(estudios_acciones.value, (pdfInMM-lMargin-rMargin)));
 	
 			doc.rect(20, 65, 170, 40 )
 			doc.setFontType("bold");
 			doc.text('RESUMEN DE EVOLUCION:', 21, 70)
 			doc.setFontType("normal");
-			doc.text(resumenEvolucion.value, 21, 80)
+			//oc.text(resumenEvolucion.value, 21, 80)
+			doc.text(lMargin, 75, doc.splitTextToSize(resumenEvolucion.value, (pdfInMM-lMargin-rMargin)));
 	
 			doc.rect(20, 115, 170, 40 )
 			doc.setFontType("bold");
 			doc.text('INDICACIONES DE ALTA:', 21, 120)
 			doc.setFontType("normal");
-			doc.text(indicacionesAlta.value, 21, 130)
-	
+			//doc.text(indicacionesAlta.value, 21, 130)
+			doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAlta.value, (pdfInMM-lMargin-rMargin)));
+
 			doc.save('Epicrisis.pdf')
 			
 	
@@ -569,17 +581,19 @@ const dataToSend = JSON.stringify(
 			doc2.setFontSize(12);
 			doc2.text('Descripcion de procedimiento',20,150)
 			doc2.setFontType("normal");
-			doc2.setFontSize(11);
-			doc2.text(descProcedimiento.value,20,160)
+			doc2.text(lMargin1, 156, doc.splitTextToSize(descProcedimiento.value, (pdfInMM1-lMargin1-rMargin1)));
+			//doc2.setFontSize(11);
+			//doc2.text(descProcedimiento.value,20,160)
 	
 			doc2.setFontType("bold");
 			doc2.setFontSize(12);
-			doc2.text('Implantes',20,170)
+			doc2.text('Implantes',20,190)
 			doc2.setFontType("normal");
-			doc2.setFontSize(11);
-			doc2.text(implantesRegistro.value,20,180)
+			doc2.text(lMargin1, 196, doc.splitTextToSize(implantesRegistro.value, (pdfInMM1-lMargin1-rMargin1)));
+			//doc2.setFontSize(11);
+			//doc2.text(implantesRegistro.value,20,180)
 			
-			doc2.text('Especialidad:' + 'Columna',20,220)
+			doc2.text('Especialidad:' + 'Columna',20,250)
 			doc2.text('Responsable:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),80,220)
 	
 			doc2.save('ProtocoloOperatorio.pdf')
