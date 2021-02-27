@@ -1700,8 +1700,8 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
             var btnEpicrisis = 
             '<button type="button" class="btn btn-primary btnCirugia" ' + 
             `onclick="loadModalEpi('${id_epicrisis}','${fecha_ep}','${hora_ep}','${fecha_hospitalizacion}', ` + 
-            `'${fecha_egreso}','${dias_hospitalizado}', '${ruta_tratante}', '${servicio_ingreso}',` +
-            `'${servicio_egreso}','${aseguradora}','${anamnesis}', '${diag_alta}','${resumen_evolucion}', ` +
+            `'${fecha_egreso}','${dias_hospitalizado}', '${ruta_tratante}', '${servicio_egreso}',` +
+            `'${servicio_ingreso}','${aseguradora}','${anamnesis}', '${diag_alta}','${resumen_evolucion}', ` +
             `'${estudios_acciones}', '${indiciaciones_alta}')"> `+
             'Epicrisis' + 
            '</button>'
