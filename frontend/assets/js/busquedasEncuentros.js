@@ -605,36 +605,35 @@ formEditEncuentro.addEventListener('submit',async function(e){
         doc.rect(20, 130, 51, 10 )
         doc.setFontType("bold");
         doc.text('ESPECIALIDAD RESP. ALTA:', 21, 135)
-    
-        doc.rect(71, 130, 40, 10 )
+        doc.rect(71, 130, 119, 10 )
         doc.setFontType("normal");
         doc.text( localStorage.getItem("especialidad"), 72, 135)
     
         //   ///////////////////////// renglon 6
-        doc.rect(111, 130, 35, 10 )
-        doc.setFontType("bold");
-        doc.text('MOTIVO DE ALTA:', 112, 135)
-    
-        doc.rect(146, 130, 44, 10 )
-        doc.setFontType("normal");
-        doc.text('texto libre', 147, 135)
-    
-        //   /////////////////////////// DIAGNOSTICO ALTA
         doc.rect(20, 145, 170, 10 )
         doc.setFontType("bold");
-        doc.text('DIAGNOSTICO DE ALTA', 90, 150)
-        doc.rect(20, 155, 170, 25 )
+        doc.text('MOTIVO DE ALTA', 90, 150)
+        doc.rect(20, 155, 170, 20 )
+        doc.setFontType("normal");
+        doc.text('texto libre', 21, 160)
+
+    
+        //   /////////////////////////// DIAGNOSTICO ALTA
+        doc.rect(20, 185, 170, 10 )
+        doc.setFontType("bold");
+        doc.text('DIAGNOSTICO DE ALTA', 90, 190)
+        doc.rect(20, 195, 170, 20 )
         doc.setFontType("normal");
         //doc.text(diagAltaEdit.value, 21, 160)
-        doc.text(lMargin, 161, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
+        doc.text(lMargin, 200, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
         ////////////////////////////
-        doc.rect(20, 185, 170, 90 )
+        doc.rect(20, 225, 170, 50 )
         doc.setFontType("bold");
-        doc.text('ANAMNESIS DE:', 21, 190)
+        doc.text('ANAMNESIS DE:', 21, 230)
         doc.setFontType("normal");
         //doc.text(anamnesisEdit.value, 21, 200)
-        doc.text(lMargin, 195, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
+        doc.text(lMargin, 241, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
     
         //////////////////////////// Pagina 2
         ///////////////////////////////
@@ -712,6 +711,9 @@ formEditEncuentro.addEventListener('submit',async function(e){
          doc2.setFontType("normal");
          //doc2.text(implantesEdit.value,20,180)
          doc2.text(lMargin1, 196, doc.splitTextToSize(implantesEdit.value, (pdfInMM1-lMargin1-rMargin1)));
+
+         doc2.text('Especialidad:' + 'Columna',20,250)
+		 doc2.text('Responsable:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),80,250)
      
          doc2.save('ProtocoloOperatorio.pdf')
     
@@ -1279,36 +1281,35 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.rect(20, 130, 51, 10 )
         doc.setFontType("bold");
         doc.text('ESPECIALIDAD RESP. ALTA:', 21, 135)
-    
-        doc.rect(71, 130, 40, 10 )
+        doc.rect(71, 130, 119, 10 )
         doc.setFontType("normal");
         doc.text( localStorage.getItem("especialidad"), 72, 135)
     
         //   ///////////////////////// renglon 6
-        doc.rect(111, 130, 35, 10 )
-        doc.setFontType("bold");
-        doc.text('MOTIVO DE ALTA:', 112, 135)
-    
-        doc.rect(146, 130, 44, 10 )
-        doc.setFontType("normal");
-        doc.text('texto libre', 147, 135)
-    
-        //   /////////////////////////// DIAGNOSTICO ALTA
         doc.rect(20, 145, 170, 10 )
         doc.setFontType("bold");
-        doc.text('DIAGNOSTICO DE ALTA', 90, 150)
-        doc.rect(20, 155, 170, 25 )
+        doc.text('MOTIVO DE ALTA', 90, 150)
+        doc.rect(20, 155, 170, 20 )
+        doc.setFontType("normal");
+        doc.text('texto libre', 22, 160)
+
+    
+        //   /////////////////////////// DIAGNOSTICO ALTA
+        doc.rect(20, 185, 170, 10 )
+        doc.setFontType("bold");
+        doc.text('DIAGNOSTICO DE ALTA', 90, 190)
+        doc.rect(20, 195, 170, 20 )
         doc.setFontType("normal");
         //doc.text(diagAltaEdit.value, 21, 160)
-        doc.text(lMargin, 161, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
+        doc.text(lMargin, 200, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
         ////////////////////////////
-        doc.rect(20, 185, 170, 90 )
+        doc.rect(20, 225, 170, 50 )
         doc.setFontType("bold");
-        doc.text('ANAMNESIS DE:', 21, 190)
+        doc.text('ANAMNESIS DE:', 21, 230)
         doc.setFontType("normal");
         //doc.text(anamnesisEdit.value, 21, 200)
-        doc.text(lMargin, 195, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
+        doc.text(lMargin, 241, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
     
         //////////////////////////// Pagina 2
         ///////////////////////////////
@@ -1386,6 +1387,10 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc2.setFontType("normal");
         //doc2.text(implantesEdit.value,20,180)
         doc2.text(lMargin1, 196, doc.splitTextToSize(implantesEdit.value, (pdfInMM1-lMargin1-rMargin1)));
+
+        doc2.text('Especialidad:' + 'Columna',20,250)
+        doc2.text('Responsable:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),80,250)
+
         doc2.save('ProtocoloOperatorio.pdf')
 })
 
