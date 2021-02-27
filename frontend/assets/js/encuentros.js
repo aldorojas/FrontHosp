@@ -620,7 +620,7 @@ const dataToSend = JSON.stringify(
 				
 				localStorage.setItem("encuentrosPaciente", "True");
 				localStorage.setItem("idPacienteEncuentros",localStorage.getItem("idPaciente") );
-				window.location.href = 'busquedas.html'
+				//window.location.href = 'busquedas.html'
 				
 			})
 			.catch(err => console.log(err))
