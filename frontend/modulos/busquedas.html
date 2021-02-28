@@ -638,25 +638,25 @@
                     <option>isapre </option>
                     <option>fonasa</option>
                   </select> --> 
-                              
-                    <div class="label">Diagnostico alta: </div>
-                    <input type="text" class="form-control" id="diagAltaEdit" >
-
                     <div class="label">Doctor alta: </div>
                     <select class="form-control" id="doctorAlta">
                     </select>
+                              
+                    <div class="label">Diagnostico alta: </div>                 
+                    <textarea class="form-control" id="diagAltaEdit" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
+                     
                                            
-                    <div class="label">Anamnesis: </div>
-                    <input type="text" class="form-control" id="anamnesisEdit" >
+                    <div class="label">Anamnesis: </div>                    
+                    <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit1(this, 900);"> </textarea>
                                
-                    <div class="label">Estudios acciones: </div>
-                    <input type="text" class="form-control" id="estudiosAccionesEdit" >
+                    <div class="label">Estudios acciones: </div>                
+                    <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
 
-                    <div class="label">Indicaciones alta: </div>
-                    <input type="text" class="form-control" id="indicacionesAltaEdit" >                    
+                    <div class="label">Indicaciones alta: </div>                  
+                    <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>             
                   
                     <div class="label">Resumen evolucion</div>
-                    <textarea class="form-control" id="resumenEvolucionEdit" rows="4"> </textarea>
+                    <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
                     <br>
                     <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
                     <!-- --------------------------------------- -->
@@ -669,13 +669,7 @@
                     <input type="date" class="form-control" id="fechaProtOperaEdit">
 
                     <div class="label">Hora prot Operatorio: </div>
-                    <input type="time" class="form-control" id="horaProtOperaEdit" >
-                    
-                    <div class="label">Implantes:</div>
-                    <textarea class="form-control" id="implantesProtEdit" rows="4"> </textarea>
-                    
-                    <div class="label">Descripcion:</div>
-                    <textarea class="form-control" id="descProtOperaEdit" rows="4"> </textarea>                    
+                    <input type="time" class="form-control" id="horaProtOperaEdit" >                                                       
               
                     <div class="label">Nombre cirujano: </div>
                     <input type="text" class="form-control" id="nombrecirujano1Edit">
@@ -703,6 +697,12 @@
             
                     <div class="label">Rut Anestesista: </div>
                     <input type="text" class="form-control" id="rutanestesistaEdit">
+
+                    <div class="label">Implantes:</div>
+                    <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>
+                    
+                    <div class="label">Descripcion:</div>
+                    <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>     
                             
 
                     <div class="modal-footer">

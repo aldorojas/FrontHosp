@@ -32,6 +32,26 @@ function loadMedico(){
 	document.getElementById("navbarDropdown").innerHTML += medico
 }
 
+function charLimit(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
+function charLimit1(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
+function charLimit2(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
+function charLimit3(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
 
 
 // function AllEncuentros(urlAPI){
@@ -500,167 +520,168 @@ formEditEncuentro.addEventListener('submit',async function(e){
     ///////////////////////PDF Epicrisis//////////////////////////
 
     if(tipoEncuentroEdit.value == 'Cirugia'){
-        var doc = new jsPDF()
-        doc.setFontType("bold");
-        doc.setFontSize(14);
-        doc.text('RESUMEN DE ATENCION MEDICA',70,20)
-    
-        doc.setFontType("normal");
-        doc.setFontSize(11);
-        doc.text('Nombre Paciente:' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,40)
-        doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,45)
-        doc.text('Aseguradora:'+ aseguradoraFinal,20,50)
-        doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
-    
-        doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,40)
-        doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,110,45)
-        doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),110,50)
-    
-        doc.setFontType("bold");
-        doc.setFontSize(14);
-        doc.text('EPICRISIS',90,70)
-        doc.setFontSize(10);
-        doc.text('PACIENTE:',21,85)
-        doc.rect(20, 80, 25, 10, )
-        doc.setFontType("normal");
-        doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,85)
-        doc.rect(45, 80, 60, 10 )
-        doc.setFontType("bold");
-        doc.text('DIAS DE HOSPITALIZACION:',106,85)
-        doc.rect(105, 80, 51, 10 )
-        doc.setFontType("normal");
-        doc.text(diasHospEdit.value, 157,85)
-        doc.rect(156, 80, 34, 10 )
+            var doc = new jsPDF()
+            doc.setFontType("bold");
+            doc.setFontSize(14);
+            doc.text('RESUMEN DE ATENCION MEDICA',70,20)
         
-        ///////////////////////////// renglon 2
-        doc.rect(20, 90, 45, 10 )
-        doc.setFontType("bold");
-        doc.text('SERVICIO DE INGRESO:', 21, 95)
-    
-        doc.rect(65, 90, 55, 10)
-        doc.setFontType("normal");
-        doc.text(seringresoEdit.value, 66, 95)
-    
-        doc.rect(120, 90, 40, 10 )
-        doc.setFontType("bold");
-        doc.text('FECHA DE INGRESO:', 121, 95)
-    
-        doc.rect(160, 90, 30, 10)
-        doc.setFontType("normal");
-        doc.text(fechaHospitalizacionEdit.value, 161, 95)
-    
-    
-        ///////////////////////////////renglon 3
-        doc.rect(20, 100, 45, 10 )
-        doc.setFontType("bold");
-        doc.text('SERVICIO DE EGRESO:', 21, 105)
-    
-        doc.rect(65, 100, 55, 10 )
-        doc.setFontType("normal");
-        doc.text(seregresoEdit.value, 66, 105)
-    
-        doc.rect(120, 100, 40, 10 )
-        doc.setFontType("bold");
-        doc.text('FECHA DE EGRESO:', 121, 105)
-    
-        doc.rect(160, 100, 30, 10 )
-        doc.setFontType("normal");
-        doc.text(fechaEgresoEdit.value, 161, 105)
-    
-        //   ////////////////////////RENGLON 3
-        doc.rect(20, 110, 40, 10 )
-        doc.setFontType("bold");
-        doc.text('MEDICO TRATANTE:', 21, 115)
-    
-        doc.rect(60, 110, 55, 10 )
-        doc.setFontType("normal");
-        doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 115)
-    
-        doc.rect(115, 110, 40, 10 )
-        doc.setFontType("bold");
-        doc.text('ESPECIALIDAD:', 116, 115)
-    
-        doc.rect(155, 110, 35, 10 )
-        doc.setFontType("normal");
-        doc.text(localStorage.getItem("especialidad"), 156, 115)
-    
-        ////////////////////////////RENGLON 4
-        doc.rect(20, 120, 30, 10 )
-        doc.setFontType("bold");
-        doc.text('RUT TRATANTE:', 21, 125)
-    
-        doc.rect(50, 120, 30, 10 )
-        doc.setFontType("normal");
-        doc.text(RutatraEdit.value, 51, 125)
-    
-        //   ////////////////////////renglon 5
-        doc.rect(80, 120, 40, 10 )
-        doc.setFontType("bold");
-        doc.text('MEDICO RESP. ALTA:', 81, 125)
-    
-        doc.rect(120, 120, 70, 10 )
-        doc.setFontType("normal");
-        doc.text(doctorAlta.value, 121, 125)
-    
-        doc.rect(20, 130, 51, 10 )
-        doc.setFontType("bold");
-        doc.text('ESPECIALIDAD RESP. ALTA:', 21, 135)
-        doc.rect(71, 130, 119, 10 )
-        doc.setFontType("normal");
-        doc.text( localStorage.getItem("especialidad"), 72, 135)
-    
-        //   ///////////////////////// renglon 6
-        doc.rect(20, 145, 170, 10 )
-        doc.setFontType("bold");
-        doc.text('MOTIVO DE ALTA', 90, 150)
-        doc.rect(20, 155, 170, 20 )
-        doc.setFontType("normal");
-        doc.text('texto libre', 21, 160)
+            doc.setFontType("normal");
+            doc.setFontSize(11);
+            doc.text('Nombre Paciente:' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,40)
+            doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,45)
+            doc.text('Aseguradora:'+ aseguradoraFinal,20,50)
+            doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
+        
+            doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,40)
+            doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,110,45)
+            doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),110,50)
+        
+            doc.setFontType("bold");
+            doc.setFontSize(14);
+            doc.text('EPICRISIS',90,70)
+            doc.setFontSize(10);
+            doc.text('PACIENTE:',21,85)
+            doc.rect(20, 80, 25, 10, )
+            doc.setFontType("normal");
+            doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,85)
+            doc.rect(45, 80, 75, 10 )
+            doc.setFontType("bold");
+            doc.text('DIAS DE HOSPITALIZACION:',121,85)
+            doc.rect(120, 80, 51, 10 )
+            doc.setFontType("normal");
+            doc.text(diasHospEdit.value, 172,85)
+            doc.rect(171, 80, 19, 10 )
+            
+            ///////////////////////////// renglon 2
+            doc.rect(20, 90, 45, 10 )
+            doc.setFontType("bold");
+            doc.text('SERVICIO DE INGRESO:', 21, 95)
+        
+            doc.rect(65, 90, 55, 10)
+            doc.setFontType("normal");
+            doc.text(seringresoEdit.value, 66, 95)
+        
+            doc.rect(120, 90, 40, 10 )
+            doc.setFontType("bold");
+            doc.text('FECHA DE INGRESO:', 121, 95)
+        
+            doc.rect(160, 90, 30, 10)
+            doc.setFontType("normal");
+            doc.text(fechaHospitalizacionEdit.value, 161, 95)
+        
+        
+            ///////////////////////////////renglon 3
+            doc.rect(20, 100, 45, 10 )
+            doc.setFontType("bold");
+            doc.text('SERVICIO DE EGRESO:', 21, 105)
+        
+            doc.rect(65, 100, 55, 10 )
+            doc.setFontType("normal");
+            doc.text(seregresoEdit.value, 66, 105)
+        
+            doc.rect(120, 100, 40, 10 )
+            doc.setFontType("bold");
+            doc.text('FECHA DE EGRESO:', 121, 105)
+        
+            doc.rect(160, 100, 30, 10 )
+            doc.setFontType("normal");
+            doc.text(fechaEgresoEdit.value, 161, 105)
+        
+            //   ////////////////////////RENGLON 3
+            doc.rect(20, 110, 40, 10 )
+            doc.setFontType("bold");
+            doc.text('MEDICO TRATANTE:', 21, 115)
+        
+            doc.rect(60, 110, 60, 10 )
+            doc.setFontType("normal");
+            doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 115)
+        
+            doc.rect(120, 110, 40, 10 )
+            doc.setFontType("bold");
+            doc.text('ESPECIALIDAD:', 121, 115)
+        
+            doc.rect(160, 110, 30, 10 )
+            doc.setFontType("normal");
+            doc.text(localStorage.getItem("especialidad"), 161, 115)
+        
+            ////////////////////////////RENGLON 4
+            doc.rect(20, 120, 30, 10 )
+            doc.setFontType("bold");
+            doc.text('RUT TRATANTE:', 21, 125)
+        
+            doc.rect(50, 120, 30, 10 )
+            doc.setFontType("normal");
+            doc.text(RutatraEdit.value, 51, 125)
+        
+            //   ////////////////////////renglon 5
+            doc.rect(80, 120, 40, 10 )
+            doc.setFontType("bold");
+            doc.text('MEDICO RESP. ALTA:', 81, 125)
+        
+            doc.rect(120, 120, 70, 10 )
+            doc.setFontType("normal");
+            doc.text(doctorAlta.value, 121, 125)
+        
+            doc.rect(20, 130, 51, 10 )
+            doc.setFontType("bold");
+            doc.text('ESPECIALIDAD RESP. ALTA:', 21, 135)
+            doc.rect(71, 130, 119, 10 )
+            doc.setFontType("normal");
+            doc.text( localStorage.getItem("especialidad"), 72, 135)
+        
+            //   ///////////////////////// renglon 6
+            doc.rect(20, 145, 170, 10 )
+            doc.setFontType("bold");
+            doc.text('MOTIVO DE ALTA', 90, 150)
+            doc.rect(20, 155, 170, 20 )
+            doc.setFontType("normal");
+            doc.text('texto libre', 22, 160)
 
-    
-        //   /////////////////////////// DIAGNOSTICO ALTA
-        doc.rect(20, 185, 170, 10 )
-        doc.setFontType("bold");
-        doc.text('DIAGNOSTICO DE ALTA', 90, 190)
-        doc.rect(20, 195, 170, 20 )
-        doc.setFontType("normal");
-        //doc.text(diagAltaEdit.value, 21, 160)
-        doc.text(lMargin, 200, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
+        
+            //   /////////////////////////// DIAGNOSTICO ALTA
+            doc.rect(20, 185, 170, 10 )
+            doc.setFontType("bold");
+            doc.text('DIAGNOSTICO DE ALTA', 90, 190)
+            doc.rect(20, 195, 170, 20 )
+            doc.setFontType("normal");
+            //doc.text(diagAltaEdit.value, 21, 160)
+            doc.text(lMargin, 200, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
-        ////////////////////////////
-        doc.rect(20, 225, 170, 50 )
-        doc.setFontType("bold");
-        doc.text('ANAMNESIS DE:', 21, 230)
-        doc.setFontType("normal");
-        //doc.text(anamnesisEdit.value, 21, 200)
-        doc.text(lMargin, 241, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
-    
-        //////////////////////////// Pagina 2
-        ///////////////////////////////
-        doc.addPage();
-    
-        doc.rect(20, 15, 170, 40 )
-        doc.setFontType("bold");
-        doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
-        doc.setFontType("normal");
-        //doc.text(estudiosAccionesEdit.value, 21, 30)
-        doc.text(lMargin, 25, doc.splitTextToSize(estudiosAccionesEdit.value, (pdfInMM-lMargin-rMargin)));
+            ////////////////////////////
+            doc.rect(20, 225, 170, 50 )
+            doc.setFontType("bold");
+            doc.text('ANAMNESIS DE:', 21, 230)
+            doc.setFontType("normal");
+            //doc.text(anamnesisEdit.value, 21, 200)
+            doc.text(lMargin, 241, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
+        
+            //////////////////////////// Pagina 2
+            ///////////////////////////////
+            doc.addPage();
+        
+            doc.rect(20, 15, 170, 40 )
+            doc.setFontType("bold");
+            doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
+            doc.setFontType("normal");
+            //doc.text(estudiosAccionesEdit.value, 21, 30)
+            doc.text(lMargin, 25, doc.splitTextToSize(estudiosAccionesEdit.value, (pdfInMM-lMargin-rMargin)));
 
-        doc.rect(20, 65, 170, 40 )
-        doc.setFontType("bold");
-        doc.text('RESUMEN DE EVOLUCION:', 21, 70)
-        doc.setFontType("normal");
-        //doc.text(resumenEvoEdit.value, 21, 80)
-        doc.text(lMargin, 75, doc.splitTextToSize(resumenEvoEdit.value, (pdfInMM-lMargin-rMargin)));
-    
-        doc.rect(20, 115, 170, 40 )
-        doc.setFontType("bold");
-        doc.text('INDICACIONES DE ALTA:', 21, 120)
-        doc.setFontType("normal");
-        //doc.text(indicacionesAltaEdit.value, 21, 130)
-        doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAltaEdit.value, (pdfInMM-lMargin-rMargin)));
-    
-        doc.save('Epicrisis.pdf')
+            doc.rect(20, 65, 170, 40 )
+            doc.setFontType("bold");
+            doc.text('RESUMEN DE EVOLUCION:', 21, 70)
+            doc.setFontType("normal");
+            //doc.text(resumenEvoEdit.value, 21, 80)
+            doc.text(lMargin, 75, doc.splitTextToSize(resumenEvoEdit.value, (pdfInMM-lMargin-rMargin)));
+        
+            doc.rect(20, 115, 170, 40 )
+            doc.setFontType("bold");
+            doc.text('INDICACIONES DE ALTA:', 21, 120)
+            doc.setFontType("normal");
+            //doc.text(indicacionesAltaEdit.value, 21, 130)
+            doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAltaEdit.value, (pdfInMM-lMargin-rMargin)));
+        
+            doc.save('Epicrisis.pdf')
+            
             
     
     
@@ -1180,18 +1201,18 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.setFontType("bold");
         doc.setFontSize(14);
         doc.text('RESUMEN DE ATENCION MEDICA',70,20)
-    
+
         doc.setFontType("normal");
         doc.setFontSize(11);
         doc.text('Nombre Paciente:' + localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente"),20,40)
         doc.text('RUT:' + localStorage.getItem("rutPaciente") ,20,45)
         doc.text('Aseguradora:'+ aseguradoraFinal,20,50)
         doc.text('Fecha nacimiento:	' + localStorage.getItem("fechaNacimientoPaciente") ,20,55)
-    
+
         doc.text('Edad: ' + localStorage.getItem("edadPaciente") ,110,40)
         doc.text('Sexo:	' +  localStorage.getItem("sexoPaciente") ,110,45)
         doc.text('Telefono: ' + localStorage.getItem("telefonoPaciente"),110,50)
-    
+
         doc.setFontType("bold");
         doc.setFontSize(14);
         doc.text('EPICRISIS',90,70)
@@ -1200,91 +1221,91 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.rect(20, 80, 25, 10, )
         doc.setFontType("normal");
         doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,85)
-        doc.rect(45, 80, 60, 10 )
+        doc.rect(45, 80, 75, 10 )
         doc.setFontType("bold");
-        doc.text('DIAS DE HOSPITALIZACION:',106,85)
-        doc.rect(105, 80, 51, 10 )
+        doc.text('DIAS DE HOSPITALIZACION:',121,85)
+        doc.rect(120, 80, 51, 10 )
         doc.setFontType("normal");
-        doc.text(diasHospEdit.value, 157,85)
-        doc.rect(156, 80, 34, 10 )
+        doc.text(diasHospEdit.value, 172,85)
+        doc.rect(171, 80, 19, 10 )
         
         ///////////////////////////// renglon 2
         doc.rect(20, 90, 45, 10 )
         doc.setFontType("bold");
         doc.text('SERVICIO DE INGRESO:', 21, 95)
-    
+
         doc.rect(65, 90, 55, 10)
         doc.setFontType("normal");
         doc.text(seringresoEdit.value, 66, 95)
-    
+
         doc.rect(120, 90, 40, 10 )
         doc.setFontType("bold");
         doc.text('FECHA DE INGRESO:', 121, 95)
-    
+
         doc.rect(160, 90, 30, 10)
         doc.setFontType("normal");
         doc.text(fechaHospitalizacionEdit.value, 161, 95)
-    
-    
+
+
         ///////////////////////////////renglon 3
         doc.rect(20, 100, 45, 10 )
         doc.setFontType("bold");
         doc.text('SERVICIO DE EGRESO:', 21, 105)
-    
+
         doc.rect(65, 100, 55, 10 )
         doc.setFontType("normal");
         doc.text(seregresoEdit.value, 66, 105)
-    
+
         doc.rect(120, 100, 40, 10 )
         doc.setFontType("bold");
         doc.text('FECHA DE EGRESO:', 121, 105)
-    
+
         doc.rect(160, 100, 30, 10 )
         doc.setFontType("normal");
         doc.text(fechaEgresoEdit.value, 161, 105)
-    
+
         //   ////////////////////////RENGLON 3
         doc.rect(20, 110, 40, 10 )
         doc.setFontType("bold");
         doc.text('MEDICO TRATANTE:', 21, 115)
-    
-        doc.rect(60, 110, 55, 10 )
+
+        doc.rect(60, 110, 60, 10 )
         doc.setFontType("normal");
         doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 115)
-    
-        doc.rect(115, 110, 40, 10 )
+
+        doc.rect(120, 110, 40, 10 )
         doc.setFontType("bold");
-        doc.text('ESPECIALIDAD:', 116, 115)
-    
-        doc.rect(155, 110, 35, 10 )
+        doc.text('ESPECIALIDAD:', 121, 115)
+
+        doc.rect(160, 110, 30, 10 )
         doc.setFontType("normal");
-        doc.text(localStorage.getItem("especialidad"), 156, 115)
-    
+        doc.text(localStorage.getItem("especialidad"), 161, 115)
+
         ////////////////////////////RENGLON 4
         doc.rect(20, 120, 30, 10 )
         doc.setFontType("bold");
         doc.text('RUT TRATANTE:', 21, 125)
-    
+
         doc.rect(50, 120, 30, 10 )
         doc.setFontType("normal");
         doc.text(RutatraEdit.value, 51, 125)
-    
+
         //   ////////////////////////renglon 5
         doc.rect(80, 120, 40, 10 )
         doc.setFontType("bold");
         doc.text('MEDICO RESP. ALTA:', 81, 125)
-    
+
         doc.rect(120, 120, 70, 10 )
         doc.setFontType("normal");
         doc.text(doctorAlta.value, 121, 125)
-    
+
         doc.rect(20, 130, 51, 10 )
         doc.setFontType("bold");
         doc.text('ESPECIALIDAD RESP. ALTA:', 21, 135)
         doc.rect(71, 130, 119, 10 )
         doc.setFontType("normal");
         doc.text( localStorage.getItem("especialidad"), 72, 135)
-    
+
         //   ///////////////////////// renglon 6
         doc.rect(20, 145, 170, 10 )
         doc.setFontType("bold");
@@ -1293,7 +1314,7 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.setFontType("normal");
         doc.text('texto libre', 22, 160)
 
-    
+
         //   /////////////////////////// DIAGNOSTICO ALTA
         doc.rect(20, 185, 170, 10 )
         doc.setFontType("bold");
@@ -1310,11 +1331,11 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.setFontType("normal");
         //doc.text(anamnesisEdit.value, 21, 200)
         doc.text(lMargin, 241, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
-    
+
         //////////////////////////// Pagina 2
         ///////////////////////////////
         doc.addPage();
-    
+
         doc.rect(20, 15, 170, 40 )
         doc.setFontType("bold");
         doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
@@ -1328,15 +1349,16 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.setFontType("normal");
         //doc.text(resumenEvoEdit.value, 21, 80)
         doc.text(lMargin, 75, doc.splitTextToSize(resumenEvoEdit.value, (pdfInMM-lMargin-rMargin)));
-    
+
         doc.rect(20, 115, 170, 40 )
         doc.setFontType("bold");
         doc.text('INDICACIONES DE ALTA:', 21, 120)
         doc.setFontType("normal");
         //doc.text(indicacionesAltaEdit.value, 21, 130)
         doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAltaEdit.value, (pdfInMM-lMargin-rMargin)));
-    
+
         doc.save('Epicrisis.pdf')
+        
             
     
     

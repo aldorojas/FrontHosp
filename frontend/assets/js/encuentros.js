@@ -52,6 +52,27 @@ function loadMedico(){
 	document.getElementById("navbarDropdown").innerHTML += medico
 }
 
+function charLimit(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
+function charLimit1(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
+function charLimit2(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
+function charLimit3(limitField, limitNum) { 
+    if (limitField.value.length > limitNum) { 
+    limitField.value = limitField.value.substring(0, limitNum);} 
+} 
+
+
 ////////////////////////////////////////////////////
 function showDivBusqueda(element)
 { 
@@ -409,13 +430,13 @@ const dataToSend = JSON.stringify(
 			doc.rect(20, 80, 25, 10, )
 			doc.setFontType("normal");
 			doc.text(localStorage.getItem("apellidosPaciente") + " " + localStorage.getItem("nombrePaciente"),47,85)
-			doc.rect(45, 80, 60, 10 )
+			doc.rect(45, 80, 75, 10 )
 			doc.setFontType("bold");
-			doc.text('DIAS DE HOSPITALIZACION:',106,85)
-			doc.rect(105, 80, 51, 10 )
+			doc.text('DIAS DE HOSPITALIZACION:',121,85)
+			doc.rect(120, 80, 51, 10 )
 			doc.setFontType("normal");
-			doc.text(dias_de_hosp.value, 157,85)
-			doc.rect(156, 80, 34, 10 )
+			doc.text(dias_de_hosp.value, 172,85)
+			doc.rect(171, 80, 19, 10 )
 			
 			///////////////////////////// renglon 2
 			doc.rect(20, 90, 45, 10 )
@@ -457,17 +478,17 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("bold");
 			doc.text('MEDICO TRATANTE:', 21, 115)
 	
-			doc.rect(60, 110, 55, 10 )
+			doc.rect(60, 110, 60, 10 )
 			doc.setFontType("normal");
 			doc.text(localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"), 61, 115)
 	
-			doc.rect(115, 110, 40, 10 )
+			doc.rect(120, 110, 40, 10 )
 			doc.setFontType("bold");
-			doc.text('ESPECIALIDAD:', 116, 115)
+			doc.text('ESPECIALIDAD:', 121, 115)
 	
-			doc.rect(155, 110, 35, 10 )
+			doc.rect(160, 110, 30, 10 )
 			doc.setFontType("normal");
-			doc.text(localStorage.getItem("especialidad"), 156, 115)
+			doc.text(localStorage.getItem("especialidad"), 161, 115)
 	
 			////////////////////////////RENGLON 4
 			doc.rect(20, 120, 30, 10 )
@@ -506,6 +527,8 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("normal");
 			doc.text('texto libre', 21, 160)
 	
+
+
 			//   /////////////////////////// DIAGNOSTICO ALTA
 
 			doc.rect(20, 185, 170, 10 )
@@ -523,6 +546,10 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("normal");
 			//doc.text(anamnesis.value, 21, 195)
 			doc.text(lMargin, 241, doc.splitTextToSize(anamnesis.value, (pdfInMM-lMargin-rMargin)));
+
+
+
+
 
 	
 			//////////////////////////// Pagina 2
@@ -551,6 +578,7 @@ const dataToSend = JSON.stringify(
 			doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAlta.value, (pdfInMM-lMargin-rMargin)));
 
 			doc.save('Epicrisis.pdf')
+			
 			
 	
 			///////////////////////PDF Protocolo operatorio//////////////////////////
