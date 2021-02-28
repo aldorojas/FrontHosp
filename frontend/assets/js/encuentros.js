@@ -362,22 +362,29 @@ const dataToSend = JSON.stringify(
 
 	if(tipoEncuentro.value == 'Cirugia'){
 
-		if(fecha_epicrisis.value == "" || hora_epicris.value == "" || fecha_in_hospi.value == "" || fecha_egreso.value == "" || dias_de_hosp.value == "" ||  
-		seringreso.value == "" || seregreso.value == "" || Rutatra.value == "" || diag_alta.value == "" || anamnesis.value == "" || resumenEvolucion.value == "" ||
-		estudios_acciones.value == "" || indicacionesAlta.value == "" || nombrecirujano.value == "" || nombrecirujano2.value == "" || rutcirujano1.value == "" || 
-		rutcirujano2.value == "" || especialidadcirujano1.value == "" || especialidadcirujano2.value == "" || anestesista.value == "" || rutanestesista.value == "" || 
-		descProcedimiento.value == "" || implantesRegistro.value == ""){
+		var campos = [fecha_epicrisis, hora_epicris, fecha_in_hospi, fecha_egreso, dias_de_hosp, seringreso,
+			seregreso, Rutatra, diag_alta, anamnesis, resumenEvolucion, estudios_acciones, indicacionesAlta,
+			nombrecirujano,nombrecirujano2,rutcirujano1,rutcirujano2, especialidadcirujano1,especialidadcirujano2,
+			anestesista,rutanestesista, descProcedimiento, implantesRegistro]
+		var vacios = ''
+
+		for(var i = 0; i < campos.length; i++){
 			
-			spinner.setAttribute('hidden', '');
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Hay campos vacios en Epicrisis o Protocolo!',
-			  })
-	
+			if(campos[i].value == ''){
+				vacios += campos[i].id + ', '
+				
+				spinner.setAttribute('hidden', '');
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Falta llenar el/los campo(s): ' + vacios,
+				})
+				console.log(vacios)
+			}
+			
+			
 		}
-		else{
-	
+		if(vacios == '' ){
 			var doc = new jsPDF()
 			doc.setFontType("bold");
 			doc.setFontSize(14);
@@ -499,8 +506,6 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("normal");
 			doc.text('texto libre', 21, 160)
 	
-
-
 			//   /////////////////////////// DIAGNOSTICO ALTA
 
 			doc.rect(20, 185, 170, 10 )
@@ -518,10 +523,6 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("normal");
 			//doc.text(anamnesis.value, 21, 195)
 			doc.text(lMargin, 241, doc.splitTextToSize(anamnesis.value, (pdfInMM-lMargin-rMargin)));
-
-
-
-
 
 	
 			//////////////////////////// Pagina 2
@@ -638,6 +639,7 @@ const dataToSend = JSON.stringify(
 
 
 		}
+
 		
 	}
 	else{
