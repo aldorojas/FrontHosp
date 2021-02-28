@@ -601,108 +601,118 @@
                     <br>
                     <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
                     <!-- --------------------------------------- -->
-                    <h4>Epicrisis</h4>
-                    <hr>
-                    <!-- -------------------------------------------- -->
-                    <div class="label">Id Epicrisis: </div>
-                    <input type="text" class="form-control" id="idEpicrisisEdit" disabled>
+                    <div id="divEpicrisis">
+                      <h4>Epicrisis</h4>
+                      <hr>
+                      <!-- -------------------------------------------- -->
+                      <div class="label">Id Epicrisis: </div>
+                      <input type="text" class="form-control" id="idEpicrisisEdit" disabled>
 
-                    <div class="label">Fecha Epicrisis: </div>
-                    <input type="date" class="form-control" id="fechaEpicrisisEdit" >
+                      <div class="label">Fecha Epicrisis: </div>
+                      <input type="date" class="form-control" id="fechaEpicrisisEdit" >
 
-                    <div class="label">Hora Epicrisis: </div>
-                    <input type="time" class="form-control" id="horaEpicrisisEdit" >
-                                                   
-                    <div class="label">Fecha hospitalizacion: </div>
-                    <input type="date" class="form-control" id="fechaHospitalizacionEdit">
-                                             
-                    <div class="label">Fecha egreso hospital: </div>
-                    <input type="date" class="form-control" id="fechaEgresoHospitalEdit">
-                                             
-                    <div class="label">Dias de hospitalizacion: </div>
-                    <input type="text" class="form-control" id="diasHospitalizacionEdit" >
+                      <div class="label">Hora Epicrisis: </div>
+                      <input type="time" class="form-control" id="horaEpicrisisEdit" >
+                                                    
+                      <div class="label">Fecha hospitalizacion: </div>
+                      <input type="date" class="form-control" id="fechaHospitalizacionEdit">
+                                              
+                      <div class="label">Fecha egreso hospital: </div>
+                      <input type="date" class="form-control" id="fechaEgresoHospitalEdit">
+                                              
+                      <div class="label">Dias de hospitalizacion: </div>
+                      <input type="text" class="form-control" id="diasHospitalizacionEdit" >
 
-                    <div class="label">Rut tratante: </div>
-                    <input type="text" class="form-control" id="RutatraEdit"> 
-            
-                 
-                    <div class="label">Servicio Ingreso:</div>
-                    <input type="text" class="form-control" id="seringresoEdit"> 
+                      <div class="label">Rut tratante: </div>
+                      <input type="text" class="form-control" id="RutatraEdit"> 
               
-                    <div class="label">Servicio egreso: </div>
-                    <input type="text" class="form-control" id="seregresoEdit">
-
-                    <div class="label">Aseguradora: </div>
-                  <input type="text" class="form-control" id="aseguradoraEdit">                          
-                <!--  <select class="form-control" id="aseguradora">
-                    <option>isapre </option>
-                    <option>fonasa</option>
-                  </select> --> 
-                    <div class="label">Doctor alta: </div>
-                    <select class="form-control" id="doctorAlta">
-                    </select>
-                              
-                    <div class="label">Diagnostico alta: </div>                 
-                    <textarea class="form-control" id="diagAltaEdit" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
-                     
-                                           
-                    <div class="label">Anamnesis: </div>                    
-                    <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit1(this, 900);"> </textarea>
-                               
-                    <div class="label">Estudios acciones: </div>                
-                    <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
-
-                    <div class="label">Indicaciones alta: </div>                  
-                    <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>             
                   
-                    <div class="label">Resumen evolucion</div>
-                    <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
-                    <br>
+                      <div class="label">Servicio Ingreso:</div>
+                      <input type="text" class="form-control" id="seringresoEdit"> 
+                
+                      <div class="label">Servicio egreso: </div>
+                      <input type="text" class="form-control" id="seregresoEdit">
+
+                      <div class="label">Aseguradora: </div>
+                      <input type="text" class="form-control" id="aseguradoraEdit">                          
+                      <!--  <select class="form-control" id="aseguradora">
+                          <option>isapre </option>
+                          <option>fonasa</option>
+                        </select> --> 
+                      <div class="label">Doctor alta: </div>
+                      <select class="form-control" id="doctorAlta">
+                      </select>
+                                
+                      <div class="label">Diagnostico alta: </div>                 
+                      <textarea class="form-control" id="diagAltaEdit" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
+                      
+                                            
+                      <div class="label">Anamnesis: </div>                    
+                      <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit1(this, 900);"> </textarea>
+                                
+                      <div class="label">Estudios acciones: </div>                
+                      <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
+
+                      <div class="label">Indicaciones alta: </div>                  
+                      <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>             
+                    
+                      <div class="label">Resumen evolucion</div>
+                      <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
+                      <br>
+                    </div>
+
+                    
                     <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
                     <!-- --------------------------------------- -->
-                    <h4>Protocolo operatorio</h4>
-                    <hr>
-                    <div class="label">Id cirugia: </div>
-                    <input type="text" class="form-control" id="idCirugia" disabled>
+                    <div id="divProtocolo">
+                      <h4>Protocolo operatorio</h4>
+                      <hr>
+                      <div class="label">Id cirugia: </div>
+                      <input type="text" class="form-control" id="idCirugia" disabled>
 
-                    <div class="label">Fecha prot Operatorio: </div>
-                    <input type="date" class="form-control" id="fechaProtOperaEdit">
+                      <div class="label">Fecha prot Operatorio: </div>
+                      <input type="date" class="form-control" id="fechaProtOperaEdit">
 
-                    <div class="label">Hora prot Operatorio: </div>
-                    <input type="time" class="form-control" id="horaProtOperaEdit" >                                                       
-              
-                    <div class="label">Nombre cirujano: </div>
-                    <input type="text" class="form-control" id="nombrecirujano1Edit">
-        
-                    <div class="label">Rut cirujano: </div>
-                    <input type="text" class="form-control" id="rutcirujano1Edit">
-              
-                    <div class="label"> Especialidad cirujano: </div>
-                    <input type="text" class="form-control" id="especialidadcirujano1Edit">
-                  
-              
-                    <div class="label">Nombre cirujano: </div>
-                    <input type="text" class="form-control" id="nombrecirujano2Edit">
-        
-                    <div class="label">Rut cirujano: </div>
-                    <input type="text" class="form-control" id="rutcirujano2Edit">
+                      <div class="label">Hora prot Operatorio: </div>
+                      <input type="time" class="form-control" id="horaProtOperaEdit" >                                                       
                 
+                      <div class="label">Nombre cirujano: </div>
+                      <input type="text" class="form-control" id="nombrecirujano1Edit">
           
-                    <div class="label">Especialidad cirujano: </div>
-                    <input type="text" class="form-control" id="especialidadcirujano2Edit">
-                  
-              
-                    <div class="label">Nombre Anestesista: </div>
-                    <input type="text" class="form-control" id="nombreanestesistaEdit">
-            
-                    <div class="label">Rut Anestesista: </div>
-                    <input type="text" class="form-control" id="rutanestesistaEdit">
-
-                    <div class="label">Implantes:</div>
-                    <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>
+                      <div class="label">Rut cirujano: </div>
+                      <input type="text" class="form-control" id="rutcirujano1Edit">
+                
+                      <div class="label"> Especialidad cirujano: </div>
+                      <input type="text" class="form-control" id="especialidadcirujano1Edit">
                     
-                    <div class="label">Descripcion:</div>
-                    <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>     
+                
+                      <div class="label">Nombre cirujano: </div>
+                      <input type="text" class="form-control" id="nombrecirujano2Edit">
+          
+                      <div class="label">Rut cirujano: </div>
+                      <input type="text" class="form-control" id="rutcirujano2Edit">
+                  
+            
+                      <div class="label">Especialidad cirujano: </div>
+                      <input type="text" class="form-control" id="especialidadcirujano2Edit">
+                    
+                
+                      <div class="label">Nombre Anestesista: </div>
+                      <input type="text" class="form-control" id="nombreanestesistaEdit">
+              
+                      <div class="label">Rut Anestesista: </div>
+                      <input type="text" class="form-control" id="rutanestesistaEdit">
+
+                      <div class="label">Implantes:</div>
+                      <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>
+                      
+                      <div class="label">Descripcion:</div>
+                      <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>    
+
+
+                    </div>
+
+                     
                             
 
                     <div class="modal-footer">
