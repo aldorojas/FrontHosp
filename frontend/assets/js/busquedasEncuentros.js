@@ -271,7 +271,7 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
         anamnesis,estudiosAcciones, indicacionesAlta,resumenEvolucion, dateResgistered,
         timeProtocol, implantes, descripcion, nombrecirujano1, rutcirujano1, especialidadcirujano1, 
         nombrecirujano2, rutcirujano2,especialidadcirujano2, nombreanestesista, 
-        rutanestesista, idEpicrisis, idCirugia,
+        rutanestesista, idEpicrisis, idCirugia
         ){
 	
     var idEncuentroEdit = document.getElementById('idEncuentroEdit')	
@@ -289,7 +289,7 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
     var feedbackIAEdit = document.getElementById('feedbackIAEdit')
     var idMedicoEdit = document.getElementById('idMedicoEdit')
     var idHospitalEdit = document.getElementById('idHospitalEdit')
-    var eliminadoEdit = document.getElementById('eliminadoEdit')
+    //var eliminadoEdit = document.getElementById('eliminadoEdit')
 
     var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
     var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
@@ -323,8 +323,8 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
     var idCirugiaEdit = document.getElementById('idCirugia')
 
 
-    var divEpricrisis = document.getElementById('divEpicrisis')
-    var divProtocolo = document.getElementById('divProtocolo')
+    var camposCirugia = document.getElementById('camposCirugia')
+    var camposDifCirugia = document.getElementById('camposDifCirugia')
 
     idEncuentroEdit.value = idEncuentro;
     idPacienteEdit.value = idPaciente;
@@ -340,20 +340,22 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
     feedbackIAEdit.value = feedbackIA;
     idMedicoEdit.value = idMedico;
     idHospitalEdit.value = idHospital;
-    eliminadoEdit.value = eliminado;
+    //eliminadoEdit.value = eliminado;
 
 
     if(tipoEncuentro == 'Cirugia'){
-        divEpricrisis.style.display='none'
-        divProtocolo.style.display='none'
-        BtnGuardarProtOpera.style.display= 'none'
 
-
+        camposCirugia.style.display=''
+        BtnGuardarProtOpera.style.display= ''
+        //camposDifCirugia.style.display = 'none'
+        camposDifCirugia.style.display = 'none' 
+        
     }
     else{
-        divEpricrisis.style.display=''
-        divProtocolo.style.display=''
-        BtnGuardarProtOpera.style.display= ''
+        camposCirugia.style.display='none'
+        BtnGuardarProtOpera.style.display= 'none'
+        camposDifCirugia.style.display = ''
+        //camposDifCirugia.style.display = '' 
     }
 
 

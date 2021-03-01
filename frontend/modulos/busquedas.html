@@ -238,7 +238,7 @@
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalEditEpi">Editar Encuentro</h5>
+                  <h5 class="modal-title" id="modalEditEpi">Info Epicrisis</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -387,7 +387,7 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalEditCirugia">Editar Cirugia</h5>
+                  <h5 class="modal-title" id="modalEditCirugia">Info Cirugia</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -549,40 +549,42 @@
                           <option>Bypass</option>
                       </select>
                     </div>
-
-                    <div id="docsModal">
-                      <div class="campo adjun">
-                        <div class="label">Adjuntar audio:</div>
-                        <input type="file" class="form-control-file" id="audioEncuentroEdit">
-                      </div>
-                      <div class="campo adjun">
-                          <div class="label">Adjuntar electrocardiograma:</div>
-                          <input type="file" class="form-control-file" id="inputFileElectroEdit">
-                      </div>
-                      <div class="campo adjun">
-                          <div class="label">Adjuntar Exam Laboratorio:</div>
-                          <input type="file" class="form-control-file"  id="inputFileExamLabEdit" >
-                      </div>
-                    </div>
-
                     <div>
                       <div id="labelNotaClinica">Nota clinica:</div>
                       <textarea class="form-control" id="notaClinicaEdit" rows="3"></textarea>
                     </div>
+                    <div id="camposDifCirugia">
+                      <div id="docsModal">
+                        <div class="campo adjun">
+                          <div class="label">Adjuntar audio:</div>
+                          <input type="file" class="form-control-file" id="audioEncuentroEdit">
+                        </div>
+                        <div class="campo adjun">
+                            <div class="label">Adjuntar electrocardiograma:</div>
+                            <input type="file" class="form-control-file" id="inputFileElectroEdit">
+                        </div>
+                        <div class="campo adjun">
+                            <div class="label">Adjuntar Exam Laboratorio:</div>
+                            <input type="file" class="form-control-file"  id="inputFileExamLabEdit" >
+                        </div>
+                      </div>
+                      <!-- ------------------------- -->
+                      <div class="campo">
+                        <div class="label">Resultado Med IA: </div>
+                        <input type="text" class="form-control" id="resultadoMedIAEdit" >
+                      </div>
+                      <div class="campo">
+                        <div class="label">Resultado IA: </div>
+                        <input type="text" class="form-control" id="resultadoIAEdit" >
+                      </div>
+                      <div class="campo">
+                        <div class="label">Feedback IA: </div>
+                        <input type="text" class="form-control" id="feedbackIAEdit" >
+                      </div>
+                    </div>
+                    
 
-                    <!-- ------------------------- -->
-                    <div class="campo">
-                      <div class="label">Resultado Med IA: </div>
-                      <input type="text" class="form-control" id="resultadoMedIAEdit" >
-                    </div>
-                    <div class="campo">
-                      <div class="label">Resultado IA: </div>
-                      <input type="text" class="form-control" id="resultadoIAEdit" >
-                    </div>
-                    <div class="campo">
-                      <div class="label">Feedback IA: </div>
-                      <input type="text" class="form-control" id="feedbackIAEdit" >
-                    </div>
+
                     <div class="campo">
                       <div class="label">Id medico: </div>
                       <input type="text" class="form-control" id="idMedicoEdit" disabled>
@@ -591,17 +593,17 @@
                       <div class="label">Id hospital: </div>
                       <input type="text" class="form-control" id="idHospitalEdit" disabled>
                     </div>
-                    <div class="campo">
+                    <!-- <div class="campo">
                       <div class="label">Eliminado:</div>
                       <select class="form-control" id="eliminadoEdit">
                           <option value="True">Si</option>
                           <option value="False">No</option>
                       </select>
-                    </div>
+                    </div> -->
                     <br>
                     <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
                     <!-- --------------------------------------- -->
-                    <div id="divEpicrisis">
+                    <div id="camposCirugia">
                       <h4>Epicrisis</h4>
                       <hr>
                       <!-- -------------------------------------------- -->
@@ -634,42 +636,33 @@
                       <input type="text" class="form-control" id="seregresoEdit">
 
                       <div class="label">Aseguradora: </div>
-                      <input type="text" class="form-control" id="aseguradoraEdit">                          
-                      <!--  <select class="form-control" id="aseguradora">
-                          <option>isapre </option>
-                          <option>fonasa</option>
-                        </select> --> 
+                    <input type="text" class="form-control" id="aseguradoraEdit">                          
+                  <!--  <select class="form-control" id="aseguradora">
+                      <option>isapre </option>
+                      <option>fonasa</option>
+                    </select> --> 
+                                
+                      <div class="label">Diagnostico alta: </div>
+                      <input type="text" class="form-control" id="diagAltaEdit" >
+
                       <div class="label">Doctor alta: </div>
                       <select class="form-control" id="doctorAlta">
                       </select>
-
-                      <div class="form-group col-md-6">
-                        <div class="label">Motivo Alta: </div>                                      
-                        <textarea class="form-control" id="motivoaltaEdit" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
-                      </div>
-                                
-                      <div class="label">Diagnostico alta: </div>                 
-                      <textarea class="form-control" id="diagAltaEdit" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
-                      
                                             
-                      <div class="label">Anamnesis: </div>                    
-                      <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit(this, 900);"> </textarea>
+                      <div class="label">Anamnesis: </div>
+                      <input type="text" class="form-control" id="anamnesisEdit" >
                                 
-                      <div class="label">Estudios acciones: </div>                
-                      <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit(this, 800);"> </textarea>
+                      <div class="label">Estudios acciones: </div>
+                      <input type="text" class="form-control" id="estudiosAccionesEdit" >
 
-                      <div class="label">Indicaciones alta: </div>                  
-                      <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit(this, 800);"> </textarea>             
+                      <div class="label">Indicaciones alta: </div>
+                      <input type="text" class="form-control" id="indicacionesAltaEdit" >                    
                     
                       <div class="label">Resumen evolucion</div>
-                      <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit(this, 800);"> </textarea>
+                      <textarea class="form-control" id="resumenEvolucionEdit" rows="4"> </textarea>
                       <br>
-                    </div>
-
-                    
-                    <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
-                    <!-- --------------------------------------- -->
-                    <div id="divProtocolo">
+                      <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
+                      <!-- --------------------------------------- -->
                       <h4>Protocolo operatorio</h4>
                       <hr>
                       <div class="label">Id cirugia: </div>
@@ -679,7 +672,13 @@
                       <input type="date" class="form-control" id="fechaProtOperaEdit">
 
                       <div class="label">Hora prot Operatorio: </div>
-                      <input type="time" class="form-control" id="horaProtOperaEdit" >                                                       
+                      <input type="time" class="form-control" id="horaProtOperaEdit" >
+                      
+                      <div class="label">Implantes:</div>
+                      <textarea class="form-control" id="implantesProtEdit" rows="4"> </textarea>
+                      
+                      <div class="label">Descripcion:</div>
+                      <textarea class="form-control" id="descProtOperaEdit" rows="4"> </textarea>                    
                 
                       <div class="label">Nombre cirujano: </div>
                       <input type="text" class="form-control" id="nombrecirujano1Edit">
@@ -707,18 +706,9 @@
               
                       <div class="label">Rut Anestesista: </div>
                       <input type="text" class="form-control" id="rutanestesistaEdit">
-
-                      <div class="label">Implantes:</div>
-                      <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit(this, 485);"> </textarea>
-                      
-                      <div class="label">Descripcion:</div>
-                      <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit(this, 485);"> </textarea>    
-
+                              
 
                     </div>
-
-                     
-                            
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
