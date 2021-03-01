@@ -333,6 +333,7 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
 
     var camposCirugia = document.getElementById('camposCirugia')
     var camposDifCirugia = document.getElementById('camposDifCirugia')
+    var camposOcultos = document.getElementById('camposOcultos')
 
     idEncuentroEdit.value = idEncuentro;
     idPacienteEdit.value = idPaciente;
@@ -356,14 +357,16 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
         camposCirugia.style.display=''
         BtnGuardarProtOpera.style.display= ''
         //camposDifCirugia.style.display = 'none'
-        camposDifCirugia.style.display = 'none' 
+        camposDifCirugia.style.display = 'none'
+        camposOcultos.style.display = 'none'
         
     }
     else{
         camposCirugia.style.display='none'
         BtnGuardarProtOpera.style.display= 'none'
         camposDifCirugia.style.display = ''
-        //camposDifCirugia.style.display = '' 
+        //camposDifCirugia.style.display = ''
+        camposOcultos.style.display = 'none' 
     }
 
 
