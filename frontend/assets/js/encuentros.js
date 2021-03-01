@@ -57,6 +57,13 @@ function charLimit(limitField, limitNum) {
     limitField.value = limitField.value.substring(0, limitNum);} 
 } 
 
+function pulsar(e) {
+	if (e.which === 13 && !e.shiftKey) {
+	  e.preventDefault();
+	  console.log('prevented');
+	  return false;
+	}
+  }
 ////////////////////////////////////////////////////
 function showDivBusqueda(element)
 { 

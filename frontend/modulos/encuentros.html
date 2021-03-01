@@ -166,7 +166,7 @@
                             <div class="titulo">Notas clinicas</div>
                               <div>
                                 <div id="labelNotaClinica">Nota clinica</div>
-                                <textarea class="form-control" id="notaClinica" rows="6"></textarea>
+                                <textarea class="form-control" id="notaClinica" rows="6" onkeydown="pulsar(event)"></textarea>
                               </div>
 
                               <div class="campo btns">
@@ -266,11 +266,11 @@
                                       <div class="form-row">
                                         <div class="form-group col-md-6">
                                           <div class="label">Descripcion del procedimiento: </div>                                        
-                                          <textarea class="form-control" id="descProcedimiento" rows="4" onkeyup="charLimit(this, 485);"> </textarea>
+                                          <textarea class="form-control" id="descProcedimiento" rows="4" onkeyup="charLimit(this, 485);" onkeydown="pulsar(event)"> </textarea>
                                         </div>
                                         <div class="form-group col-md-6">
                                           <div class="label">Implantes: </div>                                         
-                                          <textarea class="form-control" id="implantesRegistro" rows="4" onkeyup="charLimit(this, 485);"> </textarea>
+                                          <textarea class="form-control" id="implantesRegistro" rows="4" onkeyup="charLimit(this, 250);" onkeydown="pulsar(event)"> </textarea>
                                         </div>
                                       </div>                                    
                                       <!-- <div class="label">Implantes: </div>
@@ -367,31 +367,31 @@
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <div class="label">Motivo Alta: </div>                                      
-                                            <textarea class="form-control" id="motivoalta" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
+                                            <textarea class="form-control" id="motivoalta" rows="4" onkeyup="charLimit(this, 400);" onkeydown="pulsar(event)" required> </textarea>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <div class="label">Anamnesis:</div>                     
-                                            <textarea class="form-control" id="anamnesis" rows="4" onkeyup="charLimit(this, 900);"> </textarea>
+                                            <textarea class="form-control" id="anamnesis" rows="4" onkeyup="charLimit(this, 900);" onkeydown="pulsar(event)"> </textarea>
                                           </div>                                          
                                         </div>                                          
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <div class="label">Diagnostico alta: </div>                                      
-                                            <textarea class="form-control" id="diagAlta" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
+                                            <textarea class="form-control" id="diagAlta" rows="4" onkeyup="charLimit(this, 400);" onkeydown="pulsar(event)"> </textarea>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <div class="label">Resumen evolucion:</div>                                           
-                                            <textarea class="form-control" id="resumenEvolucion" rows="4" onkeyup="charLimit(this, 800);"> </textarea>
+                                            <textarea class="form-control" id="resumenEvolucion" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
                                           </div>                                          
                                         </div>      
                                         <div class="form-row">                                      
                                           <div class="form-group col-md-6">
                                             <div class="label">Estudios acciones: </div>                                            
-                                            <textarea class="form-control" id="estudiosAcciones" rows="4" onkeyup="charLimit(this, 800);"> </textarea>
+                                            <textarea class="form-control" id="estudiosAcciones" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <div class="label">Indicaciones alta: </div>                                            
-                                            <textarea class="form-control" id="indicacionesAlta" rows="4" onkeyup="charLimit(this, 800);"> </textarea>
+                                            <textarea class="form-control" id="indicacionesAlta" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
                                           </div>
                                         </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                                                               

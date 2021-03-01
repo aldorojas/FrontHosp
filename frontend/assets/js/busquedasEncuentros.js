@@ -37,6 +37,14 @@ function charLimit(limitField, limitNum) {
     limitField.value = limitField.value.substring(0, limitNum);} 
 } 
 
+function pulsar(e) {
+	if (e.which === 13 && !e.shiftKey) {
+	  e.preventDefault();
+	  console.log('prevented');
+	  return false;
+	}
+  }
+
 
 // function AllEncuentros(urlAPI){
 //     //////////////////////////////////// todos los pacientes
@@ -802,7 +810,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "diag_secun": diagSecun1Edit.value,
             "diag_secun2": diagSecun2Edit.value,
             "dias_hospitalizado": diasHospEdit.value,
-            "eliminado": eliminadoEdit.value,
+            "eliminado": "False",
             "especialidad_anestesista": "",
             "especialidad_cirujano1": especialidadcirujano1Edit.value,
             "especialidad_cirujano2": especialidadcirujano2Edit.value,
