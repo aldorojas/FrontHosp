@@ -1875,7 +1875,7 @@ const getData = async (page_no = 1) => {
     populateUI(data[1]);
     
     if(localStorage.getItem("Admin") == "true"){
-        var btnsDelete = document.getElementsByClassName("btn-danger");
+        var btnsDelete = document.getElementsByClassName("btn-danger2");
         for (var i = 0; i < btnsDelete.length; i++) {
             btnsDelete[i].style.display = 'inline-block'
         }
@@ -1910,7 +1910,7 @@ const getDataFecha = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
     if(localStorage.getItem("Admin") == "true"){
-        var btnsDelete = document.getElementsByClassName("btn-danger");
+        var btnsDelete = document.getElementsByClassName("btn-danger2");
         for (var i = 0; i < btnsDelete.length; i++) {
             btnsDelete[i].style.display = 'inline-block'
         }
@@ -1944,7 +1944,7 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
     }
 
     if(localStorage.getItem("Admin") == "true"){
-        var btnsDelete = document.getElementsByClassName("btn-danger");
+        var btnsDelete = document.getElementsByClassName("btn-danger2");
         for (var i = 0; i < btnsDelete.length; i++) {
             btnsDelete[i].style.display = 'inline-block'
         }
@@ -1978,7 +1978,7 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
     }
 
     if(localStorage.getItem("Admin") == "true"){
-        var btnsDelete = document.getElementsByClassName("btn-danger");
+        var btnsDelete = document.getElementsByClassName("btn-danger2");
         for (var i = 0; i < btnsDelete.length; i++) {
             btnsDelete[i].style.display = 'inline-block'
         }
@@ -2101,9 +2101,7 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
                 <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger2 btn-sm" >
                     <i class="icon ion-md-trash"></i>
                 </button>
-                <button onclick="deleteEncuentro(${id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Encuentro">
-					<i class="icon ion-md-trash "></i>
-				</button>
+                
                                 
                 <button onclick="editEncuentro('${id_encuentro}','${id_paciente}','${fecha_e}',
                             '${hora_e}', '${tipo_2}', '${diag_primario}',

@@ -490,6 +490,13 @@ form .pagina .btns button.adelante{
 .btn-danger2{
   display: none;
   background-color: red;
+  color: #fff;
+  
+}
+
+.btn-danger2:hover{
+  color: #fff;
+  background-color: rgb(206, 17, 17);
 }
 
 /* .btnCirugia{
