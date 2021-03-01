@@ -37,22 +37,6 @@ function charLimit(limitField, limitNum) {
     limitField.value = limitField.value.substring(0, limitNum);} 
 } 
 
-function charLimit1(limitField, limitNum) { 
-    if (limitField.value.length > limitNum) { 
-    limitField.value = limitField.value.substring(0, limitNum);} 
-} 
-
-function charLimit2(limitField, limitNum) { 
-    if (limitField.value.length > limitNum) { 
-    limitField.value = limitField.value.substring(0, limitNum);} 
-} 
-
-function charLimit3(limitField, limitNum) { 
-    if (limitField.value.length > limitNum) { 
-    limitField.value = limitField.value.substring(0, limitNum);} 
-} 
-
-
 
 // function AllEncuentros(urlAPI){
 //     //////////////////////////////////// todos los pacientes
@@ -518,6 +502,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
     var nombreanestesistaEdit = document.getElementById('nombreanestesistaEdit')
     var rutanestesistaEdit = document.getElementById('rutanestesistaEdit')
     var aseguradoraIsapre = document.getElementById('aseguradoraIsapre')
+    //var motivoaltaEdit = document.getElementById('motivoaltaEdit')
     var lMargin=24; //left margin in mm
     var rMargin=24; //right margin in mm
     var pdfInMM=210;  // width of A4 in mm
@@ -1196,6 +1181,7 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
     var nombreanestesistaEdit = document.getElementById('nombreanestesistaEdit')
     var rutanestesistaEdit = document.getElementById('rutanestesistaEdit')
     var aseguradoraIsapre = document.getElementById('aseguradoraIsapre')
+    var motivoaltaEdit = document.getElementById('motivoaltaEdit')
     var lMargin=24; //left margin in mm
     var rMargin=24; //right margin in mm
     var pdfInMM=210;  // width of A4 in mm
@@ -1327,7 +1313,8 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.text('MOTIVO DE ALTA', 90, 150)
         doc.rect(20, 155, 170, 20 )
         doc.setFontType("normal");
-        doc.text('texto libre', 22, 160)
+        //doc.text('texto libre', 22, 160)
+        doc.text(lMargin, 160, doc.splitTextToSize(motivoaltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
 
         //   /////////////////////////// DIAGNOSTICO ALTA

@@ -57,22 +57,6 @@ function charLimit(limitField, limitNum) {
     limitField.value = limitField.value.substring(0, limitNum);} 
 } 
 
-function charLimit1(limitField, limitNum) { 
-    if (limitField.value.length > limitNum) { 
-    limitField.value = limitField.value.substring(0, limitNum);} 
-} 
-
-function charLimit2(limitField, limitNum) { 
-    if (limitField.value.length > limitNum) { 
-    limitField.value = limitField.value.substring(0, limitNum);} 
-} 
-
-function charLimit3(limitField, limitNum) { 
-    if (limitField.value.length > limitNum) { 
-    limitField.value = limitField.value.substring(0, limitNum);} 
-} 
-
-
 ////////////////////////////////////////////////////
 function showDivBusqueda(element)
 { 
@@ -259,6 +243,7 @@ var anamnesis = document.getElementById('anamnesis')
 var resumenEvolucion = document.getElementById('resumenEvolucion')
 var estudios_acciones = document.getElementById('estudiosAcciones')
 var indicacionesAlta = document.getElementById('indicacionesAlta')
+var motivoalta = document.getElementById('motivoalta')
 
 var aseguradoraIsapre = document.getElementById('aseguradoraIsapre')
 var lMargin=24; //left margin in mm
@@ -525,7 +510,8 @@ const dataToSend = JSON.stringify(
 
 			doc.rect(20, 155, 170, 20 )
 			doc.setFontType("normal");
-			doc.text('texto libre', 21, 160)
+			//doc.text('texto libre', 21, 160)
+			doc.text(lMargin, 160, doc.splitTextToSize(motivoalta.value, (pdfInMM-lMargin-rMargin)));
 	
 
 

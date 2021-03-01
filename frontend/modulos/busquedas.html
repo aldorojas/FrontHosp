@@ -642,22 +642,27 @@
                       <div class="label">Doctor alta: </div>
                       <select class="form-control" id="doctorAlta">
                       </select>
+
+                      <div class="form-group col-md-6">
+                        <div class="label">Motivo Alta: </div>                                      
+                        <textarea class="form-control" id="motivoaltaEdit" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
+                      </div>
                                 
                       <div class="label">Diagnostico alta: </div>                 
                       <textarea class="form-control" id="diagAltaEdit" rows="4" onkeyup="charLimit(this, 400);"> </textarea>
                       
                                             
                       <div class="label">Anamnesis: </div>                    
-                      <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit1(this, 900);"> </textarea>
+                      <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit(this, 900);"> </textarea>
                                 
                       <div class="label">Estudios acciones: </div>                
-                      <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
+                      <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit(this, 800);"> </textarea>
 
                       <div class="label">Indicaciones alta: </div>                  
-                      <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>             
+                      <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit(this, 800);"> </textarea>             
                     
                       <div class="label">Resumen evolucion</div>
-                      <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit2(this, 800);"> </textarea>
+                      <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit(this, 800);"> </textarea>
                       <br>
                     </div>
 
@@ -704,10 +709,10 @@
                       <input type="text" class="form-control" id="rutanestesistaEdit">
 
                       <div class="label">Implantes:</div>
-                      <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>
+                      <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit(this, 485);"> </textarea>
                       
                       <div class="label">Descripcion:</div>
-                      <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit3(this, 500);"> </textarea>    
+                      <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit(this, 485);"> </textarea>    
 
 
                     </div>
