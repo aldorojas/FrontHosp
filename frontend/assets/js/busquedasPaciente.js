@@ -55,6 +55,7 @@ function showDivBusqueda(element)
 						fechaNacimientoPaciente,sexoPaciente,edadPaciente,
 						telefonoPaciente,rutPaciente,direccionPaciente){
 	localStorage.setItem("idPaciente", idPaciente);
+    localStorage.setItem("idPacienteEncuentros", idPaciente);
 	localStorage.setItem("nombrePaciente", nombrePaciente);
 	localStorage.setItem("apellidosPaciente", apellidosPaciente);
 	localStorage.setItem("fechaNacimientoPaciente", fechaNacimientoPaciente);
@@ -69,9 +70,14 @@ function showDivBusqueda(element)
 
   ////////////////////////////////////////////////////////
 var container2 = document.getElementById('encuentrosPaciente');
-function verEncuentros(idPaciente){
+function verEncuentros(idPaciente, nombrePaciente,apellidosPaciente,
+    fechaNacimientoPaciente,sexoPaciente,edadPaciente,
+    telefonoPaciente,rutPaciente,direccionPaciente){
+
     container2.innerHTML = ''
-    getDataEncuentros(1, idPaciente)
+    getDataEncuentros(1, idPaciente,nombrePaciente,apellidosPaciente,
+        fechaNacimientoPaciente,sexoPaciente,edadPaciente,
+        telefonoPaciente,rutPaciente,direccionPaciente )
     //$('#modalEncuentros').modal('show');
     
 
@@ -473,10 +479,22 @@ const getDataTodos = async (page_no = 1,) => {
     }
 };
 //////////////////////////////////////////////////////
-const getDataEncuentros = async (page_no = 1, idPaciente) => {
+const getDataEncuentros = async (page_no = 1, idPaciente, nombrePaciente,apellidosPaciente,
+    fechaNacimientoPaciente,sexoPaciente,edadPaciente,
+    telefonoPaciente,rutPaciente,direccionPaciente) => {
     
     localStorage.setItem("encuentrosPaciente", "True");
+    localStorage.setItem("idPaciente", idPaciente);
     localStorage.setItem("idPacienteEncuentros", idPaciente);
+	localStorage.setItem("nombrePaciente", nombrePaciente);
+	localStorage.setItem("apellidosPaciente", apellidosPaciente);
+	localStorage.setItem("fechaNacimientoPaciente", fechaNacimientoPaciente);
+	localStorage.setItem("sexoPaciente", sexoPaciente);
+	localStorage.setItem("edadPaciente", edadPaciente);
+	localStorage.setItem("telefonoPaciente", telefonoPaciente);
+	localStorage.setItem("rutPaciente", rutPaciente);
+    localStorage.setItem("direccionPaciente", direccionPaciente);
+
 	window.location.href = 'busquedas.html'
 
     
@@ -503,8 +521,14 @@ const populateUI = data => {
 			</div>
 			<div class="blog-post_info"> 
 				<label class="form-check-label" for="paciente${id}">
-					<h1 class="blog-post_title">  Paciente  ${id} : ${nombre} ${apellido} </h1> 
-				</label>
+                </label>
+				Paciente  ${id} : <a href='#' onclick="verEncuentros(${id}, '${nombre}', 
+                                        '${apellido}', '${birth_date}',
+                                        '${sexo}', '${edad}','${telefono}',
+                                        '${rut}', '${direccion}')"> 
+                 ${nombre} ${apellido} 
+                 </a> 
+				
 
 				<div class="blog-post_date">
 					<span> Rut: ${rut}</span>
@@ -519,7 +543,10 @@ const populateUI = data => {
 				<div class="row">
 					<div class="col-lg-6 col-md-6 stat  text-center" id="btnVerEncuentro">
 						<button type="button" class="btn btn-primary -primary"
-							onclick="verEncuentros(${id})">
+							onclick="verEncuentros(${id}, '${nombre}', 
+                                '${apellido}', '${birth_date}',
+                                '${sexo}', '${edad}','${telefono}',
+                                '${rut}', '${direccion}')">
 							Ver encuentros
 						</button>  
 					</div>

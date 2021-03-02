@@ -42,7 +42,6 @@ formLogin.addEventListener('submit', function(e){
 					showConfirmButton: false,
 					timer: 2500
 					})
-			console.log(data.Medico.admin)
 			//export { datosLogueado };
 			localStorage.setItem("Admin",data.Medico.admin);
 			localStorage.setItem("idMedico",data.Medico.id);

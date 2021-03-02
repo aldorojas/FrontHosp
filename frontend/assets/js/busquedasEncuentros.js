@@ -1981,6 +1981,8 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
 	}
 };
 
+var divCrearEncuentro = document.getElementById('divCrearEncuentro')
+
 const getDataPorPaciente = async (page_no = 1, idPaciente) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -1997,11 +1999,21 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-            })
-            Toast.fire({
-                icon: 'error',
-                title: 'Sin resultados'
-            })
+        })
+        Toast.fire({
+            icon: 'error',
+            title: 'Sin resultados'
+        })
+
+        divCrearEncuentro.innerHTML += 
+        `
+            <button type="button" class="btn btn-primary" 
+            onclick="toEncuentros( )"> 
+                Crear encuentro
+            </button>	   
+        `   
+        
+        
     }
     else{
         populateUI(data);
@@ -2016,6 +2028,13 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
 };
 
   
+
+function toEncuentros(){
+    
+        //console.log(idPaciente)
+    window.location.href = 'encuentros.html'
+}
+
     
   const populateUI = data => {
     data && 
@@ -2121,7 +2140,7 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
                     ${notas_clinicas}
                 </div>
                 <div class="show-more">
-                    <a href="#">Show more</a>
+                    <a href="#">Leer mas</a>
                 </div>
             </td>       
 
