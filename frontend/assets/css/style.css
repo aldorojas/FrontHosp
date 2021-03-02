@@ -1493,12 +1493,31 @@ table th {
       transform: rotate(360deg);
     }
   }
-  
-  
 
+  /**/
+  div.text-container {
+    margin: 0 auto;
+    width: 75%;    
+}
 
+.hideContent {
+    overflow: hidden;
+    line-height: 1em;
+    height: 2em;
+}
 
+.showContent {
+    line-height: 1em;
+    height: auto;
+}
+.showContent{
+    height: auto;
+}
 
+.show-more {
+    padding: 10px 0;
+    text-align: center;
+}
 
 
 

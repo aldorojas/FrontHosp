@@ -44,6 +44,33 @@ function pulsar(e) {
 	  return false;
 	}
   }
+    
+    // var text = $('.text-overflow'),
+    // btn = $('.btn-overflow'),
+    // h = text[0].scrollHeight; 
+
+    // if(h > 120) {
+    // btn.addClass('less');
+    // btn.css('display', 'block');
+    // }
+
+    // btn.click(function(e) 
+    // {
+    // e.stopPropagation();
+
+    // if (btn.hasClass('less')) {
+    // btn.removeClass('less');
+    // btn.addClass('more');
+    // btn.text('Show less');
+
+    // text.animate({'height': h});
+    // } else {
+    // btn.addClass('less');
+    // btn.removeClass('more');
+    // btn.text('Show more');
+    // text.animate({'height': '120px'});
+    // }  
+    // });  
 
 
 // function AllEncuentros(urlAPI){
@@ -2067,7 +2094,7 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
                      
 
         }
-
+       
       container.innerHTML += 
       `
         <tr>
@@ -2088,7 +2115,16 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
             <td data-label="PDF Exam Lab">
                 ${PDFExamLab}
             </td>
-            <td data-label="Notas clinicas">${notas_clinicas}</td>
+
+            <td data-label="Notas clinicas">
+                <div class="content hideContent">
+                    ${notas_clinicas}
+                </div>
+                <div class="show-more">
+                    <a href="#">Show more</a>
+                </div>
+            </td>       
+
             <td data-label="Nombre Medico">${nombre_completo}</td>
 
             <td data-label="Epicrisis">
@@ -2131,8 +2167,23 @@ const getDataPorPaciente = async (page_no = 1, idPaciente) => {
       `
       
     })
+     ////////////////////////////
+
+     $(".show-more a").on("click", function() {
+        var $this = $(this); 
+        var $content = $this.parent().prev("div.content");
+        var linkText = $this.text().toUpperCase();    
+        
+        if(linkText === "SHOW MORE"){
+            linkText = "Show less";
+            $content.switchClass("hideContent", "showContent", 100);
+        } else {
+            linkText = "Show more";
+            $content.switchClass("showContent", "hideContent", 100);
+        }
     
-    
+        $this.text(linkText);
+     });
     
   }
 
