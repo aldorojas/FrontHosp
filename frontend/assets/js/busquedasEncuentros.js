@@ -1786,7 +1786,7 @@ formSearchDate.addEventListener("submit", function(event){
 
     container.innerHTML = '';
     scrolling = 'Search'    
-    getDataFecha(1, newDate )
+    getDataFecha(1, newDate, localStorage.getItem("idPacienteEncuentros"))
 
   });
   
@@ -1799,7 +1799,7 @@ formSearchType.addEventListener("submit", function(event){
     container.innerHTML = '';
     scrolling = 'Search2'    
     
-    getDataTipoEncuentro(1, tipoEncuentroFind.value )
+    getDataTipoEncuentro(1, tipoEncuentroFind.value, localStorage.getItem("idPacienteEncuentros") )
   });
 
 
@@ -1913,10 +1913,10 @@ const getData = async (page_no = 1) => {
 
   };
 
-const getDataFecha = async (page_no = 1, paramSearch) => {
+const getDataFecha = async (page_no = 1, paramSearch,idPaciente) => {
     const data = await httpRequestWrapper(
     "GET",
-    'http://134.122.120.195/api/v1/encuentros_per_type?type=fecha&data='+ paramSearch +'&entry_n=' + `${page_no}`
+    'http://134.122.120.195/api/v1/encuentros_per_type?type=fecha&data='+ paramSearch +'&entry_n=' + `${page_no}` + '&paciente=' + idPaciente
     );
     
     if (data[0]== 0){
@@ -1947,10 +1947,10 @@ const getDataFecha = async (page_no = 1, paramSearch) => {
 	}
 };
 
-const getDataTipoEncuentro = async (page_no = 1, paramSearch) => {
+const getDataTipoEncuentro = async (page_no = 1, paramSearch, idPaciente) => {
     const data = await httpRequestWrapper(
     "GET",
-    'http://134.122.120.195/api/v1/encuentros_per_type?type=tipo&data='+ paramSearch +'&entry_n=' + `${page_no}`
+    'http://134.122.120.195/api/v1/encuentros_per_type?type=tipo&data='+ paramSearch +'&entry_n=' + `${page_no}` + '&paciente=' + idPaciente
     );
     if (data[0]== 0){
         const Toast = Swal.mixin({
