@@ -1786,7 +1786,17 @@ formSearchDate.addEventListener("submit", function(event){
 
     container.innerHTML = '';
     scrolling = 'Search'    
-    getDataFecha(1, newDate, localStorage.getItem("idPacienteEncuentros"))
+
+    if(localStorage.getItem("encuentrosPaciente") == "True"){
+        getDataFecha(1, newDate, localStorage.getItem("idPacienteEncuentros"))
+
+    }
+    else{
+        getDataFecha(1, newDate, '')
+    }
+
+
+    
 
   });
   
@@ -1797,9 +1807,19 @@ formSearchType.addEventListener("submit", function(event){
 	event.preventDefault()
     var tipoEncuentroFind = document.getElementById('tipoEncuentroFind');
     container.innerHTML = '';
-    scrolling = 'Search2'    
+    scrolling = 'Search2'  
     
-    getDataTipoEncuentro(1, tipoEncuentroFind.value, localStorage.getItem("idPacienteEncuentros") )
+    if(localStorage.getItem("encuentrosPaciente") == "True"){
+        
+        getDataTipoEncuentro(1, tipoEncuentroFind.value, localStorage.getItem("idPacienteEncuentros") )
+    }
+    else{
+        getDataTipoEncuentro(1, tipoEncuentroFind.value, '' )
+        
+    }
+    
+    
+    
   });
 
 
