@@ -1494,39 +1494,24 @@ table th {
     }
   }
 
-  /**/
-  div.text-container {
-    margin: 0 auto;
-    width: 75%;    
-}
-
-.hideContent {
-    overflow: hidden;
-    line-height: 1em;
-    height: 2em;
-}
-
-.showContent {
-    line-height: 1em;
-    height: auto;
-}
-.showContent{
-    height: auto;
-}
-
-.show-more {
-    padding: 10px 0;
-    text-align: center;
-}
-
-
-
-
-
-
-
-
-
+/**/
+.content {
+  width:400px;
+  overflow: hidden;
+  white-space:normal;
+  text-overflow: ellipsis;
+  line-height:1.5625em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 6.25em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;  
+  }
+  .txtcol{
+    display:none;
+    color:blue;
+    cursor:pointer;
+  }
+  
 
 
 

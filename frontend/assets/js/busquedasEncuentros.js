@@ -2156,10 +2156,14 @@ function toEncuentros(){
             </td>
 
             <td data-label="Notas clinicas">
-                <div class="item">
-                    ${notas_clinicas}
+                <div class="maincontent">
+                    <div class="content">
+                        ${notas_clinicas}
+                    </div>
+                    <div class="txtcol"><a>Leer mas</a></div>
                 </div>                
-            </td>       
+            </td>  
+    
 
             <td data-label="Nombre Medico">${nombre_completo}</td>
 
@@ -2205,46 +2209,25 @@ function toEncuentros(){
     })
      ////////////////////////////
 
-     $(function(){
-
-        $('.item').each(function(event){ 
-    
-          var max_length = 150; 
-    
-          if($(this).html().length > max_length){ 
-    
-            var short_content   = $(this).html().substr(0,max_length); 
-            var long_content  = $(this).html().substr(max_length);
-    
-            $(this).html(short_content+'<a href="#" class="read_more">Leer mas</a>'+
-                   '<span class="more_text" style="display:none;">'+long_content+'</span>'+'<a href="#" class="read_less" style="display:none;">Leer menos</a>'); 
-    
-            $(this).find('a.read_more').click(function(event){ 
-    
-              event.preventDefault();
-              $(this).hide(); 
-              $('.read_less').show(); 
-    
-              $(this).parents('.item').find('.more_text').show();
-    
-            });
-    
-            $(this).find('a.read_less').click(function(event){ 
-              event.preventDefault();
-    
-              $(this).hide(); 
-              $('.read_less').hide();
-              $('.read_more').show();
-    
-              $(this).parents('.item').find('.more_text').hide();
-    
-            });
-    
+     $(document).ready(function(){
+        $(".content").each(function(){
+          if($(this).height() < $(this)[0].scrollHeight){
+            $(this).parent().find(".txtcol").show();
+            $(this).toggleClass("truncate");
           }
-    
         });
-      });
-    
+        $(".txtcol").click(function(){
+          if($(this).prev().hasClass("truncate")) {
+                          $(this).parent().find(".content").css("max-height", $(this).parent().find(".content")[0].scrollHeight);
+                  $(this).children('a').text("Leer menos");
+              } else {
+                          $(this).parent().find(".content").css("max-height", "6.25em");
+                  $(this).children('a').text("Leer mas");
+              }
+        $(this).prev().toggleClass("truncate");
+      
+        });
+      });    
   }
 
 
