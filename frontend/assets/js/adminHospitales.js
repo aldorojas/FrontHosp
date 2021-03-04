@@ -18,7 +18,7 @@ window.onload = (function(){
 	// const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list/1';
 	// allHospitales(URLTodosHospitales);
 
-})
+}) 
 
 ////////////////////////////////////////////////
 
@@ -50,26 +50,23 @@ opcion.forEach(e => {
 var formNewHospital = document.getElementById('formNewHospital');
 formNewHospital.addEventListener('submit', function(e){
 
-	const URLNewHospital = 'http://134.122.120.195/api/v1/hospital';
+	const URLNewHospital = 'http://134.122.120.195/api/v1/hospital/';
     e.preventDefault()
     var nombreHospital = document.getElementById('nombreHospital')
 	var direccionHospital = document.getElementById('direccionHospital')
 	var telefonoHospital = document.getElementById('telefonoHospital')
-	var adminHospital = document.getElementById('adminHospital')
-
-    var divPrueba = document.getElementById('card')
-    divPrueba.innerHTML = ''
+	var adminHospital = document.getElementById('adminHospital')  
 
 	var headers = {
 		"Content-Type": "application/json"
 	 }
 
 	const dataToSend = JSON.stringify(
-		{
-			"hospital":nombreHospital.value, 
-            "direccion": direccionHospital.value ,
-            "telefono": telefonoHospital.value,
-            "admin":adminHospital.value,
+		{			
+			"hospital":nombreHospital.value,
+			"direccion":direccionHospital.value,
+			"telefono":telefonoHospital.value,
+			"activo": adminHospital.value
 		});
 	console.log(dataToSend)
 	
@@ -82,22 +79,15 @@ formNewHospital.addEventListener('submit', function(e){
 		return response.json(); 
 	})
 	.then(function(data){ 
-        console.log(data)
-        if(data.status == 'Success'){
-            Swal.fire({
+		console.log(data)
+		Swal.fire({
 			icon: 'success',
 			title: 'Hospital registrado',
 			showConfirmButton: false,
 			timer: 2500
-            })
-        }
-        else{
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Ocurrio un error inesperado'
-              })
-        }
+			})
+		var divPrueba = document.getElementById('card')
+		divPrueba.innerHTML = ''
 		
 
 	});

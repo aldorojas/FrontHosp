@@ -314,7 +314,7 @@
                 </div>
               </div>
 
-             
+              
               <!--Editar un paciente-->
               <!-- Modal Editar paciente -->
               <div class="modal fade" id="editPaciente" tabindex="-1" aria-labelledby="editPaciente" aria-hidden="true">
@@ -330,7 +330,7 @@
                       <form id="formEditPaciente">
                         <div class="campo">
                           <div class="label">Id: </div>
-                          <input type="text" class="form-control" id="idEdit" >
+                          <input type="text" class="form-control" id="idEdit" disabled >
                         </div>
                         <div class="campo">
                           <div class="label">Nombres: </div>
@@ -373,6 +373,15 @@
                           <input type="text" id="fechaNacimientoEdit" class="form-control">
                         </div>
 
+                        <div class="campo">
+                          <div class="label">Alergias: </div>
+                          <input type="text" class="form-control" id="alergiasPacienteEdit" >
+                        </div>
+
+                        <div class="campo">
+                          <div class="label">Tipo de Sangre: </div>
+                          <input type="text" class="form-control" id="tipoSangrePacienteEdit">
+                        </div>                  
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

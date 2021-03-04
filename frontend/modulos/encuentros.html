@@ -162,11 +162,11 @@
                           </div>
 
                           <!--Pagina 2-->
-                          <div class="pagina">
+                          <!--<div class="pagina">
                             <div class="titulo">Notas clinicas</div>
                               <div>
                                 <div id="labelNotaClinica">Nota clinica</div>
-                                <textarea class="form-control" id="notaClinica" rows="6" onkeydown="pulsar(event)"></textarea>
+                                <textarea class="form-control" id="notaClinica" rows="6" onkeydown="pulsar(event)" onkeyup="charLimit(this, 485);"></textarea>
                               </div>
 
                               <div class="campo btns">
@@ -174,7 +174,7 @@
                                   <button type="submit" class="adelante-pag3 adelante btn btn-primary mb-2">Siguiente</button>   
                               </div>
 
-                          </div>
+                          </div>-->
                           <!--Pagina 3-->
                             <div class="pagina">
                               <div id="docs">
@@ -197,7 +197,37 @@
                               <div class="campo btns" id="btns3">
                                   <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#epicrisis">Crear epicrisis</button>  
                               </div>
+                              <div class="campo btns" id="btns4">
+                                <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#newNota">Crear Nota</button>  
+                            </div>
 
+                                <!-- ----------------------------------------------------------------- -->
+                              <!-- Modal protocolo operatorio-->
+                              <!-- Modal -->
+                              <div class="modal fade" id="newNota" tabindex="-1" aria-labelledby="newNota" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="newNota">Nota Clinica</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <div class="form-group col-md-12">
+                                          <div id="labelNotaClinica">Nota clinica</div>
+                                          <textarea class="form-control" id="notaClinica" rows="6" onkeydown="pulsar(event)" onkeyup="charLimit(this, 485);"></textarea>
+                                        </div>                             
+                                      <!-- <div class="label">Implantes: </div>
+                                      <input type="text" class="form-control" id="implantesRegistro" > -->                                                                                                              
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                                        <!--<button type="button"  class="btn btn-primary" id="guardarProtOpera">Generar PDF</button>-->
+                                      </div>                                    
+                                    </div>                                    
+                                  </div>
+                                </div>
+                              </div>
                               <!-- ----------------------------------------------------------------- -->
                               <!-- Modal protocolo operatorio-->
                               <!-- Modal -->

@@ -92,9 +92,9 @@ formNewMedico.addEventListener('submit', function(e){
 	const URLNewMedico = 'http://134.122.120.195/api/v1/doctor/';
 
     e.preventDefault()
-    //var IdHospital = document.getElementById('IdHospital')
-	var nombreNewHospital = document.getElementById('nombreHospital')
-	var nombreNewMedico = document.getElementById('nombreMedico')
+    var IdHospital = document.getElementById('IdHospital')
+	//var nombreNewHospital = document.getElementById('nombreHospital')
+	var nombreNewMedico = document.getElementById('nombreHospital')
 	var apellidosNewMedico = document.getElementById('apellidosMedico')
 	var telefonoNewMedico = document.getElementById('telefonoMedico')
 	var especialidadNewMedico = document.getElementById('especialidadMedico')
@@ -103,11 +103,7 @@ formNewMedico.addEventListener('submit', function(e){
 	var internoNewMedico = document.getElementById('internoMedico')
     var activoNewMedico = document.getElementById('activoMedico')
 	var adminNewMedico = document.getElementById('adminMedico')
-	var rutMedico = document.getElementById('rutMedico')
-    
-
-    var divPrueba = document.getElementById('card')
-    divPrueba.innerHTML = ''
+	var rutMedico = document.getElementById('rutMedico')  
 
 	var headers = {
 		"Content-Type": "application/json"
@@ -115,16 +111,15 @@ formNewMedico.addEventListener('submit', function(e){
 
 	const dataToSend = JSON.stringify(
 		{
-			//"id_hospital":IdHospital.value, 
-			"hospital":nombreNewHospital.value, 
-            "nombre": nombreNewMedico.value ,
-            "apellidos": apellidosNewMedico.value,
-            "telefono":telefonoNewMedico.value,
-            "especialidad":especialidadNewMedico.value,
-            "staff":staffNewMedico.value,
-            "becario": becarioNewMedico.value,
-            "interno": internoNewMedico.value,
-            "activo": activoNewMedico.value,
+			"id_hospital":IdHospital.value, 
+			"nombre":nombreNewMedico.value ,
+			"apellidos":apellidosNewMedico.value,
+			"telefono":telefonoNewMedico.value,
+			"especialidad":especialidadNewMedico.value,
+			"staff":staffNewMedico.value,
+			"becario": becarioNewMedico.value,
+			"interno": internoNewMedico.value,
+			"activo": activoNewMedico.value,
 			"admin": adminNewMedico.value,
 			"rut_medico": rutMedico.value
 		});
@@ -139,24 +134,15 @@ formNewMedico.addEventListener('submit', function(e){
 		return response.json(); 
 	})
 	.then(function(data){ 
-        console.log(data)
-        if(data.status == 'success'){
-            Swal.fire({
+		console.log(data)
+		Swal.fire({
 			icon: 'success',
 			title: 'Medico registrado',
 			showConfirmButton: false,
 			timer: 2500
-            })
-        }
-        else{
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Ocurrio un error inesperado'
-              })
-        }
-		
-
+			})
+		var divPrueba = document.getElementById('card')
+		divPrueba.innerHTML = ''
 	});
 })
 
@@ -365,7 +351,7 @@ if (result.isConfirmed) {
 }
 
 ///////////////
-function editMedico(IdMedico,/*IdHospital*/nombreHospital,nombreMedico,apellidosMedico,
+function editMedico(IdMedico,IdHospital,nombreMedico,apellidosMedico,
 	telefonoMedico,  staffMedico, especialidadMedico, rutMedico,  becarioMedico,
 	internoMedico, activoMedico, adminMedico
 	){
@@ -373,8 +359,8 @@ function editMedico(IdMedico,/*IdHospital*/nombreHospital,nombreMedico,apellidos
 	// 	telefonoMedicoEdit, especialidadMedicoEdit, staffMedicoEdit)
 	
 	var IdMedicoEdit = document.getElementById('IdMedicoEdit')
-	//var IdHospitalEdit = document.getElementById('IdHospitalEdit')
-	var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
+	var IdHospitalEdit = document.getElementById('IdHospitalEdit')
+	//var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
 	var nombreMedicoEdit = document.getElementById('nombreMedicoEdit')
 	var apellidosMedicoEdit = document.getElementById('apellidosMedicoEdit')
 	var telefonoMedicoEdit = document.getElementById('telefonoMedicoEdit')
@@ -387,8 +373,8 @@ function editMedico(IdMedico,/*IdHospital*/nombreHospital,nombreMedico,apellidos
 	var adminMedicoEdit = document.getElementById('adminMedicoEdit')
 	
 	IdMedicoEdit.value = IdMedico;
-	//IdHospitalEdit.value = IdHospital;
-	nombreHospitalEdit.value = nombreHospital;
+	IdHospitalEdit.value = IdHospital;
+	//nombreHospitalEdit.value = nombreHospital;
 	nombreMedicoEdit.value = nombreMedico;
 	apellidosMedicoEdit.value = apellidosMedico;
 	telefonoMedicoEdit.value = telefonoMedico;
@@ -416,8 +402,8 @@ formEditMedico.addEventListener('submit', function(e){
 
 	e.preventDefault()
 	var idMedico = document.getElementById('IdMedicoEdit')
-	//var IdHospital = document.getElementById('IdHospitalEdit')
-	var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
+	var IdHospital = document.getElementById('IdHospitalEdit')
+	//var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
 	var nombreEditMedico = document.getElementById('nombreMedicoEdit')
 	var apellidosEditMedico = document.getElementById('apellidosMedicoEdit')
 	var telefonoEditMedico = document.getElementById('telefonoMedicoEdit')
@@ -436,19 +422,18 @@ formEditMedico.addEventListener('submit', function(e){
 
 	const dataToSend = JSON.stringify(
 		{
-			"id" : idMedico.value,
-			//"id_hospital":IdHospital.value, 
-			"hospital":nombreHospitalEdit.value, 
-			"nombre":nombreEditMedico.value,
-			"apellidos":apellidosEditMedico.value,
-			"telefono":telefonoEditMedico.value,
-			"especialidad":especialidadEditMedico.value,
-			"staff":staffEditMedico.value,
+			"id": idMedico.value,
+			"id_hospital": IdHospital.value, 
+			"nombre": nombreEditMedico.value,
+			"apellidos": apellidosEditMedico.value,
+			"telefono": telefonoEditMedico.value,
+			"especialidad": especialidadEditMedico.value,
+			"staff": staffEditMedico.value,
 			"becario": becarioEditMedico.value,
 			"interno": internoEditMedico.value,
-			"activo": activoEditMedico.value,
+			"activo":activoEditMedico.value,
 			"admin": adminEditMedico.value,
-			"rut_medico" : rutMedicoEdit.value
+			"rut_medico": rutMedicoEdit.value
 		});
 		
 	console.log(dataToSend)
@@ -714,7 +699,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
     data.length && 
     data
     .map((each,index)=>{
-      const {id, /*id_hospital*/ hospital, nombre, apellidos, telefono, staff, especialidad, rut_medico,
+      const {id, id_hospital, hospital, nombre, apellidos, telefono, staff, especialidad, rut_medico,
 		becario, interno, activo, admin } = each;
 	  ///////////////////////////////////////
 	  if ( becario == true ){
@@ -790,7 +775,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
 				<button onclick="deleteMedico(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
 					<i class="icon ion-md-trash "></i>
 				</button>
-				<button onclick="editMedico(${id},'${hospital}','${nombre}','${apellidos}',
+				<button onclick="editMedico(${id},'${id_hospital}','${nombre}','${apellidos}',
 									'${telefono}', '${staff}', '${especialidad}', '${rut_medico}', '${becario}',
 										'${interno}', '${activo}', '${admin}' )" 
 					class="btn btn-info btn-sm" title="Editar Paciente">

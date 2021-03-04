@@ -261,32 +261,36 @@ function deletePaciente(idPaciente){
 }
 
 ///////////////////////////////////////////////////////////////
-function editPaciente(IdPaciente,nombrePaciente,apellidoPaciente,
-	rutPaciente, pasaportePaciente, direccionPaciente, telefonoPaciente, sexoPaciente,
-	birthdatePaciente
+function editPaciente(IdPaciente, rutPaciente, pasaportePaciente, direccionPaciente, telefonoPaciente, 
+	sexoPaciente, birthdatePaciente, nombrePaciente,apellidoPaciente, alergias, tipodesangre
 	){
 	// console.log(IdHospital,nombreMedicoEdit,apellidosMedicoEdit,telefonoMedicoEdit, 
 	// 	telefonoMedicoEdit, especialidadMedicoEdit, staffMedicoEdit)
 	
 	var IdPacienteEdit = document.getElementById('idEdit')
-	var nombrePacienteEdit = document.getElementById('nombresEdit')
-	var apellidosPAcienteEdit = document.getElementById('apellidosEdit')
 	var rutPacienteEdit = document.getElementById('rutEdit')
 	var pasaportePacienteEdit = document.getElementById('pasaporteEdit')
 	var direccionPacienteEdit = document.getElementById('direccionEdit')
 	var telefonoPacienteEdit = document.getElementById('telefonoEdit')
 	var sexoPacienteEdit = document.getElementById('sexoEdit')
 	var fechaNacimientoPacienteEdit = document.getElementById('fechaNacimientoEdit')
+	var nombrePacienteEdit = document.getElementById('nombresEdit')
+	var apellidosPAcienteEdit = document.getElementById('apellidosEdit')	
+	var alergiasNewPacienteEdit = document.getElementById('alergiasPacienteEdit')
+	var tipoSangreNewPacienteEdit = document.getElementById('tipoSangrePacienteEdit')
+
 
 	IdPacienteEdit.value = IdPaciente;
 	nombrePacienteEdit.value = nombrePaciente;
-	apellidosPAcienteEdit.value = apellidoPaciente;
 	rutPacienteEdit.value = rutPaciente;
 	pasaportePacienteEdit.value = pasaportePaciente;
 	direccionPacienteEdit.value = direccionPaciente;
 	telefonoPacienteEdit.value = telefonoPaciente;
 	sexoPacienteEdit.value = sexoPaciente;
 	fechaNacimientoPacienteEdit.value = birthdatePaciente;
+	apellidosPAcienteEdit.value = apellidoPaciente;	
+	alergiasNewPacienteEdit.value = alergias;
+	tipoSangreNewPacienteEdit.value = tipodesangre;
 
 	
 	$('#editPaciente').modal('show');
@@ -302,14 +306,16 @@ formEditPaciente.addEventListener('submit', function(e){
 
 	e.preventDefault()
 	var IdPacienteEdit = document.getElementById('idEdit')
-	var nombrePacienteEdit = document.getElementById('nombresEdit')
-	var apellidosPacienteEdit = document.getElementById('apellidosEdit')
 	var rutPacienteEdit = document.getElementById('rutEdit')
 	var pasaportePacienteEdit = document.getElementById('pasaporteEdit')
 	var direccionPacienteEdit = document.getElementById('direccionEdit')
 	var telefonoPacienteEdit = document.getElementById('telefonoEdit')
 	var sexoPacienteEdit = document.getElementById('sexoEdit')
 	var fechaNacimientoPacienteEdit = document.getElementById('fechaNacimientoEdit')
+	var nombrePacienteEdit = document.getElementById('nombresEdit')
+	var apellidosPacienteEdit = document.getElementById('apellidosEdit')	
+	var alergiasNewPacienteEdit = document.getElementById('alergiasPacienteEdit')
+	var tipoSangreNewPacienteEdit = document.getElementById('tipoSangrePacienteEdit')
 
 	var headers = {
 		"Content-Type": "application/json"
@@ -317,15 +323,17 @@ formEditPaciente.addEventListener('submit', function(e){
 
 	const dataToSend = JSON.stringify(
 		{
-			"id" : IdPacienteEdit.value,
-			"rut": rutPacienteEdit.value, 
+			"id": IdPacienteEdit.value, 
+			"rut": rutPacienteEdit.value,
 			"pasaporte": pasaportePacienteEdit.value,
 			"direccion": direccionPacienteEdit.value,
 			"telefono": telefonoPacienteEdit.value,
-			"sexo": sexoPacienteEdit.value, 
-			"birth_date":fechaNacimientoPacienteEdit.value,
-			"nombre": nombrePacienteEdit.value, 
-			"apellido": apellidosPacienteEdit.value
+			"sexo": sexoPacienteEdit.value,
+			"birth_date": fechaNacimientoPacienteEdit.value,
+			"nombre": nombrePacienteEdit.value,
+			"apellido": apellidosPacienteEdit.value,
+			"alergias": alergiasNewPacienteEdit.value,
+			"tipo_sangre": tipoSangreNewPacienteEdit.value
 		});
 	console.log(dataToSend)
 	
@@ -355,15 +363,7 @@ formEditPaciente.addEventListener('submit', function(e){
               })
         }
 	})
-	.catch(err => 
-		console.log(err),
-		Swal.fire({
-			icon: 'error',
-			title: 'Oops...',
-			text: 'Hay campos vacios en Epicrisis o Protocolo!',
-		  })
-		
-		);
+	.catch(err => console.log(err));
 })
 
 /////////////////////////////////////////////////////////////
@@ -649,8 +649,8 @@ const getDataBirthday = async (page_no = 1, paramSearch) => {
     data.length && 
     data
     .map((each,index)=>{
-      const {id, nombre, apellido,edad, pasaporte, rut, direccion,telefono,
-		birth_date,sexo, alergias, tipo_sangre  } = each;
+      const {id, nombre, apellido,edad, pasaporte, rut, direccion, telefono,
+		birth_date, sexo, alergias, tipo_sangre  } = each;
       
 
       container.innerHTML += 
@@ -666,15 +666,14 @@ const getDataBirthday = async (page_no = 1, paramSearch) => {
 		<td data-label="Telefono">${telefono}</td>
 		<td data-label="Fecha de nacimiento">${birth_date}</td>
 		<td data-label="Sexo">${sexo}</td>
-		<td data-label="Sexo">${alergias}</td>
-		<td data-label="Sexo">${tipo_sangre}</td>
+		<td data-label="Alergias">${alergias}</td>
+		<td data-label="Tipo sangre">${tipo_sangre}</td>
 		<td data-label="Acciones">
 			<button onclick="deletePaciente(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
 				<i class="icon ion-md-trash "></i>
 			</button>
-			<button onclick="editPaciente(${id}, '${nombre}', '${apellido}',
-											'${rut}', '${pasaporte}', '${direccion}',
-											'${telefono}', '${sexo}', '${birth_date}')" 
+			<button onclick="editPaciente('${id}','${rut}', '${pasaporte}', '${direccion}',
+			'${telefono}', '${sexo}', '${birth_date}', '${nombre}', '${apellido}','${alergias}','${tipo_sangre}')" 
 			class="btn btn-info btn-sm" title="Editar Paciente">
 				<i class="icon ion-md-create "></i>
 			</button>
