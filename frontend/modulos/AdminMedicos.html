@@ -235,11 +235,11 @@
                            </div>-->
                           <div class="campo">
                             <div class="label">Nombre(s): </div>
-                            <input type="text" class="form-control" id="nombreHospital" onkeypress="return check(event)" required>
+                            <input type="text" class="form-control" id="nombreHospital"  required>
                           </div>
                           <div class="campo">
                             <div class="label">Apellidos: </div>
-                            <input type="text" class="form-control" id="apellidosMedico" onkeypress="return check(event)" required>
+                            <input type="text" class="form-control" id="apellidosMedico" required>
                           </div>
                           <div class="campo">
                               <div class="label">Telefono: </div>
@@ -247,7 +247,7 @@
                             </div>
                           <div class="campo">
                             <div class="label">Especialidad: </div>
-                            <input type="text" class="form-control" id="especialidadMedico" onkeypress="return check(event)" required>
+                            <input type="text" class="form-control" id="especialidadMedico" required>
                           </div>
 
                           <div class="campo">
@@ -346,10 +346,10 @@
                                 <div class="label">Telefono: </div>
                                 <input type="text" class="form-control" id="telefonoMedicoEdit" >
                               </div>
-                            <div class="campo">
-                              <div class="label">Especialidad: </div>
-                              <input type="text" class="form-control" id="especialidadMedicoEdit" >
-                            </div>
+                              <div class="campo">
+                                <div class="label">Especialidad: </div>
+                                <input type="text" class="form-control" id="especialidadMedicoEdit" >
+                              </div>
                             <div class="campo">
                               <div class="label">Rut Medico: </div>
                               <input type="text" class="form-control" id="rutMedicoEdit" >
@@ -357,23 +357,38 @@
 
                             <div class="campo">
                               <div class="label">Staff </div>
-                              <input type="text" class="form-control" id="staffMedicoEdit" >
+                              <!-- <input type="text" class="form-control" id="staffMedicoEdit" > -->
+                              <select class="form-control" id="staffMedicoEdit" onchange="validateStaffEdit(this)">
+                                <option ></option>
+                                <option value="True">Si</option>
+                                <option value="False">No</option>
+                              </select>
                             </div>
 
                             <div class="campo">
                               <div class="label">Becario: </div>
-                              <select class="form-control" id="becarioMedicoEdit">
+                              <select class="form-control" id="becarioMedicoEdit" onchange="validateBecarioEdit(this)">
+                                <option ></option>
                                 <option value="True">Si</option>
                                 <option value="False">No</option>
                               </select>
+                              <!-- <select class="form-control" id="becarioMedicoEdit">
+                                <option value="True">Si</option>
+                                <option value="False">No</option>
+                              </select> -->
                             </div>
 
                             <div class="campo">
                               <div class="label">Interno: </div>
-                              <select class="form-control" id="internoMedicoEdit">
+                              <select class="form-control" id="internoMedicoEdit" onchange="validateInternoEdit(this)">
+                                <option ></option>
                                 <option value="True">Si</option>
                                 <option value="False">No</option>
                               </select>
+                              <!-- <select class="form-control" id="internoMedicoEdit">
+                                <option value="True">Si</option>
+                                <option value="False">No</option>
+                              </select> -->
                             </div>
 
                             <div class="campo">
@@ -428,6 +443,9 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     
+    
+  
+    <script type="text/javascript" src="https://rawcdn.githack.com/franz1628/validacionKeyCampo/bce0e442ee71a4cf8e5954c27b44bc88ff0a8eeb/validCampoFranz.js"></script>
     
     <script type="text/javascript" src="../assets/js/adminMedicos.js"> </script>
     <script type="text/javascript" src="../assets/js/navbarAside.js"> </script>

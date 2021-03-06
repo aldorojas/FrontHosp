@@ -71,6 +71,44 @@ function validateInterno(element){
 	}
 }
 
+////////////////////////////////////////////
+function validateStaffEdit(element){ 
+	if (element.value == 'True'){
+		document.getElementById('becarioMedicoEdit').value = 'False'
+		document.getElementById('becarioMedicoEdit').disabled = true
+		document.getElementById('internoMedicoEdit').value = 'False'
+		document.getElementById('internoMedicoEdit').disabled = true
+	}
+	else{
+		document.getElementById('becarioMedicoEdit').disabled = false
+		document.getElementById('internoMedicoEdit').disabled = false
+	}
+}
+function validateBecarioEdit(element){ 
+	if (element.value == 'True'){
+		document.getElementById('staffMedicoEdit').value = 'False'
+		document.getElementById('staffMedicoEdit').disabled = true
+		document.getElementById('internoMedicoEdit').value = 'False'
+		document.getElementById('internoMedicoEdit').disabled = true
+	}
+	else{
+		document.getElementById('staffMedicoEdit').disabled = false
+		document.getElementById('internoMedicoEdit').disabled = false
+	}
+}
+function validateInternoEdit(element){ 
+	if (element.value == 'True'){
+		document.getElementById('staffMedicoEdit').value = 'False'
+		document.getElementById('staffMedicoEdit').disabled = true
+		document.getElementById('becarioMedicoEdit').value = 'False'
+		document.getElementById('becarioMedicoEdit').disabled = true
+	}
+	else{
+		document.getElementById('staffMedicoEdit').disabled = false
+		document.getElementById('becarioMedicoEdit').disabled = false
+	}
+}
+
 const opcion = document.querySelectorAll('.opcion');
 
 opcion.forEach(e => {
@@ -135,15 +173,34 @@ formNewMedico.addEventListener('submit', function(e){
 	})
 	.then(function(data){ 
 		console.log(data)
-		Swal.fire({
+        if(data.status == 'success'){
+            Swal.fire({
 			icon: 'success',
-			title: 'Medico registrado',
+			title: 'Medico Registrado',
 			showConfirmButton: false,
 			timer: 2500
-			})
-		var divPrueba = document.getElementById('card')
-		divPrueba.innerHTML = ''
+            })           
+        }
+        else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ocurrio un error inesperado'
+              })
+        }
+		location.reload();		
 	});
+	// .then(function(data){ 
+	// 	console.log(data)
+	// 	Swal.fire({
+	// 		icon: 'success',
+	// 		title: 'Medico registrado',
+	// 		showConfirmButton: false,
+	// 		timer: 2500
+	// 		})
+	// 	var divPrueba = document.getElementById('card')
+	// 	divPrueba.innerHTML = ''
+	// });
 })
 
 
@@ -338,6 +395,7 @@ if (result.isConfirmed) {
 	})
 	.then(function(data){ 
 		console.log("Eliminado")
+		location.reload();		
 	})
 	.catch(err => console.log(err))
 	
@@ -462,8 +520,7 @@ formEditMedico.addEventListener('submit', function(e){
 				text: 'Ocurrio un error inesperado'
 				})
 		}
-		
-
+		location.reload();		
 	})
 	.catch(err => console.log(err));
 	
@@ -846,19 +903,32 @@ function exit(){
 	window.location.href = '../index.html'
 }
 
-function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
+$(function(){
+	$('#IdHospital').validCampoFranz('1234567890');
+	$('#nombreHospital').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#apellidosMedico').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ'); 
+	$('#telefonoMedico').validCampoFranz('1234567890');
+	$('#especialidadMedico').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#IdHospitalEdit').validCampoFranz('1234567890');
+	$('#nombreMedicoEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#apellidosMedicoEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ'); 
+	$('#telefonoMedicoEdit').validCampoFranz('1234567890');
+	$('#especialidadMedicoEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+});
 
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
+// function check(e) {
+//     tecla = (document.all) ? e.keyCode : e.which;
 
-    // Patron de entrada, en este caso solo acepta numeros y letras
-    patron = /[A-Za-z]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}
+//     //Tecla de retroceso para borrar, siempre la permite
+//     if (tecla == 8) {
+//         return true;
+//     }
+
+//     // Patron de entrada, en este caso solo acepta numeros y letras
+//     patron = /[A-Za-z]/;
+//     tecla_final = String.fromCharCode(tecla);
+//     return patron.test(tecla_final);
+// }
 
 
 

@@ -1461,15 +1461,16 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
 
 
 function deleteEncuentro(idEncuentro){
-        const URLDeleteEncuentro = 'http://134.122.120.195/api/v1/encuentro/' + idEncuentro ;
 
-            var headers = {
-            "Content-Type": "application/json"
-            }
+    const URLDeleteEncuentro = 'http://134.122.120.195/api/v1/delete/' + idEncuentro ;
 
-            Swal.fire({
+    var headers = {
+        "Content-Type": "application/json"
+        }
+
+        Swal.fire({
             title: 'Esta seguro?',
-            text: "¡No podrás revertir esto!",
+            text: "¡Solo un administrador puede revertir esto!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -1478,7 +1479,6 @@ function deleteEncuentro(idEncuentro){
             }).then((result) => {
             if (result.isConfirmed) {
                 fetch(URLDeleteEncuentro, {
-                    method: "DELETE",
                     headers: headers
                 })
                 .then(function(response){ 
@@ -1486,16 +1486,52 @@ function deleteEncuentro(idEncuentro){
                 })
                 .then(function(data){ 
                     console.log("Eliminado")
+                    location.reload();	
                 })
                 .catch(err => console.log(err))
                 
                 Swal.fire(
                 'Borrado!',
-                'El paciente fue eliminado.',
+                'El encuentro fue eliminado.',
                 'success'
                 )
             }
-    })
+        })
+    //     const URLDeleteEncuentro = 'http://134.122.120.195/api/v1/encuentro/' + idEncuentro ;
+
+    //         var headers = {
+    //         "Content-Type": "application/json"
+    //         }
+
+    //         Swal.fire({
+    //         title: 'Esta seguro?',
+    //         text: "¡No podrás revertir esto!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Si, borrar!'
+    //         }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             fetch(URLDeleteEncuentro, {
+    //                 method: "DELETE",
+    //                 headers: headers
+    //             })
+    //             .then(function(response){ 
+    //                 return response.json(); 
+    //             })
+    //             .then(function(data){ 
+    //                 console.log("Eliminado")
+    //             })
+    //             .catch(err => console.log(err))
+                
+    //             Swal.fire(
+    //             'Borrado!',
+    //             'El paciente fue eliminado.',
+    //             'success'
+    //             )
+    //         }
+    // })
 }
 
 

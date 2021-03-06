@@ -241,11 +241,12 @@
 
                         <div class="campo">
                           <div class="label">Nombres: </div>
-                          <input type="text" class="form-control" id="nombres" onkeypress="return check(event)" required>
+                         <!--<input type="text" class="form-control" id="nombres" onkeypress="return check(event)" required>--> 
+                         <input type="text" class="form-control" id="nombres" required>
                         </div>
                         <div class="campo">
                           <div class="label">Apellidos: </div>
-                          <input type="text" class="form-control" id="apellidos" onkeypress="return check(event)" required>
+                          <input type="text" class="form-control" id="apellidos" required>
                         </div>
 
                         <div class="campo">
@@ -370,7 +371,8 @@
                             
                         <div class="campo">
                           <div class="label">Fecha de nacimiento</div>
-                          <input type="text" id="fechaNacimientoEdit" class="form-control">
+                         <!-- <input type="date" id="fechaNacimientoEdit" class="form-control">-->
+                          <input type="date" class="form-control" id="fechaNacimientoEdit" placeholder="Fecha de nacimiento" required>
                         </div>
 
                         <div class="campo">
@@ -380,7 +382,17 @@
 
                         <div class="campo">
                           <div class="label">Tipo de Sangre: </div>
-                          <input type="text" class="form-control" id="tipoSangrePacienteEdit">
+                          <!-- <input type="text" class="form-control" id="tipoSangrePacienteEdit"> -->
+                          <select class="form-control" id="tipoSangrePacienteEdit">
+                            <option>A RH+</option>
+                            <option>A RH-</option>
+                            <option>B RH+</option>
+                            <option>B RH-</option>
+                            <option>AB RH+</option>
+                            <option>AB RH-</option>
+                            <option>O RH+</option>
+                            <option>O RH-</option>
+                          </select>
                         </div>                  
 
                         <div class="modal-footer">
@@ -419,6 +431,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     
+    <script type="text/javascript" src="https://rawcdn.githack.com/franz1628/validacionKeyCampo/bce0e442ee71a4cf8e5954c27b44bc88ff0a8eeb/validCampoFranz.js"></script>
     
     <script type="text/javascript" src="../assets/js/adminPacientes.js"> </script>
     <script type="text/javascript" src="../assets/js/navbarAside.js"> </script>

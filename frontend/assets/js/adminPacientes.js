@@ -102,18 +102,37 @@ formNewPaciente.addEventListener('submit', function(e){
 	})
 	.then(function(data){ 
 		console.log(data)
-		Swal.fire({
+        if(data.status == 'success'){
+            Swal.fire({
 			icon: 'success',
-			title: 'Paciente registrado',
+			title: 'Paciente Registrado',
 			showConfirmButton: false,
 			timer: 2500
-			})
-		var divPrueba = document.getElementById('card')
-		divPrueba.innerHTML = ''
+            })           
+        }
+        else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ocurrio un error inesperado'
+              })
+        }
+		location.reload();		
+	});
+	// .then(function(data){ 
+	// 	console.log(data)
+	// 	Swal.fire({
+	// 		icon: 'success',
+	// 		title: 'Paciente registrado',
+	// 		showConfirmButton: false,
+	// 		timer: 2500
+	// 		})
+	// 	var divPrueba = document.getElementById('card')
+	// 	divPrueba.innerHTML = ''
 
 		
 
-	});
+	// });
 })
 //////////////////////////////////// todos los pacientes
 
@@ -248,6 +267,7 @@ function deletePaciente(idPaciente){
 		})
 		.then(function(data){ 
 			console.log("Eliminado")
+			location.reload();
 		})
 		.catch(err => console.log(err))
 		
@@ -255,8 +275,8 @@ function deletePaciente(idPaciente){
 		'Borrado!',
 		'El paciente fue eliminado.',
 		'success'
-		)
-	}
+		)		
+	}	
 	})
 }
 
@@ -362,8 +382,9 @@ formEditPaciente.addEventListener('submit', function(e){
                 text: 'Ocurrio un error inesperado'
               })
         }
+		location.reload();
 	})
-	.catch(err => console.log(err));
+	.catch(err => console.log(err));			
 })
 
 /////////////////////////////////////////////////////////////
@@ -700,16 +721,25 @@ function exit(){
 	window.location.href = '../index.html'
 }
 
-function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
+$(function(){
+	$('#nombres').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#apellidos').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ'); 
+	$('#telefono').validCampoFranz('1234567890');
+	$('#nombresEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#apellidosEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ'); 
+	$('#telefonoEdit').validCampoFranz('1234567890');
+});
 
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
+// function check(e) {
+//     tecla = (document.all) ? e.keyCode : e.which;
 
-    // Patron de entrada, en este caso solo acepta numeros y letras
-    patron = /[A-Za-z]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}
+//     //Tecla de retroceso para borrar, siempre la permite
+//     if (tecla == 8) {
+//         return true;
+//     }
+
+//     // Patron de entrada, en este caso solo acepta numeros y letras
+//     patron = /[A-Za-z]/;
+//     tecla_final = String.fromCharCode(tecla);
+//     return patron.test(tecla_final);
+// }

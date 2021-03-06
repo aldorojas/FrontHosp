@@ -80,17 +80,36 @@ formNewHospital.addEventListener('submit', function(e){
 	})
 	.then(function(data){ 
 		console.log(data)
-		Swal.fire({
+        if(data.status == 'success'){
+            Swal.fire({
 			icon: 'success',
-			title: 'Hospital registrado',
+			title: 'Hospital Registrado',
 			showConfirmButton: false,
 			timer: 2500
-			})
-		var divPrueba = document.getElementById('card')
-		divPrueba.innerHTML = ''
+            })           
+        }
+        else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ocurrio un error inesperado'
+              })
+        }
+		location.reload();		
+	});
+	// .then(function(data){ 
+	// 	console.log(data)
+	// 	Swal.fire({
+	// 		icon: 'success',
+	// 		title: 'Hospital registrado',
+	// 		showConfirmButton: false,
+	// 		timer: 2500
+	// 		})
+	// 	var divPrueba = document.getElementById('card')
+	// 	divPrueba.innerHTML = ''
 		
 
-	});
+	// });
 })
 
 
@@ -233,6 +252,7 @@ function deleteHospital(idHospital){
 			})
 			.then(function(data){ 
 				console.log("Eliminado")
+				location.reload();		
 			})
 			.catch(err => console.log(err))
 			
@@ -316,9 +336,8 @@ formEditHospital.addEventListener('submit', function(e){
                 title: 'Oops...',
                 text: 'Ocurrio un error inesperado'
               })
-        }
-		
-
+        }		
+		location.reload();		
 	});
 })
 
@@ -343,20 +362,6 @@ formSearchNombre.addEventListener("submit", function(event){
     getDataNombre(1, nombreHospitalFind.value )
 
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -512,20 +517,27 @@ function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
+$(function(){
+	$('#nombreHospital').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#direccionHospital').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#telefonoHospital').validCampoFranz('1234567890'); 
+	$('#nombreHospitalEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#direccionHospitalEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#telefonoHospitalEdit').validCampoFranz('1234567890'); 
+});
+// function check(e) {
+//     tecla = (document.all) ? e.keyCode : e.which;
 
-function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
+//     //Tecla de retroceso para borrar, siempre la permite
+//     if (tecla == 8) {
+//         return true;
+//     }
 
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
-
-    // Patron de entrada, en este caso solo acepta numeros y letras
-    patron = /[A-Za-z]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}
+//     // Patron de entrada, en este caso solo acepta numeros y letras
+//     patron = /[A-Za-z]/;
+//     tecla_final = String.fromCharCode(tecla);
+//     return patron.test(tecla_final);
+// }
 
 
 

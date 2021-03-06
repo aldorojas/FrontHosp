@@ -96,13 +96,34 @@ formNewPaciente.addEventListener('submit', function(e){
 	})
 	.then(function(data){ 
 		console.log(data)
-		Swal.fire({
+        if(data.status == 'success'){
+            Swal.fire({
 			icon: 'success',
-			title: 'Paciente registrado',
+			title: 'Paciente Registrado',
 			showConfirmButton: false,
 			timer: 2500
-			})	
-
+            }) 
+				// localStorage.setItem("nombres", nombrePaciente);
+				// localStorage.setItem("apellidos", apellidosPaciente);
+				// localStorage.setItem("rut", rutPaciente);
+				// localStorage.setItem("pasaporte", pasaportePaciente);
+				// localStorage.setItem("direccion", direccionPaciente);
+				// localStorage.setItem("telefono", telefonoPaciente);
+				// localStorage.setItem("sexo", sexoPaciente);
+				// localStorage.setItem("fechaNacimiento", fechaNacimientoPaciente);				
+				// localStorage.setItem("alergiasPaciente", alergiasPaciente);
+				// localStorage.setItem("tipoSangrePaciente", tipoSangrePaciente);
+				// window.location.href = 'encuentros.html'
+        }
+        else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ocurrio un error inesperado'
+              })
+        }		
+		location.reload();	
+		//window.location.href = 'AdminPacientes.html'			
 	});
 })
 
@@ -114,20 +135,25 @@ function exit(){
 	window.location.href = '../index.html'
 }
 
+$(function(){
 
-function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
+	$('#nombres').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#apellidos').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ'); 
+	$('#telefono').validCampoFranz('1234567890');
+});
+// function check(e) {
+//     tecla = (document.all) ? e.keyCode : e.which;
 
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
+//     //Tecla de retroceso para borrar, siempre la permite
+//     if (tecla == 8) {
+//         return true;
+//     }
 
-    // Patron de entrada, en este caso solo acepta numeros y letras
-    patron = /[A-Za-z]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}
+//     // Patron de entrada, en este caso solo acepta numeros y letras
+//     patron = /[A-Za-z]/;
+//     tecla_final = String.fromCharCode(tecla);
+//     return patron.test(tecla_final);
+// }
 
 
 
