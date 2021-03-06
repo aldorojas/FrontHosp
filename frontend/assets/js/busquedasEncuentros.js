@@ -876,7 +876,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "rut_cirujano2": rutcirujano2Edit.value,
             "ruta_tratante": RutatraEdit.value,
             "servicio_egreso": seregresoEdit.value,
-            "servicio_ingreso ": seringresoEdit.value,
+            "servicio_ingreso": seringresoEdit.value,
             "snomed": "877dyjs",
             "time_protocol": horaProtOperaEdit.value,
             "tipo_2": tipoEncuentroEdit.value,
