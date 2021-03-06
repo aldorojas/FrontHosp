@@ -65,6 +65,7 @@ formNewPaciente.addEventListener('submit', function(e){
 	var fechaNacimientoNewPaciente = document.getElementById('fechaNacimiento')
 	var alergiasNewPaciente = document.getElementById('alergiasPaciente')
 	var tipoSangreNewPaciente = document.getElementById('tipoSangrePaciente')
+	var idNewPaciente
 
 	var headers = {
 		"Content-Type": "application/json"
@@ -82,7 +83,8 @@ formNewPaciente.addEventListener('submit', function(e){
 			"nombre": nombreNewPaciente.value, 
 			"apellido": apellidosNewPaciente.value,
 			"alergias": alergiasNewPaciente.value,
-    		"tipo_sangre": tipoSangreNewPaciente.value
+    		"tipo_sangre": tipoSangreNewPaciente.value,
+			"id_paciente": idNewPaciente
 		});
 	console.log(dataToSend)
 	
@@ -102,28 +104,27 @@ formNewPaciente.addEventListener('submit', function(e){
 			title: 'Paciente Registrado',
 			showConfirmButton: false,
 			timer: 2500
-            }) 
-				// localStorage.setItem("nombres", nombrePaciente);
-				// localStorage.setItem("apellidos", apellidosPaciente);
-				// localStorage.setItem("rut", rutPaciente);
-				// localStorage.setItem("pasaporte", pasaportePaciente);
-				// localStorage.setItem("direccion", direccionPaciente);
-				// localStorage.setItem("telefono", telefonoPaciente);
-				// localStorage.setItem("sexo", sexoPaciente);
-				// localStorage.setItem("fechaNacimiento", fechaNacimientoPaciente);				
-				// localStorage.setItem("alergiasPaciente", alergiasPaciente);
-				// localStorage.setItem("tipoSangrePaciente", tipoSangrePaciente);
-				// window.location.href = 'encuentros.html'
+            }) 				
         }
         else{
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Ocurrio un error inesperado'
-              })
-        }		
-		location.reload();	
-		//window.location.href = 'AdminPacientes.html'			
+              })			  	
+        }
+				localStorage.setItem("id_paciente", idNewPaciente);		
+				localStorage.setItem("nombres", nombreNewPaciente);
+				localStorage.setItem("apellidos", apellidosNewPaciente);
+				localStorage.setItem("rut", rutNewPaciente);
+				localStorage.setItem("pasaporte", pasaporteNewPaciente);
+				localStorage.setItem("direccion", direccionNewPaciente);
+				localStorage.setItem("telefono", telefonoNewPaciente);
+				localStorage.setItem("sexo", sexoNewPaciente);
+				localStorage.setItem("fechaNacimiento", fechaNacimientoNewPaciente);				
+				localStorage.setItem("alergiasPaciente", alergiasNewPaciente);
+				localStorage.setItem("tipoSangrePaciente", tipoSangreNewPaciente);
+				window.location.href = 'encuentros.html'								
 	});
 })
 
