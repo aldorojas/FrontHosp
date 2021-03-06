@@ -50,8 +50,8 @@ formLogin.addEventListener('submit', function(e){
 			localStorage.setItem("idHospital",data.Medico.id_hospital);
 			localStorage.setItem("especialidad",data.Medico.especialidad);
 
-			window.location.replace("http://134.122.120.195:8080/modulos/inicio.html");
-			//window.location.replace("http://127.0.0.1:5500/frontend/modulos/inicio.html");
+			//window.location.replace("http://134.122.120.195:8080/modulos/inicio.html");
+			window.location.replace("http://127.0.0.1:5500/frontend/modulos/inicio.html");
 		}
 		else{
 			console.log(data.message)

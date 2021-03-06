@@ -113,14 +113,18 @@ formNewPaciente.addEventListener('submit', function(e){
                 text: 'Ocurrio un error inesperado'
               })			  	
         }
-				localStorage.setItem("id_paciente", idNewPaciente);
-				localStorage.setItem("nombres", nombreNewPaciente);
-				localStorage.setItem("apellidos", apellidosNewPaciente);
-				localStorage.setItem("fechaNacimiento", fechaNacimientoNewPaciente);
-				localStorage.setItem("direccion", direccionNewPaciente);
-				localStorage.setItem("telefono", telefonoNewPaciente);
-				localStorage.setItem("sexo", sexoNewPaciente);
-				localStorage.setItem("rut", rutNewPaciente);				
+				localStorage.setItem("idPaciente", idNewPaciente);
+				localStorage.setItem("nombrePaciente", nombreNewPaciente.value);
+				localStorage.setItem("apellidosPaciente", apellidosNewPaciente.value);
+				localStorage.setItem("fechaNacimientoPaciente", fechaNacimientoNewPaciente.value);
+				localStorage.setItem("sexoPaciente", sexoNewPaciente.value);
+				//localStorage.setItem("edadPaciente", edadPaciente);
+				localStorage.setItem("telefonoPaciente", telefonoNewPaciente.value);
+				localStorage.setItem("rutPaciente", rutNewPaciente.value);
+				localStorage.setItem("direccionPaciente", direccionNewPaciente.value);
+				
+				
+				localStorage.setItem("rut", rutNewPaciente.value);				
 				window.location.href = 'encuentros.html'								
 	});
 })
