@@ -83,8 +83,7 @@ formNewPaciente.addEventListener('submit', function(e){
 			"nombre": nombreNewPaciente.value, 
 			"apellido": apellidosNewPaciente.value,
 			"alergias": alergiasNewPaciente.value,
-    		"tipo_sangre": tipoSangreNewPaciente.value,
-			"id_paciente": idNewPaciente
+    		"tipo_sangre": tipoSangreNewPaciente.value		
 		});
 	console.log(dataToSend)
 	
@@ -96,9 +95,10 @@ formNewPaciente.addEventListener('submit', function(e){
 	.then(function(response){ 
 		return response.json(); 
 	})
-	.then(function(data){ 
+	.then(function(data){ 		
 		console.log(data)
         if(data.status == 'success'){
+			idNewPaciente = data.id_paciente
             Swal.fire({
 			icon: 'success',
 			title: 'Paciente Registrado',
@@ -113,17 +113,14 @@ formNewPaciente.addEventListener('submit', function(e){
                 text: 'Ocurrio un error inesperado'
               })			  	
         }
-				localStorage.setItem("id_paciente", idNewPaciente);		
+				localStorage.setItem("id_paciente", idNewPaciente);
 				localStorage.setItem("nombres", nombreNewPaciente);
 				localStorage.setItem("apellidos", apellidosNewPaciente);
-				localStorage.setItem("rut", rutNewPaciente);
-				localStorage.setItem("pasaporte", pasaporteNewPaciente);
+				localStorage.setItem("fechaNacimiento", fechaNacimientoNewPaciente);
 				localStorage.setItem("direccion", direccionNewPaciente);
 				localStorage.setItem("telefono", telefonoNewPaciente);
 				localStorage.setItem("sexo", sexoNewPaciente);
-				localStorage.setItem("fechaNacimiento", fechaNacimientoNewPaciente);				
-				localStorage.setItem("alergiasPaciente", alergiasNewPaciente);
-				localStorage.setItem("tipoSangrePaciente", tipoSangreNewPaciente);
+				localStorage.setItem("rut", rutNewPaciente);				
 				window.location.href = 'encuentros.html'								
 	});
 })
@@ -138,7 +135,7 @@ function exit(){
 
 $(function(){
 
-	$('#nombres').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ');
+	$('#nombres').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
 	$('#apellidos').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ'); 
 	$('#telefono').validCampoFranz('1234567890');
 });

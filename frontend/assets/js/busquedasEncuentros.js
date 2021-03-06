@@ -875,8 +875,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "rut_cirujano1": rutcirujano1Edit.value,
             "rut_cirujano2": rutcirujano2Edit.value,
             "ruta_tratante": RutatraEdit.value,
-            "servicio_egreso": seregresoEdit.value,
-            "servicio_ingreso ": seringresoEdit.value,
+            "servicio_ingreso": seringresoEdit.value,
+            "servicio_egreso": seregresoEdit.value,            
             "snomed": "877dyjs",
             "time_protocol": horaProtOperaEdit.value,
             "tipo_2": tipoEncuentroEdit.value,
@@ -1193,7 +1193,7 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
 
   ////////////////////////////Epicrisis///////////////////////////////////////
     var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
-    var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
+    var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit') 
     var fechaHospitalizacionEdit = document.getElementById('fechaHospitalizacionEdit')
     var fechaEgresoEdit = document.getElementById('fechaEgresoHospitalEdit')
     var diasHospEdit = document.getElementById('diasHospitalizacionEdit')
@@ -2225,8 +2225,8 @@ function toEncuentros(){
                             '${resultado_med_ia}', '${resultados_ia}', '${feedback_ia}',
                             '${id_medico}', '${id_hospital}', '${eliminado}', '${fecha_ep}',
                             '${hora_ep}', '${fecha_hospitalizacion}', '${fecha_egreso}',
-                            '${dias_hospitalizado}','${ruta_tratante}', '${servicio_ingreso}',
-                            '${servicio_egreso}','${aseguradora}', '${diag_alta}', '${anamnesis}',
+                            '${dias_hospitalizado}','${ruta_tratante}','${servicio_egreso}'  ,
+                            '${servicio_ingreso}','${aseguradora}', '${diag_alta}', '${anamnesis}',
                             '${estudios_acciones}', '${indiciaciones_alta}', '${resumen_evolucion}',
                             '${date_registered}', '${time_protocol}', '${implantes}', '${descripcion}', 
                             '${nombre_cirujano1}', '${rut_cirujano1}','${especialidad_cirujano1}',
