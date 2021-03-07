@@ -1961,8 +1961,32 @@ const getData = async (page_no = 1) => {
       'http://134.122.120.195/api/v1/encuentros_per_type?type=eliminado&data=&entry_n=' + `${page_no}`
     );
     scrolling = 'Normal'
-    populateUI(data[1]);
+    //populateUI(data[1]);
     
+
+    if (data[0]== 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data[1]);
+    }
+
+
+
     if(localStorage.getItem("Admin") == "true"){
         var btnsDelete = document.getElementsByClassName("btn-danger2");
         for (var i = 0; i < btnsDelete.length; i++) {
