@@ -745,10 +745,6 @@ const getData = async (page_no = 1) => {
 		populateUI(data);
 	}
 
-
-
-
-	populateUI(data);
 };
 //////////////////////////////////////
 const getDataRut = async (page_no = 1, paramSearch) => {
