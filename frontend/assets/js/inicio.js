@@ -146,9 +146,9 @@ function exit(){
 $(function(){
 
 	$('#nombres').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
-	$('#apellidos').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiouABCEDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÓÍÚ'); 
+	$('#apellidos').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ'); 
 	$('#telefono').validCampoFranz('1234567890');
-});
+}); 
 // function check(e) {
 //     tecla = (document.all) ? e.keyCode : e.which;
 

@@ -2260,7 +2260,7 @@ function toEncuentros(){
                           $(this).parent().find(".content").css("max-height", $(this).parent().find(".content")[0].scrollHeight);
                   $(this).children('a').text("Leer menos");
               } else {
-                          $(this).parent().find(".content").css("max-height", "6.25em");
+                          $(this).parent().find(".content").css("max-height", "2.813em");
                   $(this).children('a').text("Leer mas");
               }
         $(this).prev().toggleClass("truncate");

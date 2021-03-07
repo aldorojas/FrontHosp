@@ -1500,9 +1500,9 @@ table th {
   overflow: hidden;
   white-space:normal;
   text-overflow: ellipsis;
-  line-height:1.5625em;
+  line-height:1.25em;
   /* max-height = line-height (1.2) * lines max number (3) */
-  max-height: 6.25em; 
+  max-height: 2.813em; 
   /* fix problem when last visible word doesn't adjoin right side  */
   text-align: justify;  
   }
