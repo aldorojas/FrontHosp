@@ -83,7 +83,7 @@ formNewPaciente.addEventListener('submit', function(e){
 			"direccion": direccionNewPaciente.value,
 			"telefono": telefonoNewPaciente.value,
 			"sexo": sexoNewPaciente.value, 
-			"birth_date":newDate,
+			"birth_date": fechaNacimientoNewPaciente.value,
 			"nombre": nombreNewPaciente.value, 
 			"apellido": apellidosNewPaciente.value,
 			"alergias": alergiasNewPaciente.value,
@@ -105,12 +105,27 @@ formNewPaciente.addEventListener('submit', function(e){
 			idNewPaciente = data.id_paciente
 			edadNewPaciente = data.current_age
 
+
+			localStorage.setItem("idPaciente", idNewPaciente);
+			localStorage.setItem("nombrePaciente", nombreNewPaciente.value);
+			localStorage.setItem("apellidosPaciente", apellidosNewPaciente.value);
+			localStorage.setItem("fechaNacimientoPaciente", fechaNacimientoNewPaciente.value);
+			localStorage.setItem("sexoPaciente", sexoNewPaciente.value);
+			localStorage.setItem("edadPaciente", edadNewPaciente);
+			localStorage.setItem("telefonoPaciente", telefonoNewPaciente.value);
+			localStorage.setItem("rutPaciente", rutNewPaciente.value);
+			localStorage.setItem("direccionPaciente", direccionNewPaciente.value);
+			localStorage.setItem("rut", rutNewPaciente.value);				
+				
+
             Swal.fire({
 			icon: 'success',
 			title: 'Paciente Registrado',
 			showConfirmButton: false,
 			timer: 2500
-            }) 				
+            }) 		
+			
+			window.location.href = 'encuentros.html'
         }
         else{
             Swal.fire({
@@ -128,8 +143,6 @@ formNewPaciente.addEventListener('submit', function(e){
 				localStorage.setItem("telefonoPaciente", telefonoNewPaciente.value);
 				localStorage.setItem("rutPaciente", rutNewPaciente.value);
 				localStorage.setItem("direccionPaciente", direccionNewPaciente.value);
-				
-				
 				localStorage.setItem("rut", rutNewPaciente.value);				
 				window.location.href = 'encuentros.html'								
 	});
