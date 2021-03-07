@@ -66,11 +66,10 @@ formNewPaciente.addEventListener('submit', function(e){
 	var alergiasNewPaciente = document.getElementById('alergiasPaciente')
 	var tipoSangreNewPaciente = document.getElementById('tipoSangrePaciente')
 	var idNewPaciente
-
 	var edadNewPaciente
 
 	const [year, month, day] = fechaNacimientoNewPaciente.value.split('-');
-    var newDate = month + '/' + day + '/' + year
+    var newDate = month + '-' + day + '-' + year
 
 	var headers = {
 		"Content-Type": "application/json"
@@ -84,7 +83,7 @@ formNewPaciente.addEventListener('submit', function(e){
 			"direccion": direccionNewPaciente.value,
 			"telefono": telefonoNewPaciente.value,
 			"sexo": sexoNewPaciente.value, 
-			"birth_date":fechaNacimientoNewPaciente.value,
+			"birth_date":newDate,
 			"nombre": nombreNewPaciente.value, 
 			"apellido": apellidosNewPaciente.value,
 			"alergias": alergiasNewPaciente.value,
