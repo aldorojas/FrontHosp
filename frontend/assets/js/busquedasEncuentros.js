@@ -298,21 +298,19 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, nombreciruja
 
 var BtnGuardarProtOpera = document.getElementById('nuevoPDf');
 
-function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
-        tipoEncuentro, diagnosticoPrimario, diagnosticoSecun, diagnosticoSecun2,
-        notaClinica, resultadoMedIA, resultadoIA, feedbackIA, idMedico, idHospital,
-        eliminado,fechaEpicrisis,horaEpicrisis,fechaHospitalizacion,fechaEgreso,
-        diasHospitalizado,Rutatra,seregreso,seringreso,aseguradora,diagnosticoAlta,
-        anamnesis,estudiosAcciones, indicacionesAlta,resumenEvolucion, dateResgistered,
-        timeProtocol, implantes, descripcion, nombrecirujano1, rutcirujano1, especialidadcirujano1, 
-        nombrecirujano2, rutcirujano2,especialidadcirujano2, nombreanestesista, 
-        rutanestesista, idEpicrisis, idCirugia
+function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario, 
+        diagnosticoSecun, diagnosticoSecun2,notaClinica, resultadoMedIA, resultadoIA,
+        feedbackIA, idMedico, idHospital,idEpicrisis,fechaHospitalizacion,fechaEgreso,
+        diasHospitalizado,Rutatra,seringreso,seregreso,aseguradora,diagnosticoAlta,
+        anamnesis,estudiosAcciones, indicacionesAlta,resumenEvolucion,idCirugia,
+        nombrecirujano1, rutcirujano1, especialidadcirujano1, nombrecirujano2, rutcirujano2,
+        especialidadcirujano2, nombreanestesista,rutanestesista, implantes, descripcion
         ){
 	
     var idEncuentroEdit = document.getElementById('idEncuentroEdit')	
     var idPacienteEdit = document.getElementById('idPacienteEdit')	
-    var fechaEncuentroEdit = document.getElementById('fechaEncuentroEdit')	
-    var horaEncuentroEdit = document.getElementById('horaEncuentroEdit')
+    //var fechaEncuentroEdit = document.getElementById('fechaEncuentroEdit')	
+    //var horaEncuentroEdit = document.getElementById('horaEncuentroEdit')
     var tipoEncuentroEdit = document.getElementById('tipoEncuentroEdit')
     var diagPrimarioEdit = document.getElementById('diagPrimarioEdit')
     var diagSecun1Edit = document.getElementById('diagSecundario1Edit')
@@ -326,8 +324,8 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
     var idHospitalEdit = document.getElementById('idHospitalEdit')
     //var eliminadoEdit = document.getElementById('eliminadoEdit')
 
-    var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
-    var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
+    //var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
+    //var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
     var fechaHospitalizacionEdit = document.getElementById('fechaHospitalizacionEdit')
     var fechaEgresoEdit = document.getElementById('fechaEgresoHospitalEdit')
     var diasHospEdit = document.getElementById('diasHospitalizacionEdit')
@@ -341,8 +339,8 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
     var indicacionesAltaEdit = document.getElementById('indicacionesAltaEdit')
     var resumenEvoEdit = document.getElementById('resumenEvolucionEdit')
 
-    var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
-    var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
+    //var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
+    //var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
     var implantesEdit = document.getElementById('implantesProtEdit')
     var descProtEdit = document.getElementById('descProtOperaEdit')
     var nombrecirujano1Edit = document.getElementById('nombrecirujano1Edit')
@@ -364,8 +362,8 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
 
     idEncuentroEdit.value = idEncuentro;
     idPacienteEdit.value = idPaciente;
-    fechaEncuentroEdit.value = fechaEncuentro;
-    horaEncuentroEdit.value = horaEncuentro;
+    //fechaEncuentroEdit.value = fechaEncuentro;
+    //horaEncuentroEdit.value = horaEncuentro;
     tipoEncuentroEdit.value = tipoEncuentro;
     diagPrimarioEdit.value = diagnosticoPrimario;
     diagSecun1Edit.value = diagnosticoSecun;
@@ -378,6 +376,36 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
     idHospitalEdit.value = idHospital;
     //eliminadoEdit.value = eliminado;
 
+//fechaEpicrisisEdit.value = fechaEpicrisis;
+    //horaEpicrisisEdit.value = horaEpicrisis;
+    fechaHospitalizacionEdit.value = fechaHospitalizacion;
+    fechaEgresoEdit.value = fechaEgreso;
+    diasHospEdit.value = diasHospitalizado;
+    RutatraEdit.value = Rutatra;
+    seringresoEdit.value = seringreso;    
+    seregresoEdit.value = seregreso;
+    aseguradoraEdit.value = aseguradora;
+    diagAltaEdit.value = diagnosticoAlta;
+    anamnesisEdit.value = anamnesis;
+    estudiosAccionesEdit.value = estudiosAcciones;
+    indicacionesAltaEdit.value = indicacionesAlta
+    resumenEvoEdit.value = resumenEvolucion;
+
+    //fechaProtOperaEdit.value = dateResgistered;
+    //horaProtOperaEdit.value = timeProtocol;
+    implantesEdit.value = implantes;
+    descProtEdit.value = descripcion;
+    nombrecirujano1Edit.value = nombrecirujano1;
+    rutcirujano1Edit.value = rutcirujano1;
+    especialidadcirujano1Edit.value = especialidadcirujano1;
+    nombrecirujano2Edit.value = nombrecirujano2;
+    rutcirujano2Edit.value = rutcirujano2;
+    especialidadcirujano2Edit.value = especialidadcirujano2;
+    nombreanestesistaEdit.value = nombreanestesista;
+    rutanestesistaEdit.value = rutanestesista;
+
+    idEpicrisisEdit.value = idEpicrisis;
+    idCirugiaEdit.value = idCirugia;
 
     if(tipoEncuentro == 'Cirugia'){
 
@@ -394,40 +422,7 @@ function editEncuentro(idEncuentro,idPaciente,fechaEncuentro,horaEncuentro,
         camposDifCirugia.style.display = ''
         //camposDifCirugia.style.display = ''
         camposOcultos.style.display = 'none' 
-    }
-
-
-    fechaEpicrisisEdit.value = fechaEpicrisis;
-    horaEpicrisisEdit.value = horaEpicrisis;
-    fechaHospitalizacionEdit.value = fechaHospitalizacion;
-    fechaEgresoEdit.value = fechaEgreso;
-    diasHospEdit.value = diasHospitalizado;
-    RutatraEdit.value = Rutatra;
-    seregresoEdit.value = seregreso;
-    seringresoEdit.value = seringreso;    
-    aseguradoraEdit.value = aseguradora;
-    diagAltaEdit.value = diagnosticoAlta;
-    anamnesisEdit.value = anamnesis;
-    estudiosAccionesEdit.value = estudiosAcciones;
-    indicacionesAltaEdit.value = indicacionesAlta
-    resumenEvoEdit.value = resumenEvolucion;
-
-    fechaProtOperaEdit.value = dateResgistered;
-    horaProtOperaEdit.value = timeProtocol;
-    implantesEdit.value = implantes;
-    descProtEdit.value = descripcion;
-    nombrecirujano1Edit.value = nombrecirujano1;
-    rutcirujano1Edit.value = rutcirujano1;
-    especialidadcirujano1Edit.value = especialidadcirujano1;
-    nombrecirujano2Edit.value = nombrecirujano2;
-    rutcirujano2Edit.value = rutcirujano2;
-    especialidadcirujano2Edit.value = especialidadcirujano2;
-    nombreanestesistaEdit.value = nombreanestesista;
-    rutanestesistaEdit.value = rutanestesista;
-
-    idEpicrisisEdit.value = idEpicrisis;
-    idCirugiaEdit.value = idCirugia;
-
+    }    
 
 
 	$('#modalEditEncuentro').modal('show');
@@ -494,8 +489,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
     
     var idEncuentroEdit = document.getElementById('idEncuentroEdit')	
     var idPacienteEdit = document.getElementById('idPacienteEdit')	
-    var fechaEncuentroEdit = document.getElementById('fechaEncuentroEdit')	
-    var horaEncuentroEdit = document.getElementById('horaEncuentroEdit')
+    //var fechaEncuentroEdit = document.getElementById('fechaEncuentroEdit')	
+    //var horaEncuentroEdit = document.getElementById('horaEncuentroEdit')
     var tipoEncuentroEdit = document.getElementById('tipoEncuentroEdit')
     var diagPrimarioEdit = document.getElementById('diagPrimarioEdit')
     var diagSecun1Edit = document.getElementById('diagSecundario1Edit')
@@ -513,8 +508,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
     var eliminadoEdit = document.getElementById('eliminadoEdit')
 
   ////////////////////////////Epicrisis///////////////////////////////////////
-    var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
-    var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
+    //var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
+    //var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
     var fechaHospitalizacionEdit = document.getElementById('fechaHospitalizacionEdit')
     var fechaEgresoEdit = document.getElementById('fechaEgresoHospitalEdit')
     var diasHospEdit = document.getElementById('diasHospitalizacionEdit')
@@ -529,8 +524,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
     var resumenEvoEdit = document.getElementById('resumenEvolucionEdit')
 
     //////////////////////////////Protocolo operatorio/////////////////////////	
-    var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
-    var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
+    //var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
+    //var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
     var implantesEdit = document.getElementById('implantesProtEdit')
     var descProtEdit = document.getElementById('descProtOperaEdit')
     var nombrecirujano1Edit = document.getElementById('nombrecirujano1Edit')
@@ -832,7 +827,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "anestesista": nombreanestesistaEdit.value,
             "aseguradora": aseguradoraEdit.value,
             "cie10": "182773js",
-            "date_registered": fechaProtOperaEdit.value,
+            "date_registered": '',
             "descripcion": descProtEdit.value,
             "descripcion_procedimiento": '',
             "diag_alta": diagAltaEdit.value,
@@ -846,13 +841,13 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "especialidad_cirujano2": especialidadcirujano2Edit.value,
             "especialidad_responsable": '',
             "estudios_acciones": estudiosAccionesEdit.value,
-            "fecha_e": fechaEncuentroEdit.value, 
+            "fecha_e": '', 
             "fecha_egreso": fechaEgresoEdit.value,
-            "fecha_ep": fechaEpicrisisEdit.value,
+            "fecha_ep": '',
             "fecha_hospitalizacion": fechaHospitalizacionEdit.value,
             "feedback_ia": feedbackIAEdit.value,
-            "hora_e": horaEncuentroEdit.value,
-            "hora_ep": horaEpicrisisEdit.value,
+            "hora_e": '',
+            "hora_ep": '',
             "id_cirugia": idCirugia.value,
             "id_diagnostico": 2,
             "id_encuentro": idEncuentroEdit.value,
@@ -880,7 +875,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "servicio_egreso": seregresoEdit.value,
             "servicio_ingreso": seringresoEdit.value,
             "snomed": "877dyjs",
-            "time_protocol": horaProtOperaEdit.value,
+            "time_protocol": '',
             "tipo_2": tipoEncuentroEdit.value,
             "ruta_audio" : Base64Audio,
 			"ruta_exam_lab" : base64ExamLab,
@@ -2126,11 +2121,11 @@ function toEncuentros(){
     .map((each,index)=>{
       const {id_encuentro,id_paciente,fecha_e,hora_e,tipo_2,diag_primario,diag_secun,diag_secun2,
         ruta_audio,ruta_exam_electro, ruta_exam_lab,notas_clinicas, id_medico, eliminado,
-        id_epicrisis,fecha_ep, hora_ep,fecha_hospitalizacion, fecha_egreso, dias_hospitalizado,medico_tratante,
+        id_epicrisis,fecha_hospitalizacion, fecha_egreso, dias_hospitalizado,medico_tratante,
         ruta_tratante,servicio_ingreso,servicio_egreso,aseguradora,anamnesis,diag_alta,resumen_evolucion,
         estudios_acciones,indiciaciones_alta,id_cirugia, date_registered,time_protocol,nombre_cirujano1,rut_cirujano1,
         especialidad_cirujano1,nombre_cirujano2,rut_cirujano2,especialidad_cirujano2,anestesista,rut_anestesista,implantes, 
-        descripcion, resultado_med_ia,resultados_ia,feedback_ia,id_hospital, nombre_completo  } = each;
+        descripcion, resultado_med_ia,resultados_ia,feedback_ia,id_hospital, nombre_completo,fecha_ep, hora_ep  } = each;
         ///////////////////////////////
         if( ruta_audio != '' ){
             var audio = 
@@ -2245,19 +2240,17 @@ function toEncuentros(){
                 </button>
                 
                                 
-                <button onclick="editEncuentro('${id_encuentro}','${id_paciente}','${fecha_e}',
-                            '${hora_e}', '${tipo_2}', '${diag_primario}',
-                            '${diag_secun}', '${diag_secun2}', '${notas_clinicas}',
-                            '${resultado_med_ia}', '${resultados_ia}', '${feedback_ia}',
-                            '${id_medico}', '${id_hospital}', '${eliminado}', '${fecha_ep}',
-                            '${hora_ep}', '${fecha_hospitalizacion}', '${fecha_egreso}',
-                            '${dias_hospitalizado}','${ruta_tratante}','${servicio_egreso}'  ,
-                            '${servicio_ingreso}','${aseguradora}', '${diag_alta}', '${anamnesis}',
+                <button onclick="editEncuentro('${id_encuentro}','${id_paciente}',
+                            '${tipo_2}', '${diag_primario}','${diag_secun}', '${diag_secun2}',
+                            '${notas_clinicas}','${resultado_med_ia}', '${resultados_ia}', '${feedback_ia}',                            
+                            '${id_medico}', '${id_hospital}','${id_epicrisis}', '${fecha_hospitalizacion}', 
+                            '${fecha_egreso}','${dias_hospitalizado}','${ruta_tratante}',
+                            '${servicio_ingreso}','${servicio_egreso}','${aseguradora}', '${diag_alta}', '${anamnesis}',
                             '${estudios_acciones}', '${indiciaciones_alta}', '${resumen_evolucion}',
-                            '${date_registered}', '${time_protocol}', '${implantes}', '${descripcion}', 
-                            '${nombre_cirujano1}', '${rut_cirujano1}','${especialidad_cirujano1}',
+                            '${id_cirugia}','${nombre_cirujano1}', '${rut_cirujano1}','${especialidad_cirujano1}',
                             '${nombre_cirujano2}','${rut_cirujano2}','${especialidad_cirujano2}',
-                            '${anestesista}','${rut_anestesista}','${id_epicrisis}', '${id_cirugia}')" 
+                            '${anestesista}','${rut_anestesista}','${implantes}', '${descripcion}',                             
+                            '${eliminado}')" 
                     class="btn btn-info btn-sm" title="Editar Paciente">
                     <i class="icon ion-md-create "></i>
                 </button>
