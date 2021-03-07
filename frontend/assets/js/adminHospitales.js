@@ -436,7 +436,27 @@ const getData = async (page_no = 1) => {
       `http://134.122.120.195/api/v1/hospitales/list/${page_no}`
     );
 	scrolling = 'Normal'
-    populateUI(data);
+    
+	if (data == ''){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+            Toast.fire({
+                icon: 'error',
+                title: 'Sin resultados'
+            })
+    }
+    else{
+        populateUI(data);
+    }
   };
 
   

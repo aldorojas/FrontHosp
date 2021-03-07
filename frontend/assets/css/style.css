@@ -446,12 +446,12 @@ form .pagina .btns button.adelante{
  
 .divTable {
   overflow:scroll;
-  height:80vh;
+  height:50vh;
   width:96.5vw;
 }
 .divTableEncuentros {
   overflow:scroll;
-  height:80vh;
+  height:50vh;
   width:96.5vw;
 }
 /* .divTableModal {
