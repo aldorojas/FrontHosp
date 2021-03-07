@@ -225,6 +225,9 @@ var divpieTable = document.getElementById('paginasBotones')
 // }
 
 
+function defineState_active(){
+
+}
 
 function deleteHospital(idHospital){
 	const URLDeleteHospital = 'http://134.122.120.195/api/v1/hospital/' + idHospital ;
@@ -275,13 +278,18 @@ function editHospital(IdHospital,nombreHospital,direccionHospital,
 	var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
 	var direccionHospitalEdit = document.getElementById('direccionHospitalEdit')
 	var telefonoHospitalEdit = document.getElementById('telefonoHospitalEdit')
-	var activoHospitalEdit = document.getElementById('activoHospitalEdit')
+	let activoHospitalEdit = document.getElementById('activoHospitalEdit')
 
 	idHospitalEdit.value = IdHospital;
 	nombreHospitalEdit.value = nombreHospital;
 	direccionHospitalEdit.value = direccionHospital;
 	telefonoHospitalEdit.value = telefonoHospital;
-	activoHospitalEdit.value = activoHospital;
+	if (activoHospital.toLowerCase() == "true"){
+		document.getElementById('activoHospitalEdit').options.selectedIndex = 0;
+	} else{
+		document.getElementById('activoHospitalEdit').options.selectedIndex = 1;
+	}
+	//activoHospitalEdit.value = "activoHospital";
 	$('#editarHospital').modal('show');
 
 }
@@ -369,30 +377,33 @@ document.addEventListener("DOMContentLoaded", () => {
     getData(1);
   });
 
-  
+var lastScrollTop = 0;
 divPrueba[0].addEventListener('scroll', () => {
-    if (
-        divPrueba[0].scrollTop +
-        divPrueba[0].clientHeight >=
-		divPrueba[0].scrollHeight) {
-        
-        page = page + 10;
-        console.log(page)
+   
+	var st = divPrueba[0].pageYOffset || divPrueba[0].scrollTop; 
+    if (st > lastScrollTop){
+        // downscroll code
+        if ( divPrueba[0].scrollTop + divPrueba[0].clientHeight >= divPrueba[0].scrollHeight) {
+			page = page + 10;
+			console.log(page)
 
-		if(scrolling == 'Normal'){
-            loader.classList.remove('hidden');
-			setTimeout(() => {
-				loader.classList.add('hidden');
-				getData(page);
-			}, 2000);
-        }
-		if(scrolling == 'SearchNombre'){
-            loader.classList.remove('hidden');
-			setTimeout(() => {
-				loader.classList.add('hidden');
-				getDataNombre(page);
-			}, 2000);
-        }
+			if(scrolling == 'Normal'){
+				console.log('Buscando todos')
+				loader.classList.remove('hidden');
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					getData(page);
+				}, 2000);
+			}
+			if(scrolling == 'SearchNombre'){
+				loader.classList.remove('hidden');
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					getDataNombre(page);
+				}, 2000);
+			}
+		}
+        
 
 
 
@@ -424,7 +435,7 @@ const getData = async (page_no = 1) => {
       "GET",
       `http://134.122.120.195/api/v1/hospitales/list/${page_no}`
     );
-	scrolling == 'Normal'
+	scrolling = 'Normal'
     populateUI(data);
   };
 

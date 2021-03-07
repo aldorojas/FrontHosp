@@ -307,16 +307,16 @@ function editPaciente(IdPaciente, rutPaciente, pasaportePaciente, direccionPacie
 	direccionPacienteEdit.value = direccionPaciente;
 	telefonoPacienteEdit.value = telefonoPaciente;
 	sexoPacienteEdit.value = sexoPaciente;
-	fechaNacimientoPacienteEdit.value = birthdatePaciente;
+	fechaNacimientoPacienteEdit.value = new Date(birthdatePaciente).toLocaleDateString('fr-CA')
 	apellidosPAcienteEdit.value = apellidoPaciente;	
 	alergiasNewPacienteEdit.value = alergias;
-	tipoSangreNewPacienteEdit.value = tipodesangre;
-
+	tipoSangreNewPacienteEdit.value = new String(tipodesangre);
+	console.log(tipodesangre);
+	
 	
 	$('#editPaciente').modal('show');
 
 }
-
 
 /////////////////// Modal editar pacientes //////////////////////
 var formEditPaciente = document.getElementById('formEditPaciente');
@@ -449,64 +449,66 @@ formSearchBirthDay.addEventListener("submit", function(event){
 
 
 
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
+	
     getData(1);
   });
 
+
+var lastScrollTop = 0;
   
 divPrueba[0].addEventListener('scroll', () => {
-    if (
-        divPrueba[0].scrollTop +
-        divPrueba[0].clientHeight >=
-		divPrueba[0].scrollHeight) {
+	
+    var st = divPrueba[0].pageYOffset || divPrueba[0].scrollTop; 
+    if (st > lastScrollTop){
+        // downscroll code
+        if ( divPrueba[0].scrollTop + divPrueba[0].clientHeight >= divPrueba[0].scrollHeight) {
+			
+			page = page + 10;
+        	console.log(page)
+		
+			if(scrolling == 'Normal'){
+				console.log('buscando todos los pacientes')
+				loader.classList.remove('hidden');
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					getData(page);
+				}, 2000);
+			}
+			if(scrolling == 'SearchNombre'){
+				console.log('Buscando por nombre')
+				loader.classList.remove('hidden');
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					getDataNombre(page);
+				}, 2000);
+			}
+			if(scrolling == 'SearchRut'){
+				console.log('Buscando por rut')
+				loader.classList.remove('hidden');
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					getDataRut(page);
+				}, 2000);
+			}
+			if(scrolling == 'SearchPasaporte'){
+				console.log('Buscando por pasaporte')
+				loader.classList.remove('hidden');
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					getDataPasaporte(page);
+				}, 2000);
+			}
+			if(scrolling == 'SearchBirthday'){
+				console.log('Buscando por fecha de nacimiento')
+				loader.classList.remove('hidden');
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					getDataBirthday(page);
+				}, 2000);
+			}
+		}
         
-            //elem.scrollTop = elem.scrollHeight;
-        page = page + 10;
-        console.log(page)
-		if(scrolling == 'Normal'){
-            loader.classList.remove('hidden');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                getData(page);
-            }, 2000);
-        }
-		if(scrolling == 'SearchNombre'){
-			console.log('Buscando por nombre')
-            loader.classList.remove('hidden');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                getDataNombre(page);
-            }, 2000);
-        }
-		if(scrolling == 'SearchRut'){
-			console.log('Buscando por rut')
-            loader.classList.remove('hidden');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                getDataRut(page);
-            }, 2000);
-        }
-		if(scrolling == 'SearchPasaporte'){
-			console.log('Buscando por pasaporte')
-            loader.classList.remove('hidden');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                getDataPasaporte(page);
-            }, 2000);
-        }
-		if(scrolling == 'SearchBirthday'){
-			console.log('Buscando por fecha de nacimiento')
-            loader.classList.remove('hidden');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                getDataBirthday(page);
-            }, 2000);
-        }
     }
 
 });
@@ -534,7 +536,9 @@ const getData = async (page_no = 1) => {
       "GET",
       `http://134.122.120.195/api/v1/pacientes/list/${page_no}`
     );
-	scrolling == 'Normal'
+	
+	scrolling = 'Normal'
+	//console.log(scrolling)
     populateUI(data);
   };
   
