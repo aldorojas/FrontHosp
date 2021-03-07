@@ -67,6 +67,8 @@ formNewPaciente.addEventListener('submit', function(e){
 	var tipoSangreNewPaciente = document.getElementById('tipoSangrePaciente')
 	var idNewPaciente
 
+	var edadNewPaciente
+
 	const [year, month, day] = fechaNacimientoNewPaciente.value.split('-');
     var newDate = month + '/' + day + '/' + year
 
