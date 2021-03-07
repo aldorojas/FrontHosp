@@ -67,6 +67,9 @@ formNewPaciente.addEventListener('submit', function(e){
 	var tipoSangreNewPaciente = document.getElementById('tipoSangrePaciente')
 	var idNewPaciente
 
+	const [year, month, day] = fechaNacimientoNewPaciente.value.split('-');
+    var newDate = month + '/' + day + '/' + year
+
 	var headers = {
 		"Content-Type": "application/json"
 	 }
@@ -99,6 +102,8 @@ formNewPaciente.addEventListener('submit', function(e){
 		console.log(data)
         if(data.status == 'success'){
 			idNewPaciente = data.id_paciente
+			edadNewPaciente = data.current_age
+
             Swal.fire({
 			icon: 'success',
 			title: 'Paciente Registrado',
@@ -118,7 +123,7 @@ formNewPaciente.addEventListener('submit', function(e){
 				localStorage.setItem("apellidosPaciente", apellidosNewPaciente.value);
 				localStorage.setItem("fechaNacimientoPaciente", fechaNacimientoNewPaciente.value);
 				localStorage.setItem("sexoPaciente", sexoNewPaciente.value);
-				//localStorage.setItem("edadPaciente", edadPaciente);
+				localStorage.setItem("edadPaciente", edadNewPaciente);
 				localStorage.setItem("telefonoPaciente", telefonoNewPaciente.value);
 				localStorage.setItem("rutPaciente", rutNewPaciente.value);
 				localStorage.setItem("direccionPaciente", direccionNewPaciente.value);
