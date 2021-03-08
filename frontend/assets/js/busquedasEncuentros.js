@@ -501,6 +501,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
     var idCirugia = document.getElementById('idCirugia')
 
     var notaClinicaEdit = document.getElementById('notaClinicaEdit')
+    newNotaclinica = (notaClinicaEdit.value).replace(/[^a-zA-Z ]/g, "")
+
     var resultadoMedIAEdit = document.getElementById('resultadoMedIAEdit')
     var resultadoIAEdit = document.getElementById('resultadoIAEdit')
     var feedbackIAEdit = document.getElementById('feedbackIAEdit')
@@ -518,17 +520,32 @@ formEditEncuentro.addEventListener('submit',async function(e){
     var seringresoEdit  = document.getElementById('seringresoEdit')
     var seregresoEdit  = document.getElementById('seregresoEdit')
     var RutatraEdit  = document.getElementById('RutatraEdit')
+    
     var diagAltaEdit = document.getElementById('diagAltaEdit')
+    newdiagAltaEdit= (diagAltaEdit.value).replace(/[^a-zA-Z ]/g, "")
+
     var anamnesisEdit = document.getElementById('anamnesisEdit')
+    newanamnesisEdit= (anamnesisEdit.value).replace(/[^a-zA-Z ]/g, "")
+
     var estudiosAccionesEdit = document.getElementById('estudiosAccionesEdit')
+    newestudiosAccionesEdit= (estudiosAccionesEdit.value).replace(/[^a-zA-Z ]/g, "")
+
     var indicacionesAltaEdit = document.getElementById('indicacionesAltaEdit')
+    newindicacionesAltaEdit= (indicacionesAltaEdit.value).replace(/[^a-zA-Z ]/g, "")
+
     var resumenEvoEdit = document.getElementById('resumenEvolucionEdit')
+    newresumenEvoEdit= (resumenEvoEdit.value).replace(/[^a-zA-Z ]/g, "")
 
     //////////////////////////////Protocolo operatorio/////////////////////////	
     //var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
     //var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
     var implantesEdit = document.getElementById('implantesProtEdit')
+    newimplantesEdit= (implantesEdit.value).replace(/[^a-zA-Z ]/g, "")
+
+
     var descProtEdit = document.getElementById('descProtOperaEdit')
+    newdescProcedimiento= (descProtEdit.value).replace(/[^a-zA-Z ]/g, "")
+
     var nombrecirujano1Edit = document.getElementById('nombrecirujano1Edit')
     var nombrecirujano2Edit = document.getElementById('nombrecirujano2Edit')
     var rutcirujano1Edit = document.getElementById('rutcirujano1Edit')
@@ -601,14 +618,14 @@ formEditEncuentro.addEventListener('submit',async function(e){
 
 	const dataToSend = JSON.stringify(
 		{	
-            "anamnesis": anamnesisEdit.value,
+            "anamnesis": newanamnesisEdit,
             "anestesista": nombreanestesistaEdit.value,
             "aseguradora": aseguradoraEdit.value,
             "cie10": "182773js",
             "date_registered": '',
-            "descripcion": descProtEdit.value,
+            "descripcion": newdescProcedimiento,
             "descripcion_procedimiento": '',
-            "diag_alta": diagAltaEdit.value,
+            "diag_alta": newdiagAltaEdit,
             "diag_primario": diagPrimarioEdit.value,
             "diag_secun": diagSecun1Edit.value,
             "diag_secun2": diagSecun2Edit.value,
@@ -618,7 +635,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "especialidad_cirujano1": especialidadcirujano1Edit.value,
             "especialidad_cirujano2": especialidadcirujano2Edit.value,
             "especialidad_responsable": '',
-            "estudios_acciones": estudiosAccionesEdit.value,
+            "estudios_acciones": newestudiosAccionesEdit,
             "fecha_e": '', 
             "fecha_egreso": fechaEgresoEdit.value,
             "fecha_ep": '',
@@ -633,17 +650,17 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "id_hospital": idHospitalEdit.value,
             "id_medico": idMedicoEdit.value,
             "id_paciente": idPacienteEdit.value,
-            "implantes": implantesEdit.value,
-            "indiciaciones_alta": indicacionesAltaEdit.value,
+            "implantes": newimplantesEdit,
+            "indiciaciones_alta": newindicacionesAltaEdit,
             "medico_responsable": '',
             "medico_tratante": '',
             "nombre_cirujano1": nombrecirujano1Edit.value,
             "nombre_cirujano2": nombrecirujano2Edit.value,
             "nombre_completo": "",
-            "notas_clinicas": notaClinicaEdit.value,
+            "notas_clinicas": newNotaclinica,
             "resultado_med_ia": resultadoMedIAEdit.value,
             "resultados_ia": resultadoIAEdit.value,
-            "resumen_evolucion": resumenEvoEdit.value,
+            "resumen_evolucion": resumenEvoEdit,
             "rut_anestesista": rutanestesistaEdit.value,
             "rut_cirujano1": rutcirujano1Edit.value,
             "rut_cirujano2": rutcirujano2Edit.value,

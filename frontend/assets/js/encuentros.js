@@ -1,15 +1,5 @@
 window.onload = (function(){
 
-	// console.log("id paciente: " + localStorage.getItem("idPaciente")); 
-	// console.log("id hospital: " + localStorage.getItem("idHospital")); 
-	// console.log("nombre paciente: " + localStorage.getItem("nombrePaciente") + localStorage.getItem("apellidosPaciente") ); 
-	// console.log("Fecha nacimiento: " + localStorage.getItem("fechaNacimientoPaciente"))
-	// console.log("Sexo paciente: " + localStorage.getItem("sexoPaciente"))
-	// console.log("edadPaciente: " + localStorage.getItem("edadPaciente"))
-	// console.log("telefonoPaciente: " + localStorage.getItem("telefonoPaciente"))
-	// console.log("rutPaciente: " + localStorage.getItem("rutPaciente"))
-	// console.log("Nombre del medico: " + localStorage.getItem("nombreMedico") + " " + localStorage.getItem("apellidosMedico") )
-	
 	localStorage.setItem("encuentrosPaciente", "False");
 
 	if (localStorage.getItem("nombreMedico") === null) {
@@ -183,22 +173,6 @@ function getAudioBase64(files, onLoadCallback){
 		reader.readAsArrayBuffer(files[0]);
 	});
 }
-
-
-
-
-// function loadData() {
-//   spinner.removeAttribute('hidden');
-//   fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=5000ms')
-//     .then(response => response.json())
-//     .then(data => {
-//       spinner.setAttribute('hidden', '');
-//       console.log(data)
-//     });
-// }
-
-
-
 
 
 /////////////////////////////   Crear encuentro  ///////////////////////
