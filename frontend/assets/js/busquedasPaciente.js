@@ -89,34 +89,6 @@ function verEncuentros(idPaciente, nombrePaciente,apellidosPaciente,
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
-// function numberPages(idPaciente){
-//     urlAPIPages = 'http://134.122.120.195/api/v1/encuentros/list_registers?type_e=patient&patient=' + idPaciente;
-//     pagesHtml =  ''
-//     fetch(urlAPIPages)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){
-//         console.log(data)
-//         var botones =  data.numbers_entries/10
-//         botones = Math.ceil(botones)
-//         //console.log(botones)
-
-//         for(var i = 1; i < botones + 1; i++){
-//             pagesHtml += `
-//             <td>
-//                 <button onclick="perPage(${i*10 - 9 })" class="btn btn-danger btn-sm">
-//                     ${i}
-//                 </button>
-//             </td>
-//             `
-              
-//         }
-//         divpieTable.innerHTML = pagesHtml  
-//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-// 	});
-// }
-
 
 function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizacion,fechaEgreso,
     diasHospitalizado,diagnosticoAlta,anamnesis,estudiosAcciones, indicacionesAlta,
@@ -541,16 +513,8 @@ const populateUI = data => {
 					<span> Pasaporte: ${pasaporte}</span>
 				</div>
 				<div class="row">
-					<div class="col-lg-6 col-md-6 stat  text-center" id="btnVerEncuentro">
-						<button type="button" class="btn btn-primary -primary"
-							onclick="verEncuentros(${id}, '${nombre}', 
-                                '${apellido}', '${birth_date}',
-                                '${sexo}', '${edad}','${telefono}',
-                                '${rut}', '${direccion}')">
-							Ver encuentros
-						</button>  
-					</div>
-					<div class="col-lg-6 col-md-6 stat text-center ">  	
+					
+					<div class="col-lg-10 col-md-6 stat text-center ">  	
 						<button type="button" class="btn btn-primary" 
 							onclick="toEncuentros(${id}, '${nombre}', 
 										'${apellido}', '${birth_date}',

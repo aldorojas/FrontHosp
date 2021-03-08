@@ -206,6 +206,7 @@
                                     </tbody>
                                     
                                   </table>
+                                  <div hidden id="spinner"></div> 
 
                                   <div class="loader hidden">
                                     <div class="circle"></div>
@@ -262,20 +263,7 @@
                         <input type="text" class="form-control" id="diasHospitalizacion" disabled>
                       </div>                  
                   </div>
-                  <div class="form-row">
-                     <!-- <div class="form-group col-md-3">
-                        <div class="label">Medico tratante: </div>
-                        <input type="text" class="form-control" id="idMedico">                         
-                      </div>-->
-                      <!--<select class="form-control" id="idHospitalEdit">
-                        </select>-->
-                      <!--<div class="form-group col-md-4">
-                        <div class="label">Especialidad doctor alta: </div>
-                        <select class="form-control" id="espDocAlta">
-                          <option>Cardio-cirugia</option>
-                          <option>homodinamia</option>
-                        </select>
-                      </div> -->                                             
+                  <div class="form-row">                                            
                       <div class="form-group col-md-4">
                         <div class="label">Rut tratante: </div>
                         <input type="text" class="form-control" id="Rutatra" disabled> 
@@ -293,10 +281,6 @@
                     <div class="form-group col-md-6">
                       <div class="label">Aseguradora: </div>  
                       <input type="text" class="form-control" id="aseguradora" disabled>                          
-                    <!--  <select class="form-control" id="aseguradora">
-                        <option>isapre </option>
-                        <option>fonasa</option>
-                      </select> -->
                     </div>                                      
                     <div class="form-group col-md-6">
                       <div class="label">Anamnesis:</div>
@@ -325,45 +309,7 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <!-- <button type="submit" id="guardarEpicrisis" class="btn btn-primary">Actualizar Epi</button> -->
                   </div>         
-                    <!-- -------------------------------------------- 
-                    <div class="label">Id Epicrisis: </div>
-                    <input type="text" class="form-control" id="idEpicrisis">
-
-                    <div class="label">Fecha Epicrisis: </div>
-                    <input type="date" class="form-control" id="fechaEpicrisis" >
-
-                    <div class="label">Hora Epicrisis: </div>
-                    <input type="time" class="form-control" id="horaEpicrisis" >
-                                                   
-                    <div class="label">Fecha hospitalizacion: </div>
-                    <input type="date" class="form-control" id="fechaHospitalizacion">
-                                             
-                    <div class="label">Fecha egreso hospital: </div>
-                    <input type="date" class="form-control" id="fechaEgresoHospital">
-                                             
-                    <div class="label">Dias de hospitalizacion: </div>
-                    <input type="text" class="form-control" id="diasHospitalizacion" >
-                                
-                    <div class="label">Diagnostico alta: </div>
-                    <input type="text" class="form-control" id="diagAlta" >
-                                           
-                    <div class="label">Doctor alta: </div>
-                    <select class="form-control" id="doctorAltaEdit">
-                    </select>
-
-                               
-                    <div class="label">Estudios acciones: </div>
-                    <input type="text" class="form-control" id="estudiosAcciones" >
-
-                    <div class="label">Indicaciones alta: </div>
-                    <input type="text" class="form-control" id="indicacionesAlta" >                    
-                  
-                    <div class="label">Resumen evolucion</div>
-                    <textarea class="form-control" id="resumenEvolucion" rows="4"> </textarea>
-                  -->
-                      <!-- <div class="label">Anamnesis: </div>
-                    <input type="text" class="form-control" id="anamnesis" > -->
-                    <!-- --------------------------------------- -->                  
+                             
                 </div>
                 
               </div>
@@ -452,23 +398,7 @@
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                       <!-- <button type="submit" id="guardarProtOpera" class="btn btn-primary">Actualizar Cirugia</button> -->
                     </div>
-                    <!-- --------------------------------------- -->
-                    <!--
-                    <div class="label">Id cirugia: </div>
-                    <input type="text" class="form-control" id="idCirugiaModal">
-
-                    <div class="label">Fecha prot Operatorio: </div>
-                    <input type="date" class="form-control" id="fechaProtOpera">
-
-                    <div class="label">Hora prot Operatorio: </div>
-                    <input type="time" class="form-control" id="horaProtOpera" >
-                    
-                    <div class="label">Implantes:</div>
-                    <textarea class="form-control" id="implantesProt" rows="4"> </textarea>
-                    
-                    <div class="label">Descripcion:</div>
-                    <textarea class="form-control" id="descProtOpera" rows="4"> </textarea>
-                    -->                    
+                                 
                   </form>
                 </div>
                 
@@ -496,14 +426,7 @@
                       <div class="label">Id paciente: </div>
                       <input type="text" class="form-control" id="idPacienteEdit" disabled>
                     </div>
-                    <!-- <div class="campo">
-                      <div class="label">Fecha: </div>
-                      <input type="date" class="form-control" id="fechaEncuentroEdit" disabled>
-                    </div>
-                    <div class="campo">
-                      <div class="label">Hora: </div>
-                      <input type="text" class="form-control" id="horaEncuentroEdit" disabled>
-                    </div> -->
+                   
                     <div class="campo">
                       <div class="label">Tipo encuentro</div>
                       <select class="form-control" id="tipoEncuentroEdit" disabled>
@@ -549,15 +472,15 @@
                       <div id="docsModal">
                         <div class="campo adjun">
                           <div class="label">Adjuntar audio:</div>
-                          <input type="file" class="form-control-file" id="audioEncuentroEdit">
+                          <input type="file" class="form-control-file" id="audioEncuentroEdit" accept="audio/mp3,audio/*;capture=microphone">
                         </div>
                         <div class="campo adjun">
                             <div class="label">Adjuntar electrocardiograma:</div>
-                            <input type="file" class="form-control-file" id="inputFileElectroEdit">
+                            <input type="file" class="form-control-file" id="inputFileElectroEdit" accept="application/pdf">
                         </div>
                         <div class="campo adjun">
                             <div class="label">Adjuntar Exam Laboratorio:</div>
-                            <input type="file" class="form-control-file"  id="inputFileExamLabEdit" >
+                            <input type="file" class="form-control-file"  id="inputFileExamLabEdit" accept="application/pdf" >
                         </div>
                       </div>
                       <!-- ------------------------- -->
@@ -579,9 +502,6 @@
 
                     </div>
                       
-                    
-                    
-
 
                     <div class="campo">
                       <div class="label">Id medico: </div>
@@ -591,13 +511,7 @@
                       <div class="label">Id hospital: </div>
                       <input type="text" class="form-control" id="idHospitalEdit" disabled>
                     </div>
-                    <!-- <div class="campo">
-                      <div class="label">Eliminado:</div>
-                      <select class="form-control" id="eliminadoEdit">
-                          <option value="True">Si</option>
-                          <option value="False">No</option>
-                      </select>
-                    </div> -->
+                    
                     <br>
                     <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
                     <!-- --------------------------------------- -->
