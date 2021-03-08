@@ -486,10 +486,10 @@ formEditEncuentro.addEventListener('submit',async function(e){
 
 	const URLEditEncuentro = 'http://134.122.120.195/api/v1/encuentro/update';
 	e.preventDefault()
-
+    
     const spinner = document.getElementById("spinner");
     spinner.removeAttribute('hidden');
-    
+
     var idEncuentroEdit = document.getElementById('idEncuentroEdit')	
     var idPacienteEdit = document.getElementById('idPacienteEdit')	
     var tipoEncuentroEdit = document.getElementById('tipoEncuentroEdit')
@@ -554,6 +554,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
     }else{
         aseguradoraFinal = 'fonosa'
     }
+   
    
 
     ///////////////////// Audio //////////////////////////
@@ -672,9 +673,9 @@ formEditEncuentro.addEventListener('submit',async function(e){
 	})
 	.then(function(data){ 
 		console.log(data)
-        if(data.status == 'success'){
-            spinner.setAttribute('hidden', '');
+        spinner.setAttribute('hidden', '');
 
+        if(data.status == 'success'){
             Swal.fire({
 			icon: 'success',
 			title: 'Encuentro editado',

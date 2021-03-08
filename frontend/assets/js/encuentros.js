@@ -218,6 +218,10 @@ var diagSecundario1 = document.getElementById('diagSecundario1')
 var diagSecundario2 = document.getElementById('diagSecundario2')
 var notaClinica = document.getElementById('notaClinica')
 
+
+newNotaclinica = (notaClinica.value).replace(/[^a-zA-Z ]/g, "")
+//console.log(newNotaclinica)
+
 //////////////////////////////Protocolo operatorio/////////////////////////	
 var fechaRegistro = document.getElementById('fechaRegistro')
 var horaRegistro = document.getElementById('horaRegistro')
@@ -230,7 +234,11 @@ var especialidadcirujano2 = document.getElementById('especialidadcirujano2')
 var anestesista = document.getElementById('nombreanestesista')
 var rutanestesista = document.getElementById('rutanestesista')
 var descProcedimiento = document.getElementById('descProcedimiento')
+newdescProcedimiento= (descProcedimiento.value).replace(/[^a-zA-Z ]/g, "")
+
 var implantesRegistro = document.getElementById('implantesRegistro')
+newimplantesRegistro= (implantesRegistro.value).replace(/[^a-zA-Z ]/g, "")
+
 var eliminadoEncuentro = document.getElementById('eliminadoEncuentro')
  
 ////////////////////////////Epicrisis///////////////////////////////////////
@@ -246,11 +254,22 @@ var Rutatra = document.getElementById('Rutatra')
 //var medicoresp = document.getElementById('medicoresp')
 //var especialidadresp = document.getElementById('especialidadresp')
 var diag_alta = document.getElementById('diagAlta')
+newdiag_alta= (diag_alta.value).replace(/[^a-zA-Z ]/g, "")
+
 var anamnesis = document.getElementById('anamnesis')
+newanamnesis= (anamnesis.value).replace(/[^a-zA-Z ]/g, "")
+
 var resumenEvolucion = document.getElementById('resumenEvolucion')
+newresumenEvolucion= (resumenEvolucion.value).replace(/[^a-zA-Z ]/g, "")
+
 var estudios_acciones = document.getElementById('estudiosAcciones')
+newestudios_acciones= (estudios_acciones.value).replace(/[^a-zA-Z ]/g, "")
+
 var indicacionesAlta = document.getElementById('indicacionesAlta')
+newindicacionesAlta= (indicacionesAlta.value).replace(/[^a-zA-Z ]/g, "")
+
 var motivoalta = document.getElementById('motivoalta')
+newmotivoalta= (motivoalta.value).replace(/[^a-zA-Z ]/g, "")
 
 var aseguradoraIsapre = document.getElementById('aseguradoraIsapre')
 var lMargin=24; //left margin in mm
@@ -325,7 +344,7 @@ const dataToSend = JSON.stringify(
 		"diag_primario" : diagPrimario.value,
 		"diag_secun" : diagSecundario1.value,
 		"diag_secun2" : diagSecundario2.value,
-		"notas_clinicas": notaClinica.value,
+		"notas_clinicas": newNotaclinica,
 		"resultados_ia" : "99",
 		"feedback_ia" : "No esta bien",
 		"resultado_med_ia" : "55%",
@@ -338,15 +357,15 @@ const dataToSend = JSON.stringify(
 		"fecha_egreso":fecha_egreso.value,
 		"hora_ep": hora_epicris.value,
 		"dias_hospitalizado":dias_de_hosp.value,
-		"diag_alta": diag_alta.value,
-		"anamnesis": anamnesis.value,
-		"estudios_acciones":estudios_acciones.value,
-		"resumen_evolucion" : resumenEvolucion.value,
-		"indiciaciones_alta" : indicacionesAlta.value,
+		"diag_alta": newdiag_alta,
+		"anamnesis": newanamnesis,
+		"estudios_acciones":newestudios_acciones,
+		"resumen_evolucion" : newresumenEvolucion,
+		"indiciaciones_alta" : newindicacionesAlta,
 		"date_registered":fechaRegistro.value,
 		"time_protocol":horaRegistro.value,
-		"descripcion" : descProcedimiento.value,
-		"implantes":implantesRegistro.value,
+		"descripcion" : newdescProcedimiento,
+		"implantes":newimplantesRegistro,
 		"cie10":"182773js",
 		"snomed":"877dyjs",
 		"nombre_cirujano1": nombrecirujano.value,
@@ -358,7 +377,7 @@ const dataToSend = JSON.stringify(
 		"rut_cirujano1": rutcirujano1.value,
 		"rut_cirujano2": rutcirujano2.value,
 		"rut_anestesista": rutanestesista.value,
-		"descripcion_procedimiento": descProcedimiento.value,
+		"descripcion_procedimiento": newdescProcedimiento,
 		"aseguradora": aseguradoraFinal,
 		"servicio_ingreso": seringreso.value,
 		"servicio_egreso": seregreso.value,
@@ -541,9 +560,6 @@ const dataToSend = JSON.stringify(
 			doc.text(lMargin, 241, doc.splitTextToSize(anamnesis.value, (pdfInMM-lMargin-rMargin)));
 
 
-
-
-
 	
 			//////////////////////////// Pagina 2
 			///////////////////////////////
@@ -694,11 +710,10 @@ const dataToSend = JSON.stringify(
 
 })
 
-var myInput = document.getElementById('notaClinica');
-  myInput.onpaste = function(e) {
-    e.preventDefault();
-    //alert("esta acción está prohibida");
-  }
+// var myInput = document.getElementById('notaClinica');
+//   myInput.onpaste = function(e) {
+//     e.preventDefault();
+//   }
 
 
 
