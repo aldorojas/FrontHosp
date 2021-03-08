@@ -694,6 +694,12 @@ const dataToSend = JSON.stringify(
 
 })
 
+var myInput = document.getElementById('notaClinica');
+  myInput.onpaste = function(e) {
+    e.preventDefault();
+    //alert("esta acción está prohibida");
+  }
+
 
 
 function exit(){
