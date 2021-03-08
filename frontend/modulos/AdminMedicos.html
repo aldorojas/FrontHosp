@@ -325,34 +325,34 @@
                   </div>
                   <div class="campo">
                     <div class="label">Id Hospital: </div>
-                    <select class="form-control" id="IdHospitalEdit" name="IdHospitalEdit">
+                    <select class="form-control" id="IdHospitalEdit" name="IdHospitalEdit" required>
                     </select>
                   </div>
                   <div class="campo">
                     <div class="label">Nombre(s): </div>
-                    <input type="text" class="form-control" id="nombreMedicoEdit">
+                    <input type="text" class="form-control" id="nombreMedicoEdit" required>
                   </div>
                   <div class="campo">
                     <div class="label">Apellidos: </div>
-                    <input type="text" class="form-control" id="apellidosMedicoEdit">
+                    <input type="text" class="form-control" id="apellidosMedicoEdit" required>
                   </div>
                   <div class="campo">
                     <div class="label">Telefono: </div>
-                    <input type="text" class="form-control" id="telefonoMedicoEdit">
+                    <input type="text" class="form-control" id="telefonoMedicoEdit" required>
                   </div>
                   <div class="campo">
                     <div class="label">Especialidad: </div>
-                    <input type="text" class="form-control" id="especialidadMedicoEdit">
+                    <input type="text" class="form-control" id="especialidadMedicoEdit" required>
                   </div>
                   <div class="campo">
                     <div class="label">Rut Medico: </div>
-                    <input type="text" class="form-control" id="rutMedicoEdit">
+                    <input type="text" class="form-control" id="rutMedicoEdit" required>
                   </div>
 
                   <div class="campo">
                     <div class="label">Staff </div>
                     <!-- <input type="text" class="form-control" id="staffMedicoEdit" > -->
-                    <select class="form-control" id="staffMedicoEdit" onchange="validateStaffEdit(this)">
+                    <select class="form-control" id="staffMedicoEdit" onchange="validateStaffEdit(this)" required>
                       <option></option>
                       <option value="True">Si</option>
                       <option value="False">No</option>
@@ -361,7 +361,7 @@
 
                   <div class="campo">
                     <div class="label">Becario: </div>
-                    <select class="form-control" id="becarioMedicoEdit" onchange="validateBecarioEdit(this)">
+                    <select class="form-control" id="becarioMedicoEdit" onchange="validateBecarioEdit(this)" required>
                       <option></option>
                       <option value="True">Si</option>
                       <option value="False">No</option>
@@ -374,7 +374,7 @@
 
                   <div class="campo">
                     <div class="label">Interno: </div>
-                    <select class="form-control" id="internoMedicoEdit" onchange="validateInternoEdit(this)">
+                    <select class="form-control" id="internoMedicoEdit" onchange="validateInternoEdit(this)" required>
                       <option></option>
                       <option value="True">Si</option>
                       <option value="False">No</option>
@@ -387,7 +387,7 @@
 
                   <div class="campo">
                     <div class="label">Activo: </div>
-                    <select class="form-control" id="activoMedicoEdit">
+                    <select class="form-control" id="activoMedicoEdit" required>
                       <option value="True">Si</option>
                       <option value="False">No</option>
                     </select>
@@ -395,7 +395,7 @@
                   </div>
                   <div class="campo">
                     <div class="label">Admin: </div>
-                    <select class="form-control" id="adminMedicoEdit">
+                    <select class="form-control" id="adminMedicoEdit" required>
                       <option value="True">Si</option>
                       <option value="False">No</option>
                     </select>

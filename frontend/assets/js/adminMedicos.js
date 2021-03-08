@@ -891,6 +891,19 @@ const populateUI = data => {
 						'</div>'
 				}
 
+				if (staff == true) {
+					var switch5 = ' <div class="custom-control custom-switch">' +
+						'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
+						'<label class="custom-control-label" for="customSwitch1"></label>' +
+						'</div>'
+				}
+				else {
+					switch5 = ' <div class="custom-control custom-switch">' +
+						'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
+						'<label class="custom-control-label" for="customSwitch1"></label>' +
+						'</div>'
+				}
+
 				container.innerHTML +=
 					`
         <tr>
@@ -899,7 +912,7 @@ const populateUI = data => {
 			<td data-label="Nombre">${nombre}</td>
 			<td data-label="Apellidos">${apellidos}</td>
 			<td data-label="Telefono">${telefono}</td>
-			<td data-label="Staff">${staff}</td>
+			<td data-label="Staff">${switch5}</td>
 			<td data-label="Especialidad">${especialidad}</td>
 			<td data-label="Rut Medico">${rut_medico}</td>
 			<td data-label="Becario"> 
