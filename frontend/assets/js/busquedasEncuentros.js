@@ -44,175 +44,7 @@ function pulsar(e) {
 	  return false;
 	}
   }
-    
-    // var text = $('.text-overflow'),
-    // btn = $('.btn-overflow'),
-    // h = text[0].scrollHeight; 
-
-    // if(h > 120) {
-    // btn.addClass('less');
-    // btn.css('display', 'block');
-    // }
-
-    // btn.click(function(e) 
-    // {
-    // e.stopPropagation();
-
-    // if (btn.hasClass('less')) {
-    // btn.removeClass('less');
-    // btn.addClass('more');
-    // btn.text('Show less');
-
-    // text.animate({'height': h});
-    // } else {
-    // btn.addClass('less');
-    // btn.removeClass('more');
-    // btn.text('Show more');
-    // text.animate({'height': '120px'});
-    // }  
-    // });  
-
-
-// function AllEncuentros(urlAPI){
-//     //////////////////////////////////// todos los pacientes
-//     //const urlAPI = 'http://134.122.120.195/api/v1/encuentros/list/1';
-//     fetch(urlAPI)
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log(data)
-//         for(var i = 0; i < data.length; i++){
-//             ////////////// Audio ////////////////////
-//             if ( data[i].ruta_audio != '' ){
-// 				var audio = 
-//                 `<a href="http://134.122.120.195/files/${data[i].ruta_audio}">` + 
-//                     '<img src="../assets/img/mp3Logo.png" height="50px" width="45px">' + 
-//                 '</a>'
-// 				  //console.log(audio);
-// 			}
-// 			else{
-// 				audio = ''
-//             }
-
-//             /////////////////////////////
-//             if ( data[i].ruta_exam_electro != '' ){
-// 				var PDFElectro = 
-//                 `<a href="http://134.122.120.195/files/${data[i].ruta_exam_electro}">` + 
-//                     '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
-//                 '</a>'
-// 			}
-// 			else{
-// 				PDFElectro = ''
-//             }
-            
-//             ///////////////////////////////77
-//             if ( data[i].ruta_exam_lab != '' ){
-// 				var PDFExamLab = 
-//                 `<a href="http://134.122.120.195/files/${data[i].ruta_exam_lab}">` + 
-//                     '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
-//                 '</a>'
-// 			}
-// 			else{
-// 				PDFExamLab = ''
-//             }
-
-
-//             ///////////////////////////////////////////
-//             if ( data[i].eliminado == "True" ){
-// 				var switch1 = ' <div class="custom-control custom-switch">' +
-// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  	'</div>'
-// 			}
-// 			else{
-// 				switch1 = ' <div class="custom-control custom-switch">' +
-// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  '</div>'
-//             }
-            
-
-//             var row = `
-//             <tr>
-//                 <td scope="row" data-label="Id"> ${data[i].id_encuentro} </td>
-//                 <td data-label="IdPaciente"> ${data[i].id_paciente}</td>
-//                 <td data-label="Fecha"> ${data[i].fecha_e}</td>
-//                 <td data-label="Hora">${data[i].hora_e}</td>
-//                 <td data-label="Tipo encuentro">${data[i].tipo_2}</td>
-//                 <td data-label="Diag primario">${data[i].diag_primario}</td>
-//                 <td data-label="Diag sec">${data[i].diag_secun}</td>
-//                 <td data-label="Diag sec 2">${data[i].diag_secun2}</td>
-//                 <td data-label="Audio">
-//                     ${audio}
-//                 </td>
-//                 <td data-label="PDF Electro">
-//                     ${PDFElectro}
-//                 </td>
-//                 <td data-label="PDF Exam Lab">
-//                     ${PDFExamLab}
-//                 </td>
-//                 <td data-label="Notas clinicas">${data[i].notas_clinicas}</td>
-//                 <td data-label="Id medico">${data[i].id_medico}</td>
-//                 <td data-label="Eliminado">${switch1}</td>
-
-//                 <td data-label="Epicrisis">
-//                     <button type="button" class="btn btn-primary"
-//                         onclick="loadModalEpi('${data[i].id_epicrisis}','${data[i].fecha_ep}', '${data[i].hora_ep}',
-//                         '${data[i].fecha_hospitalizacion}', '${data[i].fecha_egreso}','${data[i].dias_hospitalizado}',
-//                         '${data[i].diag_alta}', '${data[i].anamnesis}', '${data[i].estudios_acciones}', '${data[i].indiciaciones_alta}',
-//                         '${data[i].resumen_evolucion}' )">
-//                         Epicrisis
-//                     </button>
-//                 </td>
-               
-
-//                 <td data-label="Cirugia">
-//                     <button type="button" class="btn btn-primary"
-//                         onclick="loadModalCirugia('${data[i].id_cirugia}', '${data[i].date_registered}', '${data[i].time_protocol}', 
-//                         '${data[i].implantes}', '${data[i].descripcion}' )">
-//                         Cirugia
-//                     </button>
-//                 </td>
-    
-                
-//                 <td data-label="Acciones">
-//                     <button onclick="deleteEncuentro(${data[i].id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-//                         <i class="icon ion-md-trash "></i>
-//                     </button>
-//                     <button onclick="editEncuentro(${data[i].id_encuentro},${data[i].id_paciente},'${data[i].fecha_e}',
-//                                 '${data[i].hora_e}', '${data[i].tipo_2}', '${data[i].diag_primario}',
-//                                 '${data[i].diag_secun}', '${data[i].diag_secun2}', '${data[i].notas_clinicas}',
-//                                 '${data[i].resultado_med_ia}', '${data[i].resultados_ia}', '${data[i].feedback_ia}',
-//                                 ${data[i].id_medico}, ${data[i].id_hospital}, '${data[i].eliminado}', '${data[i].fecha_ep}',
-//                                 '${data[i].hora_ep}', '${data[i].fecha_hospitalizacion}', '${data[i].fecha_egreso}',
-//                                 '${data[i].dias_hospitalizado}', '${data[i].diag_alta}', '${data[i].anamnesis}',
-//                                 '${data[i].estudios_acciones}', '${data[i].indiciaciones_alta}', '${data[i].resumen_evolucion}',
-//                                 '${data[i].date_registered}', '${data[i].time_protocol}', 
-//                                 '${data[i].implantes}', '${data[i].descripcion}', '${data[i].id_epicrisis}', '${data[i].id_cirugia}')" 
-//                         class="btn btn-info btn-sm" title="Editar Paciente">
-//                         <i class="icon ion-md-create "></i>
-//                     </button>
-//             </td>
-//             </tr>
-            
-//                 `
-
-
-//             $( "#tableEncuentros tbody" ).append(row);
-     
-//         }
         
-//         // $(document).ready(function(){
-//         //     $('#tableEncuentros').dataTable({
-//         //         select: true
-//         //     });
-//         // });
-
-//         })
-//     .catch(err => console.log(err));
-
-// }
-
-
 
 //////////////////LoadModal////////////////////////////////////////
 
@@ -273,8 +105,7 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, nombreciruja
     var rutanestesistaEdit = document.getElementById('rutanestesista')
     var descProcedimientoEdit = document.getElementById('descProcedimiento')
     
-    //var implantesEdit = document.getElementById('implantesProt')
-    //var descProtEdit = document.getElementById('descProtOpera')
+
 
     idCirugiaEdit.value = idCirugia;
     fechaProtOperaEdit.value = dateResgistered;
@@ -288,8 +119,7 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, nombreciruja
     nombreanestesistaEdit.value = nombreanestesista;
     rutanestesistaEdit.value = rutanestesista;
     descProcedimientoEdit.value = descProcedimiento;
-    //implantesEdit.value = implantes;
-    //descProtEdit.value = descripcion;
+
 
     $('#modalEditCirugia').modal('show');
 
@@ -300,17 +130,15 @@ var BtnGuardarProtOpera = document.getElementById('nuevoPDf');
 
 function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario, 
         diagnosticoSecun, diagnosticoSecun2,notaClinica, resultadoMedIA, resultadoIA,
-        feedbackIA, idMedico, idHospital,idEpicrisis,fechaHospitalizacion,fechaEgreso,
+        feedbackIA, idMedico, idHospital,idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizacion,fechaEgreso,
         diasHospitalizado,Rutatra,seringreso,seregreso,aseguradora,diagnosticoAlta,
-        anamnesis,estudiosAcciones, indicacionesAlta,resumenEvolucion,idCirugia,
+        anamnesis,estudiosAcciones, indicacionesAlta,resumenEvolucion,idCirugia,dateResgistered,timeProtocol,
         nombrecirujano1, rutcirujano1, especialidadcirujano1, nombrecirujano2, rutcirujano2,
         especialidadcirujano2, nombreanestesista,rutanestesista, implantes, descripcion
         ){
 	
     var idEncuentroEdit = document.getElementById('idEncuentroEdit')	
     var idPacienteEdit = document.getElementById('idPacienteEdit')	
-    //var fechaEncuentroEdit = document.getElementById('fechaEncuentroEdit')	
-    //var horaEncuentroEdit = document.getElementById('horaEncuentroEdit')
     var tipoEncuentroEdit = document.getElementById('tipoEncuentroEdit')
     var diagPrimarioEdit = document.getElementById('diagPrimarioEdit')
     var diagSecun1Edit = document.getElementById('diagSecundario1Edit')
@@ -322,10 +150,10 @@ function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario
     var feedbackIAEdit = document.getElementById('feedbackIAEdit')
     var idMedicoEdit = document.getElementById('idMedicoEdit')
     var idHospitalEdit = document.getElementById('idHospitalEdit')
-    //var eliminadoEdit = document.getElementById('eliminadoEdit')
 
-    //var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
-    //var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
+
+    var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
+    var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
     var fechaHospitalizacionEdit = document.getElementById('fechaHospitalizacionEdit')
     var fechaEgresoEdit = document.getElementById('fechaEgresoHospitalEdit')
     var diasHospEdit = document.getElementById('diasHospitalizacionEdit')
@@ -339,8 +167,8 @@ function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario
     var indicacionesAltaEdit = document.getElementById('indicacionesAltaEdit')
     var resumenEvoEdit = document.getElementById('resumenEvolucionEdit')
 
-    //var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
-    //var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
+    var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
+    var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
     var implantesEdit = document.getElementById('implantesProtEdit')
     var descProtEdit = document.getElementById('descProtOperaEdit')
     var nombrecirujano1Edit = document.getElementById('nombrecirujano1Edit')
@@ -362,8 +190,6 @@ function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario
 
     idEncuentroEdit.value = idEncuentro;
     idPacienteEdit.value = idPaciente;
-    //fechaEncuentroEdit.value = fechaEncuentro;
-    //horaEncuentroEdit.value = horaEncuentro;
     tipoEncuentroEdit.value = tipoEncuentro;
     diagPrimarioEdit.value = diagnosticoPrimario;
     diagSecun1Edit.value = diagnosticoSecun;
@@ -374,10 +200,9 @@ function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario
     feedbackIAEdit.value = feedbackIA;
     idMedicoEdit.value = idMedico;
     idHospitalEdit.value = idHospital;
-    //eliminadoEdit.value = eliminado;
 
-//fechaEpicrisisEdit.value = fechaEpicrisis;
-    //horaEpicrisisEdit.value = horaEpicrisis;
+    fechaEpicrisisEdit.value = fechaEpicrisis;
+    horaEpicrisisEdit.value = horaEpicrisis;
     fechaHospitalizacionEdit.value = fechaHospitalizacion;
     fechaEgresoEdit.value = fechaEgreso;
     diasHospEdit.value = diasHospitalizado;
@@ -391,8 +216,8 @@ function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario
     indicacionesAltaEdit.value = indicacionesAlta
     resumenEvoEdit.value = resumenEvolucion;
 
-    //fechaProtOperaEdit.value = dateResgistered;
-    //horaProtOperaEdit.value = timeProtocol;
+    fechaProtOperaEdit.value = dateResgistered;
+    horaProtOperaEdit.value = timeProtocol;
     implantesEdit.value = implantes;
     descProtEdit.value = descripcion;
     nombrecirujano1Edit.value = nombrecirujano1;
@@ -411,7 +236,6 @@ function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario
 
         camposCirugia.style.display=''
         BtnGuardarProtOpera.style.display= ''
-        //camposDifCirugia.style.display = 'none'
         camposDifCirugia.style.display = 'none'
         camposOcultos.style.display = 'none'
         
@@ -420,7 +244,6 @@ function editEncuentro(idEncuentro,idPaciente,tipoEncuentro, diagnosticoPrimario
         camposCirugia.style.display='none'
         BtnGuardarProtOpera.style.display= 'none'
         camposDifCirugia.style.display = ''
-        //camposDifCirugia.style.display = ''
         camposOcultos.style.display = 'none' 
     }    
 
@@ -462,7 +285,6 @@ var bufferToBase64 = function (buffer) {
 ///////////////////////////////////////////////////////////////////////////////////
 function initSound(arrayBuffer) {
     var base64String = bufferToBase64(arrayBuffer);
-    //console.log(base64String)
     return base64String
 }
 
@@ -511,8 +333,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
     var eliminadoEdit = document.getElementById('eliminadoEdit')
 
   ////////////////////////////Epicrisis///////////////////////////////////////
-    //var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
-    //var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
+    var fechaEpicrisisEdit = document.getElementById('fechaEpicrisisEdit')
+    var horaEpicrisisEdit = document.getElementById('horaEpicrisisEdit')
     var fechaHospitalizacionEdit = document.getElementById('fechaHospitalizacionEdit')
     var fechaEgresoEdit = document.getElementById('fechaEgresoHospitalEdit')
     var diasHospEdit = document.getElementById('diasHospitalizacionEdit')
@@ -537,8 +359,8 @@ formEditEncuentro.addEventListener('submit',async function(e){
     newresumenEvoEdit= (resumenEvoEdit.value).replace(/[^a-zA-Z ]/g, "")
 
     //////////////////////////////Protocolo operatorio/////////////////////////	
-    //var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
-    //var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
+    var fechaProtOperaEdit = document.getElementById('fechaProtOperaEdit')
+    var horaProtOperaEdit = document.getElementById('horaProtOperaEdit')
     var implantesEdit = document.getElementById('implantesProtEdit')
     newimplantesEdit= (implantesEdit.value).replace(/[^a-zA-Z ]/g, "")
 
@@ -555,7 +377,6 @@ formEditEncuentro.addEventListener('submit',async function(e){
     var nombreanestesistaEdit = document.getElementById('nombreanestesistaEdit')
     var rutanestesistaEdit = document.getElementById('rutanestesistaEdit')
     var aseguradoraIsapre = document.getElementById('aseguradoraIsapre')
-    //var motivoaltaEdit = document.getElementById('motivoaltaEdit')
     var lMargin=24; //left margin in mm
     var rMargin=24; //right margin in mm
     var pdfInMM=210;  // width of A4 in mm
@@ -622,7 +443,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "anestesista": nombreanestesistaEdit.value,
             "aseguradora": aseguradoraEdit.value,
             "cie10": "182773js",
-            "date_registered": '',
+            "date_registered": fechaProtOperaEdit.value,
             "descripcion": newdescProcedimiento,
             "descripcion_procedimiento": '',
             "diag_alta": newdiagAltaEdit,
@@ -638,11 +459,11 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "estudios_acciones": newestudiosAccionesEdit,
             "fecha_e": '', 
             "fecha_egreso": fechaEgresoEdit.value,
-            "fecha_ep": '',
+            "fecha_ep": fechaEpicrisisEdit.value,
             "fecha_hospitalizacion": fechaHospitalizacionEdit.value,
             "feedback_ia": feedbackIAEdit.value,
             "hora_e": '',
-            "hora_ep": '',
+            "hora_ep": horaEpicrisisEdit.value,
             "id_cirugia": idCirugia.value,
             "id_diagnostico": 2,
             "id_encuentro": idEncuentroEdit.value,
@@ -660,7 +481,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "notas_clinicas": newNotaclinica,
             "resultado_med_ia": resultadoMedIAEdit.value,
             "resultados_ia": resultadoIAEdit.value,
-            "resumen_evolucion": resumenEvoEdit,
+            "resumen_evolucion": resumenEvoEdit.value,
             "rut_anestesista": rutanestesistaEdit.value,
             "rut_cirujano1": rutcirujano1Edit.value,
             "rut_cirujano2": rutcirujano2Edit.value,
@@ -670,7 +491,7 @@ formEditEncuentro.addEventListener('submit',async function(e){
             "servicio_egreso": seregresoEdit.value,
             "servicio_ingreso": seringresoEdit.value,
             "snomed": "877dyjs",
-            "time_protocol": '',
+            "time_protocol": horaProtOperaEdit.value,
             "tipo_2": tipoEncuentroEdit.value,
             "ruta_audio" : Base64Audio,
 			"ruta_exam_lab" : base64ExamLab,
@@ -902,7 +723,6 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.text('MOTIVO DE ALTA', 90, 150)
         doc.rect(20, 155, 170, 20 )
         doc.setFontType("normal");
-        //doc.text('texto libre', 22, 160)
         doc.text(lMargin, 160, doc.splitTextToSize(motivoaltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
 
@@ -912,7 +732,6 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.text('DIAGNOSTICO DE ALTA', 90, 190)
         doc.rect(20, 195, 170, 20 )
         doc.setFontType("normal");
-        //doc.text(diagAltaEdit.value, 21, 160)
         doc.text(lMargin, 200, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
         ////////////////////////////
@@ -920,7 +739,6 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.setFontType("bold");
         doc.text('ANAMNESIS DE:', 21, 230)
         doc.setFontType("normal");
-        //doc.text(anamnesisEdit.value, 21, 200)
         doc.text(lMargin, 241, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
 
         //////////////////////////// Pagina 2
@@ -931,21 +749,18 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.setFontType("bold");
         doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
         doc.setFontType("normal");
-        //doc.text(estudiosAccionesEdit.value, 21, 30)
         doc.text(lMargin, 25, doc.splitTextToSize(estudiosAccionesEdit.value, (pdfInMM-lMargin-rMargin)));
 
         doc.rect(20, 65, 170, 40 )
         doc.setFontType("bold");
         doc.text('RESUMEN DE EVOLUCION:', 21, 70)
         doc.setFontType("normal");
-        //doc.text(resumenEvoEdit.value, 21, 80)
         doc.text(lMargin, 75, doc.splitTextToSize(resumenEvoEdit.value, (pdfInMM-lMargin-rMargin)));
 
         doc.rect(20, 115, 170, 40 )
         doc.setFontType("bold");
         doc.text('INDICACIONES DE ALTA:', 21, 120)
         doc.setFontType("normal");
-        //doc.text(indicacionesAltaEdit.value, 21, 130)
         doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
         doc.save('Epicrisis.pdf')
@@ -991,14 +806,12 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc2.setFontSize(12);
         doc2.text('Descripcion de procedimiento',20,150)
         doc2.setFontType("normal");
-        //doc2.text(descProtEdit.value,20,160)
         doc2.text(lMargin1, 156, doc.splitTextToSize(descProtEdit.value, (pdfInMM1-lMargin1-rMargin1)));
     
         doc2.setFontType("bold");
         doc2.setFontSize(12);
         doc2.text('Implantes',20,190)
         doc2.setFontType("normal");
-        //doc2.text(implantesEdit.value,20,180)
         doc2.text(lMargin1, 196, doc.splitTextToSize(implantesEdit.value, (pdfInMM1-lMargin1-rMargin1)));
 
         doc2.text('Especialidad:' + 'Columna',20,250)
@@ -1053,268 +866,6 @@ function deleteEncuentro(idEncuentro){
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
-// function numberPages(){
-//     urlAPIPages = 'http://134.122.120.195/api/v1/encuentros/list_registers?type_e=all&patient=';
-//     pagesHtml =  ''
-//     fetch(urlAPIPages)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){
-//         console.log(data)
-//         var botones =  data.numbers_entries/10
-//         botones = Math.ceil(botones)
-//         //console.log(botones)
-
-//         for(var i = 1; i < botones + 1; i++){
-//             pagesHtml += `
-//             <td>
-//                 <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
-//                     ${i}
-//                 </button>
-//             </td>
-//             `
-//         }
-//         divpieTable.innerHTML = pagesHtml  
-//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-// 	});
-// }
-
-
-// function perPage(numPage){
-//     console.log(numPage)
-//     urlEncuentrosPagina = 'http://134.122.120.195/api/v1/encuentros/list/' + numPage;
-//     //console.log(urlEncuentrosPagina)
-//     var divPrueba = document.getElementById('resultadosEncuentros')
-//     divPrueba.innerHTML = ''
-
-    
-//     fetch(urlEncuentrosPagina)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){ 
-//         console.log(data)
-//         AllEncuentros(urlEncuentrosPagina)
-//         numberPages()
-// 	});
-// }
-
-
-
-// function numberPagesBusqueda(numRegistros, URLAPI){
-//     //urlAPIPages = 'http://134.122.120.195/api/v1/encuentros/list_registers?type_e=all&patient=';
-//     pagesHtml =  ''
-//     console.log('numero de reg de busqueda: '+ numRegistros)
-
-//     var botones =  numRegistros/10
-//     console.log(botones)
-//     botones = Math.ceil(botones)
-//     console.log(botones)
-
-//     for(var i = 1; i < botones + 1; i++){
-
-//         pagesHtml += `
-//         <td>
-//             <button onclick="perPageBusqueda(${i*10 - 9}, ${numRegistros}, '${URLAPI}' )" class="btn btn-danger btn-sm">
-//                 ${i}
-//             </button>
-//         </td>
-//         `
-          
-//     }
-//     divpieTable.innerHTML = pagesHtml  
-
-// }
-
-// function perPageBusqueda(numPage, numRegs , URLAPI){
-//     console.log(numPage)
-//     urlEncuentrosFecha = URLAPI;
-//     console.log(urlEncuentrosFecha)
-//     var divPrueba = document.getElementById('resultadosEncuentros')
-//     divPrueba.innerHTML = ''
-
-    
-//     fetch(urlEncuentrosFecha)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){ 
-//         console.log(data)
-//         encuentrosPorBusqueda(urlEncuentrosFecha)
-//         numberPagesBusqueda(numRegs)
-// 	});
-// }
-
-
-
-// function encuentrosPorBusqueda(URLFindEncuentroDate){
-//     var headers = {
-//         "Content-Type": "application/json"
-//      }
-
-//     var divPrueba = document.getElementById('resultadosEncuentros')
-//     divPrueba.innerHTML = ''
-
-//     fetch(URLFindEncuentroDate, {
-//         headers: headers
-//     })
-//     .then(function(response){ 
-//         return response.json(); 
-//     })
-//     .then(function(data){ 
-//         var botones =  data[0]/10
-//         botones = Math.ceil(botones)
-//         console.log('botonoes' + botones)
-//         divpieTable.innerHTML = ''
-
-//         console.log('numero de registros: ' + data[0])
-//         var datos = data[1]
-
-//         numberPagesBusqueda( data[0], URLFindEncuentroDate)
-
-//         if(data[0].length != 0){
-//             for(var i = 0; i < datos.length; i++){
-    
-//                 if ( datos[i].ruta_audio != '' ){
-//                     var audio = 
-//                     `<a href="http://134.122.120.195/files/${datos[i].ruta_audio}">` + 
-//                         '<img src="../assets/img/mp3Logo.png" height="50px" width="45px">' + 
-//                     '</a>'
-//                       //console.log(audio);
-//                 }
-//                 else{
-//                     audio = ''
-//                 }
-    
-//                 /////////////////////////////
-//                 if ( datos[i].ruta_exam_electro != '' ){
-//                     var PDFElectro = 
-//                     `<a href="http://134.122.120.195/files/${datos[i].ruta_exam_electro}">` + 
-//                         '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
-//                     '</a>'
-//                 }
-//                 else{
-//                     PDFElectro = ''
-//                 }
-                
-//                 ///////////////////////////////77
-//                 if ( datos[i].ruta_exam_lab != '' ){
-//                     var PDFExamLab = 
-//                     `<a href="http://134.122.120.195/files/${datos[i].ruta_exam_lab}">` + 
-//                         '<img src="../assets/img/pdfLogo.png" height="40px" width="70px">' + 
-//                     '</a>'
-//                 }
-//                 else{
-//                     PDFExamLab = ''
-//                 }
-    
-    
-//                 ///////////////////////////////////////////
-//                 if ( datos[i].eliminado == "True" ){
-//                     var switch1 = ' <div class="custom-control custom-switch">' +
-//                         '<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-//                         '<label class="custom-control-label" for="customSwitch1"></label>' +
-//                       '</div>'
-//                 }
-//                 else{
-//                     switch1 = ' <div class="custom-control custom-switch">' +
-//                     '<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-//                     '<label class="custom-control-label" for="customSwitch1"></label>' +
-//                   '</div>'
-//                 }
-                
-    
-//                 var row = `
-//                 <tr>
-//                     <th scope="row" data-label="Id"> ${datos[i].id_encuentro} </th>
-//                     <td data-label="Id paciente"> ${datos[i].id_paciente}</td>
-//                     <td data-label="Fecha"> ${datos[i].fecha_e}</td>
-//                     <td data-label="Hora">${datos[i].hora_e}</td>
-//                     <td data-label="Tipo encuentro">${datos[i].tipo_2}</td>
-//                     <td data-label="Diag primario">${datos[i].diag_primario}</td>
-//                     <td data-label="Diag sec">${datos[i].diag_secun}</td>
-//                     <td data-label="Diag sec 2">${datos[i].diag_secun2}</td>
-//                     <td data-label="Audio">
-//                         ${audio}
-//                     </td>
-//                     <td data-label="PDF Electro">
-//                         ${PDFElectro}
-//                     </td>
-//                     <td data-label="PDF Exam Lab">
-//                         ${PDFExamLab}
-//                     </td>
-//                     <td data-label="Notas clinicas">${datos[i].notas_clinicas}</td>
-//                     <td data-label="Id Medico">${datos[i].id_medico}</td>
-//                     <td data-label="Eliminado">${switch1}</td>
-    
-//                     <td data-label="Epicrisis">
-//                         <button type="button" class="btn btn-primary"
-//                             onclick="loadModalEpi('${datos[i].id_epicrisis}','${datos[i].fecha_ep}', '${datos[i].hora_ep}',
-//                             '${datos[i].fecha_hospitalizacion}', '${datos[i].fecha_egreso}','${datos[i].dias_hospitalizado}',
-//                             '${datos[i].diag_alta}', '${datos[i].anamnesis}', '${datos[i].estudios_acciones}', '${datos[i].indiciaciones_alta}',
-//                             '${datos[i].resumen_evolucion}' )">
-//                             Epicrisis
-//                         </button>
-//                     </td>
-               
-
-//                     <td data-label="Cirugia">
-//                         <button type="button" class="btn btn-primary"
-//                         onclick="loadModalCirugia('${datos[i].id_cirugia}', '${datos[i].date_registered}', '${datos[i].time_protocol}', 
-//                         '${datos[i].implantes}', '${datos[i].descripcion}' )">
-//                             Cirugia
-//                         </button>
-//                     </td>
-        
-                    
-//                     <td data-label="Acciones">
-//                         <button onclick="deleteEncuentro(${datos[i].id_encuentro})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-//                             <i class="icon ion-md-trash "></i>
-//                         </button>
-//                         <button onclick="editEncuentro(${datos[i].id_encuentro},${datos[i].id_paciente},'${datos[i].fecha_e}',
-//                                     '${datos[i].hora_e}', '${datos[i].tipo_2}', '${datos[i].diag_primario}',
-//                                     '${datos[i].diag_secun}', '${datos[i].diag_secun2}', '${datos[i].notas_clinicas}',
-//                                     '${datos[i].resultado_med_ia}', '${datos[i].resultados_ia}', '${datos[i].feedback_ia}',
-//                                     ${datos[i].id_medico}, ${datos[i].id_hospital}, '${datos[i].eliminado}', '${datos[i].fecha_ep}',
-//                                     '${datos[i].hora_ep}', '${datos[i].fecha_hospitalizacion}', '${datos[i].fecha_egreso}',
-//                                     '${datos[i].dias_hospitalizado}', '${datos[i].diag_alta}', '${datos[i].anamnesis}',
-//                                     '${datos[i].estudios_acciones}', '${datos[i].indiciaciones_alta}', '${datos[i].resumen_evolucion}',
-//                                     '${datos[i].date_registered}', '${datos[i].time_protocol}', 
-//                                     '${datos[i].implantes}', '${datos[i].descripcion}', '${datos[i].id_epicrisis}', '${datos[i].id_cirugia}')" 
-//                             class="btn btn-info btn-sm" title="Editar Paciente">
-//                             <i class="icon ion-md-create "></i>
-//                         </button>
-//                 </td>
-//                 </tr>
-                
-//                     `
-//                 //$( "#tableEncuentros tbody" ).append(row);
-             
-//                divPrueba.innerHTML += row
-//             }
-    
-//         }
-//         if(data[0] == 0){
-//             const Toast = Swal.mixin({
-// 				toast: true,
-// 				position: 'top-end',
-// 				showConfirmButton: false,
-// 				timer: 3000,
-// 				timerProgressBar: true,
-// 				didOpen: (toast) => {
-// 					toast.addEventListener('mouseenter', Swal.stopTimer)
-// 					toast.addEventListener('mouseleave', Swal.resumeTimer)
-// 				}
-// 				})
-// 				Toast.fire({
-// 				icon: 'error',
-// 				title: 'No hay coincidencias'
-// 				})
-//         }
-
-//     });
-// }
 
 
 //////////////////////     Function cambiar formato fecha  //////////////////////////////////
@@ -1407,7 +958,6 @@ var lastScrollTop = 0;
 divPrueba[0].addEventListener('scroll', () => {
     var st = divPrueba[0].pageYOffset || divPrueba[0].scrollTop; 
     if (st > lastScrollTop){
-        // downscroll code
         if ( divPrueba[0].scrollTop + divPrueba[0].clientHeight >= divPrueba[0].scrollHeight) {     
             page = page + 10;
             console.log(page)
@@ -1473,7 +1023,6 @@ const getData = async (page_no = 1) => {
       'http://134.122.120.195/api/v1/encuentros_per_type?type=eliminado&data=&entry_n=' + `${page_no}`
     );
     scrolling = 'Normal'
-    //populateUI(data[1]);
     
 
     if (data[0]== 0){
@@ -1760,11 +1309,11 @@ function toEncuentros(){
                 <button onclick="editEncuentro('${id_encuentro}','${id_paciente}',
                             '${tipo_2}', '${diag_primario}','${diag_secun}', '${diag_secun2}',
                             '${notas_clinicas}','${resultado_med_ia}', '${resultados_ia}', '${feedback_ia}',                            
-                            '${id_medico}', '${id_hospital}','${id_epicrisis}', '${fecha_hospitalizacion}', 
+                            '${id_medico}', '${id_hospital}','${id_epicrisis}','${fecha_ep}','${hora_ep}', '${fecha_hospitalizacion}', 
                             '${fecha_egreso}','${dias_hospitalizado}','${ruta_tratante}',
                             '${servicio_ingreso}','${servicio_egreso}','${aseguradora}', '${diag_alta}', '${anamnesis}',
                             '${estudios_acciones}', '${indiciaciones_alta}', '${resumen_evolucion}',
-                            '${id_cirugia}','${nombre_cirujano1}', '${rut_cirujano1}','${especialidad_cirujano1}',
+                            '${id_cirugia}','${date_registered}','${time_protocol}','${nombre_cirujano1}', '${rut_cirujano1}','${especialidad_cirujano1}',
                             '${nombre_cirujano2}','${rut_cirujano2}','${especialidad_cirujano2}',
                             '${anestesista}','${rut_anestesista}','${implantes}', '${descripcion}',                             
                             '${eliminado}')" 
@@ -1805,19 +1354,6 @@ function toEncuentros(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const opcion = document.querySelectorAll('.opcion');
 opcion.forEach(e => {
 	e.addEventListener('click', function(e){
@@ -1829,8 +1365,6 @@ opcion.forEach(e => {
 
 function showDivBusqueda(element)
 { 
-  //var docs = document.getElementById("docs");
-  //document.getElementById("formBusqueda1").style.display = element.value == 0 ? 'block' : 'none';
   document.getElementById("formBusqueda1").style.display = element.value == 1 ? 'block' : 'none';
   document.getElementById("formBusqueda2").style.display = element.value == 2 ? 'block' : 'none';
 }

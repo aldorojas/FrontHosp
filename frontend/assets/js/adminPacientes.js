@@ -13,11 +13,8 @@ window.onload = (function(){
 		loadMedico()
 	}
 
-
-	//numberPages();
-
 	const urlAPI = 'http://134.122.120.195/api/v1/pacientes/list/1';
-	//allPacientes(urlAPI)
+
   
 })
 ///////////////////////////////////////////////////
@@ -43,7 +40,6 @@ opcion.forEach(e => {
 
 function showDivBusqueda(element)
 { 
-  //var docs = document.getElementById("docs");
   document.getElementById("formBusqueda1").style.display = element.value == 0 ? 'block' : 'none';
   document.getElementById("formBusqueda2").style.display = element.value == 1 ? 'block' : 'none';
   document.getElementById("formBusqueda3").style.display = element.value == 2 ? 'block' : 'none';
@@ -119,127 +115,14 @@ formNewPaciente.addEventListener('submit', function(e){
         }
 		location.reload();		
 	});
-	// .then(function(data){ 
-	// 	console.log(data)
-	// 	Swal.fire({
-	// 		icon: 'success',
-	// 		title: 'Paciente registrado',
-	// 		showConfirmButton: false,
-	// 		timer: 2500
-	// 		})
-	// 	var divPrueba = document.getElementById('card')
-	// 	divPrueba.innerHTML = ''
 
-		
-
-	// });
 })
 //////////////////////////////////// todos los pacientes
-
-// var divPrueba = document.getElementById('contentTable')
-// divPrueba.innerHTML = ''
-
-// function allPacientes(urlAPI){
-// 	fetch(urlAPI)
-// 	.then(response => response.json())
-// 	.then(data => {
-// 		console.log(data)
-// 		for(var i = 0; i < data.length; i++){
-// 			//console.log(data.pacientes[i].nombres)
-// 			//console.log(data.pacientes[i].apellidos)
-			
-// 			var nombre = `
-// 			<tr>
-// 				<td scope="row" data-label="Id"> ${data[i].id} </td>
-// 				<td data-label="Nombre"> ${data[i].nombre}</td>
-// 				<td data-label="Apellidos">${data[i].apellido}</td>
-// 				<td data-label="Edad">${data[i].edad}</td>
-// 				<td data-label="Pasaporte">${data[i].pasaporte}</td>
-// 				<td data-label="Rut">${data[i].rut}</td>
-// 				<td data-label="Direccion">${data[i].direccion}</td>
-// 				<td data-label="Telefono">${data[i].telefono}</td>
-// 				<td data-label="Fecha de nacimiento">${data[i].birth_date}</td>
-// 				<td data-label="Sexo">${data[i].sexo}</td>
-// 				<td data-label="Sexo">${data[i].alergias}</td>
-// 				<td data-label="Sexo">${data[i].tipo_sangre}</td>
-// 				<td data-label="Acciones">
-// 					<button onclick="deletePaciente(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-// 						<i class="icon ion-md-trash "></i>
-// 					</button>
-// 					<button onclick="editPaciente(${data[i].id}, '${data[i].nombre}', '${data[i].apellido}',
-// 													'${data[i].rut}', '${data[i].pasaporte}', '${data[i].direccion}',
-// 													'${data[i].telefono}', '${data[i].sexo}', '${data[i].birth_date}')" 
-// 					class="btn btn-info btn-sm" title="Editar Paciente">
-// 						<i class="icon ion-md-create "></i>
-// 					</button>
-// 				</td>
-// 			</tr>
-			
-// 				`
-// 			//divPrueba.innerHTML += nombre
-// 			$( "#tablePacientes tbody" ).append(nombre);
-// 		}
-// 	// $(document).ready(function(){
-// 	// 	$('#tablePacientes').dataTable();
-// 	// });
-
-	
-// 	})
-// .catch(err => console.log(err))
-// }
-
-
 
 
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
-// function numberPages(){
-//     urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/pacientes';
-//     pagesHtml =  ''
-//     fetch(urlAPIPages)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){
-//         console.log(data)
-//         var botones =  data.numbers_entries/10
-//         botones = Math.ceil(botones)
-//         //console.log(botones)
-
-//         for(var i = 1; i < botones + 1; i++){
-//             pagesHtml += `
-//             <td>
-//                 <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
-//                     ${i}
-//                 </button>
-//             </td>
-//             `
-              
-//         }
-//         divpieTable.innerHTML = pagesHtml  
-//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-// 	});
-// }
-
-
-// function perPage(numPage){
-//     console.log(numPage)
-//     urlPacientesPagina = 'http://134.122.120.195/api/v1/pacientes/list/' + numPage;
-//     //console.log(urlEncuentrosPagina)
-//     var divPrueba = document.getElementById('contentTable')
-//     divPrueba.innerHTML = ''
-    
-//     fetch(urlPacientesPagina)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){ 
-//         console.log(data)
-//         allPacientes(urlPacientesPagina)
-//         numberPages()
-// 	});
-// }
 
 function deletePaciente(idPaciente){
 	const URLDeletePaciente = 'http://134.122.120.195/api/v1/paciente/' + idPaciente ;
@@ -284,8 +167,6 @@ function deletePaciente(idPaciente){
 function editPaciente(IdPaciente, rutPaciente, pasaportePaciente, direccionPaciente, telefonoPaciente, 
 	sexoPaciente, birthdatePaciente, nombrePaciente,apellidoPaciente, alergias, tipodesangre
 	){
-	// console.log(IdHospital,nombreMedicoEdit,apellidosMedicoEdit,telefonoMedicoEdit, 
-	// 	telefonoMedicoEdit, especialidadMedicoEdit, staffMedicoEdit)
 	
 	var IdPacienteEdit = document.getElementById('idEdit')
 	var rutPacienteEdit = document.getElementById('rutEdit')
@@ -461,7 +342,6 @@ divPrueba[0].addEventListener('scroll', () => {
 	
     var st = divPrueba[0].pageYOffset || divPrueba[0].scrollTop; 
     if (st > lastScrollTop){
-        // downscroll code
         if ( divPrueba[0].scrollTop + divPrueba[0].clientHeight >= divPrueba[0].scrollHeight) {
 			
 			page = page + 10;
@@ -538,7 +418,6 @@ const getData = async (page_no = 1) => {
     );
 	
 	scrolling = 'Normal'
-	//console.log(scrolling)
     populateUI(data);
   };
   
@@ -733,17 +612,3 @@ $(function(){
 	$('#apellidosEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ'); 
 	$('#telefonoEdit').validCampoFranz('1234567890');
 });
-
-// function check(e) {
-//     tecla = (document.all) ? e.keyCode : e.which;
-
-//     //Tecla de retroceso para borrar, siempre la permite
-//     if (tecla == 8) {
-//         return true;
-//     }
-
-//     // Patron de entrada, en este caso solo acepta numeros y letras
-//     patron = /[A-Za-z]/;
-//     tecla_final = String.fromCharCode(tecla);
-//     return patron.test(tecla_final);
-// }

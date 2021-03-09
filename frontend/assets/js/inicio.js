@@ -2,7 +2,6 @@ window.onload = (function(){
   	console.log(localStorage.getItem("Admin")); 
 	  localStorage.setItem("encuentrosPaciente", "False");
 	if(localStorage.getItem("Admin")== "true"){
-		//console.log("si es admin")
 		document.getElementById("moduloAdminMed").style.display = 'block'
 		document.getElementById("moduloAdminHosp").style.display = 'block'
 	}
@@ -39,7 +38,6 @@ function loadMedico(){
 
 function showDivBusqueda(element)
 { 
-  //var docs = document.getElementById("docs");
   document.getElementById("formBusqueda1").style.display = element.value == 0 ? 'block' : 'none';
   document.getElementById("formBusqueda2").style.display = element.value == 1 ? 'block' : 'none';
   document.getElementById("formBusqueda3").style.display = element.value == 2 ? 'block' : 'none';
@@ -162,19 +160,6 @@ $(function(){
 	$('#apellidos').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ'); 
 	$('#telefono').validCampoFranz('1234567890');
 }); 
-// function check(e) {
-//     tecla = (document.all) ? e.keyCode : e.which;
-
-//     //Tecla de retroceso para borrar, siempre la permite
-//     if (tecla == 8) {
-//         return true;
-//     }
-
-//     // Patron de entrada, en este caso solo acepta numeros y letras
-//     patron = /[A-Za-z]/;
-//     tecla_final = String.fromCharCode(tecla);
-//     return patron.test(tecla_final);
-// }
 
 
 

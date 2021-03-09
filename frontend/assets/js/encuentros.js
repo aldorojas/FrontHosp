@@ -57,7 +57,6 @@ function pulsar(e) {
 ////////////////////////////////////////////////////
 function showDivBusqueda(element)
 { 
-  //var docs = document.getElementById("docs");
   document.getElementById("formBusqueda1").style.display = element.value == 0 ? 'block' : 'none';
   document.getElementById("formBusqueda2").style.display = element.value == 1 ? 'block' : 'none';
   document.getElementById("formBusqueda3").style.display = element.value == 2 ? 'block' : 'none';
@@ -65,7 +64,6 @@ function showDivBusqueda(element)
 
 function showSelectIsapre(element)
 { 
-  //var docs = document.getElementById("docs");
   document.getElementById("divAseguradora").style.display = element.value == 'isapre' ? 'block' : 'none';
 }
 
@@ -184,7 +182,6 @@ const URLNewEncuentro = 'http://134.122.120.195/api/v1/encuentro';
 
 e.preventDefault()
 
-//console.log(base64ExamLab)
 //////////////////////////////////////
 var tipoEncuentro = document.getElementById('tipoEncuentro');
 var diagPrimario = document.getElementById('diagPrimario')
@@ -194,7 +191,7 @@ var notaClinica = document.getElementById('notaClinica')
 
 
 newNotaclinica = (notaClinica.value).replace(/[^a-zA-Z ]/g, "")
-//console.log(newNotaclinica)
+
 
 //////////////////////////////Protocolo operatorio/////////////////////////	
 var fechaRegistro = document.getElementById('fechaRegistro')
@@ -225,8 +222,7 @@ var aseguradora = document.getElementById('aseguradora')
 var seringreso = document.getElementById('seringreso')
 var seregreso = document.getElementById('seregreso')
 var Rutatra = document.getElementById('Rutatra')
-//var medicoresp = document.getElementById('medicoresp')
-//var especialidadresp = document.getElementById('especialidadresp')
+
 var diag_alta = document.getElementById('diagAlta')
 newdiag_alta= (diag_alta.value).replace(/[^a-zA-Z ]/g, "")
 
@@ -254,8 +250,7 @@ var lMargin1=24; //left margin in mm
 var rMargin1=24; //right margin in mm
 var pdfInMM1=180;  // width of A4 in mm
 var medicotratante = document.getElementById('doctorAlta')	
-//var especialidadanestesista1 = document.getElementById('especialidanestesista')
-//var descripcionpro = document.getElementById('descripcionpro')
+
 
 
 
@@ -510,7 +505,6 @@ const dataToSend = JSON.stringify(
 
 			doc.rect(20, 155, 170, 20 )
 			doc.setFontType("normal");
-			//doc.text('texto libre', 21, 160)
 			doc.text(lMargin, 160, doc.splitTextToSize(motivoalta.value, (pdfInMM-lMargin-rMargin)));
 	
 
@@ -522,7 +516,6 @@ const dataToSend = JSON.stringify(
 			doc.text('DIAGNOSTICO DE ALTA', 90, 190)
 			doc.rect(20, 195, 170, 20 )
 			doc.setFontType("normal");
-			//doc.text(diag_alta.value, 21, 160)
 			doc.text(lMargin, 200, doc.splitTextToSize(diag_alta.value, (pdfInMM-lMargin-rMargin)));
 
 			////////////////////////////
@@ -530,7 +523,6 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("bold");
 			doc.text('ANAMNESIS DE:', 21, 230)
 			doc.setFontType("normal");
-			//doc.text(anamnesis.value, 21, 195)
 			doc.text(lMargin, 241, doc.splitTextToSize(anamnesis.value, (pdfInMM-lMargin-rMargin)));
 
 
@@ -543,21 +535,18 @@ const dataToSend = JSON.stringify(
 			doc.setFontType("bold");
 			doc.text('ESTUDIOS Y ACCIONES:', 21, 20)
 			doc.setFontType("normal");
-			//doc.text(estudios_acciones.value, 21, 30)
 			doc.text(lMargin, 25, doc.splitTextToSize(estudios_acciones.value, (pdfInMM-lMargin-rMargin)));
 	
 			doc.rect(20, 65, 170, 40 )
 			doc.setFontType("bold");
 			doc.text('RESUMEN DE EVOLUCION:', 21, 70)
 			doc.setFontType("normal");
-			//oc.text(resumenEvolucion.value, 21, 80)
 			doc.text(lMargin, 75, doc.splitTextToSize(resumenEvolucion.value, (pdfInMM-lMargin-rMargin)));
 	
 			doc.rect(20, 115, 170, 40 )
 			doc.setFontType("bold");
 			doc.text('INDICACIONES DE ALTA:', 21, 120)
 			doc.setFontType("normal");
-			//doc.text(indicacionesAlta.value, 21, 130)
 			doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAlta.value, (pdfInMM-lMargin-rMargin)));
 
 			doc.save('Epicrisis.pdf')
@@ -604,16 +593,14 @@ const dataToSend = JSON.stringify(
 			doc2.text('Descripcion de procedimiento',20,150)
 			doc2.setFontType("normal");
 			doc2.text(lMargin1, 156, doc.splitTextToSize(descProcedimiento.value, (pdfInMM1-lMargin1-rMargin1)));
-			//doc2.setFontSize(11);
-			//doc2.text(descProcedimiento.value,20,160)
+
 	
 			doc2.setFontType("bold");
 			doc2.setFontSize(12);
 			doc2.text('Implantes',20,190)
 			doc2.setFontType("normal");
 			doc2.text(lMargin1, 196, doc.splitTextToSize(implantesRegistro.value, (pdfInMM1-lMargin1-rMargin1)));
-			//doc2.setFontSize(11);
-			//doc2.text(implantesRegistro.value,20,180)
+
 			
 			doc2.text('Especialidad:' + 'Columna',20,250)
 			doc2.text('Responsable:' + localStorage.getItem("nombreMedico") + ' ' + localStorage.getItem("apellidosMedico"),80,250)
@@ -630,8 +617,7 @@ const dataToSend = JSON.stringify(
 				headers: headers,
 				body: dataToSend
 			})
-			.then(function(response){ 
-				//return response.json(); 
+			.then(function(response){  
 				spinner.setAttribute('hidden', '');
 				Swal.fire({
 					icon: 'success',
@@ -662,7 +648,6 @@ const dataToSend = JSON.stringify(
 			body: dataToSend
 		})
 		.then(function(response){ 
-			//return response.json(); 
 			spinner.setAttribute('hidden', '');
 			Swal.fire({
 				icon: 'success',
@@ -675,7 +660,6 @@ const dataToSend = JSON.stringify(
 			localStorage.setItem("idPacienteEncuentros",localStorage.getItem("idPaciente") );
 			window.location.href = 'busquedas.html'
 			
-			//window.location.href = 'busquedas.html'
 		})
 		.catch(err => console.log(err))
 
@@ -683,11 +667,6 @@ const dataToSend = JSON.stringify(
 
 
 })
-
-// var myInput = document.getElementById('notaClinica');
-//   myInput.onpaste = function(e) {
-//     e.preventDefault();
-//   }
 
 
 

@@ -53,56 +53,22 @@ let cont = 1;
 btn_adelante2.addEventListener("click", function(e){
   e.preventDefault();
   movPag.style.marginLeft = "-25%";
-  // num[cont - 1].classList.add("active");
-  // progressText[cont - 1].classList.add("active");
-  // progressCheck[cont - 1].classList.add("active");
   cont += 1;
 });
 
-// btn_adelante3.addEventListener("click", function(e){
-//   e.preventDefault();
-//   movPag.style.marginLeft = "-50%";
-//   // num[cont - 1].classList.add("active");
-//   // progressText[cont - 1].classList.add("active");
-//   // progressCheck[cont - 1].classList.add("active");
-//   cont += 1;
-// });
-
-
-// btn_final.addEventListener("click", function(e){
-//   e.preventDefault();
-//   num[cont - 1].classList.add("active");
-//   progressText[cont - 1].classList.add("active");
-//   progressCheck[cont - 1].classList.add("active");
-//   cont += 1;
-//   alert("Aqui termina el proceso")
-// })
 
 
 btn_atras1.addEventListener("click", function(e){
   e.preventDefault();
   movPag.style.marginLeft = "0%";
-  // num[cont - 2].classList.remove("active");
-  // progressText[cont - 2].classList.remove("active");
-  // progressCheck[cont - 2].classList.remove("active");
   cont += 1;
 });
 
-// btn_atras2.addEventListener("click", function(e){
-//   e.preventDefault();
-//   movPag.style.marginLeft = "-25%";
-//   // num[cont - 2].classList.remove("active");
-//   // progressText[cont - 2].classList.remove("active");
-//   // progressCheck[cont - 2].classList.remove("active");
-//   cont -= 1;
-// });
 
-//// /////////////////////////
 //////////////codigo Select option
 
 function showDiv(element)
 { 
-  //var docs = document.getElementById("docs");
   document.getElementById("docs").style.display = element.value != "Cirugia" ? 'block' : 'none';
   document.getElementById("btns2").style.display = element.value == "Cirugia" ? 'block' : 'none';
   document.getElementById("btns3").style.display = element.value == "Cirugia" ? 'block' : 'none';

@@ -185,15 +185,8 @@
                                         <th scope="col">Audio</th>
                                         <th scope="col">Exam electroCardio</th>
                                         <th scope="col">Exam lab</th>
-                                        <th scope="col">Notas clinicas</th>
-                                        <!-- <th scope="col">Resultado Med I.A</th>
-                                        <th scope="col">Resultado de I.A</th>
-                                        <th scope="col">FeedBack Med I.A</th> -->
-                                        
-                                        <th scope="col">Nombre medico</th>
-                                        <!-- <th scope="col">Id Hospital</th> -->
-                                        <!-- <th scope="col">Eliminado</th> -->
-
+                                        <th scope="col">Notas clinicas</th>                        
+                                        <th scope="col">Nombre medico</th>                                  
                                         <th scope="col">Epicrisis </th>
                                         <th scope="col">Cirugia</th>
                                         <th scope="col">Acciones</th>
@@ -307,7 +300,7 @@
                   </div>                                                        
                  <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <!-- <button type="submit" id="guardarEpicrisis" class="btn btn-primary">Actualizar Epi</button> -->
+                   
                   </div>         
                              
                 </div>
@@ -396,7 +389,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                      <!-- <button type="submit" id="guardarProtOpera" class="btn btn-primary">Actualizar Cirugia</button> -->
+                    
                     </div>
                                  
                   </form>
@@ -427,8 +420,7 @@
                     <div class="campo">
                       <div class="label">Id paciente: </div>
                       <input type="text" class="form-control" id="idPacienteEdit" disabled>
-                    </div>
-                   
+                    </div>            
                     <div class="campo">
                       <div class="label">Tipo encuentro</div>
                       <select class="form-control" id="tipoEncuentroEdit" disabled>
@@ -524,12 +516,15 @@
                       <div class="label">Id Epicrisis: </div>
                       <input type="text" class="form-control" id="idEpicrisisEdit" disabled>
 
-                      <!-- <div class="label">Fecha Epicrisis: </div>
-                      <input type="date" class="form-control" id="fechaEpicrisisEdit" >
+                      <div class="campo" style="display:none;">
+                        <div class="label">Fecha Epicrisis: </div>
+                        <input type="date" class="form-control" id="fechaEpicrisisEdit" >
+                      </div>
 
-                      <div class="label">Hora Epicrisis: </div>
-                      <input type="time" class="form-control" id="horaEpicrisisEdit" > -->
-                                                    
+                      <div class="campo" style="display:none;">
+                        <div class="label">Hora Epicrisis: </div>
+                        <input type="time" class="form-control" id="horaEpicrisisEdit" >
+                      </div>                              
                       <div class="label">Fecha hospitalizacion: </div>
                       <input type="date" class="form-control" id="fechaHospitalizacionEdit">
                                               
@@ -550,11 +545,7 @@
                       <input type="text" class="form-control" id="seregresoEdit">
 
                       <div class="label">Aseguradora: </div>
-                    <input type="text" class="form-control" id="aseguradoraEdit">                          
-                  <!--  <select class="form-control" id="aseguradora">
-                      <option>isapre </option>
-                      <option>fonasa</option>
-                    </select> --> 
+                    <input type="text" class="form-control" id="aseguradoraEdit">                            
                       <div class="label">Doctor alta: </div>
                       <select class="form-control" id="doctorAlta">
                       </select>              
@@ -584,11 +575,15 @@
                       <div class="label">Id cirugia: </div>
                       <input type="text" class="form-control" id="idCirugia" disabled>
 
-                      <!-- <div class="label">Fecha prot Operatorio: </div>
-                      <input type="date" class="form-control" id="fechaProtOperaEdit">
+                      <div class="campo" style="display:none;"></div>
+                        <div class="label">Fecha prot Operatorio: </div>
+                        <input type="date" class="form-control" id="fechaProtOperaEdit">
+                      </div>
 
-                      <div class="label">Hora prot Operatorio: </div>
-                      <input type="time" class="form-control" id="horaProtOperaEdit" >                                                         -->
+                      <div class="campo" style="display:none;">
+                        <div class="label">Hora prot Operatorio: </div>
+                        <input type="time" class="form-control" id="horaProtOperaEdit" >  
+                      </div>                                                        
                 
                       <div class="label">Nombre cirujano 1: </div>
                       <input type="text" class="form-control" id="nombrecirujano1Edit"> 
@@ -642,11 +637,7 @@
         </div>
       </div>
   </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script> -->
+
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
@@ -665,15 +656,7 @@
         <script type="text/javascript" src="../assets/js/busquedasEncuentros.js" ></script>
         
 
-        <!-- <script src="//code.jquery.com/jquery.js"></script>
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script> -->
-
-        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
-        <!-- <script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script> -->
-        <!-- <script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-        
+      
        
 
 </body>

@@ -42,7 +42,6 @@ formLogin.addEventListener('submit', function(e){
 					showConfirmButton: false,
 					timer: 2500
 					})
-			//export { datosLogueado };
 			localStorage.setItem("Admin",data.Medico.admin);
 			localStorage.setItem("idMedico",data.Medico.id);
 			localStorage.setItem("nombreMedico",data.Medico.nombre);
@@ -51,8 +50,7 @@ formLogin.addEventListener('submit', function(e){
 			localStorage.setItem("especialidad",data.Medico.especialidad);
 
 			window.location.replace("http://134.122.120.195:8080/modulos/inicio.html");
-			//window.location.replace("http://127.0.0.1:5500/modulos/inicio.html");
-			//window.location.replace("http://127.0.0.1/frontend/modulos/inicio.html");
+			
 		}
 		else{
 			console.log(data.message)
@@ -72,26 +70,13 @@ formLogin.addEventListener('submit', function(e){
 				icon: 'error',
 				title: 'El medico no existe'
 				})
-
-			//$('#exampleModal').modal('show');	
 		}
 		
 	})
 	.catch(err => console.log(err))
-	// .catch(
-	// 	Swal.fire({
-	// 		icon: 'error',
-	// 		title: 'Oops...',
-	// 		text: 'Id de medico no valido!'
-	// 	  })
-	// )	
 
 })
 
 
-// window.onload = function() {
-// 	var getInput = prompt("Hey type something here: ");
-// 	localStorage.setItem("storageName",getInput);
-//  }
 
 

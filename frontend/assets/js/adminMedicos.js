@@ -4,9 +4,7 @@ var dropdown_edit = document.getElementById('IdHospitalEdit');
 dropdown.length = 0;
 
 let defaultOption = document.createElement('option');
-/* 	defaultOption.text = 'Elige ';
 
-	dropdown.add(defaultOption); */
 dropdown.selectedIndex = 0;
 
 const url = 'http://134.122.120.195/api/v1/hospitales/list_listbox';
@@ -29,7 +27,7 @@ request.onload = function () {
 			dropdown.add(option);
 		}
 	} else {
-		// Reached the server, but it returned an error
+		
 	}
 }
 request.onerror = function () {
@@ -54,10 +52,6 @@ window.onload = (function () {
 		loadMedico();
 	}
 
-	// numberPages();
-	// const URLTodosMedicos = 'http://134.122.120.195/api/v1/doctores/list/1';
-	// allMedicos(URLTodosMedicos)
-
 })
 
 /////////////////////////////////////////////
@@ -68,7 +62,6 @@ function loadMedico() {
 }
 
 function showDivBusquedaMedicos(element) {
-	//var docs = document.getElementById("docs");
 	document.getElementById("formBusqueda1Med").style.display = element.value == 0 ? 'block' : 'none';
 	document.getElementById("formBusqueda2Med").style.display = element.value == 1 ? 'block' : 'none';
 	document.getElementById("formBusqueda3Med").style.display = element.value == 2 ? 'block' : 'none';
@@ -230,183 +223,15 @@ formNewMedico.addEventListener('submit', function (e) {
 			}
 			location.reload();
 		});
-	// .then(function(data){ 
-	// 	console.log(data)
-	// 	Swal.fire({
-	// 		icon: 'success',
-	// 		title: 'Medico registrado',
-	// 		showConfirmButton: false,
-	// 		timer: 2500
-	// 		})
-	// 	var divPrueba = document.getElementById('card')
-	// 	divPrueba.innerHTML = ''
-	// });
 })
 
 
 ///////////////////////////////////////// Todos los medicos
-// var divPrueba = document.getElementById('contentTable')
-// divPrueba.innerHTML = ''
 
-// function allMedicos(URLAPI){
-// 	fetch(URLAPI)
-// 	.then(response => response.json())
-// 	.then(data => {
-
-// 		///console.log(data)
-// 		for(var i = 0; i < data.length; i++){
-
-// 			if ( data[i].becario == true ){
-// 				var switch1 = ' <div class="custom-control custom-switch">' +
-// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  	'</div>'
-// 				  //console.log(switch1);
-// 			}
-// 			else{
-// 				switch1 = ' <div class="custom-control custom-switch">' +
-// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  '</div>'
-// 			}
-
-// 			if ( data[i].interno == true ){
-// 				var switch2 = ' <div class="custom-control custom-switch">' +
-// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  	'</div>'
-// 				  //console.log(switch1);
-// 			}
-// 			else{
-// 				switch2 = ' <div class="custom-control custom-switch">' +
-// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  '</div>'
-// 			}
-
-// 			if ( data[i].activo == true ){
-// 				var switch3 = ' <div class="custom-control custom-switch">' +
-// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  	'</div>'
-// 				  //console.log(switch1);
-// 			}
-// 			else{
-// 				switch3 = ' <div class="custom-control custom-switch">' +
-// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  '</div>'
-// 			}
-
-// 			if ( data[i].admin == true ){
-// 				var switch4 = ' <div class="custom-control custom-switch">' +
-// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  	'</div>'
-// 				  //console.log(switch1);
-// 			}
-// 			else{
-// 				switch4 = ' <div class="custom-control custom-switch">' +
-// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			  '</div>'
-// 			}
-
-
-
-// 			var nombre = `
-// 			<tr>
-// 				<td scope="row" data-label="Id"> ${data[i].id} </td>
-// 				<td data-label="IdHospital"> ${data[i].id_hospital}</td>
-// 				<td data-label="Nombre">${data[i].nombre}</td>
-// 				<td data-label="Apellidos">${data[i].apellidos}</td>
-// 				<td data-label="Telefono">${data[i].telefono}</td>
-// 				<td data-label="Staff">${data[i].staff}</td>
-// 				<td data-label="Especialidad">${data[i].especialidad}</td>
-// 				<td data-label="Rut Medico">${data[i].rut_medico}</td>
-// 				<td data-label="Becario"> 
-// 					${switch1}
-// 				</td>
-// 				<td data-label="Interno">${switch2}</td>
-// 				<td data-label="Activo">${switch3}</td>
-// 				<td data-label="Admin">${switch4}</td>
-// 				<td data-label="Acciones">
-// 					<button onclick="deleteMedico(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-// 						<i class="icon ion-md-trash "></i>
-// 					</button>
-// 					<button onclick="editMedico(${data[i].id}, ${data[i].id_hospital},'${data[i].nombre}','${data[i].apellidos}',
-// 										'${data[i].telefono}', '${data[i].staff}', '${data[i].especialidad}', '${data[i].rut_medico}', '${data[i].becario}',
-// 										 '${data[i].interno}', '${data[i].activo}', '${data[i].admin}' )" 
-// 						class="btn btn-info btn-sm" title="Editar Paciente">
-// 						<i class="icon ion-md-create "></i>
-// 					</button>
-// 				</td>
-// 			</tr>
-// 				`
-// 			//divPrueba.innerHTML += nombre
-// 			$( "#tableMedicos tbody" ).append(nombre);
-
-// 		}
-
-// 		// $(document).ready(function(){
-//         //     $('#tableMedicos').dataTable({
-//         //         select: true
-//         //     });
-//         // });
-
-// 	})
-// // 	})
-//  	.catch(err => console.log(err))
-// }
 
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
-// function numberPages(){
-//     urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/medicos';
-//     pagesHtml =  ''
-//     fetch(urlAPIPages)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){
-//         console.log(data)
-//         var botones =  data.numbers_entries/10
-//         botones = Math.ceil(botones)
-//         //console.log(botones)
 
-//         for(var i = 1; i < botones + 1; i++){
-//             pagesHtml += `
-//             <td>
-//                 <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
-//                     ${i}
-//                 </button>
-//             </td>
-//             `
-
-//         }
-//         divpieTable.innerHTML = pagesHtml  
-//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-// 	});
-// }
-
-
-// function perPage(numPage){
-//     console.log(numPage)
-//     urlMedicosPagina = 'http://134.122.120.195/api/v1/doctores/list/' + numPage;
-//     //console.log(urlEncuentrosPagina)
-//     var divPrueba = document.getElementById('contentTable')
-//     divPrueba.innerHTML = ''
-
-//     fetch(urlMedicosPagina)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){ 
-//         console.log(data)
-//         allMedicos(urlMedicosPagina)
-//         numberPages()
-// 	});
-// }
 ///////////////////////////////////////////////////////////////////////////////////
 
 function deleteMedico(idMedico) {
@@ -528,7 +353,6 @@ formEditMedico.addEventListener('submit', function (e) {
 	var idMedico = document.getElementById('IdMedicoEdit')
 	var IdHospitalEdit_raw = document.getElementById('IdHospitalEdit').value
 	var IdHospitalEdit = IdHospitalEdit_raw.split("-")[0];
-	//var nombreHospitalEdit = document.getElementById('nombreHospitalEdit')
 	var nombreEditMedico = document.getElementById('nombreMedicoEdit')
 	var apellidosEditMedico = document.getElementById('apellidosMedicoEdit')
 	var telefonoEditMedico = document.getElementById('telefonoMedicoEdit')
@@ -654,7 +478,6 @@ var lastScrollTop = 0;
 divPrueba[0].addEventListener('scroll', () => {
 	var st = divPrueba[0].pageYOffset || divPrueba[0].scrollTop; 
     if (st > lastScrollTop){
-        // downscroll code
         if ( divPrueba[0].scrollTop + divPrueba[0].clientHeight >= divPrueba[0].scrollHeight) {
 
 			page = page + 10;
@@ -723,7 +546,6 @@ const getData = async (page_no = 1) => {
 		`http://134.122.120.195/api/v1/doctores/list/${page_no}`
 	);
 	scrolling = 'Normal'
-	//console.log(data)
 	if (data == '') {
 		const Toast = Swal.mixin({
 			toast: true,
@@ -906,74 +728,39 @@ const populateUI = data => {
 
 				container.innerHTML +=
 					`
-        <tr>
-			<td scope="row" data-label="Id"> ${id} </td>
-			<td data-label="NombreHospital"> ${hospital}</td>
-			<td data-label="Nombre">${nombre}</td>
-			<td data-label="Apellidos">${apellidos}</td>
-			<td data-label="Telefono">${telefono}</td>
-			<td data-label="Staff">${switch5}</td>
-			<td data-label="Especialidad">${especialidad}</td>
-			<td data-label="Rut Medico">${rut_medico}</td>
-			<td data-label="Becario"> 
-				${switch1}
-			</td>
-			<td data-label="Interno">${switch2}</td>
-			<td data-label="Activo">${switch3}</td>
-			<td data-label="Admin">${switch4}</td>
-			<td data-label="Acciones">
-				<button onclick="deleteMedico(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-					<i class="icon ion-md-trash "></i>
-				</button>
-				<button onclick="editMedico(${id},'${id_hospital}','${nombre}','${apellidos}',
-									'${telefono}', '${staff}', '${especialidad}', '${rut_medico}', '${becario}',
-										'${interno}', '${activo}', '${admin}' , '${hospital}')" 
-					class="btn btn-info btn-sm" title="Editar Paciente">
-					<i class="icon ion-md-create "></i>
-				</button>
-			</td>
+						<tr>
+							<td scope="row" data-label="Id"> ${id} </td>
+							<td data-label="NombreHospital"> ${hospital}</td>
+							<td data-label="Nombre">${nombre}</td>
+							<td data-label="Apellidos">${apellidos}</td>
+							<td data-label="Telefono">${telefono}</td>
+							<td data-label="Staff">${switch5}</td>
+							<td data-label="Especialidad">${especialidad}</td>
+							<td data-label="Rut Medico">${rut_medico}</td>
+							<td data-label="Becario"> 
+								${switch1}
+							</td>
+							<td data-label="Interno">${switch2}</td>
+							<td data-label="Activo">${switch3}</td>
+							<td data-label="Admin">${switch4}</td>
+							<td data-label="Acciones">
+								<button onclick="deleteMedico(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
+									<i class="icon ion-md-trash "></i>
+								</button>
+								<button onclick="editMedico(${id},'${id_hospital}','${nombre}','${apellidos}',
+													'${telefono}', '${staff}', '${especialidad}', '${rut_medico}', '${becario}',
+														'${interno}', '${activo}', '${admin}' , '${hospital}')" 
+									class="btn btn-info btn-sm" title="Editar Paciente">
+									<i class="icon ion-md-create "></i>
+								</button>
+							</td>
 
 
 
 
-        </tr>
-      
-      `
-				/* `
-				   <tr>
-					   <td scope="row" data-label="Id"> ${id} </td>
-					   <td data-label="IdHospital"> ${id_hospital}</td>
-					   <td data-label="NombreHospital"> ${hospital}</td>
-					   <td data-label="Nombre">${nombre}</td>
-					   <td data-label="Apellidos">${apellidos}</td>
-					   <td data-label="Telefono">${telefono}</td>
-					   <td data-label="Staff">${staff}</td>
-					   <td data-label="Especialidad">${especialidad}</td>
-					   <td data-label="Rut Medico">${rut_medico}</td>
-					   <td data-label="Becario"> 
-						   ${switch1}
-					   </td>
-					   <td data-label="Interno">${switch2}</td>
-					   <td data-label="Activo">${switch3}</td>
-					   <td data-label="Admin">${switch4}</td>
-					   <td data-label="Acciones">
-						   <button onclick="deleteMedico(${id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-							   <i class="icon ion-md-trash "></i>
-						   </button>
-						   <button onclick="editMedico(${id},'${id_hospital}','${hospital}','${nombre}','${apellidos}',
-											   '${telefono}', '${staff}', '${especialidad}', '${rut_medico}', '${becario}',
-												   '${interno}', '${activo}', '${admin}' )" 
-							   class="btn btn-info btn-sm" title="Editar Paciente">
-							   <i class="icon ion-md-create "></i>
-						   </button>
-					   </td>
-		   
-		   
-		   
-		   
-				   </tr>
-				 
-				 `*/
+						</tr>
+					
+					`
 			})
 
 }
@@ -1008,21 +795,6 @@ $(function () {
 	$('#telefonoMedicoEdit').validCampoFranz('1234567890');
 	$('#especialidadMedicoEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
 });
-
-// function check(e) {
-//     tecla = (document.all) ? e.keyCode : e.which;
-
-//     //Tecla de retroceso para borrar, siempre la permite
-//     if (tecla == 8) {
-//         return true;
-//     }
-
-//     // Patron de entrada, en este caso solo acepta numeros y letras
-//     patron = /[A-Za-z]/;
-//     tecla_final = String.fromCharCode(tecla);
-//     return patron.test(tecla_final);
-// }
-
 
 
 

@@ -78,7 +78,7 @@ function verEncuentros(idPaciente, nombrePaciente,apellidosPaciente,
     getDataEncuentros(1, idPaciente,nombrePaciente,apellidosPaciente,
         fechaNacimientoPaciente,sexoPaciente,edadPaciente,
         telefonoPaciente,rutPaciente,direccionPaciente )
-    //$('#modalEncuentros').modal('show');
+
     
 
 
@@ -470,9 +470,6 @@ const getDataEncuentros = async (page_no = 1, idPaciente, nombrePaciente,apellid
 	window.location.href = 'busquedas.html'
 
     
-
-    //populateEncuentros(data);
-    
 };
   
 const populateUI = data => {
@@ -558,7 +555,7 @@ const populateUI = data => {
             audio = ''
         }
 
-        ///////////////////////////////////////////////////////7
+        ///////////////////////////////////////////////////////
 
         if (ruta_exam_electro != '' ){
             var PDFElectro = 
@@ -570,7 +567,7 @@ const populateUI = data => {
             PDFElectro = ''
         }
         
-        ///////////////////////////////77
+        ///////////////////////////////
         if ( ruta_exam_lab != '' ){
             var PDFExamLab = 
             `<a href="http://134.122.120.195/files/${ruta_exam_lab}">` + 

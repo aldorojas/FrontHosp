@@ -13,11 +13,6 @@ window.onload = (function(){
 		loadMedico();
 	}
 
-
-	// numberPages();
-	// const URLTodosHospitales = 'http://134.122.120.195/api/v1/hospitales/list/1';
-	// allHospitales(URLTodosHospitales);
-
 }) 
 
 ////////////////////////////////////////////////
@@ -97,132 +92,14 @@ formNewHospital.addEventListener('submit', function(e){
         }
 		location.reload();		
 	});
-	// .then(function(data){ 
-	// 	console.log(data)
-	// 	Swal.fire({
-	// 		icon: 'success',
-	// 		title: 'Hospital registrado',
-	// 		showConfirmButton: false,
-	// 		timer: 2500
-	// 		})
-	// 	var divPrueba = document.getElementById('card')
-	// 	divPrueba.innerHTML = ''
-		
-
-	// });
 })
 
 
 ///////////////////////////////////////// Todos los hospitales
-// function allHospitales(URLAPI) {
-	
-// 	fetch(URLAPI)
-// 	.then(response => response.json())
-// 	.then(data => {
-// 		//console.log(data)
-// 		for(var i = 0; i < data.length; i++){
-			
-// 			if ( data[i].activo == true ){
-// 				var switch1 = ' <div class="custom-control custom-switch">' +
-// 					'<input type="checkbox" checked disabled class="custom-control-input" id="customSwitch1">' +
-// 					'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 				'</div>'
-// 				//console.log(switch1);
-// 			}
-// 			else{
-// 				switch1 = ' <div class="custom-control custom-switch">' +
-// 				'<input type="checkbox" disabled class="custom-control-input" id="customSwitch1">' +
-// 				'<label class="custom-control-label" for="customSwitch1"></label>' +
-// 			'</div>'
-// 			}
-
-
-// 			var nombre = `
-// 			<tr>
-// 				<td scope="row" data-label="Id"> ${data[i].id} </td>
-// 				<td data-label="Hospital"> ${data[i].hospital}</td>
-// 				<td data-label="Direccion">${data[i].direccion}</td>
-// 				<td data-label="Telefono">${data[i].telefono}</td>
-// 				<td data-label="Activo">${switch1}</td>
-// 				<td data-label="Acciones">
-// 					<button onclick="deleteHospital(${data[i].id})" class="btn btn-danger btn-sm" title="Eliminar Paciente">
-// 						<i class="icon ion-md-trash "></i>
-// 					</button>
-// 					<button onclick="editHospital(${data[i].id}, '${data[i].hospital}', '${data[i].direccion}',
-// 													'${data[i].telefono}', '${data[i].activo}' )" 
-// 						class="btn btn-info btn-sm" title="Editar Paciente">
-// 						<i class="icon ion-md-create "></i>
-// 					</button>
-// 				</td>
-// 			</tr>
-// 				`
-// 			//divPrueba.innerHTML += nombre
-// 			$( "#tableHospitales tbody" ).append(nombre);
-// 		}
-// 		// $(document).ready(function(){
-// 		//     $('#tableHospitales').dataTable({
-// 		//         select: true
-// 		//     });
-// 		// });
-
-// 	})	
-// 	// 	})
-// 	.catch(err => console.log(err))
-// }
-
-
 
 
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
-
-// function numberPages(){
-//     urlAPIPages = 'http://134.122.120.195/api/v1/list_entries/hospitales';
-//     pagesHtml =  ''
-//     fetch(urlAPIPages)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){
-//         console.log(data)
-//         var botones =  data.numbers_entries/10
-//         botones = Math.ceil(botones)
-//         //console.log(botones)
-
-//         for(var i = 1; i < botones + 1; i++){
-//             pagesHtml += `
-//             <td>
-//                 <button onclick="perPage(${i*10 - 9})" class="btn btn-danger btn-sm">
-//                     ${i}
-//                 </button>
-//             </td>
-//             `
-              
-//         }
-//         divpieTable.innerHTML = pagesHtml  
-//         //$( "#tableEncuentros tfoot tr" ).append(pagesHtml);
-// 	});
-// }
-
-
-
-// function perPage(numPage){
-//     console.log(numPage)
-//     urlHospitalesPagina = 'http://134.122.120.195/api/v1/hospitales/list/' + numPage;
-//     //console.log(urlEncuentrosPagina)
-//     var divPrueba = document.getElementById('contentTable')
-//     divPrueba.innerHTML = ''
-    
-//     fetch(urlHospitalesPagina)
-// 	.then(function(response){ 
-// 		return response.json(); 
-// 	})
-// 	.then(function(data){ 
-//         console.log(data)
-//         allHospitales(urlHospitalesPagina)
-//         numberPages()
-// 	});
-// }
 
 
 function defineState_active(){
@@ -268,7 +145,7 @@ function deleteHospital(idHospital){
 	})
 }
 
-//////////////////////////////////////////7
+
 ////////Editar hospital  /////////////////////////////
 function editHospital(IdHospital,nombreHospital,direccionHospital,
 	telefonoHospital, activoHospital
@@ -289,7 +166,6 @@ function editHospital(IdHospital,nombreHospital,direccionHospital,
 	} else{
 		document.getElementById('activoHospitalEdit').options.selectedIndex = 1;
 	}
-	//activoHospitalEdit.value = "activoHospital";
 	$('#editarHospital').modal('show');
 
 }
@@ -382,7 +258,6 @@ divPrueba[0].addEventListener('scroll', () => {
    
 	var st = divPrueba[0].pageYOffset || divPrueba[0].scrollTop; 
     if (st > lastScrollTop){
-        // downscroll code
         if ( divPrueba[0].scrollTop + divPrueba[0].clientHeight >= divPrueba[0].scrollHeight) {
 			page = page + 10;
 			console.log(page)
@@ -550,25 +425,11 @@ function exit(){
 }
 $(function(){
 	$('#nombreHospital').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
-	$('#direccionHospital').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
 	$('#telefonoHospital').validCampoFranz('1234567890'); 
 	$('#nombreHospitalEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
-	$('#direccionHospitalEdit').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
 	$('#telefonoHospitalEdit').validCampoFranz('1234567890'); 
 });
-// function check(e) {
-//     tecla = (document.all) ? e.keyCode : e.which;
 
-//     //Tecla de retroceso para borrar, siempre la permite
-//     if (tecla == 8) {
-//         return true;
-//     }
-
-//     // Patron de entrada, en este caso solo acepta numeros y letras
-//     patron = /[A-Za-z]/;
-//     tecla_final = String.fromCharCode(tecla);
-//     return patron.test(tecla_final);
-// }
 
 
 
