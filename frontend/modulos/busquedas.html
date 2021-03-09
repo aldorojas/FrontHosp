@@ -50,12 +50,12 @@
             <div class="sidebar-brand">
               <h3>Bienvenido</h3></div></div>
             <li><a href="inicio.html">Inicio</a></li>
-            <li class="dropdown">
+            <li class="dropdown" id="moduloAdminMed">
             <a href="#works" class="dropdown-toggle"  data-toggle="dropdown">Administracion <span class="caret"></span></a>
           <ul class="dropdown-menu animated fadeInLeft" role="menu">
           <div class="dropdown-header">Administracion de:</div>
             <li><a href="AdminPacientes.html">Pacientes</a></li>
-            <li id="moduloAdminMed"><a href="AdminMedicos.html">Medicos</a></li>
+            <li ><a href="AdminMedicos.html">Medicos</a></li>
             <li id="moduloAdminHosp"><a href="AdminHospitales.html">Hospitales</a></li>
           </ul>
           </li>
@@ -460,7 +460,7 @@
                     </div>
                     <div>
                       <div id="labelNotaClinica">Nota clinica:</div>
-                      <textarea class="form-control" id="notaClinicaEdit" rows="3" onkeydown="pulsar(event)"></textarea>
+                      <textarea class="form-control" id="notaClinicaEdit" rows="3" ></textarea>
                     </div>
                     <div id="camposDifCirugia">
                       <div id="docsModal">
@@ -545,31 +545,34 @@
                       <input type="text" class="form-control" id="seregresoEdit">
 
                       <div class="label">Aseguradora: </div>
-                    <input type="text" class="form-control" id="aseguradoraEdit">                            
+                      <input type="text" class="form-control" id="aseguradoraEdit">                            
                       <div class="label">Doctor alta: </div>
                       <select class="form-control" id="doctorAlta">
                       </select>              
                       
                       <div class="label">Motivo Alta: </div>                                      
-                      <textarea class="form-control" id="motivoaltaEdit" rows="4" onkeyup="charLimit(this, 400);" onkeydown="pulsar(event)" required> </textarea>
+                      <textarea class="form-control" id="motivoaltaEdit" rows="4" onkeyup="charLimit(this, 400);"  required> </textarea>
                                 
                       <div class="label">Diagnostico alta: </div>                 
-                      <textarea class="form-control" id="diagAltaEdit" rows="4" onkeyup="charLimit(this, 400);" onkeydown="pulsar(event)"> </textarea>
+                      <textarea class="form-control" id="diagAltaEdit" rows="4" onkeyup="charLimit(this, 400);" > </textarea>
                      
                       <div class="label">Anamnesis: </div>                     
-                      <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit(this, 900);" onkeydown="pulsar(event)"> </textarea>
+                      <textarea class="form-control" id="anamnesisEdit" rows="4" onkeyup="charLimit(this, 900);" > </textarea>
                                 
                       <div class="label">Estudios acciones: </div>
-                      <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
+                      <textarea class="form-control" id="estudiosAccionesEdit" rows="4" onkeyup="charLimit(this, 800);" > </textarea>
 
                       <div class="label">Indicaciones alta: </div>                       
-                      <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>                 
+                      <textarea class="form-control" id="indicacionesAltaEdit" rows="4" onkeyup="charLimit(this, 800);" > </textarea>                 
                     
                       <div class="label">Resumen evolucion</div>
-                      <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
+                      <textarea class="form-control" id="resumenEvolucionEdit" rows="4" onkeyup="charLimit(this, 800);" > </textarea>
                       <br>
                       <!--/////////////////////////////////////////////////////////////////////////////-->                                                             
                       <!-- --------------------------------------- -->
+                    
+
+                   
                       <h4>Protocolo operatorio</h4>
                       <hr>
                       <div class="label">Id cirugia: </div>
@@ -578,7 +581,7 @@
                       <div class="campo" style="display:none;"></div>
                         <div class="label">Fecha prot Operatorio: </div>
                         <input type="date" class="form-control" id="fechaProtOperaEdit">
-                      </div>
+                    
 
                       <div class="campo" style="display:none;">
                         <div class="label">Hora prot Operatorio: </div>
@@ -613,13 +616,14 @@
                       <input type="text" class="form-control" id="rutanestesistaEdit">
 
                       <div class="label">Implantes:</div>
-                      <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit(this, 250);" onkeydown="pulsar(event)"> </textarea>
+                      <textarea class="form-control" id="implantesProtEdit" rows="4" onkeyup="charLimit(this, 250);" > </textarea>
                       
                       <div class="label">Descripcion:</div>
-                      <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit(this, 485);" onkeydown="pulsar(event)"> </textarea>   
-                              
-
+                      <textarea class="form-control" id="descProtOperaEdit" rows="4" onkeyup="charLimit(this, 485);" > </textarea>   
+                          
                     </div>
+                          
+
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

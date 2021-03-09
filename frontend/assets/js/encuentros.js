@@ -10,7 +10,7 @@ window.onload = (function(){
 	}
 
 	var titulo = document.getElementById("nombrePaciente")
-	div = '<h1>' +  localStorage.getItem("nombrePaciente") + '</h1> '
+	div = '<h2>' +  localStorage.getItem("nombrePaciente") + ' ' + localStorage.getItem("apellidosPaciente") + '</h2> '
 	titulo.innerHTML += div
 
 

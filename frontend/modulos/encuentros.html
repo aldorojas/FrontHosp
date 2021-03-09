@@ -47,12 +47,12 @@
           <div class="sidebar-brand">
             <h3>Bienvenido</h3></div></div>
           <li><a href="inicio.html">Inicio</a></li>
-          <li class="dropdown">
+          <li class="dropdown" id="moduloAdminMed">
           <a href="#works" class="dropdown-toggle"  data-toggle="dropdown">Administracion <span class="caret"></span></a>
         <ul class="dropdown-menu animated fadeInLeft" role="menu">
          <div class="dropdown-header">Administracion de:</div>
           <li ><a href="AdminPacientes.html">Pacientes</a></li>
-          <li id="moduloAdminMed"><a href="AdminMedicos.html">Medicos</a></li>
+          <li ><a href="AdminMedicos.html">Medicos</a></li>
           <li id="moduloAdminHosp"><a href="AdminHospitales.html">Hospitales</a></li>
          </ul>
          </li>
@@ -215,7 +215,7 @@
                                     <div class="modal-body">
                                       <div class="form-group col-md-12">
                                           <div id="labelNotaClinica">Nota clinica</div>
-                                          <textarea class="form-control" id="notaClinica" rows="6" onkeydown="pulsar(event)" onkeyup="charLimit(this, 485);" ></textarea>
+                                          <textarea class="form-control" id="notaClinica" rows="6"  onkeyup="charLimit(this, 485);" ></textarea>
                                         </div>                             
                                       <!-- <div class="label">Implantes: </div>
                                       <input type="text" class="form-control" id="implantesRegistro" > -->                                                                                                              
@@ -295,11 +295,11 @@
                                       <div class="form-row">
                                         <div class="form-group col-md-6">
                                           <div class="label">Descripcion del procedimiento: </div>                                        
-                                          <textarea class="form-control" id="descProcedimiento" rows="4" onkeyup="charLimit(this, 485);" onkeydown="pulsar(event)"> </textarea>
+                                          <textarea class="form-control" id="descProcedimiento" rows="4" onkeyup="charLimit(this, 485);" > </textarea>
                                         </div>
                                         <div class="form-group col-md-6">
                                           <div class="label">Implantes: </div>                                         
-                                          <textarea class="form-control" id="implantesRegistro" rows="4" onkeyup="charLimit(this, 250);" onkeydown="pulsar(event)"> </textarea>
+                                          <textarea class="form-control" id="implantesRegistro" rows="4" onkeyup="charLimit(this, 250);" > </textarea>
                                         </div>
                                       </div>                                    
                                       <!-- <div class="label">Implantes: </div>
@@ -396,31 +396,31 @@
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <div class="label">Motivo Alta: </div>                                      
-                                            <textarea class="form-control" id="motivoalta" rows="4" onkeyup="charLimit(this, 400);" onkeydown="pulsar(event)" required> </textarea>
+                                            <textarea class="form-control" id="motivoalta" rows="4" onkeyup="charLimit(this, 400);"  required> </textarea>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <div class="label">Anamnesis:</div>                     
-                                            <textarea class="form-control" id="anamnesis" rows="4" onkeyup="charLimit(this, 900);" onkeydown="pulsar(event)"> </textarea>
+                                            <textarea class="form-control" id="anamnesis" rows="4" onkeyup="charLimit(this, 900);" > </textarea>
                                           </div>                                          
                                         </div>                                          
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <div class="label">Diagnostico alta: </div>                                      
-                                            <textarea class="form-control" id="diagAlta" rows="4" onkeyup="charLimit(this, 400);" onkeydown="pulsar(event)"> </textarea>
+                                            <textarea class="form-control" id="diagAlta" rows="4" onkeyup="charLimit(this, 400);" > </textarea>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <div class="label">Resumen evolucion:</div>                                           
-                                            <textarea class="form-control" id="resumenEvolucion" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
+                                            <textarea class="form-control" id="resumenEvolucion" rows="4" onkeyup="charLimit(this, 800);" > </textarea>
                                           </div>                                          
                                         </div>      
                                         <div class="form-row">                                      
                                           <div class="form-group col-md-6">
                                             <div class="label">Estudios acciones: </div>                                            
-                                            <textarea class="form-control" id="estudiosAcciones" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
+                                            <textarea class="form-control" id="estudiosAcciones" rows="4" onkeyup="charLimit(this, 800);" > </textarea>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <div class="label">Indicaciones alta: </div>                                            
-                                            <textarea class="form-control" id="indicacionesAlta" rows="4" onkeyup="charLimit(this, 800);" onkeydown="pulsar(event)"> </textarea>
+                                            <textarea class="form-control" id="indicacionesAlta" rows="4" onkeyup="charLimit(this, 800);" > </textarea>
                                           </div>
                                         </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                                                               

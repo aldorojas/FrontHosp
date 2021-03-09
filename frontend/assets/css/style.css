@@ -483,6 +483,10 @@ form .pagina .btns button.adelante{
   display: none;
 }
 
+#moduloAdmin{
+  display: none;
+}
+
 #moduloAdminHosp{
   display: none;
 }
