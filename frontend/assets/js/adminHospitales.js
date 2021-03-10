@@ -1,3 +1,7 @@
+
+////////////////// Al cargar la pagina /////////////////
+/// Validacion de modulo Admin y login
+
 window.onload = (function(){
 	console.log(localStorage.getItem("Admin")); 
 	localStorage.setItem("encuentrosPaciente", "False");
@@ -15,21 +19,21 @@ window.onload = (function(){
 
 }) 
 
-////////////////////////////////////////////////
+///////////////// Mostrar Nombre del modico logueado	///////////////////////////////
 
 function loadMedico(){
 	var medico = localStorage.getItem("nombreMedico")
 	document.getElementById("navbarDropdown").innerHTML += medico
 }
 
-
+//////////////////////// mostrar form de busqueda Hospitales /////////////////////////
 function showDivBusquedaHospitales (element)
 { 
   document.getElementById("formBusqueda1Hosp").style.display = element.value == 1 ? 'block' : 'none';
 }
 
+//////////////////  Animacion del toggle
 const opcion = document.querySelectorAll('.opcion');
-
 opcion.forEach(e => {
 
 	e.addEventListener('click', function(e){
@@ -40,7 +44,7 @@ opcion.forEach(e => {
 })
 
 
-////////////////////////////// nuevo hospital
+////////////////////////////// Form de nuevo hospital /////////////////////////////
 
 var formNewHospital = document.getElementById('formNewHospital');
 formNewHospital.addEventListener('submit', function(e){
@@ -95,17 +99,10 @@ formNewHospital.addEventListener('submit', function(e){
 })
 
 
-///////////////////////////////////////// Todos los hospitales
-
-
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
-
-function defineState_active(){
-
-}
-
+////////////////////////// funcion para borrar hositales ///////////////////
 function deleteHospital(idHospital){
 	const URLDeleteHospital = 'http://134.122.120.195/api/v1/hospital/' + idHospital ;
 
@@ -146,7 +143,7 @@ function deleteHospital(idHospital){
 }
 
 
-////////Editar hospital  /////////////////////////////
+////////Mostrar modal precargado para editar hospital  /////////////////////////////
 function editHospital(IdHospital,nombreHospital,direccionHospital,
 	telefonoHospital, activoHospital
 	){
@@ -170,7 +167,7 @@ function editHospital(IdHospital,nombreHospital,direccionHospital,
 
 }
 
-/////////////   modal editar Hospitales //////////////////////////////
+/////////////   Form para editar Hospitales //////////////////////////////
 var formEditHospital = document.getElementById('formEditHospital');
 formEditHospital.addEventListener('submit', function(e){
 
@@ -248,11 +245,13 @@ formSearchNombre.addEventListener("submit", function(event){
   });
 
 
-
+/////////// al cargar el archivo, mostrar todos los hospitales
 document.addEventListener("DOMContentLoaded", () => {
     getData(1);
-  });
+});
 
+
+///////////////  busueda con scroll  ///////////////////////
 var lastScrollTop = 0;
 divPrueba[0].addEventListener('scroll', () => {
    
@@ -262,15 +261,14 @@ divPrueba[0].addEventListener('scroll', () => {
 			page = page + 10;
 			console.log(page)
 
-			if(scrolling == 'Normal'){
-				console.log('Buscando todos')
+			if(scrolling == 'Normal'){          //////////////filtrado de busqueda general
 				loader.classList.remove('hidden');
 				setTimeout(() => {
 					loader.classList.add('hidden');
 					getData(page);
 				}, 2000);
 			}
-			if(scrolling == 'SearchNombre'){
+			if(scrolling == 'SearchNombre'){ 	//////////////filtrado de busqueda por nombre
 				loader.classList.remove('hidden');
 				setTimeout(() => {
 					loader.classList.add('hidden');
