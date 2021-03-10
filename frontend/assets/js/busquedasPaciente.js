@@ -1,4 +1,5 @@
-
+////////////////// Al cargar la pagina /////////////////
+/// Validacion de modulo Admin y login
 
 window.onload = (function(){
     console.log(localStorage.getItem("Admin")); 
@@ -20,7 +21,7 @@ window.onload = (function(){
 })
 
 
-//////////////////////////
+///////////////// Mostrar Nombre del modico logueado	///////////////////////////////
 
 function loadMedico(){
 	var medico = localStorage.getItem("nombreMedico")
@@ -28,7 +29,8 @@ function loadMedico(){
 }
 
 
-//////////// Modulos admin
+
+///////////////////////////////  Animacion del toggle /////////////////////////////////
 const opcion = document.querySelectorAll('.opcion');
 opcion.forEach(e => {
 
@@ -39,7 +41,7 @@ opcion.forEach(e => {
 	})
 })
 
-
+//////////////////////// mostrar formulario de busqueda Paciente /////////////////////////
 function showDivBusqueda(element)
 { 
   //var docs = document.getElementById("docs");
@@ -86,6 +88,7 @@ function verEncuentros(idPaciente, nombrePaciente,apellidosPaciente,
 
 
   
+//////////////////// Mostrar todos los pacientes ///////////////////////////////////
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
@@ -239,7 +242,7 @@ const httpRequestWrapper = (method, URL) => {
     });
   };
 
-/////////////////////////////////////////////////7777
+///////////////  busueda con scroll  ///////////////////////
 
 divTest.addEventListener('scroll', () => {
 	if (divTest.scrollTop + divTest.clientHeight >= divTest.scrollHeight) {
@@ -288,7 +291,7 @@ divTest.addEventListener('scroll', () => {
         }
 	}
 });
-////////////////////////////////////////////////////////
+///////////////  busueda con scroll  ///////////////////////
 var lastScrollTop = 0;
 divScrollModal[0].addEventListener('scroll', () => {
     var st = divScrollModal[0].pageYOffset || divScrollModal[0].scrollTop; 
@@ -310,7 +313,7 @@ divScrollModal[0].addEventListener('scroll', () => {
 
 
 
-//////////////////////////////////////
+//////////////////////////////////////peticiones de pacientes por nombre
 const getDataNombre = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -338,7 +341,7 @@ const getDataNombre = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
 };
-///////////////////////////////////////////////
+///////////////////////////////////////////////peticiones de pacientes por rut
 const getDataRut = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -366,7 +369,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
 };
-///////////////////////////////////////////////////
+///////////////////////////////////////////////////peticiones de pacientes por pasaporte
 const getDataPasaporte = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -394,7 +397,7 @@ const getDataPasaporte = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
 };
-///////////////////////////////////////////////////77
+//////////////////////////////////////////////////peticiones de pacientes por birth_date 
 const getDataBirthday = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -422,7 +425,7 @@ const getDataBirthday = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
 };
-//////////////////////////////////////
+//////////////////////////////////////peticion de todos los pacientes registrados
 const getDataTodos = async (page_no = 1,) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -450,7 +453,7 @@ const getDataTodos = async (page_no = 1,) => {
         populateUI(data);
     }
 };
-//////////////////////////////////////////////////////
+/////////////////////////////////
 const getDataEncuentros = async (page_no = 1, idPaciente, nombrePaciente,apellidosPaciente,
     fechaNacimientoPaciente,sexoPaciente,edadPaciente,
     telefonoPaciente,rutPaciente,direccionPaciente) => {
@@ -471,6 +474,8 @@ const getDataEncuentros = async (page_no = 1, idPaciente, nombrePaciente,apellid
 
     
 };
+
+/////////////////////////////función para llenado de tabla paciente Correspondiente a la vista busquedasPacientes.html
   
 const populateUI = data => {
     data && 
@@ -533,7 +538,7 @@ const populateUI = data => {
 
 
 
-
+////////////función para llenado de tabla encuentro Correspondiente a la vista busquedasPaciente.html
   const populateEncuentros = data => {
     data && 
     data.length && 
@@ -648,26 +653,13 @@ const populateUI = data => {
   
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  //////////////////cierre de sesion/////////////////
   function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
 
-
+/////////////////Validar caracteres especiales /////////////////////////
 function check(e) {
     tecla = (document.all) ? e.keyCode : e.which;
 

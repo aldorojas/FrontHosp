@@ -1,3 +1,5 @@
+////////////////// Al cargar la pagina /////////////////
+/// Validacion de modulo Admin y login
 window.onload = (function(){
 
     if (localStorage.getItem("nombreMedico") === null) {
@@ -8,6 +10,7 @@ window.onload = (function(){
     }
 
     const urlAPI = 'http://134.122.120.195/api/v1/doctors_list';
+    //Llenado de selectbox con nombres de doctores
 	fetch(urlAPI)
 	.then(response => response.json())
 	.then(data => {
@@ -46,7 +49,7 @@ function pulsar(e) {
   }
         
 
-//////////////////LoadModal////////////////////////////////////////
+////////////////////////// Mostrar modal epicrisis  /////////////////////////////
 
 function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizacion,fechaEgreso,
     diasHospitalizado,Rutatra,seregreso,seringreso,aseguradora,anamnesis,diagAlta,
@@ -88,6 +91,7 @@ function loadModalEpi(idEpicrisis,fechaEpicrisis,horaEpicrisis,fechaHospitalizac
 
 }
 
+////////////////////////// Mostrar modal protocolo  /////////////////////////////
 function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, nombrecirujano1, rutcirujano1, 
         especialidadcirujano1, nombrecirujano2, rutcirujano2,especialidadcirujano2, nombreanestesista, 
         rutanestesista, descProcedimiento, implantes, descripcion){
@@ -125,6 +129,7 @@ function loadModalCirugia(idCirugia, dateResgistered, timeProtocol, nombreciruja
 
 }
 
+////////////////////////// Mostrar modal precargado para editar encuentro, protocolo y epicrisis  /////////////////////////////
 
 var BtnGuardarProtOpera = document.getElementById('nuevoPDf');
 
@@ -300,7 +305,7 @@ function getAudioBase64(files, onLoadCallback){
 }
 
 
-
+/////////////////// Form para editar encuentro  //////////////////////
 
 var formEditEncuentro = document.getElementById('formEditEncuentro');
 
@@ -535,12 +540,11 @@ formEditEncuentro.addEventListener('submit',async function(e){
 })
 
 
-
-
+/////////////////// Button para editar los pdfs  //////////////////////
 
 BtnGuardarProtOpera.addEventListener('click', function(e){
     e.preventDefault()
-    /////////////////////////////////////
+
     var idEncuentroEdit = document.getElementById('idEncuentroEdit')	
     var idPacienteEdit = document.getElementById('idPacienteEdit')	
     var fechaEncuentroEdit = document.getElementById('fechaEncuentroEdit')	
@@ -606,7 +610,7 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         aseguradoraFinal = 'fonosa'
     }
 
-    ///////////////////////////////////
+        ///////////////////////PDF Epicrisis//////////////////////////
 
         var doc = new jsPDF()
         doc.setFontType("bold");
@@ -734,15 +738,14 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.setFontType("normal");
         doc.text(lMargin, 200, doc.splitTextToSize(diagAltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
-        ////////////////////////////
+        //////////////////////////// ANAMNESIS
         doc.rect(20, 225, 170, 50 )
         doc.setFontType("bold");
         doc.text('ANAMNESIS DE:', 21, 230)
         doc.setFontType("normal");
         doc.text(lMargin, 241, doc.splitTextToSize(anamnesisEdit.value, (pdfInMM-lMargin-rMargin)));
 
-        //////////////////////////// Pagina 2
-        ///////////////////////////////
+        //////////////////////////// Pagina 2 /////////////////////////7
         doc.addPage();
 
         doc.rect(20, 15, 170, 40 )
@@ -764,9 +767,7 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
         doc.text(lMargin, 125, doc.splitTextToSize(indicacionesAltaEdit.value, (pdfInMM-lMargin-rMargin)));
 
         doc.save('Epicrisis.pdf')
-        
-            
-    
+                    
     
         ///////////////////////PDF Protocolo operatorio//////////////////////////
         setTimeout(5000);
@@ -822,6 +823,7 @@ BtnGuardarProtOpera.addEventListener('click', function(e){
 
 
 
+////////////////////////// funcion para borrar encuentro ///////////////////
 function deleteEncuentro(idEncuentro){
 
     const URLDeleteEncuentro = 'http://134.122.120.195/api/v1/delete/' + idEncuentro ;
@@ -862,7 +864,7 @@ function deleteEncuentro(idEncuentro){
 }
 
 
-
+//////////////////// Mostrar todos los encuentros ///////////////////////////////////
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
@@ -873,6 +875,8 @@ function formatCourseDate(date) {
     const dateObj = new Date(date + 'T00:00:00');
     return new Intl.DateTimeFormat('en-US').format(dateObj);
 }
+
+
 /////////////////////////// Busqueda de encuentro por Fecha ////////////
 let page = 1;
 var container = document.getElementById('resultadosEncuentros');
@@ -951,7 +955,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-
+///////////////  busueda con scroll  ///////////////////////
 
 var lastScrollTop = 0;
     
@@ -1015,7 +1019,7 @@ const httpRequestWrapper = (method, URL) => {
     });
   };
 
-//////////////////////////////////////
+//////////////////////////////////////peticiones de encuentros por eliminado 
 
 const getData = async (page_no = 1) => {
     const data = await httpRequestWrapper(
@@ -1057,6 +1061,8 @@ const getData = async (page_no = 1) => {
 
   };
 
+
+///////////////////////peticiones de encuentros por fecha
 const getDataFecha = async (page_no = 1, paramSearch,idPaciente) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -1090,6 +1096,8 @@ const getDataFecha = async (page_no = 1, paramSearch,idPaciente) => {
         }
 	}
 };
+
+//////////////////////////////////peticiones de encuentros por tipo 
 
 const getDataTipoEncuentro = async (page_no = 1, paramSearch, idPaciente) => {
     const data = await httpRequestWrapper(
@@ -1125,6 +1133,7 @@ const getDataTipoEncuentro = async (page_no = 1, paramSearch, idPaciente) => {
 	}
 };
 
+/////////////////////////////peticiones de encuentros por paciente 
 var divCrearEncuentro = document.getElementById('divCrearEncuentro')
 
 const getDataPorPaciente = async (page_no = 1, idPaciente) => {
@@ -1179,7 +1188,7 @@ function toEncuentros(){
     window.location.href = 'encuentros.html'
 }
 
-    
+    ////////////función para llenado de tabla encuentros Correspondiente a la vista busquedas.html
   const populateUI = data => {
     data && 
     data.length && 
@@ -1329,7 +1338,7 @@ function toEncuentros(){
       `
       
     })
-     ////////////////////////////
+     ///////////////////// funcion de mostrar mas/menos notas clinicas /////////////// 
 
      $(document).ready(function(){
         $(".content").each(function(){
@@ -1353,7 +1362,7 @@ function toEncuentros(){
   }
 
 
-
+//////////////////  Animacion del toggle
 const opcion = document.querySelectorAll('.opcion');
 opcion.forEach(e => {
 	e.addEventListener('click', function(e){
@@ -1363,12 +1372,14 @@ opcion.forEach(e => {
 	})
 })
 
+/////////////////////// esconde o muestra el formulario de búsqueda. /////////////////////////////
 function showDivBusqueda(element)
 { 
   document.getElementById("formBusqueda1").style.display = element.value == 1 ? 'block' : 'none';
   document.getElementById("formBusqueda2").style.display = element.value == 2 ? 'block' : 'none';
 }
 
+//////////////////cierre de sesion/////////////////
 function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'

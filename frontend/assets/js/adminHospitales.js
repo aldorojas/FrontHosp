@@ -98,9 +98,11 @@ formNewHospital.addEventListener('submit', function(e){
 	});
 })
 
+//////////////////// Mostrar todos los hospitales ///////////////////////////////////
 
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
+
 
 ////////////////////////// funcion para borrar hositales ///////////////////
 function deleteHospital(idHospital){
@@ -223,8 +225,7 @@ formEditHospital.addEventListener('submit', function(e){
 })
 
 
-
-
+/////////////////// Declaraciones de variables //////////////////
 
 let page = 1;
 var scrolling
@@ -276,13 +277,7 @@ divPrueba[0].addEventListener('scroll', () => {
 				}, 2000);
 			}
 		}
-        
-
-
-
-        
     }
-
 });
 
 const httpRequestWrapper = (method, URL) => {
@@ -302,7 +297,7 @@ const httpRequestWrapper = (method, URL) => {
     });
   };
 
-//////////////////////////////////////
+ ///////////////// peticion de todos hospitales
 const getData = async (page_no = 1) => {
     const data = await httpRequestWrapper(
       "GET",
@@ -333,7 +328,7 @@ const getData = async (page_no = 1) => {
   };
 
   
-//////////////////////////////////////
+////////////////////////////////////// peticiones de hospitales por nombre
 const getDataNombre = async (page_no = 1, searchParam ) => {
     const data = await httpRequestWrapper(
       "GET",
@@ -364,7 +359,7 @@ const getDataNombre = async (page_no = 1, searchParam ) => {
 
 
 
-
+//////////////////////////función para llenado de tabla hospitales Correspondiente a la vista AdminHospitales.html
 
   const populateUI = data => {
     data && 
@@ -412,15 +407,13 @@ const getDataNombre = async (page_no = 1, searchParam ) => {
   
   }
 
-
-
-
-
-  //////////////////////////////////////
+//////////////////cierre de sesion/////////////////
 function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
+
+/////////////////Validar caracteres especiales /////////////////////////
 $(function(){
 	$('#nombreHospital').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');
 	$('#telefonoHospital').validCampoFranz('1234567890'); 

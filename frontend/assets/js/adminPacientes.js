@@ -1,3 +1,5 @@
+////////////////// Al cargar la pagina /////////////////
+/// Validacion login
 window.onload = (function(){
 	console.log(localStorage.getItem("Admin")); 
 	localStorage.setItem("encuentrosPaciente", "False");
@@ -17,7 +19,9 @@ window.onload = (function(){
 
   
 })
-///////////////////////////////////////////////////
+
+
+///////////////// Mostrar Nombre del modico logueado	///////////////////////////////
 
 function loadMedico(){
 	var medico = localStorage.getItem("nombreMedico")
@@ -25,6 +29,8 @@ function loadMedico(){
 	
 }
 
+
+///////////////////////////////  Animacion del toggle /////////////////////////////////
 
 const opcion = document.querySelectorAll('.opcion');
 
@@ -36,7 +42,7 @@ opcion.forEach(e => {
 	})
 })
 
-
+//////////////////////// mostrar formulario de busqueda Hospitales /////////////////////////
 
 function showDivBusqueda(element)
 { 
@@ -47,7 +53,7 @@ function showDivBusqueda(element)
 }
 
 
-///////////////////////////////////// Add Paciente
+///////////////////// form nuevo Paciente ///////////////////////////
 
 
 var formNewPaciente = document.getElementById('formNewPaciente');
@@ -117,12 +123,14 @@ formNewPaciente.addEventListener('submit', function(e){
 	});
 
 })
-//////////////////////////////////// todos los pacientes
 
+//////////////////// Mostrar todos los pacientes ///////////////////////////////////
 
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
+
+////////////////////////// funcion para borrar pacientes ///////////////////
 
 function deletePaciente(idPaciente){
 	const URLDeletePaciente = 'http://134.122.120.195/api/v1/paciente/' + idPaciente ;
@@ -163,7 +171,8 @@ function deletePaciente(idPaciente){
 	})
 }
 
-///////////////////////////////////////////////////////////////
+
+////////////////////////// Mostrar modal precargado para editar pacientes  /////////////////////////////
 function editPaciente(IdPaciente, rutPaciente, pasaportePaciente, direccionPaciente, telefonoPaciente, 
 	sexoPaciente, birthdatePaciente, nombrePaciente,apellidoPaciente, alergias, tipodesangre
 	){
@@ -199,7 +208,7 @@ function editPaciente(IdPaciente, rutPaciente, pasaportePaciente, direccionPacie
 
 }
 
-/////////////////// Modal editar pacientes //////////////////////
+/////////////////// Form para editar pacientes //////////////////////
 var formEditPaciente = document.getElementById('formEditPaciente');
 formEditPaciente.addEventListener('submit', function(e){
 
@@ -268,7 +277,8 @@ formEditPaciente.addEventListener('submit', function(e){
 	.catch(err => console.log(err));			
 })
 
-/////////////////////////////////////////////////////////////
+
+/////////////////// Declaraciones de variables //////////////////
 
 let page = 1;
 var scrolling
@@ -327,15 +337,13 @@ formSearchBirthDay.addEventListener("submit", function(event){
 	
   });
 
-
-
-
+/////////// al cargar el archivo, mostrar todos los pacientes
 document.addEventListener("DOMContentLoaded", () => {
 	
     getData(1);
   });
 
-
+///////////////  busueda con scroll  ///////////////////////
 var lastScrollTop = 0;
   
 divPrueba[0].addEventListener('scroll', () => {
@@ -410,7 +418,7 @@ const httpRequestWrapper = (method, URL) => {
     });
   };
 
-//////////////////////////////////////
+//////////////////////////////////////peticion de todos los pacientes registrados 
 const getData = async (page_no = 1) => {
     const data = await httpRequestWrapper(
       "GET",
@@ -422,8 +430,8 @@ const getData = async (page_no = 1) => {
   };
   
 
-  //////////////////////////////////////
-//////////////////////////////////////
+
+//////////////////////////////////////peticiones de pacientes por nombre
 const getDataNombre = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -451,7 +459,7 @@ const getDataNombre = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
 };
-///////////////////////////////////////////////
+/////////////////////////////////////////peticiones de pacientes por rut
 const getDataRut = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -479,7 +487,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
 };
-///////////////////////////////////////////////////
+////////////////////////////////////peticiones de pacientes por pasaporte
 const getDataPasaporte = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -507,7 +515,7 @@ const getDataPasaporte = async (page_no = 1, paramSearch) => {
         populateUI(data[1]);
     }
 };
-///////////////////////////////////////////////////77
+///////////////////////////////peticiones de pacientes por birth_date 
 const getDataBirthday = async (page_no = 1, paramSearch) => {
     const data = await httpRequestWrapper(
     "GET",
@@ -536,18 +544,7 @@ const getDataBirthday = async (page_no = 1, paramSearch) => {
     }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////función para llenado de tabla paciente Correspondiente a la vista adminPacientes.html
   const populateUI = data => {
     data && 
     data.length && 
@@ -592,17 +589,13 @@ const getDataBirthday = async (page_no = 1, paramSearch) => {
   
   }
 
-
-
-
-
-
-
-  /////////////////////////////////////////////////
+//////////////////cierre de sesion/////////////////
 function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
+
+/////////////////Validar caracteres especiales /////////////////////////
 
 $(function(){
 	$('#nombres').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');

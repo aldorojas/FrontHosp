@@ -1,4 +1,5 @@
 
+/////////////////////concatenar ID y nombre de hospital en un combo
 var dropdown = document.getElementById('IdHospital');
 var dropdown_edit = document.getElementById('IdHospitalEdit');
 dropdown.length = 0;
@@ -36,6 +37,8 @@ request.onerror = function () {
 
 request.send();
 
+////////////////// Al cargar la pagina /////////////////
+/// Validacion de modulo Admin y login
 
 window.onload = (function () {
 	console.log(localStorage.getItem("Admin"));
@@ -54,19 +57,22 @@ window.onload = (function () {
 
 })
 
-/////////////////////////////////////////////
+
+///////////////// Mostrar Nombre del modico logueado	///////////////////////////////
 
 function loadMedico() {
 	var medico = localStorage.getItem("nombreMedico")
 	document.getElementById("navbarDropdown").innerHTML += medico
 }
 
+////////////////////esconde o muestra un formulario de búsqueda.////////////////
 function showDivBusquedaMedicos(element) {
 	document.getElementById("formBusqueda1Med").style.display = element.value == 0 ? 'block' : 'none';
 	document.getElementById("formBusqueda2Med").style.display = element.value == 1 ? 'block' : 'none';
 	document.getElementById("formBusqueda3Med").style.display = element.value == 2 ? 'block' : 'none';
 }
 
+/////////////////////////////validacion del select staff //////////////////
 function validateStaff(element) {
 	if (element.value == 'True') {
 		document.getElementById('becarioMedico').value = 'False'
@@ -104,7 +110,7 @@ function validateInterno(element) {
 	}
 }
 
-////////////////////////////////////////////
+/////////////////////////////validacion del select staffEdit //////////////////
 function validateStaffEdit(element) {
 	if (element.value == 'True') {
 		document.getElementById('becarioMedicoEdit').value = 'False'
@@ -142,6 +148,8 @@ function validateInternoEdit(element) {
 	}
 }
 
+//////////////////  Animacion del toggle
+
 const opcion = document.querySelectorAll('.opcion');
 
 opcion.forEach(e => {
@@ -153,8 +161,7 @@ opcion.forEach(e => {
 	})
 })
 
-////////////////////////////////////////////////////////////////////////////7
-///////// new medico
+///////////////////// form nuevo Medico ///////////////////////////
 
 var formNewMedico = document.getElementById('formNewMedico');
 
@@ -226,13 +233,11 @@ formNewMedico.addEventListener('submit', function (e) {
 })
 
 
-///////////////////////////////////////// Todos los medicos
-
-
+//////////////////// Mostrar todos los medico ///////////////////////////////////
 var pagesHtml = ''
 var divpieTable = document.getElementById('paginasBotones')
 
-///////////////////////////////////////////////////////////////////////////////////
+////////////////////////// funcion para borrar medicos ///////////////////
 
 function deleteMedico(idMedico) {
 	
@@ -274,7 +279,7 @@ function deleteMedico(idMedico) {
 	})
 }
 
-///////////////
+////////////////////////// Mostrar modal precargado para editar medicos  /////////////////////////////
 function editMedico(IdMedico, IdHospital, nombreMedico, apellidosMedico,
 	telefonoMedico, staffMedico, especialidadMedico, rutMedico, becarioMedico,
 	internoMedico, activoMedico, adminMedico, nombre_hospital
@@ -341,7 +346,7 @@ function editMedico(IdMedico, IdHospital, nombreMedico, apellidosMedico,
 }
 
 
-/////////////////   Modal editar medicos  //////////
+/////////////////   Form editar medicos  /////////////////////////
 
 var formEditMedico = document.getElementById('formEditMedico');
 
@@ -418,7 +423,7 @@ formEditMedico.addEventListener('submit', function (e) {
 })
 
 
-/////////////////////////////////////////////
+/////////////////// Declaraciones de variables //////////////////
 
 let page = 1;
 var scrolling
@@ -464,14 +469,14 @@ formSearchNombre.addEventListener("submit", function (event) {
 });
 
 
-
-
-
-
+/////////// al cargar el archivo, mostrar todos los medicos
 
 document.addEventListener("DOMContentLoaded", () => {
 	getData(1);
 });
+
+
+///////////////  busueda con scroll  ///////////////////////
 
 var lastScrollTop = 0;
 
@@ -539,7 +544,7 @@ const httpRequestWrapper = (method, URL) => {
 
 
 
-//////////////////////////////////////
+/////////////////////////////peticion de todos los medicos registrados
 const getData = async (page_no = 1) => {
 	const data = await httpRequestWrapper(
 		"GET",
@@ -568,7 +573,7 @@ const getData = async (page_no = 1) => {
 	}
 
 };
-//////////////////////////////////////
+//////////////////////////////////////peticiones de medicos por rut
 const getDataRut = async (page_no = 1, paramSearch) => {
 	const data = await httpRequestWrapper(
 		"GET",
@@ -596,7 +601,7 @@ const getDataRut = async (page_no = 1, paramSearch) => {
 		populateUI(data[1]);
 	}
 };
-//////////////////////////////////////
+//////////////////////////////////////peticiones de medicos por especialidad
 const getDataEspecialidad = async (page_no = 1, paramSearch) => {
 	const data = await httpRequestWrapper(
 		"GET",
@@ -624,7 +629,7 @@ const getDataEspecialidad = async (page_no = 1, paramSearch) => {
 		populateUI(data[1]);
 	}
 };
-//////////////////////////////////////
+//////////////////////////////////////peticiones de medicos por nombre
 const getDataNombre = async (page_no = 1, paramSearch) => {
 	const data = await httpRequestWrapper(
 		"GET",
@@ -653,6 +658,7 @@ const getDataNombre = async (page_no = 1, paramSearch) => {
 	}
 };
 
+///////////////////////////función para llenado de tabla hospital Correspondiente a la vista adminMedico.html
 const populateUI = data => {
 	data &&
 		data.length &&
@@ -768,21 +774,13 @@ const populateUI = data => {
 
 
 
-
-
-
-
-
-
-
-////////////////////////////////////
-
-
+//////////////////cierre de sesion/////////////////
 function exit() {
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
 
+/////////////////Validar caracteres especiales /////////////////////////
 $(function () {
 	$('#IdHospital').validCampoFranz('1234567890');
 	$('#nombreHospital').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');

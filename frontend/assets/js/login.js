@@ -19,10 +19,7 @@ inputs.forEach(input => {
 });
 
 
-///////////////////////////////////////////////////////////
-
-
-
+////////////////////////// Form de login /////////////////////////////////
 var formLogin = document.getElementById('formLogin');
 
 formLogin.addEventListener('submit', function(e){

@@ -1,3 +1,5 @@
+////////////////// Al cargar la pagina /////////////////
+/// Validacion de modulo Admin y login
 window.onload = (function(){
   	console.log(localStorage.getItem("Admin")); 
 	  localStorage.setItem("encuentrosPaciente", "False");
@@ -15,7 +17,7 @@ window.onload = (function(){
 	
 })
 
-
+//////////////////  Animacion del toggle
 const opcion = document.querySelectorAll('.opcion');
 
 opcion.forEach(e => {
@@ -28,13 +30,14 @@ opcion.forEach(e => {
 })
 
 
+///////////////// Mostrar Nombre del modico logueado	///////////////////////////////
 function loadMedico(){
 	var medico = localStorage.getItem("nombreMedico")
 	document.getElementById("navbarDropdown").innerHTML += medico
 	
 }
 
-
+////////////////////esconde o muestra un formulario de búsqueda.////////////////
 
 function showDivBusqueda(element)
 { 
@@ -44,7 +47,7 @@ function showDivBusqueda(element)
 }
 
 
-///////////////////
+///////////////////// form nuevo Paciente ///////////////////////////
 
 var formNewPaciente = document.getElementById('formNewPaciente');
 
@@ -148,12 +151,13 @@ formNewPaciente.addEventListener('submit', function(e){
 
 
 
-
+////////cierre de sesion ////////////////
 function exit(){
 	window.localStorage.clear();
 	window.location.href = '../index.html'
 }
 
+/////////////////Validar caracteres especiales /////////////////////////
 $(function(){
 
 	$('#nombres').validCampoFranz(' abcdefghijklmnñopqrstuvwxyziouABCEDEFGHIJKLMNÑOPQRSTUVWXYZ');

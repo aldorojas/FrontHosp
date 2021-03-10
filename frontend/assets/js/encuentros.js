@@ -1,3 +1,5 @@
+////////////////// Al cargar la pagina /////////////////
+/// Validacion de modulo Admin y login
 window.onload = (function(){
 
 	localStorage.setItem("encuentrosPaciente", "False");
@@ -22,6 +24,7 @@ window.onload = (function(){
 	///////////////////////////////////////////
 	
     const urlAPI = 'http://134.122.120.195/api/v1/doctors_list';
+	 //Llenado de selectbox con nombres de doctores
 	fetch(urlAPI)
 	.then(response => response.json())
 	.then(data => {
@@ -34,19 +37,22 @@ window.onload = (function(){
 	})
 	.catch(err => console.log(err))	
 
-})
-//////////////////////////////////////////////////////////////
+}) 
+
+///////////////// Mostrar Nombre del modico logueado	///////////////////////////////
 
 function loadMedico(){
 	var medico = localStorage.getItem("nombreMedico")
 	document.getElementById("navbarDropdown").innerHTML += medico
 }
 
+/////////// limitar caracteres en un input-text //////////
 function charLimit(limitField, limitNum) { 
     if (limitField.value.length > limitNum) { 
     limitField.value = limitField.value.substring(0, limitNum);} 
 } 
 
+//////////////////// No permitir Enter ///////////////////////////
 function pulsar(e) {
 	if (e.which === 13 && !e.shiftKey) {
 	  e.preventDefault();
@@ -54,7 +60,8 @@ function pulsar(e) {
 	  return false;
 	}
   }
-////////////////////////////////////////////////////
+
+/////////////////////// esconde o muestra el formulario de búsqueda. /////////////////////////////
 function showDivBusqueda(element)
 { 
   document.getElementById("formBusqueda1").style.display = element.value == 0 ? 'block' : 'none';
@@ -69,7 +76,7 @@ function showSelectIsapre(element)
 
 //////////////////////////
 
-////////////////////////////////// new PAciente ///////////////////
+////////////////////////////////// Agregar nuevo Paciente ///////////////////
 var formNewPaciente = document.getElementById('formNewPaciente')
 formNewPaciente.addEventListener('submit', function(e){
 
@@ -252,7 +259,7 @@ var pdfInMM1=180;  // width of A4 in mm
 var medicotratante = document.getElementById('doctorAlta')	
 
 
-
+///////////validacion de select isapre/fonosa /////////////
 
 var aseguradoraFinal 
 
@@ -669,7 +676,7 @@ const dataToSend = JSON.stringify(
 })
 
 
-
+//////////////////cierre de sesion/////////////////
 function exit(){
 window.localStorage.clear();
 window.location.href = '../index.html'
