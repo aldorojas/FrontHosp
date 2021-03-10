@@ -360,7 +360,6 @@ const getDataNombre = async (page_no = 1, searchParam ) => {
 
 
 //////////////////////////función para llenado de tabla hospitales Correspondiente a la vista AdminHospitales.html
-
   const populateUI = data => {
     data && 
     data.length && 
